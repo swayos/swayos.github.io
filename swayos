@@ -53,7 +53,7 @@ echo "starting services"
 
 # add dhcp on lan
 
-echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee -a /etc/systemd/network/20-wired.network
+echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee /etc/systemd/network/20-wired.network > /dev/null
 
 sudo systemctl enable systemd-networkd --now
 sudo systemctl enable iwd --now
