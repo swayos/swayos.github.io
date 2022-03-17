@@ -143,3 +143,6 @@ exec mkfifo /tmp/wob && tail -f /tmp/wob | wob
 # xorg setup
 
 include /etc/sway/config.d/*
+
+# on first start execute device setup
+exec sh ~/.config/sway/setup

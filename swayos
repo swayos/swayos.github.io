@@ -3,7 +3,7 @@
 
 echo "installing needed official packages"
 
-sudo pacman -S --needed git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot ttf-font-awesome nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family polkit-gnome wl-clipboard openbsd-netcat unzip
+sudo pacman -S --noconfirm --needed git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot ttf-font-awesome nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family polkit-gnome wl-clipboard openbsd-netcat unzip
 
 
 echo "cloning swayos repo"

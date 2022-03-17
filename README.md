@@ -57,8 +57,8 @@ Note : it is a minimal-configuration installer, there are no partitioning option
 
 Download the latest [Arch Linux installer ISO](https://archlinux.org/download/). After startup, type "archinstall" that guides you through the install process. After finish, log in with your user and install SwayOS with
 ```
-curl -LO swayos.github.io/swayos_arch
-sh swayos_arch
+curl -O https://swayos.github.io/swayos
+sh swayos
 ```
 
 **For superhackers/For other OSes/distributions**

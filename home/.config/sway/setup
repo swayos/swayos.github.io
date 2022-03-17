@@ -14,7 +14,7 @@ swaymsg -t get_inputs | grep -i "identifier.*keyboard" | cut -d'"' -f 4 | while 
     # substitute device identifier in config_keyboard
     sed "s/_id_/$line/" config_keyboard > config_temp
     # insert resulting file into sway config
-    sed -i -e '/# devices/r./config_temp' ../home/.config/sway/config
+    sed -i -e '/# devices/r./config_temp' ~/.config/sway/config
 done
 
 swaymsg -t get_inputs | grep -i "identifier.*touchpad" | cut -d'"' -f 4 | while read -r line ; do
@@ -22,5 +22,13 @@ swaymsg -t get_inputs | grep -i "identifier.*touchpad" | cut -d'"' -f 4 | while 
     # substitute device identifier in config_touchpad
     sed "s/_id_/$line/" config_touchpad > config_temp
     # insert resulting file into sway config
-    sed -i -e '/# devices/r./config_temp' ../home/.config/sway/config
+    sed -i -e '/# devices/r./config_temp' ~/.config/sway/config
 done
+
+# remove last line of sway config
+
+sed -i '$ d' ~/.config/sway/config
+
+# remove this script
+
+# rm ~/.config/sway/config
