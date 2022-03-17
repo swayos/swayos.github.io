@@ -1,0 +1,1 @@
+gtk3 applications theme config, dark mode and ubuntu font are set here for chrome and firefox

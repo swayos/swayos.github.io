@@ -1,0 +1,93 @@
+#!/bin/bash
+
+
+echo "installing needed official packages"
+
+sudo pacman -S --needed git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot ttf-font-awesome nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family polkit-gnome wl-clipboard openbsd-netcat
+
+
+echo "cloning swayos repo"
+
+git clone https://github.com/milgra/swayos.git
+cd swayos
+
+
+echo "copying terminus-ttf to font directory"
+
+# sudo curl --create-dirs -O --output-dir /usr/share/fonts/ https://swayos.github.io/font/TerminusTTF.ttf
+# sudo curl --create-dirs -O --output-dir /usr/share/fonts/ https://swayos.github.io/font/TerminusTTF-Bold.ttf
+# sudo curl --create-dirs -O --output-dir /usr/share/fonts/ https://swayos.github.io/font/TerminusTTF-Italic.ttf
+# sudo curl --create-dirs -O --output-dir /usr/share/fonts/ https://swayos.github.io/font/TerminusTTF-Bold-Italic.ttf
+
+cp font/*.* /usr/share/fonts/
+
+
+echo "listing input devices, add setup blocks in sway config for keyboard and touchpad"
+
+# create empty pre-configured keyboard and touchpad sway config blocks
+
+echo "input '_id_' {\nrepeat_rate 100\nrepeat_delay 250\n}" > config_keyboard
+echo "input '_id_' {\ndwt enabled\ntap enabled\nnatural_scroll enabled\nmiddle_emulation enabled\n}" > config_touchpad
+
+# look for keyboard and touchpad input devices, add them to configuration
+
+swaymsg -t get_inputs | grep -i "identifier.*keyboard" | cut -d'"' -f 4 | while read -r line ; do
+    echo "Creating rules for keyboard $line"
+    # substitute device identifier in config_keyboard
+    sed "s/_id_/$line/" config_keyboard > config_temp
+    # insert resulting file into sway config
+    sed -i -e '/# devices/r./config_temp' ../home/.config/sway/config
+done
+
+swaymsg -t get_inputs | grep -i "identifier.*touchpad" | cut -d'"' -f 4 | while read -r line ; do
+    echo "Creating rules for touchpad $line"
+    # substitute device identifier in config_touchpad
+    sed "s/_id_/$line/" config_touchpad > config_temp
+    # insert resulting file into sway config
+    sed -i -e '/# devices/r./config_temp' ../home/.config/sway/config
+done
+
+
+echo "copying settings to home folder"
+
+cp -R home/. ~/
+
+
+echo "starting services"
+
+# add dhcp on lan
+
+echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee -a /etc/systemd/network/20-wired.network
+
+sudo systemctl enable systemd-networkd --now
+sudo systemctl enable iwd --now
+sudo systemctl enable bluetooth --now
+sudo systemctl enable cups --now
+
+echo "installing yay for aur programs"
+
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd ..
+
+echo "installing needed aur packages"
+
+yay -S google-chrome pamac-gtk iwgtk wdisplays wob wlogout
+
+echo "installing sway overview from the repo until it is in aur"
+
+git clone https://github.com/milgra/sway-overview.git
+cd sway-overview
+meson build
+ninja -C build
+sudo ninja -C build install
+
+echo "cleaning up"
+
+cd ..
+rm -R swayos
+
+echo "changing shell to zsh"
+
+chsh -s /bin/zsh

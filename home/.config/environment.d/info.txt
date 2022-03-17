@@ -1,0 +1,1 @@
+setting xdg current desktop for pipewire screen sharing
