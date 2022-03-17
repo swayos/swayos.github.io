@@ -1,31 +1,35 @@
 #!/bin/bash
 
 
-echo "installing needed official packages"
+printf "installing needed official packages"
+echo "installing needed official packages" >> ~/sway_setup_log
 
 sudo pacman -S --noconfirm --needed git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot ttf-font-awesome nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family polkit-gnome wl-clipboard openbsd-netcat unzip meson
 
 
-echo "cloning swayos repo"
+printf "\ncloning swayos repo"
+echo "cloning swayow repo" >> ~/sway_setup_log
 
 curl -LO https://github.com/swayos/swayos.github.io/archive/master.zip
 unzip master.zip
 cd swayos.github.io-main
 
 
-echo "copying terminus-ttf to font directory"
+printf "\ncopying terminus-ttf to font directory"
+echo "copying terminus-ttf to font directory" >> ~/sway_setup_log
 
 sudo cp font/*.* /usr/share/fonts/
 
 
-echo "copying settings to home folder"
+printf "\ncopying settings to home folder"
+echo "copying settings to home folder" >> ~/sway_setup_log
 
 cp -R home/. ~/
 
 
-echo "starting services"
+print "\nstarting services"
+echo "starting service" >> ~/sway_setup_log
 
-# add dhcp on lan
 
 echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee /etc/systemd/network/20-wired.network > /dev/null
 
@@ -34,30 +38,40 @@ sudo systemctl enable iwd --now
 sudo systemctl enable bluetooth --now
 sudo systemctl enable cups --now
 
-echo "installing yay for aur programs"
+printf "\ninstalling yay for aur programs"
+echo "installing yay for aur programs" >> ~/sway_setup_log
 
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
 cd ..
 
-echo "installing needed aur packages"
+printf "\ninstalling needed aur packages"
+echo "installing needed aur packages" >> ~/sway_setup_log
 
 yay -S google-chrome pamac-gtk iwgtk wdisplays wob wlogout
 
-echo "installing sway overview from the repo until it is in aur"
+printf "\ninstalling sway overview from the repo until it is in aur"
+echo "installing sway overview from the repo" >> ~/sway_setup_log
 
 git clone https://github.com/milgra/sway-overview.git
 cd sway-overview
 meson build
 ninja -C build
 sudo ninja -C build install
+cd ..
 
-echo "cleaning up"
+printf "\ncleaning up"
+echo "cleaning up" >> ~/sway_setup_log
 
-#cd ..
-#rm -R swayos
+cd ..
+rm -R swayos
+rm -R master.zip
+rm -R swayos.github.io-main
 
-echo "changing shell to zsh"
+printf "\nchanging shell to zsh"
+echo "changing default shell to zsh" >> ~/sway_setup_log
 
 chsh -s /bin/zsh
+
+printf "\nSetup is done, please log out and log in back again ( type exit )"

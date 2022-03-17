@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "listing input devices, add setup blocks in sway config for keyboard and touchpad"
+echo "listing input devices, add setup blocks in sway config for keyboard and touchpad" >> ~/sway_setup_log
 
 # create empty pre-configured keyboard and touchpad sway config blocks
 
@@ -10,7 +10,7 @@ echo $'input "_id_" {\ndwt enabled\ntap enabled\nnatural_scroll enabled\nmiddle_
 # look for keyboard and touchpad input devices, add them to configuration
 
 swaymsg -t get_inputs | grep -i "identifier.*keyboard" | cut -d'"' -f 4 | while read -r line ; do
-    echo "Creating rules for keyboard $line"
+    echo "Creating rules for keyboard $line" >> ~/sway_setup_log
     # substitute device identifier in config_keyboard
     sed "s/_id_/$line/" config_keyboard > config_temp
     # insert resulting file into sway config
@@ -18,7 +18,7 @@ swaymsg -t get_inputs | grep -i "identifier.*keyboard" | cut -d'"' -f 4 | while 
 done
 
 swaymsg -t get_inputs | grep -i "identifier.*touchpad" | cut -d'"' -f 4 | while read -r line ; do
-    echo "Creating rules for touchpad $line"
+    echo "Creating rules for touchpad $line" >> ~/sway_setup_log
     # substitute device identifier in config_touchpad
     sed "s/_id_/$line/" config_touchpad > config_temp
     # insert resulting file into sway config
@@ -27,11 +27,17 @@ done
 
 # remove last two lines of sway config
 
+echo "Removing last two lines of sway config" >> ~/sway_setup_log
+
 head -n -3 ~/.config/sway/config
 
 # remove this script
 
+echo "Removing setup script" >> ~/sway_setup_log
+
 rm ~/.config/sway/setup
+
+echo "Reloading sway" >> ~/sway_setup_log
 
 # reload sway
 swaymsg reload
