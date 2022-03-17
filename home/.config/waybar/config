@@ -64,7 +64,7 @@
         "on-click": "swaymsg exec feh ~/.config/sway/help.png",
     },
     "custom/software": {
-        "format": "<span font_family='Font Awesome 6' size='x-small'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='x-small'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec pamac-manager",
     },

@@ -20,3 +20,11 @@ export QT_QPA_PLATFORMTHEME=gtk2
 function preexec {
     print -Pn "\e]0;${(q)1}\e\\"
 }
+# startup sway on login on terminal 1
+if [ "$(tty)" = "/dev/tty1" ] ; then
+    # Your environment variables
+    export QT_QPA_PLATFORM=wayland
+    export XDG_SESSION_TYPE=wayland
+    export XDG_CURRENT_DESKTOP=sway
+    exec sway
+fi
