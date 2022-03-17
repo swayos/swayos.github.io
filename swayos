@@ -1,77 +1,71 @@
 #!/bin/bash
 
 
-printf "installing needed official packages"
-echo "installing needed official packages" >> ~/sway_setup_log
-
-sudo pacman -S --noconfirm --needed git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot ttf-font-awesome nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family polkit-gnome wl-clipboard openbsd-netcat unzip meson
+printf "Installing needed official packages" | tee -a ~/sway_setup_log
 
 
-printf "\ncloning swayos repo"
-echo "cloning swayow repo" >> ~/sway_setup_log
+sudo pacman -S --noconfirm --needed git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot ttf-font-awesome nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family polkit-gnome wl-clipboard openbsd-netcat unzip meson | tee -a ~/sway_setup_log
 
-curl -LO https://github.com/swayos/swayos.github.io/archive/master.zip
-unzip master.zip
+
+printf "\nCloning swayOS repo" | tee -a ~/sway_setup_log
+
+curl -LO https://github.com/swayos/swayos.github.io/archive/master.zip | tee -a ~/sway_setup_log
+unzip master.zip | tee -a ~/sway_setup_log
 cd swayos.github.io-main
 
 
-printf "\ncopying terminus-ttf to font directory"
-echo "copying terminus-ttf to font directory" >> ~/sway_setup_log
+printf "\nCopying terminus-ttf fonts to font directory" | tee -a ~/sway_setup_log
 
-sudo cp font/*.* /usr/share/fonts/
-
-
-printf "\ncopying settings to home folder"
-echo "copying settings to home folder" >> ~/sway_setup_log
-
-cp -R home/. ~/
+sudo cp -f font/*.* /usr/share/fonts/ echo "copying terminus-ttf to font directory" >> ~/sway_setup_log | tee -a ~/sway_setup_log
 
 
-print "\nstarting services"
-echo "starting service" >> ~/sway_setup_log
+printf "\nCopying settings to home folder" | tee -a ~/sway_setup_log
 
+cp -f -R home/. ~/ | tee -a ~/sway_setup_log
+
+
+print "\nStarting services" | tee -a ~/sway_setup_log
 
 echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee /etc/systemd/network/20-wired.network > /dev/null
 
-sudo systemctl enable systemd-networkd --now
-sudo systemctl enable iwd --now
-sudo systemctl enable bluetooth --now
-sudo systemctl enable cups --now
+sudo systemctl enable systemd-networkd --now | tee -a ~/sway_setup_log
+sudo systemctl enable iwd --now | tee -a ~/sway_setup_log
+sudo systemctl enable bluetooth --now | tee -a ~/sway_setup_log
+sudo systemctl enable cups --now | tee -a ~/sway_setup_log
 
-printf "\ninstalling yay for aur programs"
-echo "installing yay for aur programs" >> ~/sway_setup_log
 
-git clone https://aur.archlinux.org/yay.git
+printf "\nInstalling yay for aur programs" | tee -a ~/sway_setup_log
+
+git clone https://aur.archlinux.org/yay.git | tee -a ~/sway_setup_log
 cd yay
 makepkg -si
 cd ..
 
-printf "\ninstalling needed aur packages"
-echo "installing needed aur packages" >> ~/sway_setup_log
 
-yay -S google-chrome pamac-gtk iwgtk wdisplays wob wlogout
+printf "\nInstalling needed aur packages" | tee -a ~/sway_setup_log
 
-printf "\ninstalling sway overview from the repo until it is in aur"
-echo "installing sway overview from the repo" >> ~/sway_setup_log
+yay --noconfirm -S google-chrome pamac-gtk iwgtk wdisplays wob wlogout | tee -a ~/sway_setup_log
 
-git clone https://github.com/milgra/sway-overview.git
+
+printf "\nInstalling sway overview from the repo until it is in aur" | tee -a ~/sway_setup_log
+
+git clone https://github.com/milgra/sway-overview.git | tee -a ~/sway_setup_log
 cd sway-overview
 meson build
 ninja -C build
 sudo ninja -C build install
 cd ..
 
-printf "\ncleaning up"
-echo "cleaning up" >> ~/sway_setup_log
+printf "\nCleaning up" | tee -a ~/sway_setup_log
 
 cd ..
-rm -R swayos
-rm -R master.zip
-rm -R swayos.github.io-main
+rm -f -R swayos | tee -a ~/sway_setup_log
+rm -f -R master.zip | tee -a ~/sway_setup_log
+rm -f -R swayos.github.io-main | tee -a ~/sway_setup_log
 
-printf "\nchanging shell to zsh"
-echo "changing default shell to zsh" >> ~/sway_setup_log
+printf "\nChanging shell to zsh" | tee -a ~/sway_setup_log
 
-chsh -s /bin/zsh
+chsh -s /bin/zsh | tee -a ~/sway_setup_log
 
-printf "\nSetup is done, please log out and log in back again ( type exit )"
+
+printf "\nSetup is done, please log out and log in back again ( type exit )" | tee -a ~/sway_setup_log
