@@ -4,8 +4,8 @@ echo "listing input devices, add setup blocks in sway config for keyboard and to
 
 # create empty pre-configured keyboard and touchpad sway config blocks
 
-echo "input '_id_' {\nrepeat_rate 100\nrepeat_delay 250\n}" > config_keyboard
-echo "input '_id_' {\ndwt enabled\ntap enabled\nnatural_scroll enabled\nmiddle_emulation enabled\n}" > config_touchpad
+echo $'input "_id_" {\nrepeat_rate 100\nrepeat_delay 250\n}' | tee config_keyboard
+echo $'input "_id_" {\ndwt enabled\ntap enabled\nnatural_scroll enabled\nmiddle_emulation enabled\n}' | tee config_touchpad
 
 # look for keyboard and touchpad input devices, add them to configuration
 
@@ -25,10 +25,13 @@ swaymsg -t get_inputs | grep -i "identifier.*touchpad" | cut -d'"' -f 4 | while 
     sed -i -e '/# devices/r./config_temp' ~/.config/sway/config
 done
 
-# remove last line of sway config
+# remove last two lines of sway config
 
-sed -i '$ d' ~/.config/sway/config
+head -n -3 ~/.config/sway/config
 
 # remove this script
 
-# rm ~/.config/sway/config
+rm ~/.config/sway/setup
+
+# reload sway
+swaymsg reload
