@@ -18,32 +18,6 @@ echo "copying terminus-ttf to font directory"
 sudo cp font/*.* /usr/share/fonts/
 
 
-echo "listing input devices, add setup blocks in sway config for keyboard and touchpad"
-
-# create empty pre-configured keyboard and touchpad sway config blocks
-
-echo "input '_id_' {\nrepeat_rate 100\nrepeat_delay 250\n}" > config_keyboard
-echo "input '_id_' {\ndwt enabled\ntap enabled\nnatural_scroll enabled\nmiddle_emulation enabled\n}" > config_touchpad
-
-# look for keyboard and touchpad input devices, add them to configuration
-
-swaymsg -t get_inputs | grep -i "identifier.*keyboard" | cut -d'"' -f 4 | while read -r line ; do
-    echo "Creating rules for keyboard $line"
-    # substitute device identifier in config_keyboard
-    sed "s/_id_/$line/" config_keyboard > config_temp
-    # insert resulting file into sway config
-    sed -i -e '/# devices/r./config_temp' ../home/.config/sway/config
-done
-
-swaymsg -t get_inputs | grep -i "identifier.*touchpad" | cut -d'"' -f 4 | while read -r line ; do
-    echo "Creating rules for touchpad $line"
-    # substitute device identifier in config_touchpad
-    sed "s/_id_/$line/" config_touchpad > config_temp
-    # insert resulting file into sway config
-    sed -i -e '/# devices/r./config_temp' ../home/.config/sway/config
-done
-
-
 echo "copying settings to home folder"
 
 cp -R home/. ~/
@@ -81,8 +55,8 @@ sudo ninja -C build install
 
 echo "cleaning up"
 
-cd ..
-rm -R swayos
+#cd ..
+#rm -R swayos
 
 echo "changing shell to zsh"
 
