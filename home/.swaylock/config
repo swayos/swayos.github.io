@@ -1,5 +1,5 @@
 font=Terminus (TTF)
-image=~/Pictures/Wallpaper/sunset.jpg
+image=~/.config/sway/sunset.jpg
 color=dcdccc55
 indicator-radius=100
 indicator-thickness=50

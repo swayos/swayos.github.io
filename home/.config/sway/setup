@@ -3,12 +3,12 @@
 log(){
     echo "*********** $1 ***********"
     now=$(date +"%T")
-    echo "$now $1" >> ~/sway_setup_log
+    echo "$now $1" >> ~/swayos_setup_log
 }
 
 check(){
     if [ "$1" != 0 ]; then
-	echo "$2 error : $1" | tee -a ~/sway_setup_log
+	echo "$2 error : $1" | tee -a ~/swayos_setup_log
 	exit 1
     fi
 }
@@ -50,6 +50,7 @@ check "$?" "head"
 
 log "Removing setup script"
 rm -f ~/.config/sway/setup
+rm -f config_*
 check "$?" "rm"
 
 
