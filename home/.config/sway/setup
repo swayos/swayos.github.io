@@ -47,10 +47,10 @@ check "head"
 
 
 log "Removing setup script"
-rm -f ~/.config/sway/setup | tee -a ~/sway_setup_log
+rm -f ~/.config/sway/setup
 check "rm"
 
 
 log "Reloading sway"
-swaymsg reload | tee -a ~/sway_setup_log
+swaymsg reload
 check "swaymsg reload"
