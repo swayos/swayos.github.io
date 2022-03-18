@@ -64,7 +64,7 @@ cd ..
 
 
 log "Installing needed aur packages"
-yay --answerdiff=None --noconfirm -S google-chrome pamac-gtk iwgtk wdisplays wob wlogout
+yay --answerdiff=None --noconfirm -Syu google-chrome pamac-gtk iwgtk wdisplays wob wlogout
 check "$?" "yay"
 
 
