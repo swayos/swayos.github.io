@@ -41,7 +41,7 @@ check "$?" "cp"
 
 log "Starting services"
 NETCONF=/etc/systemd/network/20-wired.network
-if [ ! -f "$NETCONF" ]
+if [ ! -f "$NETCONF" ]; then
     echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee "$NETCONF" > /dev/null
 fi
 sudo systemctl enable systemd-networkd --now
