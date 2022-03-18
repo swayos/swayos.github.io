@@ -58,7 +58,7 @@ log "Installing yay for aur programs"
 git clone https://aur.archlinux.org/yay.git
 check "$?" "git"
 cd yay
-makepkg -si
+makepkg -si --noconfirm
 check "$?" "makepkg"
 cd ..
 
