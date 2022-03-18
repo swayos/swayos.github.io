@@ -1,7 +1,9 @@
 #!/bin/bash
 
 log(){
-    printf "$1" | tee -a ~/sway_setup_log    
+    echo "*********** $1 ***********"
+    now=$(date +"%T")
+    echo "$now $1" >> ~/sway_setup_log
 }
 
 check(){
