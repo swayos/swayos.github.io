@@ -21,7 +21,7 @@ sudo pacman -S --noconfirm --needed git zsh zsh-autosuggestions iwd bluez bluez-
 check "$?" "pacman"
 
 
-log "\nCloning swayOS repo"
+log "Cloning swayOS repo"
 curl -LO https://github.com/swayos/swayos.github.io/archive/master.zip
 check "$?" "curl"
 unzip master.zip
@@ -29,18 +29,21 @@ check "$?" "unzip "
 cd swayos.github.io-main
 
 
-log "\nCopying terminus-ttf fonts to font directory"
-sudo cp -f font/*.* /usr/share/fonts/ echo "copying terminus-ttf to font directory" >> ~/sway_setup_log
+log "Copying terminus-ttf fonts to font directory"
+sudo cp -f font/*.* /usr/share/fonts/
 check "$?" "cp"
 
 
-log "\nCopying settings to home folder"
+log "Copying settings to home folder"
 cp -f -R home/. ~/
 check "$?" "cp"
 
 
-log "\nStarting services"
-echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee /etc/systemd/network/20-wired.network > /dev/null
+log "Starting services"
+NETCONF=/etc/systemd/network/20-wired.network
+if [ ! -f "$NETCONF" ]
+    echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee "$NETCONF" > /dev/null
+fi
 sudo systemctl enable systemd-networkd --now
 check "$?" "systemctl enable"
 sudo systemctl enable iwd --now
@@ -51,7 +54,7 @@ sudo systemctl enable cups --now
 check "$?" "systemctl enable"
 
 
-log "\nInstalling yay for aur programs"
+log "Installing yay for aur programs"
 git clone https://aur.archlinux.org/yay.git
 check "$?" "git"
 cd yay
@@ -60,12 +63,12 @@ check "$?" "makepkg"
 cd ..
 
 
-log "\nInstalling needed aur packages"
+log "Installing needed aur packages"
 yay --answerdiff=None --noconfirm -S google-chrome pamac-gtk iwgtk wdisplays wob wlogout
 check "$?" "yay"
 
 
-log "\nInstalling sway overview from the repo until it is in aur"
+log "Installing sway overview from the repo until it is in aur"
 git clone https://github.com/milgra/sway-overview.git
 check "$?" "git"
 cd sway-overview
@@ -78,7 +81,7 @@ check "$?" "install"
 cd ..
 
 
-log "\nCleaning up"
+log "Cleaning up"
 cd ..
 rm -f -R swayos
 check "$?" "rm"
@@ -88,9 +91,9 @@ rm -f -R swayos.github.io-main
 check "$?" "rm"
 
 
-log "\nChanging shell to zsh"
+log "Changing shell to zsh"
 chsh -s /bin/zsh
 check "$?" "chsh"
 
 
-log "\nSetup is done, please log out and log in back again ( type exit )"
+log "Setup is done, please log out and log in back again ( type exit )"
