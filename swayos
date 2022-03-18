@@ -1,92 +1,96 @@
 #!/bin/bash
 
 log(){
-    printf "$1" | tee -a ~/sway_setup_log    
+    echo "$1" | tee -a ~/sway_setup_log    
 }
 
 check(){
-    if [ "$?" != "0" ]; then
-	printf "$1 error : $?" | tee -a ~/sway_setup_log
+    if [ "$1" != 0 ]; then
+	echo "$2 error : $1" | tee -a ~/sway_setup_log
 	exit 1
     fi
 }
 
+log "Refreshing package db"
+sudo pacman -Sy
+check "$?" "pacman"
+
 
 log "Installing needed official packages"
 sudo pacman -S --noconfirm --needed git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot ttf-font-awesome nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family polkit-gnome wl-clipboard openbsd-netcat unzip meson
-check "pacman"
+check "$?" "pacman"
 
 
 log "\nCloning swayOS repo"
 curl -LO https://github.com/swayos/swayos.github.io/archive/master.zip
-check "curl"
+check "$?" "curl"
 unzip master.zip
-check "unzip "
+check "$?" "unzip "
 cd swayos.github.io-main
 
 
 log "\nCopying terminus-ttf fonts to font directory"
 sudo cp -f font/*.* /usr/share/fonts/ echo "copying terminus-ttf to font directory" >> ~/sway_setup_log
-check "cp"
+check "$?" "cp"
 
 
 log "\nCopying settings to home folder"
 cp -f -R home/. ~/
-check "cp"
+check "$?" "cp"
 
 
 log "\nStarting services"
 echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee /etc/systemd/network/20-wired.network > /dev/null
 sudo systemctl enable systemd-networkd --now
-check "systemctl enable"
+check "$?" "systemctl enable"
 sudo systemctl enable iwd --now
-check "systemctl enable"
+check "$?" "systemctl enable"
 sudo systemctl enable bluetooth --now
-check "systemctl enable"
+check "$?" "systemctl enable"
 sudo systemctl enable cups --now
-check "systemctl enable"
+check "$?" "systemctl enable"
 
 
 log "\nInstalling yay for aur programs"
 git clone https://aur.archlinux.org/yay.git
-check "git"
+check "$?" "git"
 cd yay
 makepkg -si
-check "makepkg"
+check "$?" "makepkg"
 cd ..
 
 
 log "\nInstalling needed aur packages"
 yay --answerdiff=None --noconfirm -S google-chrome pamac-gtk iwgtk wdisplays wob wlogout
-check "yay"
+check "$?" "yay"
 
 
 log "\nInstalling sway overview from the repo until it is in aur"
 git clone https://github.com/milgra/sway-overview.git
-check "git"
+check "$?" "git"
 cd sway-overview
 meson build
-check "meson"
+check "$?" "meson"
 ninja -C build
-check "ninja"
+check "$?" "ninja"
 sudo ninja -C build install
-check "install"
+check "$?" "install"
 cd ..
 
 
 log "\nCleaning up"
 cd ..
 rm -f -R swayos
-check "rm"
+check "$?" "rm"
 rm -f -R master.zip
-check "rm"
+check "$?" "rm"
 rm -f -R swayos.github.io-main
-check "rm"
+check "$?" "rm"
 
 
 log "\nChanging shell to zsh"
 chsh -s /bin/zsh
-check "chsh"
+check "$?" "chsh"
 
 
 log "\nSetup is done, please log out and log in back again ( type exit )"

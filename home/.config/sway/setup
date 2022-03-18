@@ -5,8 +5,8 @@ log(){
 }
 
 check(){
-    if [ "$?" != "0" ]; then
-	printf "$1 error : $?" | tee -a ~/sway_setup_log
+    if [ "$1" != 0 ]; then
+	echo "$2 error : $1" | tee -a ~/sway_setup_log
 	exit 1
     fi
 }
@@ -24,33 +24,33 @@ swaymsg -t get_inputs | grep -i "identifier.*keyboard" | cut -d'"' -f 4 | while 
     log "Creating rules for keyboard $line"
     # substitute device identifier in config_keyboard
     sed "s/_id_/$line/" config_keyboard > config_temp
-    check "sed"
+    check "$?" "sed"
     # insert resulting file into sway config
     sed -i -e '/# devices/r./config_temp' ~/.config/sway/config
-    check "sed"
+    check "$?" "sed"
 done
 
 swaymsg -t get_inputs | grep -i "identifier.*touchpad" | cut -d'"' -f 4 | while read -r line ; do
     log "Creating rules for touchpad $line"
     # substitute device identifier in config_touchpad
     sed "s/_id_/$line/" config_touchpad > config_temp
-    check "sed"
+    check "$?" "sed"
     # insert resulting file into sway config
     sed -i -e '/# devices/r./config_temp' ~/.config/sway/config
-    check "sed"
+    check "$?" "sed"
 done
 
 
 log "Removing last two lines of sway config"
 head -n -3 ~/.config/sway/config
-check "head"
+check "$?" "head"
 
 
 log "Removing setup script"
 rm -f ~/.config/sway/setup
-check "rm"
+check "$?" "rm"
 
 
 log "Reloading sway"
 swaymsg reload
-check "swaymsg reload"
+check "$?" "swaymsg reload"
