@@ -13,7 +13,7 @@ check(){
     fi
 }
 
-log "Listing input devices, add setup blocks in sway config for keyboard and touchpad"
+log "Listing input devices, adding setup blocks in sway config for keyboard and touchpad"
 
 # create empty pre-configured keyboard and touchpad sway config blocks
 
