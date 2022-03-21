@@ -73,7 +73,7 @@
         "tooltip-format": "shutdown/logout",
         "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
-        "on-click": "wlogout -b 6 -c 10 -L 900 -T 100 -B 850 -R 50 -p layer-shell",
+        "on-click": "wlogout -p layer-shell",
     },
     "custom/bluetooth": {
         "format": "<span font_family='Font Awesome 6' size='medium'></span> ",
