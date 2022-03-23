@@ -9,15 +9,6 @@ sudo rm -rf tmp/*
 mkdir tmp/repo
 mkdir tmp/tmpdb
 
-# symlink into iso's airootfs
-
-cd iso/airootfs/root
-ln -s ../../../tmp/repo repo
-ln -s ../../../home home
-ln -s ../../../font font
-
-cd ../../..
-
 # download package databases
 
 wget -P tmp/repo "${MIRROR}/community/os/${ARCH}/community.db"
@@ -66,6 +57,13 @@ cd ../sway-overview
 meson build
 ninja -C build
 cd ../..
+
+# copy/move needed folders under airootfs
+
+cd iso/airootfs/root
+cp -r tmp/repo iso/airootfs/root/
+cp -r tmp/home iso/airootfs/root/
+cp -r tmp/font iso/airootfs/root/
 
 # create iso
 

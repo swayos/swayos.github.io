@@ -46,8 +46,8 @@ NETCONF=/etc/systemd/network/20-wired.network
 if [ ! -f "$NETCONF" ]; then
     echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee "$NETCONF" > /dev/null
 fi
-sudo systemctl enable systemd-networkd --now
-check "$?" "systemctl enable"
+#sudo systemctl enable systemd-networkd --now
+#check "$?" "systemctl enable"
 sudo systemctl enable iwd --now
 check "$?" "systemctl enable"
 sudo systemctl enable bluetooth --now
