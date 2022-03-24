@@ -16,6 +16,7 @@ darkhttpd
 ddrescue
 dhclient
 dhcpcd
+dialog
 diffutils
 dmraid
 dnsmasq

@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# This script installs SwayOS on a pre-installed arch, installs packages and aur packages, copies configs and fonts and sets up system
+#
 
 log(){
     echo "*********** $1 ***********"

@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# This scripts creates a bootable ISO with pre-downloaded packages and pre-built arch packages for offline install
+#
 
 ARCH="x86_64"
 MIRROR="https://mirrors.kernel.org/archlinux/"
@@ -6,6 +9,11 @@ MIRROR="https://mirrors.kernel.org/archlinux/"
 # clear tmp
 
 sudo rm -rf tmp/*
+sudo rm -rf iso/airootfs/root/repo
+
+rm -rf iso/airootfs/root/home
+rm -rf iso/airootfs/root/font
+
 mkdir tmp/repo
 mkdir tmp/tmpdb
 
@@ -18,7 +26,7 @@ wget -P tmp/repo "${MIRROR}/multilib/os/${ARCH}/multilib.db"
 
 # download packages
 
-sudo pacman -Syw --cachedir tmp/repo --dbpath tmp/tmpdb base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc
+sudo pacman -Syw --cachedir tmp/repo --dbpath tmp/tmpdb base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc grub
 
 # create custom db
 
@@ -56,14 +64,16 @@ makepkg -s --skippgpcheck
 cd ../sway-overview
 meson build
 ninja -C build
-cd ../..
+cd ../../..
 
 # copy/move needed folders under airootfs
 
-cd iso/airootfs/root
-cp -r tmp/repo iso/airootfs/root/
-cp -r tmp/home iso/airootfs/root/
-cp -r tmp/font iso/airootfs/root/
+mv tmp/repo iso/airootfs/root/
+cp -r home iso/airootfs/root/
+cp -r font iso/airootfs/root/
+cp iso-install.sh iso/airootfs/root/
+cp iso-install-chroot.sh iso/airootfs/root/
+cp iso-pacman.conf iso/airootfs/root/
 
 # create iso
 
