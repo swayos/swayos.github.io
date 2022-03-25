@@ -1,58 +1,101 @@
-#!/bin/sh
-#
-# This script finishes the installation with chroot from the Live CD after pacstrap is finished
-#
+#!/bin/bash
+# WARNING: this script will destroy data on the selected disk.
+# This script can be run by executing the following:
+#   curl -sL https://git.io/vNxbN | bash
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
-# chroot into new root
+REPO_URL="https://s3.eu-west-2.amazonaws.com/mdaffin-arch/repo/x86_64"
 
-log "Chroot into /mnt"
-arch-chroot /mnt
-check "$?" "arch-chroot"
+### Get infomation from user ###
+hostname=$(dialog --stdout --inputbox "Enter hostname" 0 0) || exit 1
+clear
+: ${hostname:?"hostname cannot be empty"}
 
-# setup grub
+user=$(dialog --stdout --inputbox "Enter admin username" 0 0) || exit 1
+clear
+: ${user:?"user cannot be empty"}
 
-log "Setup grub"
-grub-install --target=i386-pc $bootdev
-check "$?" "grub-install"
+password=$(dialog --stdout --passwordbox "Enter admin password" 0 0) || exit 1
+clear
+: ${password:?"password cannot be empty"}
+password2=$(dialog --stdout --passwordbox "Enter admin password again" 0 0) || exit 1
+clear
+[[ "$password" == "$password2" ]] || ( echo "Passwords did not match"; exit 1; )
 
-# start services
+devicelist=$(lsblk -dplnx size -o name,size | grep -Ev "boot|rpmb|loop" | tac)
+device=$(dialog --stdout --menu "Select installation disk" 0 0 0 ${devicelist}) || exit 1
+clear
 
-log "starting services"
-sudo systemctl enable systemd-networkd --now
-sudo systemctl enable iwd --now
-sudo systemctl enable bluetooth --now
-sudo systemctl enable cups --now
-check "$?" "systemctl enable"
+### Set up logging ###
+exec 1> >(tee "stdout.log")
+exec 2> >(tee "stderr.log")
 
-# install aur packages
+timedatectl set-ntp true
 
-log "Installing aur packages"
-cd /tmp/wob
-ls *.pkg.tar.zst | pacman -U
-cd /tmp/wlogout
-ls *.pkg.tar.zst | pacman -U
-cd /tmp//wdisplays
-ls *.pkg.tar.zst | pacman -U
-cd /tmp/iwgtk
-ls *.pkg.tar.zst | pacman -U
-cd /tmp/pamac-aur
-ls *.pkg.tar.zst | pacman -U
-cd /tmp/google-chrome
-ls *.pkg.tar.zst | pacman -U
-cd /tmp/nerd-fonts-terminus
-ls *.pkg.tar.zst | pacman -U
-cd /tmp/sway-overview
-meson build
-ninja -C build
-ninja -C build install
+### Setup the disk and partitions ###
+swap_size=$(free --mebi | awk '/Mem:/ {print $2}')
+swap_end=$(( $swap_size + 129 + 1 ))MiB
 
-# change shell to zsh
+parted --script "${device}" -- mklabel gpt \
+  mkpart ESP fat32 1Mib 129MiB \
+  set 1 boot on \
+  mkpart primary linux-swap 129MiB ${swap_end} \
+  mkpart primary ext4 ${swap_end} 100%
 
-log "Changing shell"
-chsh -s /bin/zsh
-check "$?" "chsh"
+# Simple globbing was not enough as on one device I needed to match /dev/mmcblk0p1
+# but not /dev/mmcblk0boot1 while being able to match /dev/sda1 on other devices.
+part_boot="$(ls ${device}* | grep -E "^${device}p?1$")"
+part_swap="$(ls ${device}* | grep -E "^${device}p?2$")"
+part_root="$(ls ${device}* | grep -E "^${device}p?3$")"
 
-# copy setup log to home folder
+wipefs "${part_boot}"
+wipefs "${part_swap}"
+wipefs "${part_root}"
 
-cp swayos_setup_log $("/home/$username")
+mkfs.vfat -F32 "${part_boot}"
+mkswap "${part_swap}"
+mkfs.f2fs -f "${part_root}"
 
+swapon "${part_swap}"
+mount "${part_root}" /mnt
+mkdir /mnt/boot
+mount "${part_boot}" /mnt/boot
+
+### Install and configure the basic system ###
+cat >>/etc/pacman.conf <<EOF
+[mdaffin]
+SigLevel = Optional TrustAll
+Server = $REPO_URL
+EOF
+
+pacstrap /mnt mdaffin-desktop
+genfstab -t PARTUUID /mnt >> /mnt/etc/fstab
+echo "${hostname}" > /mnt/etc/hostname
+
+cat >>/mnt/etc/pacman.conf <<EOF
+[mdaffin]
+SigLevel = Optional TrustAll
+Server = $REPO_URL
+EOF
+
+arch-chroot /mnt bootctl install
+
+cat <<EOF > /mnt/boot/loader/loader.conf
+default arch
+EOF
+
+cat <<EOF > /mnt/boot/loader/entries/arch.conf
+title    Arch Linux
+linux    /vmlinuz-linux
+initrd   /initramfs-linux.img
+options  root=PARTUUID=$(blkid -s PARTUUID -o value "$part_root") rw
+EOF
+
+echo "LANG=en_GB.UTF-8" > /mnt/etc/locale.conf
+
+arch-chroot /mnt useradd -mU -s /usr/bin/zsh -G wheel,uucp,video,audio,storage,games,input "$user"
+arch-chroot /mnt chsh -s /usr/bin/zsh
+
+echo "$user:$password" | chpasswd --root /mnt
+echo "root:$password" | chpasswd --root /mnt

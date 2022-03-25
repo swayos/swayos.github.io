@@ -4,6 +4,14 @@
 # also copies aur packages and configs and starts the chroot script
 #
 
+# Script fail
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+# Set up logging
+exec 1> >(tee "stdout.log")
+exec 2> >(tee "stderr.log")
+
 log(){
     echo "*********** $1 ***********"
     now=$(date +"%T")
@@ -55,7 +63,7 @@ log "Selected root password"
 
 # ask for user
 
-username = $(dialog --stdout --insecure --nocancel --inputbox "What will be your username?" 8 50)
+username=$(dialog --stdout --insecure --nocancel --inputbox "What will be your username?" 8 50)
 
 log "Selected user $username"
 
@@ -65,48 +73,58 @@ $(dialog --stdout --backtitle "SwayOS Install" --msgbox "User password will be t
 
 # format for BIOS
 
-log "Creating partitions"
-
 umount /mnt
 
-sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk ${device}
-  g # GPT
-  n # new partition
-  1 # partition number 1
-    # default - start at beginning of disk 
-  +100M # 100 MB boot parttion
-  t # partition type
-  4 # BIOS partition
-  n # new partition
-  2 # partion number 2
-    # default, start immediately after preceding partition
-    # default, extend partition to end of disk
-  p # print the in-memory partition table
-  w # write the partition table
-  q # and we're done
-EOF
+### Setup the disk and partitions ###
+swap_size=$(free --mebi | awk '/Mem:/ {print $2}')
+swap_end=$(( $swap_size + 129 + 1 ))MiB
 
-check "$?" "fdisk"
+if [ -d "/sys/firmware/efi" ]; then
+       log "Creating UEFI partitions, sway size $swap_size"
+       parted --script "${device}" -- mklabel gpt \
+	     mkpart EFI fat32 1Mib 301MiB \
+	     set 1 esp on \
+	     mkpart primary linux-swap 100MiB ${swap_end} \
+	     mkpart primary ext4 ${swap_end} 100%
+else
+       log "Creating BIOS partitions, sway size $swap_size"
+       parted --script "${device}" -- mklabel gpt \
+	      mkpart primary ext4 1Mib 100MiB \
+	      set 1 boot on \
+	      mkpart primary linux-swap 100MiB ${swap_end} \
+	      mkpart primary ext4 ${swap_end} 100%
+fi
+
+check "$?" "parted"
 
 log "Creating file systems"
 
-bootdev = "${device}1"
-rootdev = "${device}2"
+# Simple globbing was not enough as on one device I needed to match /dev/mmcblk0p1
+# but not /dev/mmcblk0boot1 while being able to match /dev/sda1 on other devices.
+part_boot="$(ls ${device}* | grep -E "^${device}p?1$")"
+part_swap="$(ls ${device}* | grep -E "^${device}p?2$")"
+part_root="$(ls ${device}* | grep -E "^${device}p?3$")"
 
-if [ -d "${device}p2" ]; then
-    bootdev = "${device}p1"
-    rootdev = "${device}p2"
+log "Using partitons boot : $part_boot root : $part_root"
+
+wipefs "${part_root}"
+wipefs "${part_boot}"
+
+# format uefi partition as FAT
+if [ -d "/sys/firmware/efi" ]; then
+    mkfs.vfat -F32 "${part_boot}"
+else
+    mkfs.ext4 "${part_boot}"
 fi
 
-log "Using partitons boot : $bootdev root : $rootdev"
-log "Creating ext4 file system on $rootdev"
-mkfs.ext4 $rootdev
-check "$?" "mkfs.ext4"
+mkswap "${part_swap}"
+mkfs.ext4 -f "${part_root}"
 
-# mount disk
+swapon "${part_swap}"
+mount "${part_root}" /mnt
+mkdir /mnt/boot
+mount "${part_boot}" /mnt/boot
 
-log "Mounting disk"
-mount $rootdev /mnt
 check "$?" "mount"
 
 # pacstrap packages
@@ -134,12 +152,6 @@ log "Copying fonts"
 cp -r font/*.* /mnt/usr/share/fonts/
 check "$?" "cp"
 
-# copy home directory stuff under target/home/$user/
-
-log "Copying configuration files"
-cp -f -R home/. "/mnt/home/$username"
-check "$?" "cp"
-
 # gen fstab
 
 log "Generating fstab"
@@ -148,8 +160,63 @@ check "$?" "genfstab"
 
 # copy chroot install
 
-cp -f iso-install-chroot.sh /mnt/tmp/
+# cp -f iso-install-chroot.sh /mnt/tmp/
 
 # run chroot install script
 
-arch-chroot /mnt /bin/bash /mnt/tmp/iso-install-chroot.sh
+# arch-chroot /mnt /bin/bash /mnt/tmp/iso-install-chroot.sh
+
+log "Adding user $username"
+cfdis
+arch-chroot /mnt useradd -mU -s /usr/bin/zsh -G wheel,video $username
+arch-chroot /mnt chsh -s /usr/bin/zsh
+
+# copy home directory stuff under target/home/$user/
+
+log "Copying configuration files"
+cp -f -R home/. "/mnt/home/$username"
+check "$?" "cp"
+
+# setup grub
+
+log "Setup grub"
+
+if [ -d "/sys/firmware/efi" ]; then
+    arch-chroot grub-install --target=x86_64-efi --efi-directory=$part_boot --bootloader-id=GRUB
+else
+    arch-chroot /mnt grub-install --target=i386-pc $device
+fi
+
+check "$?" "grub-install"
+
+# start services
+
+log "starting services"
+arch-chroot /mnt sudo systemctl enable systemd-networkd
+arch-chroot /mnt sudo systemctl enable iwd
+arch-chroot /mnt sudo systemctl enable bluetooth
+arch-chroot /mnt sudo systemctl enable cups
+check "$?" "systemctl enable"
+
+# install aur packages
+
+log "Installing aur packages"
+arch-chroot /mnt pacman -U /tmp/wob/*.pkg.tar.zst
+arch-chroot /mnt pacman -U /tmp/wlogout/*.pkg.tar.zst
+arch-chroot /mnt pacman -U /tmp/wdisplays/*.pkg.tar.zst
+arch-chroot /mnt pacman -U /tmp/iwgtk/*.pkg.tar.zst
+arch-chroot /mnt pacman -U /tmp/pamac-aur/*.pkg.tar.zst
+arch-chroot /mnt pacman -U /tmp/google-chrome/*.pkg.tar.zst
+arch-chroot /mnt pacman -U /tmp/nerd-fonts-terminus/*.pkg.tar.zst
+# arch-chroot /mnt pacman -U /tmp/sway-overview/*.pkg.tar.zst
+
+# set locale
+
+echo "LANG=en_GB.UTF-8" > /mnt/etc/locale.conf
+echo "$user:$password" | chpasswd --root /mnt
+echo "root:$password" | chpasswd --root /mnt
+
+# copy setup log to home folder
+
+cp swayos_setup_log $("/home/$username")
+
