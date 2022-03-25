@@ -4,10 +4,6 @@
 # also copies aur packages and configs and starts the chroot script
 #
 
-# Script fail
-set -uo pipefail
-trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
-
 # Set up logging
 exec 1> >(tee "stdout.log")
 exec 2> >(tee "stderr.log")
@@ -53,8 +49,8 @@ $(dialog --stdout --backtitle "SwayOS Install" --yesno "All data will be lost on
 # ask for root password
 
 while true; do
-    password=$(dialog --stdout --insecure --passwordbox "What will be your root password?" 8 50)
-    password2=$(dialog --stdout --insecure --passwordbox "Enter password again just to be sure" 8 50)
+    password=$(dialog --stdout --backtitle "SwayOS Install" --insecure --passwordbox "What will be your root password?" 8 50)
+    password2=$(dialog --stdout --backtitle "SwayOS Install" --insecure --passwordbox "Enter password again just to be sure" 8 50)
     [ "$password" = "$password2" ] && break
     $(dialog --stdout --msgbox "Passwords mismatch" 8 50)
 done
@@ -63,7 +59,7 @@ log "Selected root password"
 
 # ask for user
 
-username=$(dialog --stdout --insecure --nocancel --inputbox "What will be your username?" 8 50)
+username=$(dialog --stdout --backtitle "SwayOS Install" --nocancel --inputbox "What will be your username?" 8 50)
 
 log "Selected user $username"
 
@@ -90,7 +86,7 @@ else
        log "Creating BIOS partitions, sway size $swap_size"
        parted --script "${device}" -- mklabel gpt \
 	      mkpart primary ext4 1Mib 100MiB \
-	      set 1 boot on \
+	      set 1 bios_grub on \
 	      mkpart primary linux-swap 100MiB ${swap_end} \
 	      mkpart primary ext4 ${swap_end} 100%
 fi
@@ -167,7 +163,7 @@ check "$?" "genfstab"
 # arch-chroot /mnt /bin/bash /mnt/tmp/iso-install-chroot.sh
 
 log "Adding user $username"
-cfdis
+
 arch-chroot /mnt useradd -mU -s /usr/bin/zsh -G wheel,video $username
 arch-chroot /mnt chsh -s /usr/bin/zsh
 
