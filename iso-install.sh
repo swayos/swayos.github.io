@@ -109,8 +109,6 @@ wipefs "${part_boot}"
 # format uefi partition as FAT
 if [ -d "/sys/firmware/efi" ]; then
     mkfs.vfat -F32 "${part_boot}"
-else
-    mkfs.ext4 "${part_boot}"
 fi
 
 mkswap "${part_swap}"
@@ -132,14 +130,14 @@ check "$?" "pacstrap"
 # copy aur packages under target/home/#$user/swayos
 
 log "Copying aur packages"
-cp -r repo/wob /mnt/tmp/wob
-cp -r repo/wlogout /mnt/tmp/wlogout
-cp -r repo/wdisplays /mnt/tmp/wdisplays
-cp -r repo/iwgtk /mnt/tmp/iwgtk
-cp -r repo/pamac-aur /mnt/tmp/pamac-aur
-cp -r repo/google-chrome /mnt/tmp/google-chrome
-cp -r repo/nerd-fonts-terminus /mnt/tmp/nerd-fonts-terminus
-cp -r repo/sway-overview /mnt/tmp/sway-overview
+cp -r repo/wob "/mnt/home/$username"
+cp -r repo/wlogout "/mnt/home/$username"
+cp -r repo/wdisplays "/mnt/home/$username"
+cp -r repo/iwgtk "/mnt/home/$username"
+cp -r repo/pamac-aur "/mnt/home/$username"
+cp -r repo/google-chrome "/mnt/home/$username"
+cp -r repo/nerd-fonts-terminus "/mnt/home/$username"
+cp -r repo/sway-overview "/mnt/home/$username"
 check "$?" "cp"
 
 # copy fonts under target/usr/share/fonts
@@ -153,12 +151,6 @@ check "$?" "cp"
 log "Generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 check "$?" "genfstab"
-
-# copy chroot install
-
-# cp -f iso-install-chroot.sh /mnt/tmp/
-
-# run chroot install script
 
 # arch-chroot /mnt /bin/bash /mnt/tmp/iso-install-chroot.sh
 
@@ -180,7 +172,7 @@ log "Setup grub"
 if [ -d "/sys/firmware/efi" ]; then
     arch-chroot grub-install --target=x86_64-efi --efi-directory=$part_boot --bootloader-id=GRUB
 else
-    arch-chroot /mnt grub-install --target=i386-pc $device
+    arch-chroot /mnt grub-install --modules="ext4 part_gpt" --target=i386-pc $device
 fi
 
 check "$?" "grub-install"
@@ -197,22 +189,18 @@ check "$?" "systemctl enable"
 # install aur packages
 
 log "Installing aur packages"
-arch-chroot /mnt pacman -U /tmp/wob/*.pkg.tar.zst
-arch-chroot /mnt pacman -U /tmp/wlogout/*.pkg.tar.zst
-arch-chroot /mnt pacman -U /tmp/wdisplays/*.pkg.tar.zst
-arch-chroot /mnt pacman -U /tmp/iwgtk/*.pkg.tar.zst
-arch-chroot /mnt pacman -U /tmp/pamac-aur/*.pkg.tar.zst
-arch-chroot /mnt pacman -U /tmp/google-chrome/*.pkg.tar.zst
-arch-chroot /mnt pacman -U /tmp/nerd-fonts-terminus/*.pkg.tar.zst
+arch-chroot /mnt pacman -d -U /tmp/wob/*.pkg.tar.zst
+arch-chroot /mnt pacman -d -U /tmp/wlogout/*.pkg.tar.zst
+arch-chroot /mnt pacman -d -U /tmp/wdisplays/*.pkg.tar.zst
+arch-chroot /mnt pacman -d -U /tmp/iwgtk/*.pkg.tar.zst
+arch-chroot /mnt pacman -d -U /tmp/pamac-aur/*.pkg.tar.zst
+arch-chroot /mnt pacman -d -U /tmp/google-chrome/*.pkg.tar.zst
+arch-chroot /mnt pacman -d -U /tmp/nerd-fonts-terminus/*.pkg.tar.zst
 # arch-chroot /mnt pacman -U /tmp/sway-overview/*.pkg.tar.zst
 
 # set locale
 
 echo "LANG=en_GB.UTF-8" > /mnt/etc/locale.conf
-echo "$user:$password" | chpasswd --root /mnt
+echo "$username:$password" | chpasswd --root /mnt
 echo "root:$password" | chpasswd --root /mnt
-
-# copy setup log to home folder
-
-cp swayos_setup_log $("/home/$username")
 
