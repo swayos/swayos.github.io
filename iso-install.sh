@@ -112,7 +112,7 @@ if [ -d "/sys/firmware/efi" ]; then
 fi
 
 mkswap "${part_swap}"
-mkfs.ext4 -f "${part_root}"
+mkfs.ext4 "${part_root}"
 
 swapon "${part_swap}"
 mount "${part_root}" /mnt

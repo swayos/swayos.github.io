@@ -17,6 +17,10 @@ rm -rf iso/airootfs/root/font
 mkdir tmp/repo
 mkdir tmp/tmpdb
 
+# update local packages & keyring
+
+sudo pacman -Syu
+
 # download package databases
 
 wget -P tmp/repo "${MIRROR}/community/os/${ARCH}/community.db"
