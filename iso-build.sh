@@ -9,13 +9,13 @@ MIRROR="https://mirrors.kernel.org/archlinux/"
 # clear tmp
 
 sudo rm -rf tmp/*
-sudo rm -rf iso/airootfs/root/repo
-
-rm -rf iso/airootfs/root/home
-rm -rf iso/airootfs/root/font
-
 mkdir tmp/repo
 mkdir tmp/tmpdb
+
+# clear and copy actual archios config
+
+rm -rf iso
+cp -r /usr/share/archiso/configs/releng/ ./iso/
 
 # update local packages & keyring
 
@@ -76,7 +76,6 @@ mv tmp/repo iso/airootfs/root/
 cp -r home iso/airootfs/root/
 cp -r font iso/airootfs/root/
 cp iso-install.sh iso/airootfs/root/
-cp iso-install-chroot.sh iso/airootfs/root/
 cp iso-pacman.conf iso/airootfs/root/
 
 # create iso

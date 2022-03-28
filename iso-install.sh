@@ -67,29 +67,24 @@ log "Selected user $username"
 
 $(dialog --stdout --backtitle "SwayOS Install" --msgbox "User password will be the same as the root password. Feel free to change it after install." 8 50)man
 
-# format for BIOS
+# partition and format
 
 umount /mnt
-
-### Setup the disk and partitions ###
-swap_size=$(free --mebi | awk '/Mem:/ {print $2}')
-swap_end=$(( $swap_size + 129 + 1 ))MiB
 
 if [ -d "/sys/firmware/efi" ]; then
        log "Creating UEFI partitions, sway size $swap_size"
        parted --script "${device}" -- mklabel gpt \
 	     mkpart EFI fat32 1Mib 301MiB \
 	     set 1 esp on \
-	     mkpart primary linux-swap 100MiB ${swap_end} \
-	     mkpart primary ext4 ${swap_end} 100%
+	     mkpart root ext4 301MiB 100%
 else
        log "Creating BIOS partitions, sway size $swap_size"
        parted --script "${device}" -- mklabel gpt \
-	      mkpart primary ext4 1Mib 100MiB \
+	      mkpart bios 1Mib 2MiB \
 	      set 1 bios_grub on \
-	      mkpart primary linux-swap 100MiB ${swap_end} \
-	      mkpart primary ext4 ${swap_end} 100%
+	      mkpart root ext4 100Mib 100%
 fi
+
 
 check "$?" "parted"
 
@@ -172,7 +167,8 @@ log "Setup grub"
 if [ -d "/sys/firmware/efi" ]; then
     arch-chroot grub-install --target=x86_64-efi --efi-directory=$part_boot --bootloader-id=GRUB
 else
-    arch-chroot /mnt grub-install --modules="ext4 part_gpt" --target=i386-pc $device
+    arch-chroot /mnt grub-install --target=i386-pc $device
+    arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 fi
 
 check "$?" "grub-install"
