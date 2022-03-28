@@ -1,7 +1,6 @@
 #!/bin/bash
 #
-# This script prepares the target disks and boots partitions and pacstraps offline packages to the target install,
-# also copies aur packages and configs and starts the chroot script
+# This script installs a base arch linux and swayos extensions to a target partition
 #
 
 # Set up logging
@@ -93,8 +92,7 @@ log "Creating file systems"
 # Simple globbing was not enough as on one device I needed to match /dev/mmcblk0p1
 # but not /dev/mmcblk0boot1 while being able to match /dev/sda1 on other devices.
 part_boot="$(ls ${device}* | grep -E "^${device}p?1$")"
-part_swap="$(ls ${device}* | grep -E "^${device}p?2$")"
-part_root="$(ls ${device}* | grep -E "^${device}p?3$")"
+part_root="$(ls ${device}* | grep -E "^${device}p?2$")"
 
 log "Using partitons boot : $part_boot root : $part_root"
 
@@ -106,34 +104,22 @@ if [ -d "/sys/firmware/efi" ]; then
     mkfs.vfat -F32 "${part_boot}"
 fi
 
-mkswap "${part_swap}"
 mkfs.ext4 "${part_root}"
-
-swapon "${part_swap}"
 mount "${part_root}" /mnt
+
+if [ -d "/sys/firmware/efi" ]; then
 mkdir /mnt/boot
 mount "${part_boot}" /mnt/boot
+fi
 
 check "$?" "mount"
 
 # pacstrap packages
 
 log "Installing packages"
-pacstrap -C iso-pacman.conf /mnt base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc grub
+pacstrap -C iso-pacman.conf /mnt base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc grub gobject-introspection dbus-glib vte3 appstream-glib archlinux-appstream-data
+
 check "$?" "pacstrap"
-
-# copy aur packages under target/home/#$user/swayos
-
-log "Copying aur packages"
-cp -r repo/wob "/mnt/home/$username"
-cp -r repo/wlogout "/mnt/home/$username"
-cp -r repo/wdisplays "/mnt/home/$username"
-cp -r repo/iwgtk "/mnt/home/$username"
-cp -r repo/pamac-aur "/mnt/home/$username"
-cp -r repo/google-chrome "/mnt/home/$username"
-cp -r repo/nerd-fonts-terminus "/mnt/home/$username"
-cp -r repo/sway-overview "/mnt/home/$username"
-check "$?" "cp"
 
 # copy fonts under target/usr/share/fonts
 
@@ -153,6 +139,15 @@ log "Adding user $username"
 
 arch-chroot /mnt useradd -mU -s /usr/bin/zsh -G wheel,video $username
 arch-chroot /mnt chsh -s /usr/bin/zsh
+
+# copy offline repo to new install
+
+log "Copying offline repo"
+
+cp -r repo "/mnt/home/${username}/"
+cp iso-pacman.conf "/mnt/home/${username}/"
+
+check "$?" "cp"
 
 # copy home directory stuff under target/home/$user/
 
@@ -185,18 +180,26 @@ check "$?" "systemctl enable"
 # install aur packages
 
 log "Installing aur packages"
-arch-chroot /mnt pacman -d -U /tmp/wob/*.pkg.tar.zst
-arch-chroot /mnt pacman -d -U /tmp/wlogout/*.pkg.tar.zst
-arch-chroot /mnt pacman -d -U /tmp/wdisplays/*.pkg.tar.zst
-arch-chroot /mnt pacman -d -U /tmp/iwgtk/*.pkg.tar.zst
-arch-chroot /mnt pacman -d -U /tmp/pamac-aur/*.pkg.tar.zst
-arch-chroot /mnt pacman -d -U /tmp/google-chrome/*.pkg.tar.zst
-arch-chroot /mnt pacman -d -U /tmp/nerd-fonts-terminus/*.pkg.tar.zst
+rel_path=$(ls repo/wob/*.pkg.tar.zst)
+arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+rel_path=$(ls repo/wob/*.pkg.tar.zst)
+arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+yrel_path=$(ls repo/wob/*.pkg.tar.zst)
+arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+rel_path=$(ls repo/wob/*.pkg.tar.zst)
+arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+rel_path=$(ls repo/wob/*.pkg.tar.zst)
+arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+rel_path=$(ls repo/wob/*.pkg.tar.zst)
+arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+rel_path=$(ls repo/wob/*.pkg.tar.zst)
+arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
 # arch-chroot /mnt pacman -U /tmp/sway-overview/*.pkg.tar.zst
 
 # set locale
 
-echo "LANG=en_GB.UTF-8" > /mnt/etc/locale.conf
+echo $'LANG=en_US.UTF-8\nLC_ALL=en_US.UTF-8' > /mnt/etc/locale.conf
 echo "$username:$password" | chpasswd --root /mnt
 echo "root:$password" | chpasswd --root /mnt
 
+arch-chroot /mnt locale-gen

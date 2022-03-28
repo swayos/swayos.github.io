@@ -16,10 +16,11 @@ mkdir tmp/tmpdb
 
 rm -rf iso
 cp -r /usr/share/archiso/configs/releng/ ./iso/
+echo "dialog" >> iso/packages.x86_64
 
 # update local packages & keyring
 
-sudo pacman -Syu
+sudo pacman --noconfirm -Syu
 
 # download package databases
 
@@ -30,7 +31,7 @@ wget -P tmp/repo "${MIRROR}/multilib/os/${ARCH}/multilib.db"
 
 # download packages
 
-sudo pacman -Syw --cachedir tmp/repo --dbpath tmp/tmpdb base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc grub
+sudo pacman --noconfirm -Syw --cachedir tmp/repo --dbpath tmp/tmpdb base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc grub gobject-introspection dbus-glib vte3 appstream-glib archlinux-appstream-data
 
 # create custom db
 
@@ -44,6 +45,7 @@ git clone https://aur.archlinux.org/wob.git
 git clone https://aur.archlinux.org/wlogout.git
 git clone https://aur.archlinux.org/wdisplays.git
 git clone https://aur.archlinux.org/iwgtk.git
+git clone https://aur.archlinux.org/libpamac-aur.git
 git clone https://aur.archlinux.org/pamac-aur.git
 git clone https://aur.archlinux.org/google-chrome.git
 git clone https://aur.archlinux.org/nerd-fonts-terminus.git
@@ -59,8 +61,10 @@ cd ../wdisplays
 makepkg -s --skippgpcheck
 cd ../iwgtk
 makepkg -s --skippgpcheck
+cd ../libpamac-aur
+makepkg -s --skippgck
 cd ../pamac-aur
-makepkg -s --skippgpcheck
+makepkg -s --skippgck
 cd ../google-chrome
 makepkg -s --skippgpcheck
 cd ../nerd-fonts-terminus

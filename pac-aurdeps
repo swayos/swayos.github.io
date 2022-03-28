@@ -1,0 +1,8 @@
+meson
+scdoc
+grub
+gobject-introspection
+dbus-glib
+vte3
+appstream-glib
+archlinux-appstream-data
