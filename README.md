@@ -205,3 +205,7 @@ After Effects -> Natron
 Premiere Pro - Davinci Resolve
 Adobe XD -> Figma
 Cinema 4D/3DS Max -> Blender
+
+# Chrome says its out of date #
+
+Open a terminal, type yay -S google-chrome
