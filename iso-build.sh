@@ -42,8 +42,6 @@ wget -o /dev/null -P tmp/repo "${MIRROR}/multilib/os/${ARCH}/multilib.db"
 cat pac-base pac-swayos pac-aurdeps > pac-offline
 sudo pacman --noconfirm -Syw --cachedir tmp/repo --dbpath tmp/tmpdb - < pac-offline
 
-# sudo pacman --noconfirm -Syw --cachedir tmp/repo --dbpath tmp/tmpdb base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc grub gobject-introspection dbus-glib vte3 appstream-glib archlinux-appstream-data
-
 # create custom db
 
 repo-add tmp/repo/custom.db.tar.gz tmp/repo/*.pkg.tar.zst
@@ -61,39 +59,6 @@ do
 done
 
 cd ../..
-
-# git clone https://aur.archlinux.org/wob.git
-# git clone https://aur.archlinux.org/wlogout.git
-# git clone https://aur.archlinux.org/wdisplays.git
-# git clone https://aur.archlinux.org/iwgtk.git
-# git clone https://aur.archlinux.org/libpamac-aur.git
-# git clone https://aur.archlinux.org/pamac-aur.git
-# git clone https://aur.archlinux.org/google-chrome.git
-# git clone https://aur.archlinux.org/nerd-fonts-terminus.git
-# git clone https://github.com/milgra/sway-overview
-
-# build aur packages
-
-# cd wob
-# makepkg -s --skippgpcheck
-# cd ../wlogout
-# makepkg -s --skippgpcheck
-# cd ../wdisplays
-# makepkg -s --skippgpcheck
-# cd ../iwgtk
-# makepkg -s --skippgpcheck
-# cd ../libpamac-aur
-# makepkg -s --skippgck
-# cd ../pamac-aur
-# makepkg -s --skippgck
-# cd ../google-chrome
-# makepkg -s --skippgpcheck
-# cd ../nerd-fonts-terminus
-# makepkg -s --skippgpcheck
-# cd ../sway-overview
-# meson build
-# ninja -C build
-# cd ../../..
 
 # copy/move needed folders under airootfs
 

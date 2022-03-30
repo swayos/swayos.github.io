@@ -33,15 +33,7 @@ cd swayos.github.io
 log "Installing needed official packages"
 cat pac-swayos pac-aurdeps > pac-online
 sudo pacman -S --noconfirm --needed - < pac-online
-#sudo pacman -S --noconfirm --needed git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc
 check "$?" "pacman"
-
-# log "Cloning swayOS repo"
-# curl -LO https://github.com/swayos/swayos.github.io/archive/master.zip
-# check "$?" "curl"
-# unzip master.zip
-# check "$?" "unzip "
-# cd swayos.github.io-main
 
 
 log "Copying terminus-ttf fonts to font directory"
@@ -55,12 +47,11 @@ check "$?" "cp"
 
 
 log "Starting services"
-NETCONF=/etc/systemd/network/20-wired.network
-if [ ! -f "$NETCONF" ]; then
-    echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee "$NETCONF" > /dev/null
-fi
-#sudo systemctl enable systemd-networkd --now
-#check "$?" "systemctl enable"
+#NETCONF=/etc/systemd/network/20-wired.network
+#if [ ! -f "$NETCONF" ]; then
+#    echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee "$NETCONF" > /dev/null
+#fi
+
 sudo systemctl enable iwd --now
 check "$?" "systemctl enable"
 sudo systemctl enable bluetooth --now
@@ -68,58 +59,19 @@ check "$?" "systemctl enable"
 sudo systemctl enable cups --now
 check "$?" "systemctl enable"
 
-# download and install needed aur packages
 
 log "Installing aur packages"
-
 cat pac-aur | while read line 
 do
     git clone https://aur.archlinux.org/$line.git
     cd $line
     makepkg -s --skippgpcheck
+    check "$?" "makepkg"
     sudo pacman -U *.pkg.tar.zst
+    check "$?" "pacman -U"
     cd ..
 done
 
-# git clone https://aur.archlinux.org/wob.git
-# git clone https://aur.archlinux.org/wlogout.git
-# git clone https://aur.archlinux.org/wdisplays.git
-# git clone https://aur.archlinux.org/iwgtk.git
-# git clone https://aur.archlinux.org/libpamac-aur.git
-# git clone https://aur.archlinux.org/pamac-aur.git
-# git clone https://aur.archlinux.org/google-chrome.git
-# git clone https://aur.archlinux.org/nerd-fonts-terminus.git
-#git clone https://github.com/milgra/sway-overview
-
-# build aur packages
-
-# cd wob
-# makepkg -s --skippgpcheck
-# sudo pacman -U *.pkg.tar.zst
-# cd ../wlogout
-# makepkg -s --skippgpcheck
-# sudo pacman -U *.pkg.tar.zst
-# cd ../wdisplays
-# makepkg -s --skippgpcheck
-# sudo pacman -U *.pkg.tar.zst
-# cd ../iwgtk
-# makepkg -s --skippgpcheck
-# sudo pacman -U *.pkg.tar.zst
-# cd ../libpamac-aur
-# makepkg -s --skippgck
-# sudo pacman -U *.pkg.tar.zst
-# cd ../pamac-aur
-# makepkg -s --skippgck
-# sudo pacman -U *.pkg.tar.zst
-# cd ../google-chrome
-# makepkg -s --skippgpcheck
-# sudo pacman -U *.pkg.tar.zst
-# cd ../nerd-fonts-terminus
-# makepkg -s --skippgpcheck
-# sudo pacman -U *.pkg.tar.zst
-# cd ../sway-overview
-# makepkg -s --skippgpcheck
-# sudo pacman -U *.pkg.tar.zst
 
 log "Cleaning up"
 cd ..
