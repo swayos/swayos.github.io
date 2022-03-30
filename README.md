@@ -1,3 +1,24 @@
+autostart install
+press enter to restart machine
+swayos script install git only, checkout repo, use package lists
+create patreon packages
+
+issues :
+Discussion : github.com/swayos/disc
+
+
+Problem with install?
+
+CTRL+Z before restart
+check swayos_install_log and stderr and stdout
+
+
+How does the installer works?
+
+the installer script for pre-installed systems
+
+the installer iso
+
 # SwayOS
 
 SwayOS is a productivity-oriented minimalist and super elegant desktop layer over unix-like operating systems that also can be installed as a standalone OS.

@@ -24,5 +24,6 @@ if [ "$(tty)" = "/dev/tty1" ] ; then
     export QT_QPA_PLATFORM=wayland
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
+    export WLR_NO_HARDWARE_CURSORS=1
     exec sway
 fi

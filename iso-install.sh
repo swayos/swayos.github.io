@@ -4,8 +4,8 @@
 #
 
 # Set up logging
-exec 1> >(tee "stdout.log")
-exec 2> >(tee "stderr.log")
+exec 1> >(tee "swayos_setup_out")
+exec 2> >(tee "swayos_setup_err")
 
 log(){
     echo "*********** $1 ***********"
@@ -64,20 +64,18 @@ log "Selected user $username"
 
 # notify about passwrod
 
-$(dialog --stdout --backtitle "SwayOS Install" --msgbox "User password will be the same as the root password. Feel free to change it after install." 8 50)man
+$(dialog --stdout --backtitle "SwayOS Install" --msgbox "User password will be the same as the root password. Feel free to change it after install." 8 50)
 
 # partition and format
 
-umount /mnt
-
 if [ -d "/sys/firmware/efi" ]; then
-       log "Creating UEFI partitions, sway size $swap_size"
+       log "Creating UEFI partitions"
        parted --script "${device}" -- mklabel gpt \
 	     mkpart EFI fat32 1Mib 301MiB \
 	     set 1 esp on \
 	     mkpart root ext4 301MiB 100%
 else
-       log "Creating BIOS partitions, sway size $swap_size"
+       log "Creating BIOS partitions"
        parted --script "${device}" -- mklabel gpt \
 	      mkpart bios 1Mib 2MiB \
 	      set 1 bios_grub on \
@@ -87,10 +85,8 @@ fi
 
 check "$?" "parted"
 
-log "Creating file systems"
+log "Creating file system"
 
-# Simple globbing was not enough as on one device I needed to match /dev/mmcblk0p1
-# but not /dev/mmcblk0boot1 while being able to match /dev/sda1 on other devices.
 part_boot="$(ls ${device}* | grep -E "^${device}p?1$")"
 part_root="$(ls ${device}* | grep -E "^${device}p?2$")"
 
@@ -117,15 +113,12 @@ check "$?" "mount"
 # pacstrap packages
 
 log "Installing packages"
-pacstrap -C iso-pacman.conf /mnt base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc grub gobject-introspection dbus-glib vte3 appstream-glib archlinux-appstream-data
+
+pacstrap -C iso-pacman.conf /mnt - < pac-offline
+
+#pacstrap -C iso-pacman.conf /mnt base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc grub gobject-introspection dbus-glib vte3 appstream-glib archlinux-appstream-data
 
 check "$?" "pacstrap"
-
-# copy fonts under target/usr/share/fonts
-
-log "Copying fonts"
-cp -r font/*.* /mnt/usr/share/fonts/
-check "$?" "cp"
 
 # gen fstab
 
@@ -133,31 +126,9 @@ log "Generating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 check "$?" "genfstab"
 
-# arch-chroot /mnt /bin/bash /mnt/tmp/iso-install-chroot.sh
-
-log "Adding user $username"
-
-arch-chroot /mnt useradd -mU -s /usr/bin/zsh -G wheel,video $username
-arch-chroot /mnt chsh -s /usr/bin/zsh
-
-# copy offline repo to new install
-
-log "Copying offline repo"
-
-cp -r repo "/mnt/home/${username}/"
-cp iso-pacman.conf "/mnt/home/${username}/"
-
-check "$?" "cp"
-
-# copy home directory stuff under target/home/$user/
-
-log "Copying configuration files"
-cp -f -R home/. "/mnt/home/$username"
-check "$?" "cp"
-
 # setup grub
 
-log "Setup grub"
+log "Setting up grub"
 
 if [ -d "/sys/firmware/efi" ]; then
     arch-chroot grub-install --target=x86_64-efi --efi-directory=$part_boot --bootloader-id=GRUB
@@ -168,38 +139,101 @@ fi
 
 check "$?" "grub-install"
 
-# start services
+# arch-chroot /mnt /bin/bash /mnt/tmp/iso-install-chroot.sh
 
-log "starting services"
-arch-chroot /mnt sudo systemctl enable systemd-networkd
-arch-chroot /mnt sudo systemctl enable iwd
-arch-chroot /mnt sudo systemctl enable bluetooth
-arch-chroot /mnt sudo systemctl enable cups
-check "$?" "systemctl enable"
+log "Adding user $username"
+
+arch-chroot /mnt useradd -mU -s /usr/bin/zsh -G wheel,video $username
+arch-chroot /mnt chsh -s /usr/bin/zsh
+
+# set passwords
+
+log "Settings passwords"
+
+echo "$username:$password" | chpasswd --root /mnt
+echo "root:$password" | chpasswd --root /mnt
+
+# set locale
+
+log "Setting locale and passwrods"
+
+echo "en_US.UTF-8 UTF-8" > /mnt/etc/locale.gen
+arch-chroot /mnt locale-gen
+echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
+
+# set time zone
+
+arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
+
+# set hw clock
+
+arch-chroot /mnt hwclock --systohc
+
+# set hostname
+
+echo "${username}-pc" > /mnt/etc/hostname
+
+# copy fonts under target/usr/share/fonts
+
+log "Copying fonts"
+cp -r font/*.* /mnt/usr/share/fonts/
+check "$?" "cp"
+
+# copy home directory stuff under target/home/$user/
+
+log "Copying configuration files"
+cp -f -R home/. "/mnt/home/$username"
+check "$?" "cp"
+
+# copy offline repo to new install
+
+log "Copying offline repo"
+
+cp -r repo "/mnt/home/${username}/"
+cp iso-pacman.conf "/mnt/home/${username}/"
+
+check "$?" "cp"
 
 # install aur packages
 
 log "Installing aur packages"
-rel_path=$(ls repo/wob/*.pkg.tar.zst)
+
+rel_path=$(ls repo/google-chrome/*.pkg.tar.zst)
 arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/wob/*.pkg.tar.zst)
+rel_path=$(ls repo/iwgtk/*.pkg.tar.zst)
 arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-yrel_path=$(ls repo/wob/*.pkg.tar.zst)
+yrel_path=$(ls repo/libpamac-aur/*.pkg.tar.zst)
 arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/wob/*.pkg.tar.zst)
+rel_path=$(ls repo/nerd-fonts-terminus/*.pkg.tar.zst)
 arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/wob/*.pkg.tar.zst)
+rel_path=$(ls repo/pamac-aur/*.pkg.tar.zst)
 arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/wob/*.pkg.tar.zst)
+rel_path=$(ls repo/wdisplays/*.pkg.tar.zst)
+arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+rel_path=$(ls repo/wlogout/*.pkg.tar.zst)
 arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
 rel_path=$(ls repo/wob/*.pkg.tar.zst)
 arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
 # arch-chroot /mnt pacman -U /tmp/sway-overview/*.pkg.tar.zst
 
-# set locale
+# start services
 
-echo $'LANG=en_US.UTF-8\nLC_ALL=en_US.UTF-8' > /mnt/etc/locale.conf
-echo "$username:$password" | chpasswd --root /mnt
-echo "root:$password" | chpasswd --root /mnt
+log "Starting services"
 
-arch-chroot /mnt locale-gen
+arch-chroot /mnt systemctl enable systemd-networkd
+arch-chroot /mnt systemctl enable iwd
+arch-chroot /mnt systemctl enable bluetooth
+arch-chroot /mnt systemctl enable cups
+check "$?" "systemctl enable"
+
+# cleanup
+
+cp swayos_setup_log /mnt/home/$username
+cp swayos_setup_out /mnt/home/$username
+cp swayos_setup_err /mnt/home/$username
+rm -r /mnt/home/$username/repo
+
+# notify and reboot
+
+$(dialog --stdout --backtitle "SwayOS Install" --msgbox "Install complete, press enter to reboot" 8 50)
+reboot

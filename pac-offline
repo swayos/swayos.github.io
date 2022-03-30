@@ -1,3 +1,7 @@
+base
+linux
+linux-firmware
+sudo
 zsh
 zsh-autosuggestions
 iwd
@@ -33,3 +37,11 @@ polkit-gnome
 wl-clipboard
 openbsd-netcat
 pavucontrol
+meson
+scdoc
+grub
+gobject-introspection
+dbus-glib
+vte3
+appstream-glib
+archlinux-appstream-data
