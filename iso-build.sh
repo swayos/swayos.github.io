@@ -2,6 +2,9 @@
 #
 # This scripts creates a bootable ISO with pre-downloaded packages and pre-built arch packages for offline install
 #
+# Set up logging
+exec 1> >(tee "swayos_build_out")
+exec 2> >(tee "swayos_build_err")
 
 ARCH="x86_64"
 MIRROR="https://mirrors.kernel.org/archlinux/"

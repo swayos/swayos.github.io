@@ -3,6 +3,10 @@
 # This script installs SwayOS on a pre-installed arch, installs packages and aur packages, copies configs and fonts and sets up system
 #
 
+# Set up logging
+exec 1> >(tee "swayos_setup_out")
+exec 2> >(tee "swayos_setup_err")
+
 log(){
     echo "*********** $1 ***********"
     now=$(date +"%T")
