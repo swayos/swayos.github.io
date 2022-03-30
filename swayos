@@ -67,11 +67,12 @@ check "$?" "systemctl enable"
 log "Installing aur packages"
 cat pac-aur | while read line 
 do
+    log "Installing $line"
     git clone https://aur.archlinux.org/$line.git
     cd $line
     makepkg -s --skippgpcheck
     check "$?" "makepkg"
-    sudo pacman -U *.pkg.tar.zst
+    sudo pacman -U --noconfirm *.pkg.tar.zst
     check "$?" "pacman -U"
     cd ..
 done

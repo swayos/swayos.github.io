@@ -200,6 +200,7 @@ log "Installing aur packages"
 
 cat pac-aur | while read line 
 do
+log "Installing $line"
     rel_path=$(ls repo/$line/*.pkg.tar.zst)
     arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
 done
