@@ -198,22 +198,28 @@ check "$?" "cp"
 
 log "Installing aur packages"
 
-rel_path=$(ls repo/google-chrome/*.pkg.tar.zst)
-arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/iwgtk/*.pkg.tar.zst)
-arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-yrel_path=$(ls repo/libpamac-aur/*.pkg.tar.zst)
-arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/nerd-fonts-terminus/*.pkg.tar.zst)
-arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/pamac-aur/*.pkg.tar.zst)
-arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/wdisplays/*.pkg.tar.zst)
-arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/wlogout/*.pkg.tar.zst)
-arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-rel_path=$(ls repo/wob/*.pkg.tar.zst)
-arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+cat pac-aur | while read line 
+do
+    rel_path=$(ls repo/$line/*.pkg.tar.zst)
+    arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+done
+
+# rel_path=$(ls repo/google-chrome/*.pkg.tar.zst)
+# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+# rel_path=$(ls repo/iwgtk/*.pkg.tar.zst)
+# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+# yrel_path=$(ls repo/libpamac-aur/*.pkg.tar.zst)
+# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+# rel_path=$(ls repo/nerd-fonts-terminus/*.pkg.tar.zst)
+# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+# rel_path=$(ls repo/pamac-aur/*.pkg.tar.zst)
+# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+# rel_path=$(ls repo/wdisplays/*.pkg.tar.zst)
+# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+# rel_path=$(ls repo/wlogout/*.pkg.tar.zst)
+# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
+# rel_path=$(ls repo/wob/*.pkg.tar.zst)
+# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
 # arch-chroot /mnt pacman -U /tmp/sway-overview/*.pkg.tar.zst
 
 # start services

@@ -3,6 +3,8 @@ press enter to restart machine
 swayos script install git only, checkout repo, use package lists
 create patreon packages
 
+better locale setup
+
 issues :
 Discussion : github.com/swayos/disc
 

@@ -52,13 +52,15 @@ repo-add tmp/repo/custom.db.tar.gz tmp/repo/*.pkg.tar.zst
 
 cd tmp/repo
 
-cat pac-aur | while read line 
+cat ../../pac-aur | while read line 
 do
     git clone https://aur.archlinux.org/$line.git
     cd $line
-    makepkg -s -skippgpcheck
+    makepkg -s --skippgpcheck
     cd ..
 done
+
+cd ../..
 
 # git clone https://aur.archlinux.org/wob.git
 # git clone https://aur.archlinux.org/wlogout.git
@@ -100,6 +102,7 @@ cp -r home iso/airootfs/root/
 cp -r font iso/airootfs/root/
 cp iso-install.sh iso/airootfs/root/
 cp iso-pacman.conf iso/airootfs/root/
+cp pac-aur iso/airootfs/root/
 cp pac-offline iso/airootfs/root/
 
 # create iso
