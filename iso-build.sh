@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# This scripts creates a bootable ISO with pre-downloaded packages and pre-built arch packages for offline install
+# This scripts creates a bootable ISO with pre-downloaded packages and pre-built aur packages for offline install
 #
 # Set up logging
 exec 1> >(tee "swayos_build_out")

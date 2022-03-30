@@ -37,6 +37,9 @@ polkit-gnome
 wl-clipboard
 openbsd-netcat
 pavucontrol
+git
+libxss
+ttf-liberation
 meson
 scdoc
 grub

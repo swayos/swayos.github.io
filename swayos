@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script installs SwayOS on a pre-installed arch, installs packages and aur packages, copies configs and fonts and sets up system
+# This script installs SwayOS on a pre-installed arch linux
 #
 
 # Set up logging
