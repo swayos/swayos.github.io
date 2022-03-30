@@ -4,6 +4,9 @@ swayos script install git only, checkout repo, use package lists
 create patreon packages
 splash screen replace
 better locale setup
+wayland
+proper screen sharing with chrome
+help to background
 
 issues :
 Discussion : github.com/swayos/disc

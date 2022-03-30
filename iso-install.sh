@@ -227,6 +227,11 @@ done
 
 log "Starting services"
 
+#NETCONF=/etc/systemd/network/20-wired.network
+#if [ ! -f "$NETCONF" ]; then
+#    echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee "$NETCONF" > /dev/null
+#fi
+
 arch-chroot /mnt systemctl enable systemd-networkd
 arch-chroot /mnt systemctl enable iwd
 arch-chroot /mnt systemctl enable bluetooth
