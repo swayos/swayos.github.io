@@ -27,6 +27,13 @@ sed -i '/js78/d' iso/packages.x86_64
 sed -i '/perl/d' iso/packages.x86_64
 sed -i '/python/d' iso/packages.x86_64
 sed -i '/icu/d' iso/packages.x86_64
+sed -i '/sof-firmware/d' iso/packages.x86_64
+sed -i '/speex/d' iso/packages.x86_64
+sed -i '/espeak-ng/d' iso/packages.x86_64
+sed -i '/liblouis/d' iso/packages.x86_64
+
+sed -i '/TIMEOUT 150/d' iso/syslinux/archiso_sys.cfg
+echo "TIMEOUT 0" >> iso/syslinux/archiso_sys.cfg
 
 # add dialog as extra package to live cd
 
@@ -39,7 +46,7 @@ echo "sh iso-install.sh" >> iso/airootfs/root/.zlogin
 
 # copy splash image
 
-cp -f splash.png iso/syslinux
+cp -f pics/splash.png iso/syslinux
 
 # update local packages & keyring
 
