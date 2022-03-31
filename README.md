@@ -61,7 +61,7 @@ sh swayos
 
 **For superhackers/For other OSes/distributions**
 
-Install all packages present in "packages" file. Package names on your OS/Distribution may differ. Then copy everything under "home" to your home folder. Start services if needed. ( iwd, cups, etc )
+Install all packages present in pacs/swayos and pacs/aur file. ( Package names on your OS/Distribution may differ and you may have to compile them manually. ) Copy everything under "home" to your home folder. Start services if needed. ( iwd, bluetooth, cups )
 
 ## UI Structure of SwayOS
 
