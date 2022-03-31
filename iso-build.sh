@@ -3,8 +3,8 @@
 # This scripts creates a bootable ISO with pre-downloaded packages and pre-built aur packages for offline install
 #
 # Set up logging
-exec 1> >(tee "swayos_build_out")
-exec 2> >(tee "swayos_build_err")
+exec 1> >(tee "tmp/swayos_build_out")
+exec 2> >(tee "tmp/swayos_build_err")
 
 ARCH="x86_64"
 MIRROR="https://mirrors.kernel.org/archlinux/"
@@ -15,38 +15,37 @@ sudo rm -rf tmp/*
 mkdir tmp/repo
 mkdir tmp/tmpdb
 
-# reset iso dir and copy actual archiso config
+# copy archiso config
 
-rm -rf iso
-cp -r /usr/share/archiso/configs/releng/ ./iso/
+cp -r /usr/share/archiso/configs/releng/ ./tmp/iso/
 
 # narrow down live cd
 
-sed -i '/linux-firmware-marvell/d' iso/packages.x86_64
-sed -i '/js78/d' iso/packages.x86_64
-sed -i '/perl/d' iso/packages.x86_64
-sed -i '/python/d' iso/packages.x86_64
-sed -i '/icu/d' iso/packages.x86_64
-sed -i '/sof-firmware/d' iso/packages.x86_64
-sed -i '/speex/d' iso/packages.x86_64
-sed -i '/espeak-ng/d' iso/packages.x86_64
-sed -i '/liblouis/d' iso/packages.x86_64
+sed -i '/linux-firmware-marvell/d' tmp/iso/packages.x86_64
+sed -i '/js78/d' tmp/iso/packages.x86_64
+sed -i '/perl/d' tmp/iso/packages.x86_64
+sed -i '/python/d' tmp/iso/packages.x86_64
+sed -i '/icu/d' tmp/iso/packages.x86_64
+sed -i '/sof-firmware/d' tmp/iso/packages.x86_64
+sed -i '/speex/d' tmp/iso/packages.x86_64
+sed -i '/espeak-ng/d' tmp/iso/packages.x86_64
+sed -i '/liblouis/d' tmp/iso/packages.x86_64
 
-sed -i '/TIMEOUT 150/d' iso/syslinux/archiso_sys.cfg
-echo "TIMEOUT 0" >> iso/syslinux/archiso_sys.cfg
+sed -i '/TIMEOUT 150/d' tmp/iso/syslinux/archiso_sys.cfg
+echo "TIMEOUT 0" >> tmp/iso/syslinux/archiso_sys.cfg
 
 # add dialog as extra package to live cd
 
-echo "dialog" >> iso/packages.x86_64
+echo "dialog" >> tmp/iso/packages.x86_64
 
 # start iso-install.sh on login
 
-sed -i '$ d' iso/airootfs/root/.zlogin
-echo "sh iso-install.sh" >> iso/airootfs/root/.zlogin
+sed -i '$ d' tmp/iso/airootfs/root/.zlogin
+echo "sh iso-install.sh" >> tmp/iso/airootfs/root/.zlogin
 
 # copy splash image
 
-cp -f pics/splash.png iso/syslinux
+cp -f pics/splash.png tmp/iso/syslinux
 
 # update local packages & keyring
 
@@ -84,13 +83,13 @@ cd ../..
 
 # copy/move needed folders under airootfs
 
-mv tmp/repo iso/airootfs/root/
-cp -r home iso/airootfs/root/
-cp -r font iso/airootfs/root/
-cp -r pacs iso/airootfs/root/
-cp iso-install.sh iso/airootfs/root/
-cp iso-pacman.conf iso/airootfs/root/
+mv tmp/repo tmp/iso/airootfs/root/
+cp -r home tmp/iso/airootfs/root/
+cp -r font tmp/iso/airootfs/root/
+cp -r pacs tmp/iso/airootfs/root/
+cp iso-install.sh tmp/iso/airootfs/root/
+cp iso-pacman.conf tmp/iso/airootfs/root/
 
 # create iso
 
-sudo mkarchiso -v -w ./tmp/isowork -o ./tmp ./iso
+sudo mkarchiso -v -w ./tmp/isowork -o ./tmp ./tmp/iso
