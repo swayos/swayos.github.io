@@ -137,8 +137,9 @@ exec swayidle -w \
          timeout 300 'swaylock -f' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f'
-exec mkfifo /tmp/wob && tail -f /tmp/wob | wob
-#exec mkfifo /tmp/sov && tail -f /tmp/sov | sway-overview
+
+exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
+exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov
 
 # xorg setup
 

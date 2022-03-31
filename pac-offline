@@ -40,6 +40,9 @@ pavucontrol
 git
 libxss
 ttf-liberation
+itstool
+vala
+asciidoc
 meson
 scdoc
 grub

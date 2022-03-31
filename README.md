@@ -1,5 +1,6 @@
 add network
 add to sudoer
+efficient work with swayos
 
 autostart install
 press enter to restart machine

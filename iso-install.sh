@@ -183,7 +183,7 @@ check "$?" "cp"
 # copy home directory stuff under target/home/$user/
 
 log "Copying configuration files"
-cp -f -R home/. "/mnt/home/$username"
+cp -f -R home/. /mnt/home/$username
 check "$?" "cp"
 
 # copy offline repo to new install
@@ -206,15 +206,17 @@ log "Installing $line"
     arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
 done
 
-# start services
+# add ethernet device to systemd.networkd
+
+NETCONF=/mnt/etc/systemd/network/20-wired.network
+printf "[Match]\nName=en*\nName=eth*\n[Network]\nDHCP=yes\nIPv6PrivacyExtensions=yes\n" | sudo tee "$NETCONF" > /dev/null
 
 log "Starting services"
 
-NETCONF=/etc/systemd/network/20-wired.network
-wired_if=$(ls /sys/class/net | grep ^e | head)
-printf "[Match]\nName=${wired_if}\n[Network]\nDHCP=yes\n" | sudo tee "$NETCONF" > /dev/null
+# start services
 
 arch-chroot /mnt systemctl enable systemd-networkd
+arch-chroot /mnt systemctl enable systemd-resolved
 arch-chroot /mnt systemctl enable iwd
 arch-chroot /mnt systemctl enable bluetooth
 arch-chroot /mnt systemctl enable cups
@@ -222,10 +224,22 @@ check "$?" "systemctl enable"
 
 # cleanup
 
+log "Cleaning up"
+
 cp swayos_setup_log /mnt/home/$username
 cp swayos_setup_out /mnt/home/$username
 cp swayos_setup_err /mnt/home/$username
 rm -r /mnt/home/$username/repo
+
+# chown files for user
+
+log "Chown files"
+
+arch-chroot /mnt chown --recursive "$username:$username" /home/$username
+
+log "Trigger pacman update, hopefully it helps pamac to start up"
+
+arch-chroot /mnt pacman -Sy
 
 # notify and reboot
 

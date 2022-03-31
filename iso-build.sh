@@ -22,12 +22,17 @@ cp -r /usr/share/archiso/configs/releng/ ./iso/
 
 # add dialog as extra package to live cd
 
+sed -i '/linux-firmware-marvell/d' iso/packages.x86_64
 echo "dialog" >> iso/packages.x86_64
 
 # start iso-install.sh on login
 
 sed -i '$ d' iso/airootfs/root/.zlogin
 echo "sh iso-install.sh" >> iso/airootfs/root/.zlogin
+
+# copy splash image
+
+cp -f splash.png iso/syslinux
 
 # update local packages & keyring
 
