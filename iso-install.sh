@@ -139,12 +139,13 @@ fi
 
 check "$?" "grub-install"
 
-# arch-chroot /mnt /bin/bash /mnt/tmp/iso-install-chroot.sh
+# setup users
 
 log "Adding user $username"
 
 arch-chroot /mnt useradd -mU -s /usr/bin/zsh -G wheel,video $username
 arch-chroot /mnt chsh -s /usr/bin/zsh
+echo "$username ALL=(ALL) ALL" >> /mnt/etc/sudoers
 
 # set passwords
 
@@ -205,32 +206,13 @@ log "Installing $line"
     arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
 done
 
-# rel_path=$(ls repo/google-chrome/*.pkg.tar.zst)
-# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-# rel_path=$(ls repo/iwgtk/*.pkg.tar.zst)
-# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-# yrel_path=$(ls repo/libpamac-aur/*.pkg.tar.zst)
-# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-# rel_path=$(ls repo/nerd-fonts-terminus/*.pkg.tar.zst)
-# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-# rel_path=$(ls repo/pamac-aur/*.pkg.tar.zst)
-# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-# rel_path=$(ls repo/wdisplays/*.pkg.tar.zst)
-# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-# rel_path=$(ls repo/wlogout/*.pkg.tar.zst)
-# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-# rel_path=$(ls repo/wob/*.pkg.tar.zst)
-# arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-# arch-chroot /mnt pacman -U /tmp/sway-overview/*.pkg.tar.zst
-
 # start services
 
 log "Starting services"
 
-#NETCONF=/etc/systemd/network/20-wired.network
-#if [ ! -f "$NETCONF" ]; then
-#    echo $'[Match]\nName=enp1s0\n[Network]\nDHCP=yes\n' | sudo tee "$NETCONF" > /dev/null
-#fi
+NETCONF=/etc/systemd/network/20-wired.network
+wired_if=$(ls /sys/class/net | grep ^e | head)
+printf "[Match]\nName=${wired_if}\n[Network]\nDHCP=yes\n" | sudo tee "$NETCONF" > /dev/null
 
 arch-chroot /mnt systemctl enable systemd-networkd
 arch-chroot /mnt systemctl enable iwd

@@ -1,3 +1,6 @@
+add network
+add to sudoer
+
 autostart install
 press enter to restart machine
 swayos script install git only, checkout repo, use package lists
