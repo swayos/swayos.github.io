@@ -20,9 +20,16 @@ mkdir tmp/tmpdb
 rm -rf iso
 cp -r /usr/share/archiso/configs/releng/ ./iso/
 
-# add dialog as extra package to live cd
+# narrow down live cd
 
 sed -i '/linux-firmware-marvell/d' iso/packages.x86_64
+sed -i '/js78/d' iso/packages.x86_64
+sed -i '/perl/d' iso/packages.x86_64
+sed -i '/python/d' iso/packages.x86_64
+sed -i '/icu/d' iso/packages.x86_64
+
+# add dialog as extra package to live cd
+
 echo "dialog" >> iso/packages.x86_64
 
 # start iso-install.sh on login
@@ -47,8 +54,8 @@ wget -o /dev/null -P tmp/repo "${MIRROR}/multilib/os/${ARCH}/multilib.db"
 
 # download packages
 
-cat pac-base pac-swayos pac-aurdeps > pac-offline
-sudo pacman --noconfirm -Syw --cachedir tmp/repo --dbpath tmp/tmpdb - < pac-offline
+cat pacs/base pacs/swayos pacs/aurdeps > pacs/offline
+sudo pacman --noconfirm -Syw --cachedir tmp/repo --dbpath tmp/tmpdb - < pacs/offline
 
 # create custom db
 
@@ -58,7 +65,7 @@ repo-add tmp/repo/custom.db.tar.gz tmp/repo/*.pkg.tar.zst
 
 cd tmp/repo
 
-cat ../../pac-aur | while read line 
+cat ../../pacs/aur | while read line 
 do
     git clone https://aur.archlinux.org/$line.git
     cd $line
@@ -73,10 +80,9 @@ cd ../..
 mv tmp/repo iso/airootfs/root/
 cp -r home iso/airootfs/root/
 cp -r font iso/airootfs/root/
+cp -r pacs iso/airootfs/root/
 cp iso-install.sh iso/airootfs/root/
 cp iso-pacman.conf iso/airootfs/root/
-cp pac-aur iso/airootfs/root/
-cp pac-offline iso/airootfs/root/
 
 # create iso
 

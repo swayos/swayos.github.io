@@ -104,8 +104,8 @@ mkfs.ext4 "${part_root}"
 mount "${part_root}" /mnt
 
 if [ -d "/sys/firmware/efi" ]; then
-mkdir /mnt/boot
-mount "${part_boot}" /mnt/boot
+    mkdir /mnt/boot
+    mount "${part_boot}" /mnt/boot
 fi
 
 check "$?" "mount"
@@ -113,11 +113,7 @@ check "$?" "mount"
 # pacstrap packages
 
 log "Installing packages"
-
-pacstrap -C iso-pacman.conf /mnt - < pac-offline
-
-#pacstrap -C iso-pacman.conf /mnt base linux linux-firmware sudo git zsh zsh-autosuggestions iwd bluez bluez-utils blueman pipewire pipewire-alsa pipewire-pulse pipewire-jack pipewire-media-session xdg-desktop-portal-wlr xorg-xwayland wayland-protocols sway swayidle swaylock grim slurp waybar wofi brightnessctl foot nautilus libreoffice-fresh gnome-system-monitor system-config-printer feh cups ttf-ubuntu-font-family terminus-font polkit-gnome wl-clipboard openbsd-netcat unzip meson pavucontrol scdoc grub gobject-introspection dbus-glib vte3 appstream-glib archlinux-appstream-data
-
+pacstrap -C iso-pacman.conf /mnt - < pacs/offline
 check "$?" "pacstrap"
 
 # gen fstab
@@ -199,7 +195,7 @@ check "$?" "cp"
 
 log "Installing aur packages"
 
-cat pac-aur | while read line 
+cat pacs/aur | while read line 
 do
 log "Installing $line"
     rel_path=$(ls repo/$line/*.pkg.tar.zst)
