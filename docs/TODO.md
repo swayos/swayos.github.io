@@ -1,3 +1,6 @@
+swaync
+nwg-look
+
 add network
 add to sudoer
 efficient work with swayos
@@ -29,3 +32,5 @@ How does the installer works?
 the installer script for pre-installed systems
 
 the installer iso
+
+swaync Reddit reklám, sway GitHub reklám, Chrome sharing
