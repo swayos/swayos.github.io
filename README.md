@@ -24,6 +24,8 @@ If you want to close one terminal you move your mouse over it and press WIN + SH
 If you want to move one terminal window to workspace four you move your mouse over it and press WIN + SHIFT + 4.
 These are all the shortcuts you have to know.
 
+## Shortcuts ##
+
 So to recap the shortucts :
 
 **WIN + numbers** : switch to workspace with given number / open overview ( long press )  
@@ -55,8 +57,8 @@ Note : it is a minimal-configuration installer, there are no partitioning option
 
 Download the latest [Arch Linux installer ISO](https://archlinux.org/download/). After startup, type "archinstall" that guides you through the install process. After finish, log in with your user and install SwayOS with
 ```
-curl -O https://swayos.github.io/swayos
-sh swayos
+curl -O https://swayos.github.io/setup
+sh setup
 ```
 
 **For superhackers/For other OSes/distributions**

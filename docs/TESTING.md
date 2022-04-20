@@ -1,3 +1,6 @@
+TEST UEFI
+TEST BIOS
+
 sway overview visible?
 volume/brightness bar visible?
 

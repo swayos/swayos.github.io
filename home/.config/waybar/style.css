@@ -7,13 +7,14 @@
     font-family: "Terminus (TTF)";
     font-size: 16px;
     font-weight: bold;
-    min-height: 25px;
+    min-height: 10px;
     padding: 0;
     margin: 0;
 }
 
 window#waybar {
     background-color: rgba(0, 0, 0, 0);
+    color: #dedede;
     /* border-bottom: 0.5px solid rgba(0, 0, 0, 0.1); */
 
     /* transition-property: background-color; */
@@ -51,6 +52,7 @@ window#waybar.chromium {
 }
 
 #workspaces button {
+    min-width: 15px;
     padding-left: 3px;
     padding-right: 3px;
     /* margin: 0 0px; */

@@ -41,7 +41,7 @@ done
 cd ..
 
 # Copy fonts
-sudo cp -r font/*.* /mnt/usr/share/fonts/
+sudo cp -r font/*.* /mnt/usr/share/fonts/TTF/
 
 # Copy config files
 sudo cp -f -R home /mnt/home/configs
