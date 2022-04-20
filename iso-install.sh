@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script installs a base arch linux and swayos extensions to a target partition
+# This script installs the base image and finishes setup
 #
 
 # Set up logging

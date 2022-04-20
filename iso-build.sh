@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# This scripts creates a bootable ISO with pre-downloaded packages and pre-built aur packages for offline install
+# This scripts creates a bootable ISO that installs the base image and sets the install up
 #
 
 # Set up logging
