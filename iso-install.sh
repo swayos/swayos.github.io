@@ -62,7 +62,7 @@ username=$(dialog --stdout --backtitle "SwayOS Install" --nocancel --inputbox "W
 
 log "Selected user $username"
 
-# notify about passwrod
+# notify about password
 
 $(dialog --stdout --backtitle "SwayOS Install" --msgbox "User password will be the same as the root password. Feel free to change it after install." 8 50)
 
@@ -101,7 +101,6 @@ if [ -d "/sys/firmware/efi" ]; then
 fi
 
 mkfs.ext4 "${part_root}"
-mount "${part_root}" /mnt
 
 if [ -d "/sys/firmware/efi" ]; then
     mkdir /mnt/boot
@@ -110,11 +109,18 @@ fi
 
 check "$?" "mount"
 
-# pacstrap packages
+# dd swayos image to target disk
 
-log "Installing packages"
-pacstrap -C iso-pacman.conf /mnt - < pacs/offline
-check "$?" "pacstrap"
+gunzip -c swayos.img.gz | dd of="${part_root}" bs=1M status=progress
+
+# extend partition
+
+e2fsck -f -y "${part_root}"
+resize2fs "${part_root}"
+
+# mount target disk
+
+mount "${part_root}" /mnt
 
 # gen fstab
 
@@ -127,7 +133,7 @@ check "$?" "genfstab"
 log "Setting up grub"
 
 if [ -d "/sys/firmware/efi" ]; then
-    arch-chroot grub-install --target=x86_64-efi --efi-directory=$part_boot --bootloader-id=GRUB
+    arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=$part_boot --bootloader-id=GRUB
 else
     arch-chroot /mnt grub-install --target=i386-pc $device
     arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
@@ -170,37 +176,13 @@ arch-chroot /mnt hwclock --systohc
 
 echo "${username}-pc" > /mnt/etc/hostname
 
-# copy fonts under target/usr/share/fonts
-
-log "Copying fonts"
-cp -r font/*.* /mnt/usr/share/fonts/
-check "$?" "cp"
-
 # copy home directory stuff under target/home/$user/
 
 log "Copying configuration files"
-cp -f -R home/. /mnt/home/$username
+cp -f -R /mnt/home/configs/. /mnt/home/$username
 check "$?" "cp"
-
-# copy offline repo to new install
-
-log "Copying offline repo"
-
-cp -r repo "/mnt/home/${username}/"
-cp iso-pacman.conf "/mnt/home/${username}/"
-
-check "$?" "cp"
-
-# install aur packages
-
-log "Installing aur packages"
-
-cat pacs/aur | while read line 
-do
-log "Installing $line"
-    rel_path=$(ls repo/$line/*.pkg.tar.zst)
-    arch-chroot /mnt pacman --noconfirm --config "/home/$username/iso-pacman.conf" -U "/home/$username/$rel_path"
-done
+rm -r /mnt/home/configs
+check "$?" "rm"
 
 # add ethernet device to systemd.networkd
 
@@ -208,6 +190,10 @@ NETCONF=/mnt/etc/systemd/network/20-wired.network
 printf "[Match]\nName=en*\nName=eth*\n[Network]\nDHCP=yes\nIPv6PrivacyExtensions=yes\n" | sudo tee "$NETCONF" > /dev/null
 
 log "Starting services"
+
+# initramfs
+
+arch-chroot /mnt mkinitcpio -P
 
 # start services
 
@@ -225,7 +211,6 @@ log "Cleaning up"
 cp swayos_setup_log /mnt/home/$username
 cp swayos_setup_out /mnt/home/$username
 cp swayos_setup_err /mnt/home/$username
-rm -r /mnt/home/$username/repo
 
 # chown files for user
 

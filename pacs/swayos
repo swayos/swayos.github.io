@@ -1,3 +1,4 @@
+grub
 sudo
 zsh
 zsh-autosuggestions
@@ -32,5 +33,6 @@ ttf-ubuntu-font-family
 terminus-font
 polkit-gnome
 wl-clipboard
-openbsd-netcat
 pavucontrol
+emacs
+adapta-gtk-theme
