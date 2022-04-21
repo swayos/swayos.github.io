@@ -1,10 +1,8 @@
+fix sov floating problem
 set keyboard and locale
 swaync
 nwg-look
-add network
-add to sudoer
 efficient work with swayos
-select locale, sway keyboard
 wildacrd sway devices instead of script
 swayos script install git only, checkout repo, use package lists
 create patreon packages

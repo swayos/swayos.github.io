@@ -1,3 +1,5 @@
+efibootmgr
+mtools
 grub
 sudo
 zsh

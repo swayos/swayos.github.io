@@ -43,6 +43,9 @@ cd ..
 # Copy fonts
 sudo cp -r font/*.* /mnt/usr/share/fonts/TTF/
 
+# Chown font files
+arch-chroot /mnt chown --recursive "root:root" /usr/share/fonts/TTF
+
 # Copy config files
 sudo cp -f -R home /mnt/home/configs
 

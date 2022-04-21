@@ -14,5 +14,3 @@ dialog
 parted
 dosfstools
 arch-install-scripts
-efibootmgr
-mtools

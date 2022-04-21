@@ -17,7 +17,7 @@ rm isoc/airootfs/root/iso-install.sh
 # copy/move needed folders under airootfs
 
 # copy base image
-cp swayos.img.gz isoc/airootfs/root/
+mv swayos.img.gz isoc/airootfs/root/
 
 # copy installer script
 cp iso-install.sh isoc/airootfs/root/
