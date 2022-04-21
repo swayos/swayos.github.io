@@ -124,8 +124,8 @@ fi
 mkfs.ext4 "${part_root}"
 
 if [ -d "/sys/firmware/efi" ]; then
-    mkdir /mnt/boot
-    mount "${part_boot}" /mnt/boot
+    mkdir /mnt/boot/efi
+    mount "${part_boot}" /mnt/boot/efi
 fi
 
 check "$?" "mount"
@@ -154,7 +154,7 @@ check "$?" "genfstab"
 log "Setting up grub"
 
 if [ -d "/sys/firmware/efi" ]; then
-    arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=$part_boot --bootloader-id=GRUB
+    arch-chroot /mnt grub-install --target=x86_64-efi --bootloader-id=GRUB
 else
     arch-chroot /mnt grub-install --target=i386-pc $device
     arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg

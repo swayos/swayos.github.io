@@ -11,6 +11,8 @@ exec 2> >(tee "tmp/iso_build_err")
 
 sudo rm -r tmp/isowork
 sudo rm -r tmp/iso
+rm isoc/airootfs/root/swayos.img.gz
+rm isoc/airootfs/root/iso-install.sh
 
 # copy/move needed folders under airootfs
 
