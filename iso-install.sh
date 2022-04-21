@@ -35,6 +35,27 @@ fi
 
 log "Selected layout $layout"
 
+# popup timezone selector, default is UTC
+
+timefolder="/usr/share/zoneinfo"
+timezone="/usr/share/zoneinfo/UTC"
+while true; do
+    layoutlist=$(ls $timefolder | nl)
+    layout=$(dialog --stdout --backtitle "SwayOS Install" --menu "Select time zone" 0 50 10 ${layoutlist})
+    if [ "$?" == 0 ]; then
+	array=($layoutlist)
+	index=$(($layout * 2 - 1))
+	timezone=/usr/share/zoneinfo/${array[$index]}
+	if [[ -d $timezone ]]; then
+	    timefolder=$timezone
+	else
+	    break
+	fi
+    else
+	timefolder="/usr/share/zoneinfo"
+    fi
+done
+
 # popup disk selector
 
 devicelist=$(lsblk -dplnx size -o name,size | grep -Ev "boot|rpmb|loop" | tac)
@@ -166,7 +187,7 @@ echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
 
 # set time zone
 
-arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Budapest /etc/localtime
+arch-chroot /mnt ln -sf $timezone /etc/localtime
 
 # set hw clock
 

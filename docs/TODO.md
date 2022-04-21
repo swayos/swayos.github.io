@@ -1,4 +1,4 @@
-remove boot menu from iso
+
 rename iso
 language selector, locale selector
 
