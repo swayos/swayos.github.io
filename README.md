@@ -8,10 +8,8 @@ SwayOS is a productivity-oriented minimalist and super elegant desktop layer ove
 **Donations**  
 paypal : [https://paypal.me/milgra](https://paypal.me/milgra)  
 patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra)  
-bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du    
-
-**Discussions/Issues/Feature requests**
-
+bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du      
+**Discussions/Issues/Feature requests**  
 [https://github.com/swayos/swayos.github.io/discussions](https://github.com/swayos/swayos.github.io/discussions)
 
 ## How does it help productivity?
@@ -29,16 +27,14 @@ If you want to close one terminal you move your mouse over it and press WIN + SH
 If you want to move one terminal window to workspace four you move your mouse over it and press WIN + SHIFT + 4.
 These are all the shortcuts you have to know.
 
-## Shortcuts ##
+SwayOS tries to be a distraction free OS. So there is no notification system installed by default altough you can install one any time, you also have to manage software updates manually by opening the app store and check for available updates.
 
-So to recap the shortucts :
+## Shortcuts ##
 
 **WIN + numbers** : switch to workspace with given number / open overview ( long press )  
 **WIN + SPACE** : open application launcher  
 **WIN + SHIFT + Q** : close focused window  
 **WIN + SHIFT + numbers** : move focused window to workspace with given number  
-
-SwayOS tries to be a distraction free OS. So there is no notification system installed by default altough you can install one any time, you also have to manage software updates manually by opening the app store and check for available updates.
 
 ## Additional shortcuts that make work easier
 
@@ -54,9 +50,9 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 
 **For beginners/Speed install**
 
-Download the latest installer ISO from my homepage ( cannot store here in github because of file size limits ) [releases](https://milgra.com/downloads/swayos-2022.04.22-x86_64.iso), burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
+Download the latest installer ISO from my [homepage](https://milgra.com/downloads/swayos-2022.04.22-x86_64.iso) ( cannot store here on github because of file size limits ), burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
 
-Note : it is a minimal-configuration installer, there are no partitioning options, it will use the full hard drive for installation.
+Note : it is a minimal-configuration speed installer, there are no partitioning options, it will use the full hard drive for installation.
 
 **For more install options**
 
@@ -98,7 +94,7 @@ The status bar has the following sections from left to right : workspace numbers
 - **waybar** : Status Bar Manager, config file is  /home/youruser/.config/waybar/config , learn more about it's config [here](https://github.com/Alexays/Waybar/wiki)
 - **wofi** : Application launcher, config file is /home/youruser/.config/wofi/config, visible when pressing WIN + SPACE
 - **wob** : Volume/Brightness overlay bar, visible when you change volumes with the dedicated keys on your laptop, configurable in sway config
-- **sway-overview** : Workspace overview window, visible when you press the WIN + numbers for a longer period, config file is /home/youruser/.config/sway-overview/config
+- **sov** : Workspace overview layer, visible when you press the WIN + numbers for a longer period, config file is /home/youruser/.config/sway-overview/config
 - **swaylock** : Screen locker, locks automatically or lock manually from the shutdown menu
 - **swayidle** : Idle time handler, locks screen automatically after 10 minuter
 - **grim** : Screen capture utility, activated with WIN + PRTSCR
