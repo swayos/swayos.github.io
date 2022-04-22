@@ -1,3 +1,4 @@
+chrome - settings - appereance - use gtk+ theme
 fix sov floating problem
 set keyboard and locale
 swaync

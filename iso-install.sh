@@ -123,11 +123,6 @@ fi
 
 mkfs.ext4 "${part_root}"
 
-if [ -d "/sys/firmware/efi" ]; then
-    mkdir /mnt/boot/efi
-    mount "${part_boot}" /mnt/boot/efi
-fi
-
 check "$?" "mount"
 
 # dd swayos image to target disk
@@ -143,6 +138,11 @@ resize2fs "${part_root}"
 
 mount "${part_root}" /mnt
 
+if [ -d "/sys/firmware/efi" ]; then
+    mkdir -p /mnt/boot/efi
+    mount "${part_boot}" /mnt/boot/efi
+fi
+
 # gen fstab
 
 log "Generating fstab"
@@ -154,11 +154,12 @@ check "$?" "genfstab"
 log "Setting up grub"
 
 if [ -d "/sys/firmware/efi" ]; then
-    arch-chroot /mnt grub-install --target=x86_64-efi --bootloader-id=GRUB
+    arch-chroot /mnt grub-install --efi-directory=/boot/efi --target=x86_64-efi --bootloader-id=GRUB
 else
     arch-chroot /mnt grub-install --target=i386-pc $device
-    arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 fi
+
+arch-chroot /mnt grub-mkconfig -o /boot/grub/grub.cfg
 
 check "$?" "grub-install"
 
@@ -238,6 +239,10 @@ cp swayos_setup_err /mnt/home/$username
 log "Chown files"
 
 arch-chroot /mnt chown --recursive "$username:$username" /home/$username
+
+log "Rebuild font cache"
+
+arch-chroot /mnt fc-cache -fv
 
 log "Trigger pacman update, hopefully it helps pamac to start up"
 
