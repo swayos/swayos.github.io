@@ -1,3 +1,4 @@
+rsync swayos-2022.04.22-x86_64.iso root@116.203.87.141:/root/milgra.com/server/resources/public/downloads/
 chrome - settings - appereance - use gtk+ theme
 fix sov floating problem
 set keyboard and locale
