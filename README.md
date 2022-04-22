@@ -2,11 +2,17 @@
 
 SwayOS is a productivity-oriented minimalist and super elegant desktop layer over unix-like operating systems that also can be installed as a standalone OS. It is suitable for office, internet, system administration and programming work out of the box.
 
-**Donations**  
-paypal : [https://paypal.me/milgra](https://paypal.me/milgra) / patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra) / bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du  
-
 ![screenshot](pics/swayos.png)
 ![screenshot](pics/swayos-busy.png)
+
+**Donations**  
+paypal : [https://paypal.me/milgra](https://paypal.me/milgra)  
+patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra)  
+bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du    
+
+**Discussions/Issues/Feature requests**
+
+[https://github.com/swayos/swayos.github.io/discussions](https://github.com/swayos/swayos.github.io/discussions)
 
 ## How does it help productivity?
 
