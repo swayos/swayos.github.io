@@ -133,14 +133,14 @@ The status bar has the following sections from left to right : workspace numbers
 
 ## Frequently Asked Questions
 
-- How to add new icons/applications to the quick launch menu?  
-- Edit waybar config at /home/youruser/.config/waybar/config , add new custom blocks for your desired applications, get symbols from (fontawesome)[https://fontawesome.com/search?s=solid%2Cbrands].
+- **How to add new icons/applications to the quick launch menu?**  
+Edit waybar config at /home/youruser/.config/waybar/config , add new custom blocks for your desired applications, get symbols from (fontawesome)[https://fontawesome.com/search?s=solid%2Cbrands].
 
-- How to mount external usb devices?  
-- Just click on the file manager icon in the status bar, it will auto-mount connected usb drives.
+- **How to mount external usb devices?**  
+Just click on the file manager icon in the status bar, it will auto-mount connected usb drives.
 
-- How to add multiple keyboard input sources?  
-- Edit sway config, add
+- **How to add multiple keyboard input sources?**  
+Edit sway config, add
 
 ```
 input " your wanted device id " {
@@ -151,40 +151,40 @@ input " your wanted device id " {
 }
 ```
 
-- How to set default terminal and browser  
-- Edit sway confing at ~/.config/sway/conifg, modify $terminal and $browser constant values
+- *8How to set default terminal and browser**  
+Edit sway confing at ~/.config/sway/conifg, modify $terminal and $browser constant values
 
-- Why google chrome instead of chromium?
-- SwayOS's intention is to create a user-friendly tiling window manager experience for less experienced users/switchers, and for that Libreoffice and Google sync enabled chrome is mandatory, spotify and netflix are also a reason.
+- **Why google chrome instead of chromium?**
+SwayOS's intention is to create a user-friendly tiling window manager experience for less experienced users/switchers, and for that Libreoffice and Google sync enabled chrome is mandatory, spotify and netflix are also a reason.
 
-- How to change display brightness  
-- with brightness keys  
-- by moving mouse over lcd pecentage in status bar and scroll
+- **How to change display brightness**  
+with brightness keys  
+by moving mouse over lcd pecentage in status bar and scroll
 
-- What applications do you propose for multimedia work?
-- Photoshop -> GIMP
-- Illustrator -> Inkscape
-- After Effects -> Natron
-- Premiere Pro - Davinci Resolve
-- Adobe XD -> Figma
-- Cinema 4D/3DS Max -> Blender
+- **What applications do you propose for multimedia work?**
+Photoshop -> GIMP  
+Illustrator -> Inkscape  
+After Effects -> Natron  
+Premiere Pro - Davinci Resolve  
+Adobe XD -> Figma  
+Cinema 4D/3DS Max -> Blender  
 
-- What applications do you propose to make SwayOS experience better?
-- hardinfo for hardware information
-- tlp for energy saving features
-- nvidia for nvidia/nvidia-intel hybrid gpus
-- ati for ati/ati-intel hybrud gpus
-- noisetorch for noise cancellation during meetings
-- qemu and virt-manager for virtualization
+- **What applications do you propose to make SwayOS experience better?**
+hardinfo for hardware information  
+tlp for energy saving features  
+nvidia for nvidia/nvidia-intel hybrid gpus  
+ati for ati/ati-intel hybrud gpus  
+noisetorch for noise cancellation during meetings  
+qemu and virt-manager for virtualization  
 
-- What do you propose for gaming  
-- steam, enable proton in settings and you can play 95% of all windows games
+- **What do you propose for gaming**  
+Steam, enable proton in settings and you can play 95% of all windows games
 
-- Where can I see all my installed applciations?  
-- Launch app store, under Installed you see all programs your system have and among them there are your desktop apps.
+- **Where can I see all my installed applciations?*8  
+Launch app store, under Installed you see all programs your system have and among them there are your desktop apps.
 
-- How to make a specific program open in a floating window always?  
-- Enable the program to be a floating in sway config.
+- **How to make a specific program open in a floating window always?**  
+Enable the program to be a floating in sway config.
 
-- Chrome says its out of date 
-- Open the app store, open preferences, go to third-party, Enable AUR support and enable check for updates
+- *8Chrome says its out of date**  
+Open the app store, open preferences, go to third-party, Enable AUR support and enable check for updates
