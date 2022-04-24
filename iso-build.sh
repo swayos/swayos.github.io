@@ -4,13 +4,13 @@
 #
 
 # Set up logging
-exec 1> >(tee "tmp/iso_build_out")
-exec 2> >(tee "tmp/iso_build_err")
+exec 1> >(tee "temp/iso_build_out")
+exec 2> >(tee "temp/iso_build_err")
 
-# cleanup first, tmp/iso stayed there for debugging
+# cleanup first, temp/iso stayed there for debugging
 
-sudo rm -r tmp/isowork
-sudo rm -r tmp/iso
+sudo rm -r temp/isowork
+sudo rm -r temp/iso
 rm isoc/airootfs/root/swayos.img.gz
 rm isoc/airootfs/root/iso-install.sh
 
@@ -23,4 +23,4 @@ mv swayos.img.gz isoc/airootfs/root/
 cp iso-install.sh isoc/airootfs/root/
 
 # create iso
-sudo mkarchiso -v -w tmp/isowork -o tmp isoc
+sudo mkarchiso -v -w temp/isowork -o temp isoc

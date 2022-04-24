@@ -226,15 +226,7 @@ arch-chroot /mnt systemctl enable bluetooth
 arch-chroot /mnt systemctl enable cups
 check "$?" "systemctl enable"
 
-# cleanup
-
-log "Cleaning up"
-
-cp swayos_setup_log /mnt/home/$username
-cp swayos_setup_out /mnt/home/$username
-cp swayos_setup_err /mnt/home/$username
-
-# chown files for user
+# post-install
 
 log "Chown files"
 
@@ -244,9 +236,17 @@ log "Rebuild font cache"
 
 arch-chroot /mnt fc-cache -fv
 
-log "Trigger pacman update, hopefully it helps pamac to start up"
+log "Trigger pacman update, it helps pamac to start up"
 
 arch-chroot /mnt pacman -Sy
+
+# cleanup
+
+log "Cleaning up"
+
+cp swayos_setup_log /mnt/home/$username
+cp swayos_setup_out /mnt/home/$username
+cp swayos_setup_err /mnt/home/$username
 
 # notify and reboot
 

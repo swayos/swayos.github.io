@@ -66,17 +66,24 @@ sh setup
 
 Install all packages present in pacs/swayos and pacs/aur file. ( Package names on your OS/Distribution may differ and you may have to compile them manually. ) Copy everything under "home" to your home folder. Start services if needed. ( iwd, bluetooth, cups )
 
+**Optional Post-installation todos**
+
+- set google chrome's appereance to GTK+ so it will use the dark theme
+- set locale to your language ( will be added to installer later )
+- remove export WLR_NO_HARDWARE_CURSORS=1 from .zshrc ( will be added to installer later )
+- don't forget to check for updates regularly!
+
 ## UI Structure of SwayOS
 
-SwayOS's UI has two parts : the status bar ( on top by default ) and the desktop under the status bar.  
+SwayOS's UI has two parts : the status bar ( on top by default ) and the window area under the status bar.
 The status bar has the following sections from left to right : workspace numbers block ( indicators ) , hardware status block ( in the center by default ), quick launch icons block, hardware settings icon block and clock/calendar on the right.
 
 **Icons from right to left :**
 
  shutdown  
- activity monitor  
+ activity monitor
  app store/software updates  
- multi-display setup  
+ display setup  
  volume control  
  bluetooth control  
  wifi setup  
@@ -94,15 +101,14 @@ The status bar has the following sections from left to right : workspace numbers
 - **waybar** : Status Bar Manager, config file is  /home/youruser/.config/waybar/config , learn more about it's config [here](https://github.com/Alexays/Waybar/wiki)
 - **wofi** : Application launcher, config file is /home/youruser/.config/wofi/config, visible when pressing WIN + SPACE
 - **wob** : Volume/Brightness overlay bar, visible when you change volumes with the dedicated keys on your laptop, configurable in sway config
-- **sov** : Workspace overview layer, visible when you press the WIN + numbers for a longer period, config file is /home/youruser/.config/sway-overview/config
-- **swaylock** : Screen locker, locks automatically or lock manually from the shutdown menu
-- **swayidle** : Idle time handler, locks screen automatically after 10 minuter
-- **grim** : Screen capture utility, activated with WIN + PRTSCR
-- **slurp** : Screen region capture utility, activated with WIN + SHIFT + PRTSCR
-- **iwgtk** : wifi selector app
-- **blueman** : bluetooth selector app
-- **brightnessctl** : lcd brightness control
-- **feh** : image viewer, opened when you double click on an image in file manager
+- **sov** : Workspaces overview layer, visible when you press the WIN + numbers for a longer period, config file is /home/youruser/.config/sway-overview/config
+- **swaylock** : Screen locker, locks automatically or lock manually from the shutdown menu, set up in sway wm's config
+- **swayidle** : Idle time handler, locks screen automatically after 10 minuter, set up in sway wm's config
+- **grim** : Screen capture utility, activated with WIN + PRTSCR, set up ins sway wm's config
+- **slurp** : Screen region capture utility, activated with WIN + SHIFT + PRTSCR, set up ins sway wm's config
+- **iwgtk** : wifi selector app, no config file
+- **blueman** : bluetooth selector app, no config file
+- **brightnessctl** : lcd brightness control, set up ins sway wm's config
 - **terminus-font** : default font for desktop and terminal
 - **ubuntu-font** : default font for applications
 - **pipewire** : audio/video server, needed for chrome desktop sharing and faster bluetooth audio
@@ -119,24 +125,25 @@ The status bar has the following sections from left to right : workspace numbers
 ## Default applications
 
 - **foot** : super fast terminal, config file is /home/youruser/.config/foot/config
+- **feh** : image viewer, opened when you double click on an image in file manager
 - **nautilus** : file manager
 - **google chrome** : browser
 - **LibreOffice** : document and spreadsheet editor
 
-## How to add new icons/applications to the quick launch menu?
 
-Edit waybar config at /home/youruser/.config/waybar/config , add new custom blocks for your desired applications, get symbols from (fontawesome)[https://fontawesome.com/search?s=solid%2Cbrands].
+## Frequently Asked Questions
 
-## How to mount external usb devices?
+- How to add new icons/applications to the quick launch menu?  
+- Edit waybar config at /home/youruser/.config/waybar/config , add new custom blocks for your desired applications, get symbols from (fontawesome)[https://fontawesome.com/search?s=solid%2Cbrands].
 
-Just click on the file manager icon in the status bar, it will auto-mount connected usb drives.
+- How to mount external usb devices?  
+- Just click on the file manager icon in the status bar, it will auto-mount connected usb drives.
 
-## How to add multiple keyboard input sources?
-
-Edit sway config, add
+- How to add multiple keyboard input sources?  
+- Edit sway config, add
 
 ```
-input "1165:49408:ITE_Tech._Inc._ITE_Device(8910)_Keyboard" {
+input " your wanted device id " {
     ...
     xkb_layout "us,hu"
     xkb_options "grp:alt_space_toggle"
@@ -144,71 +151,40 @@ input "1165:49408:ITE_Tech._Inc._ITE_Device(8910)_Keyboard" {
 }
 ```
 
-## Setting default terminal and browser
+- How to set default terminal and browser  
+- Edit sway confing at ~/.config/sway/conifg, modify $terminal and $browser constant values
 
-Edit sway confing at /home/youruser/.config/sway/conifg, modify $terminal and $browser constant values
+- Why google chrome instead of chromium?
+- SwayOS's intention is to create a user-friendly tiling window manager experience for less experienced users/switchers, and for that Libreoffice and Google sync enabled chrome is mandatory, spotify and netflix are also a reason.
 
-## To be done :
+- How to change display brightness  
+- with brightness keys  
+- by moving mouse over lcd pecentage in status bar and scroll
 
-- visual input source selector
-- visual display brightness slider
-- better looking bluetooth/wifi ui, maybe connmangtk?
-- replace Nautilus with Zen Files when it is mature enough or add as an alternative
-- unified wifi/bluetooth/shutdown UI popup like in MacOS/Gnome?
+- What applications do you propose for multimedia work?
+- Photoshop -> GIMP
+- Illustrator -> Inkscape
+- After Effects -> Natron
+- Premiere Pro - Davinci Resolve
+- Adobe XD -> Figma
+- Cinema 4D/3DS Max -> Blender
 
-## Why google chrome instead of chromium?
+- What applications do you propose to make SwayOS experience better?
+- hardinfo for hardware information
+- tlp for energy saving features
+- nvidia for nvidia/nvidia-intel hybrid gpus
+- ati for ati/ati-intel hybrud gpus
+- noisetorch for noise cancellation during meetings
+- qemu and virt-manager for virtualization
 
-SwayOS's intention is to create a user-friendly tiling window manager experience for less experienced users/switchers, and for that Libreoffice and Google sync enabled chrome is mandatory. Spotify and netflix are also a reason.
+- What do you propose for gaming  
+- steam, enable proton in settings and you can play 95% of all windows games
 
-## How to change display brightness
+- Where can I see all my installed applciations?  
+- Launch app store, under Installed you see all programs your system have and among them there are your desktop apps.
 
-- brightness keys
-- move mouse over lcd pecentage in status bar and scroll
+- How to make a specific program open in a floating window always?  
+- Enable the program to be a floating in sway config.
 
-## What applications do yoy propose for multimedia work?
-
-- shotcut
-- gimp
-- steam
-
-## Don't forget to check for updates regularly!
-
-## How to make a specific program open in a floating window always?
-
-Enable the program to be a floating in sway config.
-
-## Where can I see all my installed applciations?
-
-Launch app store, under Installed you see all programs your system have and among them there are your desktop apps.
-
-## Hardinfo starts from the hardware icons in the status bar but won't start from terminal, why?
-
-You have to tell it to use X11 mode with 'GDK_BACKEND=x11 hardinfo'
-
-cups, wdisplays, qt gtk2
-
-## TODO ##
-
-setups all keyboards and touchpads with defaults in sway config
-
-## Recommended programs installable from app store ##
-
-hardinfo for hardware information
-tlp for energy saving features
-gimp for image processing
-shotcut for video editing
-nvidia for nvidia/nvidia-intel hybrid gpus
-ati for ati/ati-intel hybrud gpus
-noisetorch for noise cancellation during meetings
-qemu and virt-manager for virtualization
-
-Photoshop -> GIMP
-Illustrator -> Inkscape
-After Effects -> Natron
-Premiere Pro - Davinci Resolve
-Adobe XD -> Figma
-Cinema 4D/3DS Max -> Blender
-
-# Chrome says its out of date #
-
-Open a terminal, type yay -S google-chrome
+- Chrome says its out of date 
+- Open the app store, open preferences, go to third-party, Enable AUR support and enable check for updates

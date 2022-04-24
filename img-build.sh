@@ -3,13 +3,13 @@
 # This script creates a base image pac-strapped with the needed packages
 #
 
-# reset tmp
-sudo rm -rf tmp
-mkdir tmp
+# reset temp
+sudo rm -rf temp
+mkdir temp
 
 # Set up logging
-exec 1> >(tee "tmp/img_build_out")
-exec 2> >(tee "tmp/img_build_err")
+exec 1> >(tee "temp/img_build_out")
+exec 2> >(tee "temp/img_build_err")
 
 # Create disk image for package install
 dd if=/dev/zero of=swayos.img bs=1M count=5500
@@ -18,11 +18,11 @@ mkfs.ext4 -F swayos.img
 # Pacstrap all needed packages
 sudo mkdir -p /mnt/swayos
 sudo mount swayos.img /mnt/swayos
-cat pacs/base pacs/swayos > tmp/pacs
-sudo pacstrap /mnt/swayos - < tmp/pacs
+cat pacs/base pacs/swayos > temp/pacs
+sudo pacstrap /mnt/swayos - < temp/pacs
 
 # Precompile, copy and install aur packages to image
-cd tmp
+cd temp
 cat ../pacs/aur | while read package
 do
     # Clone aur repo
