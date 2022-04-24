@@ -65,7 +65,7 @@ do
     log "Installing $line"
     git clone https://aur.archlinux.org/$line.git
     cd $line
-    makepkg -s --skippgpcheck
+    makepkg -s --skippgpcheck --noconfirm
     check "$?" "makepkg"
     sudo pacman -U --noconfirm *.pkg.tar.zst
     check "$?" "pacman -U"
