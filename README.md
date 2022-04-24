@@ -176,6 +176,7 @@ nvidia for nvidia/nvidia-intel hybrid gpus
 ati for ati/ati-intel hybrud gpus  
 noisetorch for noise cancellation during meetings  
 qemu and virt-manager for virtualization  
+swaync for notification center
 
 - **What do you propose for gaming**  
 Steam, enable proton in settings and you can play 95% of all windows games
