@@ -31,7 +31,7 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 
 ## Shortcuts ##
 
-**WIN + numbers** : switch to workspace with given number / open overview ( long press )  
+**WIN + numbers** : switch to workspace / open overview ( long press )  
 **WIN + SPACE** : open application launcher  
 **WIN + SHIFT + Q** : close focused window  
 **WIN + SHIFT + numbers** : move focused window to workspace with given number  

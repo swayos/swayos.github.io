@@ -104,7 +104,7 @@ client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
 client.placeholder      #000000 #0c0c0c #ffffff #000000 
 client.background       #2B2C2B
 
-output * bg ~/.config/sway/sunset.jpg stretch
+output * bg ~/.config/sway/sunset_help.jpg stretch
 
 default_border none
 default_floating_border normal
