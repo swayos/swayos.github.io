@@ -50,7 +50,7 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 
 **For beginners/Speed install**
 
-Download the latest installer ISO from my [homepage](https://milgra.com/downloads/swayos-2022.04.22-x86_64.iso) ( cannot store here on github because of file size limits ), burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
+Download the latest installer ISO from my [homepage](https://milgra.com/downloads/swayos-2022.04.24-x86_64.iso) ( cannot store here on github because of file size limits ), burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
 
 Note : it is a minimal-configuration speed installer, there are no partitioning options, it will use the full hard drive for installation.
 
@@ -151,7 +151,7 @@ input " your wanted device id " {
 }
 ```
 
-- *8How to set default terminal and browser**  
+- **How to set default terminal and browser**  
 Edit sway confing at ~/.config/sway/conifg, modify $terminal and $browser constant values
 
 - **Why google chrome instead of chromium?**
@@ -161,7 +161,7 @@ SwayOS's intention is to create a user-friendly tiling window manager experience
 with brightness keys  
 by moving mouse over lcd pecentage in status bar and scroll
 
-- **What applications do you propose for multimedia work?**
+- **What applications do you propose for multimedia work?**  
 Photoshop -> GIMP  
 Illustrator -> Inkscape  
 After Effects -> Natron  
@@ -169,7 +169,7 @@ Premiere Pro - Davinci Resolve
 Adobe XD -> Figma  
 Cinema 4D/3DS Max -> Blender  
 
-- **What applications do you propose to make SwayOS experience better?**
+- **What applications do you propose to make SwayOS experience better?**  
 hardinfo for hardware information  
 tlp for energy saving features  
 nvidia for nvidia/nvidia-intel hybrid gpus  
@@ -180,11 +180,11 @@ qemu and virt-manager for virtualization
 - **What do you propose for gaming**  
 Steam, enable proton in settings and you can play 95% of all windows games
 
-- **Where can I see all my installed applciations?*8  
+- **Where can I see all my installed applciations?**  
 Launch app store, under Installed you see all programs your system have and among them there are your desktop apps.
 
 - **How to make a specific program open in a floating window always?**  
 Enable the program to be a floating in sway config.
 
-- *8Chrome says its out of date**  
+- **Chrome says its out of date**  
 Open the app store, open preferences, go to third-party, Enable AUR support and enable check for updates
