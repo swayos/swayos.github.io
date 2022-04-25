@@ -1,6 +1,6 @@
 # SwayOS
 
-SwayOS is a productivity-oriented minimalist and super elegant desktop layer over unix-like operating systems that also can be installed as a standalone OS. It is suitable for office, internet, system administration and programming work out of the box.
+SwayOS is a productivity-oriented minimalist and super elegant desktop layer over unix-like operating systems that can be installed as a standalone OS also. It is suitable for office, internet, system administration and programming work out of the box.
 
 ![screenshot](pics/swayos.png)
 ![screenshot](pics/swayos-busy.png)
