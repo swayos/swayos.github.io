@@ -48,28 +48,34 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 
 ## Installation ##
 
-**For beginners/Speed install**
+**For beginners/For people with no time**
 
-Download the latest installer ISO from my [homepage](https://milgra.com/downloads/swayos-2022.04.24-x86_64.iso) ( cannot store here on github because of file size limits ), burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
+Download the latest [ISO](https://milgra.com/downloads/swayos-latest.iso) ( cannot store here on github because of file size limits ), burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
 
-Note : it is a minimal-configuration speed installer, there are no partitioning options, it will use the full hard drive for installation.
+_Note : it is a minimal-configuration quick installer, there are no partitioning options, it will use the full hard drive for installation._
 
-**For more install options**
+**For advanced users/For people with more time**
 
-Download the latest [Arch Linux installer ISO](https://archlinux.org/download/). After startup, type "archinstall" that guides you through the install process. After finish, log in with your user and install SwayOS with
+Install your own desired OS or create a new user on your current OS, log in and type
+
 ```
 curl -O https://swayos.github.io/setup
 sh setup
 ```
 
-**For superhackers/For other OSes/distributions**
+_Note : currently supported OS-es : Arch Linux. Feel free to add support for your OS based on setup-arch.sh and creating a merge request, _
 
-Install all packages present in pacs/swayos and pacs/aur file. ( Package names on your OS/Distribution may differ and you may have to compile them manually. ) Copy everything under "home" to your home folder. Start services if needed. ( iwd, bluetooth, cups )
+Download the latest [Arch Linux installer ISO](https://archlinux.org/download/). After startup, type "archinstall" that guides you through the install process. After finish, log in with your user and install SwayOS with
+
+**For superhackers/For people with plenty of time**
+
+Install all packages present in pacs/swayos and pacs/aur files. ( Package names on your OS/Distribution may differ and you may have to compile them manually. ) Copy everything under "home" to your home folder, copy all fonts under "fonts" to your fonts folder. Start services if needed. ( iwd, bluetooth, cups )
 
 **Optional Post-installation todos**
 
 - set google chrome's appereance to GTK+ so it will use the dark theme
 - set locale to your language ( will be added to installer later )
+- set your keyboard language in sway config ( will be added to installer later )
 - remove export WLR_NO_HARDWARE_CURSORS=1 from .zshrc ( will be added to installer later )
 - don't forget to check for updates regularly!
 
@@ -126,8 +132,8 @@ The status bar has the following sections from left to right : workspace numbers
 
 - **foot** : super fast terminal, config file is /home/youruser/.config/foot/config
 - **feh** : image viewer, opened when you double click on an image in file manager
-- **nautilus** : file manager
-- **google chrome** : browser
+- **Nautilus** : file manager
+- **Google Chrome** : browser
 - **LibreOffice** : document and spreadsheet editor
 
 
