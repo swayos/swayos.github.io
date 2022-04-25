@@ -11,6 +11,8 @@ patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra)
 bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du      
 **Discussions/Issues/Feature requests**  
 [https://github.com/swayos/swayos.github.io/discussions](https://github.com/swayos/swayos.github.io/discussions)
+**Source**  
+[https://github.com/swayos/swayos.github.io](https://github.com/swayos/swayos.github.io)
 
 ## How does it help productivity?
 

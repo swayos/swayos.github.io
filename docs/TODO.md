@@ -1,6 +1,6 @@
 wlogout bad colors
 instead of device id extraction use just a wildcard in sway config
-set keyboard and locale
+language selector in installer that decides installer and sway layout
 check swayos_install_log and stderr and stdout
 reddit, github post
 
