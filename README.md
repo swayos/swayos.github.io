@@ -65,8 +65,6 @@ sh setup
 
 _Note : currently supported OS-es : Arch Linux. Feel free to add support for your OS based on setup-arch.sh and creating a merge request_
 
-Download the latest [Arch Linux installer ISO](https://archlinux.org/download/). After startup, type "archinstall" that guides you through the install process. After finish, log in with your user and install SwayOS with
-
 **For superhackers/For people with plenty of time**
 
 Install all packages present in pacs/swayos and pacs/aur files. ( Package names on your OS/Distribution may differ and you may have to compile them manually. ) Copy everything under "home" to your home folder, copy all fonts under "fonts" to your fonts folder. Start services if needed. ( iwd, bluetooth, cups )
