@@ -63,7 +63,7 @@ curl -O https://swayos.github.io/setup
 sh setup
 ```
 
-_Note : currently supported OS-es : Arch Linux. Feel free to add support for your OS based on setup-arch.sh and creating a merge request, _
+_Note : currently supported OS-es : Arch Linux. Feel free to add support for your OS based on setup-arch.sh and creating a merge request_
 
 Download the latest [Arch Linux installer ISO](https://archlinux.org/download/). After startup, type "archinstall" that guides you through the install process. After finish, log in with your user and install SwayOS with
 
