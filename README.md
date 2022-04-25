@@ -54,7 +54,7 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 
 Download the latest [ISO](https://milgra.com/downloads/swayos-latest.iso) ( cannot store here on github because of file size limits ), burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
 
-_Note : it is a minimal-configuration quick installer, there are no partitioning options, it will use the full hard drive for installation._
+_Note : it is a minimal-configuration quick installer, options are pretty limited_
 
 **For advanced users/For people with more time**
 
