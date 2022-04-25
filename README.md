@@ -85,7 +85,7 @@ The status bar has the following sections from left to right : workspace numbers
 **Icons from right to left :**
 
  shutdown  
- activity monitor
+ activity monitor  
  app store/software updates  
  display setup  
  volume control  
