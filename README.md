@@ -111,7 +111,7 @@ By default you have these applications :
 - Nautilus as file manager
 - Foot for terminal
 
-You open the by pressing WIN key + SPACE or by clicking on the quick launch icons.
+You open apps by pressing WIN key + SPACE or by clicking on the quick launch icons.
 If you need anything else the app store by clicking on the shield icon on the right side of the status bar, search for it and click on the green download button.
 
 Recommended multimedia applications :
@@ -215,12 +215,12 @@ Open the app store, open preferences, go to third-party, Enable AUR support and 
 
 ## Changelog ##
 
-(Go to changelog)[docs/CHANGELOG.md]
+[Go to changelog](docs/CHANGELOG.md)
 
 ## Contributing ##
 
-(Go to contribution)[docs/CONTRIB.md]
+[Go to contribution](docs/CONTRIB.md)
 
 ## Todo ##
 
-(Go to todo)[docs/TODO.md]
+[Go to todo](docs/TODO.md)
