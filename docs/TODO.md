@@ -3,6 +3,7 @@ instead of device id extraction use just a wildcard in sway config
 language selector in installer that decides installer and sway layout
 check swayos_install_log and stderr and stdout
 reddit, github post
+display brightness slider
 
 visual input source selector
 visual display brightness slider

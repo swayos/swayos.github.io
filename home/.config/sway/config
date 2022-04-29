@@ -124,7 +124,7 @@ for_window [app_id="wdisplays"] floating enable
 for_window [app_id="wdisplays"] resize set 1000 600
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="pavucontrol"] resize set 1000 600
-for_window [class="feh"] floating enable
+for_window [app_id="imv"] floating enable
 for_window [app_id="pamac-manager"] floating enable
 
 # auto launch applications

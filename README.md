@@ -52,7 +52,7 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 
 **For beginners/For people with no time**
 
-Download the latest [ISO](https://milgra.com/downloads/swayos-latest.iso) ( cannot store here on github because of file size limits ), burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
+Download the latest ISO : [swayos-2022.04.29-x86_64.iso](https://milgra.com/downloads/swayos-2022.04.25-x86_64.iso) ( cannot store here on github because of file size limits ), burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
 
 _Note : it is a minimal-configuration quick installer, options are pretty limited_
 
@@ -73,6 +73,7 @@ Install all packages present in pacs/swayos and pacs/aur files. ( Package names 
 
 **Optional Post-installation todos**
 
+- setup pipewire support in chrome, go to url chrome://flags/#enable-webrtc-pipewire-capturer
 - set google chrome's appereance to GTK+ so it will use the dark theme
 - set locale to your language ( will be added to installer later )
 - set your keyboard language in sway config ( will be added to installer later )
@@ -99,7 +100,50 @@ The status bar has the following sections from left to right : workspace numbers
  google chrome  
  file manager  
  terminal  
- application launcher  
+ application launcher
+
+## Usage of SwayOS ##
+
+By default you have these applications :
+
+- Google Chrome for internet
+- LibreOffice for office work
+- Nautilus as file manager
+- Foot for terminal
+
+You open the by pressing WIN key + SPACE or by clicking on the quick launch icons.
+If you need anything else the app store by clicking on the shield icon on the right side of the status bar, search for it and click on the green download button.
+
+Recommended multimedia applications :
+
+GIMP for image editing ( Photoshop replacement )  
+Inkscape for vector graphics ( Illustrator replacement )  
+Natron for video post processing ( After Effects replacement )  
+Davinci Resolve for video editing ( Premiere Pro replacement )
+Shotcut for simpler video editing 
+Blender for 3D modelling and rendering ( 3DSMax/Cinema 4D replacement )
+Steam for gaming. Enable proton in its settings and you can play 95% of all windows games
+
+Recommended system tools :
+
+hardinfo for hardware information  
+tlp for energy saving features  
+nvidia for nvidia/nvidia-intel hybrid gpus  
+ati for ati/ati-intel hybrud gpus  
+noisetorch for noise cancellation during meetings  
+qemu and virt-manager for virtualization  
+swaync for notification center
+imv for fast image viewing
+
+You should create a Documents and a Downloads folder under your home directory and save work and downloaded files there.
+The file manager opens in floating mode so you can drag and drop files on your applications if needed if you open the file managaer in the same workspace.
+
+If you don't have multimedia keys the you can change volume and display brightness by going over the lcd and vol entries in the center of the status bar and do a scroll over them.
+
+## Troubleshooting ##
+
+If you have questions/problems regarding the design & workflow & component selection of SwayOS, ask it [here](https://github.com/swayos/swayos.github.io/discussions)
+If you have any other problems then it's probably related to your OS's discussion forums. If you are using the installer ISO, it's [Arch Linux Forums](https://bbs.archlinux.org/), if you are using somethinh else then go to the proper discussion forums.
 
 ## Components and how to configure them
 
@@ -128,22 +172,22 @@ The status bar has the following sections from left to right : workspace numbers
 - **qt5-style-plugings** : to make qt apps look like gtk2 apps
 - **system-config-printer** : printer manager
 
-## Default applications
-
-- **foot** : super fast terminal, config file is /home/youruser/.config/foot/config
-- **feh** : image viewer, opened when you double click on an image in file manager
-- **Nautilus** : file manager
-- **Google Chrome** : browser
-- **LibreOffice** : document and spreadsheet editor
-
-
 ## Frequently Asked Questions
 
-- **How to add new icons/applications to the quick launch menu?**  
-Edit waybar config at /home/youruser/.config/waybar/config , add new custom blocks for your desired applications, get symbols from (fontawesome)[https://fontawesome.com/search?s=solid%2Cbrands].
+- **How to change display brightness**  
+with brightness keys  
+by moving mouse over lcd pecentage in status bar and scroll
+
+- **How to change volume**
+with volume keys
+by moving mouse over volume percentage in status bar and scroll
+by clicking on the audio icon in the status bar
 
 - **How to mount external usb devices?**  
 Just click on the file manager icon in the status bar, it will auto-mount connected usb drives.
+
+- **How to add new icons/applications to the quick launch menu?**  
+Edit waybar config at /home/youruser/.config/waybar/config , add new custom blocks for your desired applications, get symbols from (fontawesome)[https://fontawesome.com/search?s=solid%2Cbrands].
 
 - **How to add multiple keyboard input sources?**  
 Edit sway config, add
@@ -157,35 +201,8 @@ input " your wanted device id " {
 }
 ```
 
-- **How to set default terminal and browser**  
-Edit sway confing at ~/.config/sway/conifg, modify $terminal and $browser constant values
-
 - **Why google chrome instead of chromium?**
 SwayOS's intention is to create a user-friendly tiling window manager experience for less experienced users/switchers, and for that Libreoffice and Google sync enabled chrome is mandatory, spotify and netflix are also a reason.
-
-- **How to change display brightness**  
-with brightness keys  
-by moving mouse over lcd pecentage in status bar and scroll
-
-- **What applications do you propose for multimedia work?**  
-Photoshop -> GIMP  
-Illustrator -> Inkscape  
-After Effects -> Natron  
-Premiere Pro - Davinci Resolve  
-Adobe XD -> Figma  
-Cinema 4D/3DS Max -> Blender  
-
-- **What applications do you propose to make SwayOS experience better?**  
-hardinfo for hardware information  
-tlp for energy saving features  
-nvidia for nvidia/nvidia-intel hybrid gpus  
-ati for ati/ati-intel hybrud gpus  
-noisetorch for noise cancellation during meetings  
-qemu and virt-manager for virtualization  
-swaync for notification center
-
-- **What do you propose for gaming**  
-Steam, enable proton in settings and you can play 95% of all windows games
 
 - **Where can I see all my installed applciations?**  
 Launch app store, under Installed you see all programs your system have and among them there are your desktop apps.
@@ -195,3 +212,15 @@ Enable the program to be a floating in sway config.
 
 - **Chrome says its out of date**  
 Open the app store, open preferences, go to third-party, Enable AUR support and enable check for updates
+
+## Changelog ##
+
+(Go to changelog)[docs/CHANGELOG.md]
+
+## Contributing ##
+
+(Go to contribution)[docs/CONTRIB.md]
+
+## Todo ##
+
+(Go to todo)[docs/TODO.md]

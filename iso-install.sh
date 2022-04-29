@@ -198,6 +198,11 @@ arch-chroot /mnt hwclock --systohc
 
 echo "${username}-pc" > /mnt/etc/hostname
 
+# setup hosts file
+
+cp /etc/hosts /mnt/etc/
+echo "127.0.1.1 ${username}-pc" >> /mnt/etc/hosts
+
 # copy home directory stuff under target/home/$user/
 
 log "Copying configuration files"
