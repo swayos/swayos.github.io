@@ -1,10 +1,10 @@
 building a SwayOS image
 
-sh img-build.sh
-sh iso-build.sh
+sh img-build.sh  
+sh iso-build.sh  
 
-how does it work?
+how does it work?  
 
-testing on as many machines as possible
+testing on as many machines as possible  
 
-CTRL+C during install script
+CTRL+C during install script  
