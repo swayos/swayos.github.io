@@ -120,7 +120,7 @@ GIMP for image editing ( Photoshop replacement )
 Inkscape for vector graphics ( Illustrator replacement )  
 Natron for video post processing ( After Effects replacement )  
 Davinci Resolve for video editing ( Premiere Pro replacement )  
-Shotcut for simpler video editing 
+Shotcut for simpler video editing  
 Blender for 3D modelling and rendering ( 3DSMax/Cinema 4D replacement )  
 Steam for gaming. Enable proton in its settings and you can play 95% of all windows games  
 
