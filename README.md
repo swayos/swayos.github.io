@@ -112,17 +112,17 @@ By default you have these applications :
 - Foot for terminal
 
 You open apps by pressing WIN key + SPACE or by clicking on the quick launch icons.
-If you need anything else the app store by clicking on the shield icon on the right side of the status bar, search for it and click on the green download button.
+If you need anything else open the app store by clicking on the shield icon on the right side of the status bar, search for it and click on the green download button.
 
 Recommended multimedia applications :
 
 GIMP for image editing ( Photoshop replacement )  
 Inkscape for vector graphics ( Illustrator replacement )  
 Natron for video post processing ( After Effects replacement )  
-Davinci Resolve for video editing ( Premiere Pro replacement )
+Davinci Resolve for video editing ( Premiere Pro replacement )  
 Shotcut for simpler video editing 
-Blender for 3D modelling and rendering ( 3DSMax/Cinema 4D replacement )
-Steam for gaming. Enable proton in its settings and you can play 95% of all windows games
+Blender for 3D modelling and rendering ( 3DSMax/Cinema 4D replacement )  
+Steam for gaming. Enable proton in its settings and you can play 95% of all windows games  
 
 Recommended system tools :
 
@@ -132,8 +132,8 @@ nvidia for nvidia/nvidia-intel hybrid gpus
 ati for ati/ati-intel hybrud gpus  
 noisetorch for noise cancellation during meetings  
 qemu and virt-manager for virtualization  
-swaync for notification center
-imv for fast image viewing
+swaync for notification center  
+imv for fast image viewing  
 
 You should create a Documents and a Downloads folder under your home directory and save work and downloaded files there.
 The file manager opens in floating mode so you can drag and drop files on your applications if needed if you open the file managaer in the same workspace.
