@@ -178,7 +178,7 @@ If you have any other problems then it's probably related to your OS's discussio
 with brightness keys  
 by moving mouse over lcd pecentage in status bar and scroll
 
-- **How to change volume**
+- **How to change volume**  
 with volume keys
 by moving mouse over volume percentage in status bar and scroll
 by clicking on the audio icon in the status bar
