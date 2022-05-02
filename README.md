@@ -179,9 +179,9 @@ with brightness keys
 by moving mouse over lcd pecentage in status bar and scroll
 
 - **How to change volume**  
-with volume keys
-by moving mouse over volume percentage in status bar and scroll
-by clicking on the audio icon in the status bar
+with volume keys  
+by moving mouse over volume percentage in status bar and scroll  
+by clicking on the audio icon in the status bar  
 
 - **How to mount external usb devices?**  
 Just click on the file manager icon in the status bar, it will auto-mount connected usb drives.
