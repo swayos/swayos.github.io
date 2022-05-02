@@ -201,7 +201,7 @@ input " your wanted device id " {
 }
 ```
 
-- **Why google chrome instead of chromium?**
+- **Why google chrome instead of chromium?**  
 SwayOS's intention is to create a user-friendly tiling window manager experience for less experienced users/switchers, and for that Libreoffice and Google sync enabled chrome is mandatory, spotify and netflix are also a reason.
 
 - **Where can I see all my installed applciations?**  
