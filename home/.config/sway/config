@@ -1,5 +1,18 @@
 # devices
 
+input * {
+      dwt enabled
+      tap enabled
+      natural_scroll enabled
+      middle_emulation enabled
+      repeat_rate 100
+      repeat_delay 250
+      # uncomment below to add other input sources
+      # xkb_layout "us,hu"
+      # xkb_variant ",101_qwerty_dot_nodead"
+      # xkb_options "grp:alt_space_toggle"
+}
+
 # constants
 
 set $menu wofi --show run | xargs swaymsg exec --
@@ -54,6 +67,17 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
+
+bindsym $mod+Ctrl+1 [workspace="1"] move workspace to output current
+bindsym $mod+Ctrl+2 [workspace="2"] move workspace to output current
+bindsym $mod+Ctrl+3 [workspace="3"] move workspace to output current
+bindsym $mod+Ctrl+4 [workspace="4"] move workspace to output current 
+bindsym $mod+Ctrl+5 [workspace="5"] move workspace to output current
+bindsym $mod+Ctrl+6 [workspace="6"] move workspace to output current
+bindsym $mod+Ctrl+7 [workspace="7"] move workspace to output current
+bindsym $mod+Ctrl+8 [workspace="8"] move workspace to output current
+bindsym $mod+Ctrl+9 [workspace="9"] move workspace to output current
+bindsym $mod+Ctrl+0 [workspace="10"] move workspace to output current
 
 bindsym $mod+b splith
 bindsym $mod+v splitv
@@ -143,6 +167,3 @@ exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov
 # xorg setup
 
 include /etc/sway/config.d/*
-
-# on first start execute device setup
-exec sh ~/.config/sway/setup

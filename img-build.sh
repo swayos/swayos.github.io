@@ -12,6 +12,9 @@ exec 1> >(tee "temp/img_build_out")
 exec 2> >(tee "temp/img_build_err")
 
 # Create disk image for package install
+rm swayos.img
+rm swayos.img.gz
+
 dd if=/dev/zero of=swayos.img bs=1M count=5500
 mkfs.ext4 -F swayos.img
 

@@ -252,6 +252,7 @@ log "Cleaning up"
 cp swayos_setup_log /mnt/home/$username
 cp swayos_setup_out /mnt/home/$username
 cp swayos_setup_err /mnt/home/$username
+cp swayos_setup_ver /mnt/home/$username
 
 # notify and reboot
 

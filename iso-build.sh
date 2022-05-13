@@ -22,5 +22,8 @@ mv swayos.img.gz isoc/airootfs/root/
 # copy installer script
 cp iso-install.sh isoc/airootfs/root/
 
+# create version info
+echo "iso-build timestamp: $(date)" > isoc/airootfs/root/swayos_setup_ver
+
 # create iso
 sudo mkarchiso -v -w temp/isowork -o temp isoc

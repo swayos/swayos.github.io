@@ -41,6 +41,7 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 ## Additional shortcuts that make work easier
 
 **WIN + arrows** : set focus to neighbouring windows  
+**WIN + SHIFT + arrows** : move window to a new position inside the workspace  
 **WIN + R** : resize mode, if there are more windows in a workspace you can press WIN + R, resize window with arrows, then press ESC  
 **WIN + ENTER** : open a terminal  
 **WIN + SHIFT + ENTER** : open browser  
@@ -54,7 +55,7 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 
 Download the latest ISO :
 
-[download from my homepage](https://milgra.com/downloads/swayos-2022.04.29-x86_64.iso)  
+[download from my homepage](https://milgra.com/downloads/swayos-2022.05.12-x86_64.iso)  
 [download from my google drive](https://drive.google.com/drive/folders/1QN9WZD2Ij2WE7QJ7IpHQDpHaP7rSk4Fs?usp=sharing)  
 
 Burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
@@ -83,6 +84,7 @@ Install all packages present in pacs/swayos and pacs/aur files. ( Package names 
 - set locale to your language ( will be added to installer later )
 - set your keyboard language in sway config ( will be added to installer later )
 - remove export WLR_NO_HARDWARE_CURSORS=1 from .zshrc ( will be added to installer later )
+- remove swayos_setup_* log files from your home directory
 - don't forget to check for updates regularly!
 
 ## UI Structure of SwayOS
