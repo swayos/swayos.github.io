@@ -35,7 +35,7 @@ cd swayos.github.io
 
 
 log "Installing needed official packages"
-cat pacs/swayos pacs/aurdeps > pacs/online
+cat pacs/arch/swayos > pacs/online
 sudo pacman -S --noconfirm --needed - < pacs/online
 check "$?" "pacman"
 
@@ -60,7 +60,7 @@ check "$?" "systemctl enable"
 
 
 log "Installing aur packages"
-cat pacs/aur | while read line 
+cat pacs/arch/aur | while read line 
 do
     log "Installing $line"
     git clone https://aur.archlinux.org/$line.git
