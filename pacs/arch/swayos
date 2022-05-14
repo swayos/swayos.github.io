@@ -1,6 +1,3 @@
-efibootmgr
-mtools
-grub
 sudo
 zsh
 zsh-autosuggestions
@@ -30,8 +27,6 @@ libreoffice-fresh
 gnome-system-monitor
 system-config-printer
 cups
-ttf-ubuntu-font-family
-terminus-font
 polkit-gnome
 wl-clipboard
 pavucontrol

@@ -1,3 +1,6 @@
 base
 linux
 linux-firmware
+efibootmgr
+mtools
+grub

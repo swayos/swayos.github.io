@@ -21,12 +21,12 @@ mkfs.ext4 -F swayos.img
 # Pacstrap all needed packages
 sudo mkdir -p /mnt/swayos
 sudo mount swayos.img /mnt/swayos
-cat pacs/base pacs/swayos > temp/pacs
+cat pacs/arch/img pacs/arch/swayos > temp/pacs
 sudo pacstrap /mnt/swayos - < temp/pacs
 
 # Precompile, copy and install aur packages to image
 cd temp
-cat ../pacs/aur | while read package
+cat ../pacs/arch/aur | while read package
 do
     # Clone aur repo
     git clone https://aur.archlinux.org/$package.git
