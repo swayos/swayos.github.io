@@ -27,7 +27,7 @@ gnome-system-monitor
 system-config-printer
 cups
 xfonts-terminus
-policykit-1-gnome
+lxsession
 wl-clipboard
 pavucontrol
 emacs-nox

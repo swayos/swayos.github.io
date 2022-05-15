@@ -56,8 +56,6 @@ sudo systemctl enable iwd --now
 check "$?" "systemctl enable"
 sudo systemctl enable bluetooth --now
 check "$?" "systemctl enable"
-sudo systemctl enable cups --now
-check "$?" "systemctl enable"
 
 
 log "Installing google chrome"
@@ -78,6 +76,17 @@ cd iwgtk
 make
 sudo make install
 cd ..
+
+log "Linking software store"
+sudo ln /usr/bin/gnome-software /usr/bin/pamac-manager
+
+log "Linking zsh-autosuggestions"
+sudo mkdir -p /usr/share/zsh/plugins/zsh-autosuggestions
+sudo ln /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+log "Linking polkit"
+sudo mkdir -p /usr/lib/polkit-gnome
+ln /usr/bin/lxpolkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 log "Cleaning up"
 cd ..
