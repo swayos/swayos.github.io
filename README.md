@@ -67,8 +67,8 @@ _Note : it is a minimal-configuration quick installer, options are pretty limite
 Install your own desired OS or create a new user on your current OS, log in and type
 
 ```
-curl -O https://swayos.github.io/setup
-sh setup
+wget https://swayos.github.io/setup
+bash setup
 ```
 
 _Note : currently supported OS-es : Arch Linux. Feel free to add support for your OS based on setup-arch.sh and creating a merge request_
