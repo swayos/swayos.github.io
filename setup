@@ -3,13 +3,13 @@
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   DISTRIB=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
   if [[ ${DISTRIB} = *"Arch"* ]]; then
-     curl -O https://swayos.github.io/setup-arch.sh
-     sh setup-arch.sh
+     wget https://swayos.github.io/setup-arch.sh
+     bash setup-arch.sh
   elif [[ ${DISTRIB} = *"Ubuntu"* ]]; then
      echo "Ubuntu is not supported yet, feel free to add an Ubuntu installer to SwayOS based on setup-arch.sh"
   elif [[ ${DISTRIB} = *"Debian"* ]]; then
-     curl -O https://swayos.github.io/setup-debian.sh
-     sh setup-debian.sh
+     wget https://swayos.github.io/setup-debian.sh
+     bash setup-debian.sh
   else
      echo "$DISTRIB is not supported yet, feel free to add a $DISTRIB installer to SwayOS based on setup-arch.sh"
   fi

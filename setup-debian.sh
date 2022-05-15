@@ -21,9 +21,9 @@ check(){
 }
 
 log "Refreshing package db"
-sudo apt-get update
+sudo apt-get update -y
 check "$?" "apt-get update"
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 check "$?" "apt-get upgrade"
 
 
@@ -37,7 +37,7 @@ cd swayos.github.io
 
 
 log "Installing needed official packages"
-xargs sudo apt-get install < pacs/debian/swayos
+xargs sudo apt-get install -y < pacs/debian/swayos
 check "$?" "apt-get install pacs/debian/swayos"
 
 
@@ -62,7 +62,7 @@ check "$?" "systemctl enable"
 
 log "Installing google chrome"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb
+sudo apt install -y ./google-chrome-stable_current_amd64.deb
 
 log "Installing sov"
 git clone https://github.com/milgra/sov
