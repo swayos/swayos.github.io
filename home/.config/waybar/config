@@ -49,65 +49,65 @@
     "all-outputs": true
     },
     "custom/overview": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='x-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec 'echo 1 > /tmp/sway-overview'",
     },
     "custom/activity": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='x-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec gnome-system-monitor",
     },
     "custom/help": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='x-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec feh ~/.config/sway/help.png",
     },
     "custom/software": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='x-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec pamac-manager",
     },
     "custom/wlogout": {
     	"tooltip": true,
         "tooltip-format": "shutdown/logout",
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='x-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
         "on-click": "wlogout -p layer-shell",
     },
     "custom/bluetooth": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='medium'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='medium'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec blueman-manager",
     },
     "custom/filemanager": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec 'nautilus --new-window'",
     },
     "custom/libre": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec libreoffice",
     },
     "custom/terminal": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec foot",
     },
     "custom/browser": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='x-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec 'google-chrome-stable --ozone-platform-hint=auto'",
     },
     "custom/displays": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec wdisplays",
     },
     "custom/apps": {
         "tooltip-format": "desktop",
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid Free' size='x-small'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec 'wofi --show run'",
     },
@@ -117,7 +117,7 @@
         "on-click": "swaymsg exec pamac-manager",
     },
     "custom/printer": {
-"format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span> ",
+"format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec system-config-printer",
     },
@@ -142,7 +142,7 @@
         "spacing": 20
     },
    "custom/clock-icon": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='x-large'></span>",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span>",
         "interval": "once",
     },
     "clock": {
@@ -152,7 +152,7 @@
 	"format": " {:%H:%M} "
     },
    "custom/cpu-icon": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='x-large'></span>",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span>",
         "interval": "once",
     },
     "cpu": {
@@ -160,7 +160,7 @@
         "tooltip": false
     },
    "custom/mem-icon": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='x-large'></span>",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span>",
         "interval": "once",
     },
     "memory": {
@@ -168,7 +168,7 @@
 	"format": " mem:{avail:0.1f}G "
     },
    "custom/disc-icon": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span>",
+        "format": "<span font_family='Font Awesome 6' size='xx-large'></span>",
         "interval": "once",
     },
     "disk":{
@@ -176,7 +176,7 @@
 	"format":" ssd:{free} "
     },
    "custom/light-icon": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='medium'></span>",
+        "format": "<span font_family='Font Awesome 6' size='medium'></span>",
         "interval": "once",
     },
     "backlight": {
@@ -186,7 +186,7 @@
 	"on-scroll-down" : "brightnessctl s 5%-"    
     },
    "custom/batt-icon": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span>",
+        "format": "<span font_family='Font Awesome 6' size='xx-large'></span>",
         "interval": "once",
     },
     "battery": {
@@ -205,7 +205,7 @@
         "bat": "BAT2"
     },
    "custom/net-icon": {
-        "format": "  <span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span> ",
+        "format": "  <span font_family='Font Awesome 6' size='xx-large'></span> ",
         "interval": "once",
         "on-click": "iwgtk"
     },
@@ -217,17 +217,17 @@
         "on-click": "iwgtk"
     },
    "custom/vol-icon": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
         "interval": "once",
         "on-click": "pavucontrol"
     },
    "custom/energy-icon": {
-        "format": " <span font_family='Font Awesome 6 Free:style=Solid' size='small'></span> ",
+        "format": " <span font_family='Font Awesome 6' size='small'></span> ",
         "interval": "once",
         "on-click": "tlpui"
     },
    "custom/hardware-icon": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
         "interval": "once",
         "on-click": "GDK_BACKEND=x11 hardinfo"
     },
@@ -250,7 +250,7 @@
         "on-click": "pavucontrol"
     },
    "custom/lang-icon": {
-        "format": "<span font_family='Font Awesome 6 Free:style=Solid' size='xx-large'></span> |",
+        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> |",
         "interval": "once",
     },
     "custom/lang": {
