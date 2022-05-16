@@ -67,11 +67,16 @@ _Note : it is a minimal-configuration quick installer, options are pretty limite
 Install your own desired OS or create a new user on your current OS, log in and type
 
 ```
+Arch :
+curl -O https://swayos.github.io/setup
+bash setup
+
+Debian :
 wget https://swayos.github.io/setup
 bash setup
 ```
 
-_Note : currently supported OS-es : Arch Linux. Feel free to add support for your OS based on setup-arch.sh and creating a merge request_
+Feel free to add support for your OS based on setup-arch.sh and creating a merge request_
 
 **For superhackers/For people with plenty of time**
 
@@ -86,6 +91,15 @@ Install all packages present in pacs/swayos and pacs/aur files. ( Package names 
 - remove export WLR_NO_HARDWARE_CURSORS=1 from .zshrc ( will be added to installer later )
 - remove swayos_setup_* log files from your home directory
 - don't forget to check for updates regularly!
+
+## Currently supported OS's and notes##
+
+Linux
+
+- Arch
+- Debian
+>> pamac is not available so gnome-software is used
+>> have to fix the magnifier icon in font-awesome
 
 ## UI Structure of SwayOS
 
