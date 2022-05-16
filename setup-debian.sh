@@ -86,7 +86,7 @@ sudo ln /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh /usr/share/zsh/pl
 
 log "Linking polkit"
 sudo mkdir -p /usr/lib/polkit-gnome
-ln /usr/bin/lxpolkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+sudo ln /usr/bin/lxpolkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 log "Cleaning up"
 cd ..
