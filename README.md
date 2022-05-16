@@ -96,8 +96,8 @@ Install all packages present in pacs/swayos and pacs/aur files. ( Package names 
 
 Linux
 
-- Arch
-- Debian  
+- Arch ( Actual )
+- Debian 12 ( Bookworm )  
   - pamac is not available so gnome-software is used  
   - have to fix the magnifier icon in font-awesome  
 
