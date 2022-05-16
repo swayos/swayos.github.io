@@ -76,7 +76,7 @@ wget https://swayos.github.io/setup
 bash setup
 ```
 
-Feel free to add support for your OS based on setup-arch.sh and creating a merge request_
+Feel free to add support for your OS based on setup-arch.sh and creating a merge request
 
 **For superhackers/For people with plenty of time**
 
@@ -92,14 +92,14 @@ Install all packages present in pacs/swayos and pacs/aur files. ( Package names 
 - remove swayos_setup_* log files from your home directory
 - don't forget to check for updates regularly!
 
-## Currently supported OS's and notes##
+## Currently supported OS's and notes
 
 Linux
 
 - Arch
 - Debian
->> pamac is not available so gnome-software is used
->> have to fix the magnifier icon in font-awesome
+-- pamac is not available so gnome-software is used
+-- have to fix the magnifier icon in font-awesome
 
 ## UI Structure of SwayOS
 
