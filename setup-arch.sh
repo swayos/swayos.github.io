@@ -52,11 +52,8 @@ check "$?" "cp"
 
 log "Starting services"
 sudo systemctl enable iwd --now
-check "$?" "systemctl enable"
 sudo systemctl enable bluetooth --now
-check "$?" "systemctl enable"
 sudo systemctl enable cups --now
-check "$?" "systemctl enable"
 
 
 log "Installing aur packages"
