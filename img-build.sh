@@ -19,6 +19,7 @@ dd if=/dev/zero of=swayos.img bs=1M count=5500
 mkfs.ext4 -F swayos.img
 
 # Pacstrap all needed packages
+sudo pacman -S arch-install-scripts
 sudo mkdir -p /mnt/swayos
 sudo mount swayos.img /mnt/swayos
 cat pacs/arch/img pacs/arch/swayos > temp/pacs
