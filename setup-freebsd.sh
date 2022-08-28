@@ -1,7 +1,11 @@
 #!/bin/bash
 #
 # This script installs SwayOS on a pre-installed FreeBSD
-# A user with sudo permissions and a live network connection and a video driver is needed
+# Needed stuff:
+# - sudo permissions for the current user
+# - active internet connection
+# - video driver
+# - wget and bash
 # On my machine it looks like this :
 
 # sysrc wlans_iwm0="wlan0"
