@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # This script installs SwayOS on a pre-installed FreeBSD
-# A user with sudo permissions and a live network connection is needed
+# A user with sudo permissions and a live network connection and a video driver is needed
 # On my machine it looks like this :
 
 # sysrc wlans_iwm0="wlan0"
@@ -14,10 +14,14 @@
 # }
 
 # pkg install sudo
-# add user to wheel group
+# pw usermod milgra -G wheel
 # visdudo
 
 # pkg install wget bash
+
+# pkg install drm-kmod
+# sysrc kld_list="i915_kms"
+# pw usermod milgra -G video
 
 # Set up logging
 exec 1> >(tee "swayos_setup_out")
@@ -89,7 +93,7 @@ rm -f -R swayos.github.io
 check "$?" "rm"
 
 log "Changing shell to zsh"
-chsh -s /bin/zsh
+chsh -s /usr/local/bin/zsh
 check "$?" "chsh"
 
 

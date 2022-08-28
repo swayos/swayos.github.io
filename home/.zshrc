@@ -3,7 +3,12 @@ export HISTFILE=~/.zhistory
 export HISTSIZE=10000
 export SAVEHIST=10000
 # enable autosuggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+    # for FreeBSD currently
+    source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 # make midnight commander colorful
 export TERM=xterm-256color
 # by default backspace deletes whole word
@@ -19,7 +24,11 @@ function preexec {
     print -Pn "\e]0;${(q)1}\e\\"
 }
 # startup sway on login on terminal 1
-if [ "$(tty)" = "/dev/tty1" ] ; then
+if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
+    if [ -z "$XDG_RUNTIME_DIR" ]; then
+	# for FreeBSD currently
+	export XDG_RUNTIME_DIR=/tmp
+    fi
     export QT_QPA_PLATFORMTHEME=gtk2
     export QT_QPA_PLATFORM=wayland
     export XDG_SESSION_TYPE=wayland
