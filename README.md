@@ -88,6 +88,7 @@ Install all packages present in pacs/swayos and pacs/aur files. ( Package names 
 
 **Optional Post-installation todos**
 
+- set font sizes according to your display size and resolution in foot and sway and waybar config files
 - setup pipewire support in chrome, go to url chrome://flags/#enable-webrtc-pipewire-capturer
 - set google chrome's appereance to GTK+ so it will use the dark theme
 - set locale to your language ( will be added to installer later )
