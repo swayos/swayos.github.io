@@ -46,6 +46,7 @@ done
 cd ..
 
 # Copy fonts
+sudo mkdir -p /mnt/swayos/usr/share/fonts/TTF
 sudo cp -r font/*.* /mnt/swayos/usr/share/fonts/TTF/
 
 # Chown font files

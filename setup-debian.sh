@@ -1,6 +1,7 @@
 #!/bin/bash
 #
-# This script installs SwayOS on a pre-installed arch linux
+# This script installs SwayOS on a pre-installed debian linux
+# A user with sudo permissions and a live network connection is needed
 #
 
 # Set up logging

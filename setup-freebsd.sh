@@ -1,8 +1,15 @@
 #!/bin/bash
 #
-# This script installs SwayOS on a pre-installed arch linux
+# This script installs SwayOS on a pre-installed FreeBSD
 # A user with sudo permissions and a live network connection is needed
 #
+
+# set up sudo
+# pkg install sudo
+# set up wifi
+# wlans_iwm0="wlan0"
+# ifconfig_wlan0="WPA DHCP"
+# iwm7260fw_load="YES"
 
 # Set up logging
 exec 1> >(tee "swayos_setup_out")
@@ -22,12 +29,14 @@ check(){
 }
 
 log "Refreshing package db"
-sudo pacman -Sy
-check "$?" "pacman"
+sudo pkg update
+check "$?" "pkg update"
+sudo pkg upgrade
+check "$?" "pkg upgrade"
 
 
 log "Installing git"
-sudo pacman -S --noconfirm --needed git
+sudo pkg install git
 
 
 log "Cloning swayOS repo"
@@ -36,13 +45,12 @@ cd swayos.github.io
 
 
 log "Installing needed official packages"
-cat pacs/arch/swayos > pacs/online
-sudo pacman -S --noconfirm --needed - < pacs/online
-check "$?" "pacman"
+xargs sudo pkg install -y < pacs/debian/freebsd
+check "$?" "pkg install pacs/debian/freebsd"
 
 
-log "Copying terminus-ttf fonts to font directory"
-sudo cp -f font/*.* /usr/share/fonts/
+log "Copying ttf fonts to font directory"
+sudo cp -f font/*.* /usr/local/share/fonts/
 check "$?" "cp"
 
 
@@ -52,30 +60,24 @@ check "$?" "cp"
 
 
 log "Starting services"
-sudo systemctl enable iwd --now
-sudo systemctl enable bluetooth --now
-sudo systemctl enable cups --now
+
+sudo sysrc seatd_enable=YES
+service seatd start
 
 
-log "Installing aur packages"
-cat pacs/arch/aur | while read line 
-do
-    log "Installing $line"
-    git clone https://aur.archlinux.org/$line.git
-    cd $line
-    makepkg -si --skippgpcheck --noconfirm
-    check "$?" "makepkg"
-    sudo pacman -U --noconfirm *.pkg.tar.zst
-    check "$?" "pacman -U"
-    cd ..
-done
+log "Installing sov"
+git clone https://github.com/milgra/sov
+cd sov
+meson build
+ninja -C build
+sudo ninja -C build install
+cd ..
 
 
 log "Cleaning up"
 cd ..
 rm -f -R swayos.github.io
 check "$?" "rm"
-
 
 log "Changing shell to zsh"
 chsh -s /bin/zsh
