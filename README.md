@@ -4,6 +4,7 @@ SwayOS is a productivity-oriented minimalist and super elegant desktop layer ove
 
 ![screenshot](pics/swayos.png)
 ![screenshot](pics/swayos-busy.png)
+![screenshot](pics/swayos-help.png)
 
 **Donations**  
 paypal : [https://paypal.me/milgra](https://paypal.me/milgra)  
