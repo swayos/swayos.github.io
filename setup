@@ -12,7 +12,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
      echo "$DISTRIB is not supported yet, feel free to add a $DISTRIB installer to SwayOS based on setup-arch.sh"
   fi
 elif [[ "$OSTYPE" == "freebsd"* ]]; then
-    curl -O https://swayos.github.io/setup-freebsd.sh
+    wget https://swayos.github.io/setup-freebsd.sh
     bash setup-freebsd.sh
 else
   echo "$OSTYPE is not supported yet, feel free to add a $OSTYPE installer to SwayOS based on setup-arch.sh"

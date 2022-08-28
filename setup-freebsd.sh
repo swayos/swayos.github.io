@@ -19,7 +19,8 @@
 
 # pkg install sudo
 # pw usermod milgra -G wheel
-# visdudo
+# visudo
+# enable wheel
 
 # pkg install wget bash
 
