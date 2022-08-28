@@ -54,7 +54,7 @@ cd swayos.github.io
 
 log "Installing needed official packages"
 xargs sudo pkg install -y < pacs/freebsd/swayos
-check "$?" "pkg install pacs/debian/freebsd"
+check "$?" "pkg install"
 
 
 log "Copying ttf fonts to font directory"

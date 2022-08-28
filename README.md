@@ -74,6 +74,10 @@ bash setup
 Debian :
 wget https://swayos.github.io/setup
 bash setup
+
+FreeBSD
+curl or wget https://swayos.github.io/setup
+bash setup
 ```
 
 Feel free to add support for your OS based on setup-arch.sh and creating a merge request
@@ -97,9 +101,17 @@ Install all packages present in pacs/swayos and pacs/aur files. ( Package names 
 Linux
 
 - Arch ( Actual )
+  - feature complete
+
 - Debian 12 ( Bookworm )  
   - pamac is not available so gnome-software is used  
-  - have to fix the magnifier icon in font-awesome  
+  - have to fix the magnifier icon in font-awesome
+
+- FreeBSD 13
+  - no gui software store
+  - no google chrome, chromium is used
+  - no iwgtk and no wifi selector
+  - no blueman and no bluetooth selector
 
 ## UI Structure of SwayOS
 
