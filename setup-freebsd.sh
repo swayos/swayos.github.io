@@ -25,7 +25,7 @@
 # pkg install wget bash
 
 # pkg install drm-kmod
-# sysrc kld_list="i915_kms"
+# sysrc kld_list="i915kms"
 # pw usermod milgra -G video
 
 # Set up logging
