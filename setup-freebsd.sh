@@ -2,14 +2,22 @@
 #
 # This script installs SwayOS on a pre-installed FreeBSD
 # A user with sudo permissions and a live network connection is needed
-#
+# On my machine it looks like this :
 
-# set up sudo
+# sysrc wlans_iwm0="wlan0"
+# sysrc ifconfig_wlan0="WPA DHCP"
+# sysrc iwm7260fw_load="YES"
+# vi /etc/wpa_supplicant.conf
+# network={
+# 	ssid="myssid"
+# 	psk="mypsk"
+# }
+
 # pkg install sudo
-# set up wifi
-# wlans_iwm0="wlan0"
-# ifconfig_wlan0="WPA DHCP"
-# iwm7260fw_load="YES"
+# add user to wheel group
+# visdudo
+
+# pkg install wget bash
 
 # Set up logging
 exec 1> >(tee "swayos_setup_out")
@@ -50,6 +58,7 @@ check "$?" "pkg install pacs/debian/freebsd"
 
 
 log "Copying ttf fonts to font directory"
+sudo mkdir -p /usr/local/share/fonts/
 sudo cp -f font/*.* /usr/local/share/fonts/
 check "$?" "cp"
 
