@@ -9,7 +9,7 @@ pipewire
 pipewire-alsa
 pipewire-pulse
 pipewire-jack
-pipewire-media-session
+wireplumber
 xdg-desktop-portal-wlr
 xorg-xwayland
 wayland-protocols

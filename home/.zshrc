@@ -31,6 +31,7 @@ if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
     fi
     export QT_QPA_PLATFORMTHEME=gtk2
     export QT_QPA_PLATFORM=wayland
+    export GDK_BACKEND=wayland
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
     export WLR_NO_HARDWARE_CURSORS=1

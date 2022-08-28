@@ -4,7 +4,7 @@ SwayOS is a productivity-oriented minimalist and super elegant desktop layer ove
 
 ![screenshot](pics/swayos.png)
 ![screenshot](pics/swayos-busy.png)
-![screenshot](pics/swayos-help.png)
+![screenshot](pics/swayos-help.jpg)
 
 **Donations**  
 paypal : [https://paypal.me/milgra](https://paypal.me/milgra)  
@@ -97,7 +97,8 @@ Install all packages present in pacs/swayos and pacs/aur files. ( Package names 
 - remove export WLR_NO_HARDWARE_CURSORS=1 from .zshrc ( will be added to installer later )
 - remove swayos_setup_* log files from your home directory
 - don't forget to check for updates regularly!
-
+- to open root GTK apps from wayland use sudo -EH appname
+ 
 ## Currently supported OS's and notes
 
 Linux
