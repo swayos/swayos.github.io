@@ -45,7 +45,7 @@ cd swayos.github.io
 
 
 log "Installing needed official packages"
-xargs sudo pkg install -y < pacs/debian/freebsd
+xargs sudo pkg install -y < pacs/freebsd
 check "$?" "pkg install pacs/debian/freebsd"
 
 
