@@ -54,10 +54,7 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 
 **For beginners/For people with no time**
 
-Download the latest ISO :
-
-[download from my homepage](https://milgra.com/downloads/swayos-2022.05.12-x86_64.iso)  
-[download from my google drive](https://drive.google.com/drive/folders/1QN9WZD2Ij2WE7QJ7IpHQDpHaP7rSk4Fs?usp=sharing)  
+Download the latest ISO ( torrent/direct link ) from releases : [https://github.com/swayos/swayos.github.io/releases](https://github.com/swayos/swayos.github.io/releases) 
 
 Burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
 
