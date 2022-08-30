@@ -10,6 +10,7 @@ pipewire-alsa
 pipewire-pulse
 pipewire-jack
 wireplumber
+pamixer
 xdg-desktop-portal-wlr
 xorg-xwayland
 wayland-protocols

@@ -23,6 +23,7 @@ cups
 lxsession
 wl-clipboard
 pavucontrol
+pamixer
 emacs-nox
 adapta-gtk-theme
 meson
