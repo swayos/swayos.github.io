@@ -10,6 +10,7 @@ xdg-desktop-portal-wlr
 xwayland
 wayland-protocols
 sway
+swaybg
 swayidle
 swaylock
 wlogout

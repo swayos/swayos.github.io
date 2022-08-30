@@ -4,6 +4,7 @@ pipewire
 xdg-desktop-portal-wlr
 xwayland
 sway
+swaybg
 swayidle
 swaylock
 wlogout
