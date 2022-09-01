@@ -111,6 +111,7 @@ Linux
   - have to fix the magnifier icon in font-awesome
 
 - FreeBSD 13
+  - for some strange reason sway doesn't get installed from the package list, you have to do it manually
   - no gui software store
   - no google chrome, chromium is used
   - no iwgtk and no wifi selector
