@@ -62,7 +62,7 @@ _Note : it is a minimal-configuration quick installer, options are pretty limite
 
 **For advanced users/For people with more time**
 
-Install your own desired OS or create a new user on your current OS, log in and type
+Install your own desired OS as you wish, log in and type
 
 ```
 Arch :
@@ -77,6 +77,8 @@ FreeBSD
 curl or wget https://swayos.github.io/setup
 bash setup
 ```
+
+_Note : don't install it on your existing OS as it may replace packages ( pipewire - pulseaudio mainly )
 
 Feel free to add support for your OS based on setup-arch.sh and creating a merge request
 
@@ -103,7 +105,8 @@ Linux
 - Arch ( Actual )
   - feature complete
 
-- Debian 12 ( Bookworm )  
+- Debian 12 ( Bookworm )
+  - iwgtk is not available as a package so you have to compile it for yourself if you use wifi
   - pamac is not available so gnome-software is used  
   - have to fix the magnifier icon in font-awesome
 

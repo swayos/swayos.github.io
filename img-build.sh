@@ -15,14 +15,14 @@ exec 2> >(tee "temp/img_build_err")
 rm swayos.img
 rm swayos.img.gz
 
-dd if=/dev/zero of=swayos.img bs=1M count=5500
+dd if=/dev/zero of=swayos.img bs=1M count=6500
 mkfs.ext4 -F swayos.img
 
 # Pacstrap all needed packages
-sudo pacman -S arch-install-scripts
+sudo pacman -Sy --needed arch-install-scripts
 sudo mkdir -p /mnt/swayos
 sudo mount swayos.img /mnt/swayos
-cat pacs/arch/img pacs/arch/swayos > temp/pacs
+cat pacs/arch/img pacs/arch/swayos pacs/arch/aurdeps > temp/pacs
 sudo pacstrap /mnt/swayos - < temp/pacs
 
 # Precompile, copy and install aur packages to image

@@ -3,10 +3,6 @@ zsh-autosuggestions
 pipewire
 xdg-desktop-portal-wlr
 xwayland
-sway
-swaybg
-swayidle
-swaylock
 wlogout
 wdisplays
 wob
@@ -34,3 +30,7 @@ seatd
 chromium
 meson
 ninja
+sway
+swaybg
+swayidle
+swaylock
