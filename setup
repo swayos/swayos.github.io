@@ -8,6 +8,9 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   elif [[ ${DISTRIB} = *"Debian"* ]]; then
      wget https://swayos.github.io/setup-debian.sh
      bash setup-debian.sh
+  elif [[ ${DISTRIB} = *"Void"* ]]; then
+     wget https://swayos.github.io/setup-void.sh
+     bash setup-void.sh
   else
      echo "$DISTRIB is not supported yet, feel free to add a $DISTRIB installer to SwayOS based on setup-arch.sh"
   fi
