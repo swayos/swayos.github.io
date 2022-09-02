@@ -43,7 +43,7 @@ check "$?" "package download"
 
 
 log "Copying terminus-ttf fonts to font directory"
-sudo cp -f font/*.* /usr/share/fonts/
+sudo cp -f font/*.* /etc/fonts/
 check "$?" "cp"
 
 
@@ -57,13 +57,7 @@ usermod -a -G bluetooth milgra
 usermod -a -G _seatd milgra
 
 
-log "Create xdg runtime dir"
-
-mkdir /run/user/1000
-chmod 700 /run/user/1000
-
 log "Starting services"
-
 sudo ln -s /etc/sv/dbus /var/service
 sudo ln -s /etc/sv/seatd /var/service
 sudo ln -s /etc/sv/iwd /var/service
