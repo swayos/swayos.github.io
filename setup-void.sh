@@ -38,8 +38,7 @@ cd swayos.github.io
 
 
 log "Installing needed official packages"
-cat pacs/void/swayos > pacs/online
-sudo xbps-install --yes - < pacs/online
+for line in $(cat pacs/online); do sudo xbps-install "$line"; done
 check "$?" "package download"
 
 
