@@ -23,11 +23,13 @@ PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%/ %{$reset_c
 function preexec {
     print -Pn "\e]0;${(q)1}\e\\"
 }
+
 # startup sway on login on terminal 1
 if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
     if [ -z "$XDG_RUNTIME_DIR" ]; then
-	# for FreeBSD currently
-	export XDG_RUNTIME_DIR=/tmp
+	# for FreeBSD and Void Linux
+	export XDG_RUNTIME_DIR="/tmp/$UID"
+	[[ ! -d $XDG_RUNTIME_DIR ]] && mkdir -p $XDG_RUNTIME_DIR && chmod 0700 $XDG_RUNTIME_DIR
     fi
     export QT_QPA_PLATFORMTHEME=gtk2
     export QT_QPA_PLATFORM=wayland
