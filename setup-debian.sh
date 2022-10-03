@@ -77,6 +77,15 @@ make
 sudo make install
 cd ..
 
+log "Install Ly login manager"
+sudo apt install build-essential libpam0g-dev libxcb-xkb-dev
+git clone --recurse-submodules https://github.com/fairyglade/ly
+cd ly
+sudo make
+sudo make install installsystemd
+sudo systemctl enable ly.service --now
+sudo systemctl disable getty@tty2.service --now
+
 log "Linking software store"
 sudo ln /usr/bin/gnome-software /usr/bin/pamac-manager
 
