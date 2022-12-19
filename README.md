@@ -153,7 +153,7 @@ If you need anything else open the app store by clicking on the shield icon on t
 
 Recommended multimedia applications :
 
-GIMP for image editing ( Photoshop replacement )  
+Photopea for Photoshop replacement ( www.photopea.com )
 Inkscape for vector graphics ( Illustrator replacement )  
 Natron for video post processing ( After Effects replacement )  
 Davinci Resolve for video editing ( Premiere Pro replacement )  
@@ -171,6 +171,12 @@ noisetorch for noise cancellation during meetings
 qemu and virt-manager for virtualization  
 swaync for notification center  
 imv for fast image viewing  
+
+Recommended online apps :
+
+gmail for email
+messenger for instant messaging
+google kepp for notes
 
 You should create a Documents and a Downloads folder under your home directory and save work and downloaded files there.
 The file manager opens in floating mode so you can drag and drop files on your applications if needed if you open the file managaer in the same workspace.

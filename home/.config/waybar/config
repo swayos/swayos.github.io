@@ -23,14 +23,9 @@
     "custom/browser",
     "custom/libre",
     "custom/printer",
-    "tray",
-    "custom/net-icon",
-    "custom/bluetooth",
-    "custom/vol-icon",
-    "custom/displays",
     "custom/software",
-    "custom/activity",
-    "custom/wlogout",
+    "custom/overview",
+    "custom/settings",
     "clock"
     ],
     
@@ -51,7 +46,7 @@
     "custom/overview": {
         "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
-        "on-click": "swaymsg exec 'echo 1 > /tmp/sway-overview'",
+        "on-click": "swaymsg exec 'echo 2 > /tmp/sov'",
     },
     "custom/activity": {
         "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
@@ -68,12 +63,12 @@
         "interval": "once",
         "on-click": "swaymsg exec pamac-manager",
     },
-    "custom/wlogout": {
+    "custom/settings": {
     	"tooltip": true,
         "tooltip-format": "shutdown/logout",
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
-        "on-click": "wlogout -p layer-shell",
+        "on-click": "swaymsg exec 'echo 2 > /tmp/wcp'",
     },
     "custom/bluetooth": {
         "format": "<span font_family='Font Awesome 6' size='medium'></span> ",
@@ -117,7 +112,7 @@
         "on-click": "swaymsg exec pamac-manager",
     },
     "custom/printer": {
-"format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
+"format": "<span font_family='Font Awesome 6' size='xx-large'> </span> ",
         "interval": "once",
         "on-click": "swaymsg exec system-config-printer",
     },

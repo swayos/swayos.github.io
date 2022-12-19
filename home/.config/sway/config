@@ -8,9 +8,9 @@ input * {
       repeat_rate 100
       repeat_delay 250
       # uncomment below to add other input sources
-      # xkb_layout "us,hu"
-      # xkb_variant ",101_qwerty_dot_nodead"
-      # xkb_options "grp:alt_space_toggle"
+      xkb_layout "us,hu"
+      xkb_variant ",101_qwerty_dot_nodead"
+      xkb_options "grp:alt_space_toggle"
 }
 
 # constants
@@ -46,6 +46,17 @@ bindsym --no-repeat $mod+8 workspace number 8; exec "echo 1 > /tmp/sov"
 bindsym --no-repeat $mod+9 workspace number 9; exec "echo 1 > /tmp/sov"
 bindsym --no-repeat $mod+0 workspace number 10; exec "echo 1 > /tmp/sov"
 
+bindsym --no-repeat $mod+Ctrl+1 workspace number 11; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+2 workspace number 12; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+3 workspace number 13; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+4 workspace number 14; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+5 workspace number 15; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+6 workspace number 16; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+7 workspace number 17; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+8 workspace number 18; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+9 workspace number 19; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+0 workspace number 20; exec "echo 1 > /tmp/sov"
+
 bindsym --release $mod+1 exec "echo 0 > /tmp/sov"
 bindsym --release $mod+2 exec "echo 0 > /tmp/sov"
 bindsym --release $mod+3 exec "echo 0 > /tmp/sov"
@@ -57,6 +68,17 @@ bindsym --release $mod+8 exec "echo 0 > /tmp/sov"
 bindsym --release $mod+9 exec "echo 0 > /tmp/sov"
 bindsym --release $mod+0 exec "echo 0 > /tmp/sov"
 
+bindsym --release $mod+Ctrl+1 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+2 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+3 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+4 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+5 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+6 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+7 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+8 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+9 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+0 exec "echo 0 > /tmp/sov"
+
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -67,17 +89,6 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
-
-bindsym $mod+Ctrl+1 [workspace="1"] move workspace to output current
-bindsym $mod+Ctrl+2 [workspace="2"] move workspace to output current
-bindsym $mod+Ctrl+3 [workspace="3"] move workspace to output current
-bindsym $mod+Ctrl+4 [workspace="4"] move workspace to output current 
-bindsym $mod+Ctrl+5 [workspace="5"] move workspace to output current
-bindsym $mod+Ctrl+6 [workspace="6"] move workspace to output current
-bindsym $mod+Ctrl+7 [workspace="7"] move workspace to output current
-bindsym $mod+Ctrl+8 [workspace="8"] move workspace to output current
-bindsym $mod+Ctrl+9 [workspace="9"] move workspace to output current
-bindsym $mod+Ctrl+0 [workspace="10"] move workspace to output current
 
 bindsym $mod+b splith
 bindsym $mod+v splitv
@@ -111,9 +122,13 @@ bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pamixer --get-volume > /tmp/wob
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pamixer --get-volume > /tmp/wob
 
-bindsym $mod+Print exec $screenshot
-bindsym $mod+Shift+Print exec $screenclip
-bindsym $mod+p exec wlogout -p layer-shell
+bindsym $mod+XF86AudioPlay exec "echo 1 > /tmp/vmp"
+bindsym $mod+XF86AudioNext exec "echo 2 > /tmp/vmp"
+bindsym $mod+XF86AudioPrev exec "echo 3 > /tmp/vmp"
+
+bindsym --no-repeat $mod+Print exec $screenshot
+bindsym --no-repeat $mod+Shift+Print exec $screenclip
+bindsym --no-repeat $mod+p exec "echo 2 > /tmp/wcp"
 
 floating_modifier $mod normal
 
@@ -162,7 +177,8 @@ exec swayidle -w \
          before-sleep 'swaylock -f'
 
 exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
-exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov
+exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -t 200
+exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -f 300x190 -m 20 -a rt
 
 # xorg setup
 
