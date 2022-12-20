@@ -4,13 +4,10 @@ SwayOS is a productivity-oriented minimalist and super elegant desktop layer ove
 
 {% include youtube.html id="YRIKNGHb1Kw" %}
 
-[<img src="pics/swayos.png" width="100">](http://google.com.au/)
-
-
-![screenshot](pics/swayos.png)
-![screenshot](pics/swayos-apps.png)
-![screenshot](pics/swayos-busy.png)
-![screenshot](pics/swayos-help.jpg)
+[<img src="pics/swayos.png" width="400">](pics/swayos.png)
+[<img src="pics/swayos-apps.png" width="400">](pics/swayos-apps.png)
+[<img src="pics/swayos-busy.png" width="400">](pics/swayos-busy.png)
+[<img src="pics/swayos-help.png" width="400">](pics/swayos-help.png)
 
 **Donations**  
 paypal : [https://paypal.me/milgra](https://paypal.me/milgra)  
