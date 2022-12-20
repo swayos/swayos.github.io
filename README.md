@@ -4,6 +4,8 @@ SwayOS is a productivity-oriented minimalist and super elegant desktop layer ove
 
 {% include youtube.html id="YRIKNGHb1Kw" %}
 
+[![screenshot](pics/swayos.png | width=100)](pics/swayos.png)
+
 ![screenshot](pics/swayos.png)
 ![screenshot](pics/swayos-apps.png)
 ![screenshot](pics/swayos-busy.png)
