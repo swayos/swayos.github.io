@@ -2,7 +2,10 @@
 
 SwayOS is a productivity-oriented minimalist and super elegant desktop layer over unix-like operating systems that can be installed as a standalone OS also. It is suitable for office, internet, system administration and programming work out of the box.
 
+{% include youtube.html id="YRIKNGHb1Kw" %}
+
 ![screenshot](pics/swayos.png)
+![screenshot](pics/swayos-apps.png)
 ![screenshot](pics/swayos-busy.png)
 ![screenshot](pics/swayos-help.jpg)
 
@@ -51,8 +54,7 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 **WIN + SHIFT + SPACE** : toggle/untoggle floating over a window
 
 ## Description ##
-
-SwayOS is a productivity-oriented, resource efficient and elegant desktop layer for unix-like operating systems. It uses a tiling window manager so you don't have to deal with minimizing/maximizing/moving windows any more. Windows are placed automatically and always open. To avoid crowdedness you place your windows onto workspaces. Workspace numbers are in the top left corner. You select workspaces by pressing WIN + numbers. WIN + 1 selects the first workspace, WIN + 0 the 10th workspace, WIN + SHIFT + 1 selected the 11th workspace. You can also select a workspace by clicking on its number. To open an application press WIN + SPACE to open the launcher. Type the program name you want to launch and press enter. An alternative way to open an application is to press it's icon in the top right corner.
+SwayOS is a productivity-oriented, resource efficient and elegant desktop layer for unix-like operating systems. It uses a tiling window manager so you don't have to deal with minimizing/maximizing/moving windows any more. Windows are placed automatically and always open. To avoid crowdedness you place your windows onto workspaces. Workspace numbers are in the top left corner. You select workspaces by pressing WIN + numbers. WIN + 1 selects the first workspace, WIN + 0 the 10th workspace, WIN + SHIFT + 1 selected the 11th workspace. You can also select a workspace by clicking on its number. Close applications with WIN + SHIFT + W. To open an application press WIN + SPACE to open the launcher. Type the program name you want to launch and press enter. An alternative way to open an application is to press it's icon in the top right corner.
 The magnifier glass icon opens the launcher you opened before with WIN + SPACE. Press ESC to close it.
 The prompt icon opens the terminal. Another way to open the terminal is to press WIN + ENTER.
 The folder icon opens the file manager.
