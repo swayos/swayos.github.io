@@ -31,3 +31,4 @@ libegl
 glew
 openjpeg2
 libmupdf
+gumbo-parser

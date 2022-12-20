@@ -50,6 +50,24 @@ SwayOS tries to be a distraction free OS. So there is no notification system ins
 **WIN + PrtScr** : take screenshot  
 **WIN + SHIFT + SPACE** : toggle/untoggle floating over a window
 
+## Description ##
+
+SwayOS is a productivity-oriented, resource efficient and elegant desktop layer for unix-like operating systems. It uses a tiling window manager so you don't have to deal with minimizing/maximizing/moving windows any more. Windows are placed automatically and always open. To avoid crowdedness you place your windows onto workspaces. Workspace numbers are in the top left corner. You select workspaces by pressing WIN + numbers. WIN + 1 selects the first workspace, WIN + 0 the 10th workspace, WIN + SHIFT + 1 selected the 11th workspace. You can also select a workspace by clicking on its number. To open an application press WIN + SPACE to open the launcher. Type the program name you want to launch and press enter. An alternative way to open an application is to press it's icon in the top right corner.
+The magnifier glass icon opens the launcher you opened before with WIN + SPACE. Press ESC to close it.
+The prompt icon opens the terminal. Another way to open the terminal is to press WIN + ENTER.
+The folder icon opens the file manager.
+The chrome icon opens google chrome. Another way to open google chrome is to press WIN + SHIFT + ENTER.
+The page icon opens LibreOffice.
+The media file icon open MultiMedia File Manager.
+The music icon opens Visual Music Player.
+The printer icon opens the printer settings.
+The shield icon opens the app store/software updates.
+The workspaces icon opens the workspace overview. Another way to open it is to long press workspace selector buttons, for example WIN + 1
+The settings icon opens the system settings menu where you can set volume, display brightness, open audio settings, open display settings, select wifi channel, select bluetooth device and you can exit you session in different ways.
+If you have a lot of workspaces open with a lot of windows, use the workspace overview app, by long pressing WIN + workspace numbers or the workspace overview icon in the status bar.
+System information is always visible in the center of the status bar, from left to right : the cpu usage, available memory, available free space, battery percentage, display brightness, volume. You can adjust brightness and volume by just scrolling over their icon, it's a nice shortcut if you don't want to open up the system menu.
+You can install SwayOS on any kind of unix-like OS. The installer image downloadable from swayos.github.io is arch linux based, for further help, documentation and troubleshooting please use arch linux site/forums.
+
 ## Installation ##
 
 **For beginners/For people with no time**
@@ -147,6 +165,8 @@ By default you have these applications :
 - LibreOffice for office work
 - Nautilus as file manager
 - Foot for terminal
+- Visual Music Player for offline music
+- MultiMedia File Manager for media/document viewing and managing
 
 You open apps by pressing WIN key + SPACE or by clicking on the quick launch icons.
 If you need anything else open the app store by clicking on the shield icon on the right side of the status bar, search for it and click on the green download button.
@@ -163,20 +183,12 @@ Steam for gaming. Enable proton in its settings and you can play 95% of all wind
 
 Recommended system tools :
 
-hardinfo for hardware information  
 tlp for energy saving features  
 nvidia for nvidia/nvidia-intel hybrid gpus  
 ati for ati/ati-intel hybrud gpus  
 noisetorch for noise cancellation during meetings  
 qemu and virt-manager for virtualization  
 swaync for notification center  
-imv for fast image viewing  
-
-Recommended online apps :
-
-gmail for email
-messenger for instant messaging
-google kepp for notes
 
 You should create a Documents and a Downloads folder under your home directory and save work and downloaded files there.
 The file manager opens in floating mode so you can drag and drop files on your applications if needed if you open the file managaer in the same workspace.
@@ -194,7 +206,8 @@ If you have any other problems then it's probably related to your OS's discussio
 - **waybar** : Status Bar Manager, config file is  /home/youruser/.config/waybar/config , learn more about it's config [here](https://github.com/Alexays/Waybar/wiki)
 - **wofi** : Application launcher, config file is /home/youruser/.config/wofi/config, visible when pressing WIN + SPACE
 - **wob** : Volume/Brightness overlay bar, visible when you change volumes with the dedicated keys on your laptop, configurable in sway config
-- **sov** : Workspaces overview layer, visible when you press the WIN + numbers for a longer period, config file is /home/youruser/.config/sway-overview/config
+- **sov** : Workspaces overview layer, visible when you press the WIN + numbers for a longer period or the workspaces icon in the status bar, config file is /home/youruser/.config/sway-overview/config
+- **wcp** : Wayland Control Panel, visible when you press WIN + p or the settings icon in the status bar next to the clock, configurable in sway config
 - **swaylock** : Screen locker, locks automatically or lock manually from the shutdown menu, set up in sway wm's config
 - **swayidle** : Idle time handler, locks screen automatically after 10 minuter, set up in sway wm's config
 - **grim** : Screen capture utility, activated with WIN + PRTSCR, set up ins sway wm's config
@@ -214,6 +227,8 @@ If you have any other problems then it's probably related to your OS's discussio
 - **gnome-system-monitor** : activity/process monitor ui
 - **qt5-style-plugings** : to make qt apps look like gtk2 apps
 - **system-config-printer** : printer manager
+- **visual music player** : offline music/video player, parses files under ~/Music
+- **multimedia file manager** : media/document file viewer/player/manager
 
 ## Frequently Asked Questions
 
