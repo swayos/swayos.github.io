@@ -78,7 +78,7 @@ curl or wget https://swayos.github.io/setup
 bash setup
 ```
 
-_Note : don't install it on your existing OS as it may replace packages ( pipewire - pulseaudio mainly )
+Note : don't install it on your existing OS as it may replace packages ( pipewire - pulseaudio mainly )
 
 Feel free to add support for your OS based on setup-arch.sh and creating a merge request
 
@@ -124,15 +124,15 @@ The status bar has the following sections from left to right : workspace numbers
 
 **Icons from right to left :**
 
- shutdown  
- activity monitor  
+ system menu ( volume, brightness, audio settings, display settings, wifi, bluetooth, session handling )
+ workspaces overview
  app store/software updates  
- display setup  
- volume control  
  bluetooth control  
  wifi setup  
 
- printer setup  
+ printer setup
+ visual music player
+ multimedia file manager/viewer
  libreoffice  
  google chrome  
  file manager  

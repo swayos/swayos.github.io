@@ -22,3 +22,12 @@ perl-timedate
 vte-common
 vte3
 dbus-glib
+wayland
+freetype2
+ffmpeg
+libpng
+libgl
+libegl
+glew
+openjpeg2
+libmupdf

@@ -22,6 +22,8 @@
     "custom/filemanager",
     "custom/browser",
     "custom/libre",
+    "custom/mmfm",
+    "custom/vmp",
     "custom/printer",
     "custom/software",
     "custom/overview",
@@ -69,6 +71,16 @@
         "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
         "on-click": "swaymsg exec 'echo 2 > /tmp/wcp'",
+    },
+    "custom/vmp": {
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "interval": "once",
+        "on-click": "swaymsg exec vmp",
+    },
+    "custom/mmfm": {
+        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "interval": "once",
+        "on-click": "swaymsg exec mmfm",
     },
     "custom/bluetooth": {
         "format": "<span font_family='Font Awesome 6' size='medium'></span> ",
