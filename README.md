@@ -200,7 +200,7 @@ If you don't have multimedia keys the you can change volume and display brightne
 ## Troubleshooting ##
 
 If you have questions/problems regarding the design & workflow & component selection of SwayOS, ask it [here](https://github.com/swayos/swayos.github.io/discussions)
-If you have any other problems then it's probably related to your OS's discussion forums. If you are using the installer ISO, it's [Arch Linux Forums](https://bbs.archlinux.org/), if you are using something else then go to the proper discussion forums.
+If you have any other problems then it's probably related to your OS's discussion forums. If you installed SwayOS on an arch linux, it's [Arch Linux Forums](https://bbs.archlinux.org/), if you are using something else then go to the proper discussion forums.
 
 ## Components and how to configure them
 
