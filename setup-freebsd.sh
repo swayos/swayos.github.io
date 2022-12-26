@@ -53,17 +53,48 @@ check "$?" "pkg upgrade"
 
 
 log "Installing git"
-sudo pkg install git
-
+sudo pkg install -y \
+     git \
+     zsh \
+     zsh-autosuggestions \
+     pipewire \
+     xdg-desktop-portal-wlr \
+     xwayland \
+     wlogout \
+     wdisplays \
+     wob \
+     grim \
+     slurp \
+     waybar \
+     wofi \
+     foot \
+     nautilus \
+     libreoffice \
+     gnome-system-monitor \
+     system-config-printer \
+     cups \
+     lxsession \
+     wl-clipboard \
+     pavucontrol \
+     pamixer \
+     emacs-nox \
+     adapta-gtk-theme \
+     meson \
+     pkgconf \
+     cmake \
+     wayland-protocols \
+     seatd \
+     chromium \
+     meson \
+     ninja \
+     sway \
+     swaybg \
+     swayidle \
+     swaylock
 
 log "Cloning swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
 cd swayos.github.io
-
-
-log "Installing needed official packages"
-xargs sudo pkg install -y < pacs/freebsd/swayos
-check "$?" "pkg install"
 
 
 log "Copying ttf fonts to font directory"

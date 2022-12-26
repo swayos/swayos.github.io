@@ -29,7 +29,52 @@ check "$?" "apt-get upgrade"
 
 
 log "Installing git"
-sudo apt-get -y install git
+sudo apt-get install -y \
+     git \
+     zsh \
+     zsh-autosuggestions \
+     iwd \
+     bluez \
+     blueman \
+     pipewire \
+     pipewire-audio-client-libraries \
+     pipewire-bin \
+     xdg-desktop-portal-wlr \
+     xwayland \
+     wayland-protocols \
+     sway \
+     swaybg \
+     swayidle \
+     swaylock \
+     pamixer \
+     wlogout \
+     wdisplays \
+     wob \
+     grim \
+     slurp \
+     waybar \
+     wofi \
+     brightnessctl \
+     foot \
+     nautilus \
+     libreoffice \
+     gnome-system-monitor \
+     system-config-printer \
+     cups \
+     xfonts-terminus \
+     lxsession \
+     wl-clipboard \
+     pavucontrol \
+     emacs-nox \
+     adapta-gtk-theme \
+     meson \
+     gnome-software \
+     unzip \
+     pkg-config \
+     wayland-protocols \
+     libwayland-dev \
+     libfreetype-dev \
+     libgtk-3-dev
 
 
 log "Cloning swayOS repo"

@@ -1,6 +1,6 @@
 # SwayOS
 
-SwayOS is a productivity-oriented minimalist and super elegant desktop layer over unix-like operating systems that can be installed as a standalone OS also. It is suitable for office, internet, system administration and programming work out of the box.
+SwayOS is a productivity-oriented minimalist and super elegant desktop layer for unix-like operating systems. It is suitable for office, internet, system administration and programming work out of the box.
 
 {% include youtube.html id="YRIKNGHb1Kw" %}
 
@@ -72,39 +72,20 @@ You can install SwayOS on any kind of unix-like OS. The installer image download
 
 ## Installation ##
 
-**For beginners/For people with no time**
-
-Download the latest ISO ( torrent/direct link ) from releases : [https://github.com/swayos/swayos.github.io/releases](https://github.com/swayos/swayos.github.io/releases) 
-
-Burn it to a pendrive/etc and start your machine up with it. Installer will start automagically.
-
-_Note : it is a minimal-configuration quick installer, options are pretty limited_
-
-**For advanced users/For people with more time**
-
-Install your own desired OS as you wish, log in and type
+SwayOS install scripts are available for Void Linux, Arch Linux, Debian ( >=12 ) and FreeBSD.
+Start with a clean minimal install of any of these systems, with network connection. Then
 
 ```
-Arch :
 curl -O https://swayos.github.io/setup
 bash setup
 
-Debian :
-wget https://swayos.github.io/setup
+or
+
+wget -O https://swayos.github.io/setup
 bash setup
 
-FreeBSD
-curl or wget https://swayos.github.io/setup
-bash setup
+or install wget or curl if none of the above works
 ```
-
-Note : don't install it on your existing OS as it may replace packages ( pipewire - pulseaudio mainly )
-
-Feel free to add support for your OS based on setup-arch.sh and creating a merge request
-
-**For superhackers/For people with plenty of time**
-
-Install all packages present in pacs/swayos and pacs/aur files. ( Package names on your OS/Distribution may differ and you may have to compile them manually. ) Copy everything under "home" to your home folder, copy all fonts under "fonts" to your fonts folder. Start services if needed. ( iwd, bluetooth, cups )
 
 **Optional Post-installation todos**
 
@@ -117,25 +98,6 @@ Install all packages present in pacs/swayos and pacs/aur files. ( Package names 
 - remove swayos_setup_* log files from your home directory
 - don't forget to check for updates regularly!
 - to open root GTK apps from wayland use sudo -EH appname
- 
-## Currently supported OS's and notes
-
-Linux
-
-- Arch ( Actual )
-  - feature complete
-
-- Debian 12 ( Bookworm )
-  - iwgtk is not available as a package so you have to compile it for yourself if you use wifi
-  - pamac is not available so gnome-software is used  
-  - have to fix the magnifier icon in font-awesome
-
-- FreeBSD 13
-  - for some strange reason sway doesn't get installed from the package list, you have to do it manually
-  - no gui software store
-  - no google chrome, chromium is used
-  - no iwgtk and no wifi selector
-  - no blueman and no bluetooth selector
 
 ## UI Structure of SwayOS
 
@@ -196,11 +158,6 @@ You should create a Documents and a Downloads folder under your home directory a
 The file manager opens in floating mode so you can drag and drop files on your applications if needed if you open the file managaer in the same workspace.
 
 If you don't have multimedia keys the you can change volume and display brightness by going over the lcd and vol entries in the center of the status bar and do a scroll over them.
-
-## Troubleshooting ##
-
-If you have questions/problems regarding the design & workflow & component selection of SwayOS, ask it [here](https://github.com/swayos/swayos.github.io/discussions)
-If you have any other problems then it's probably related to your OS's discussion forums. If you installed SwayOS on an arch linux, it's [Arch Linux Forums](https://bbs.archlinux.org/), if you are using something else then go to the proper discussion forums.
 
 ## Components and how to configure them
 
@@ -272,15 +229,3 @@ Enable the program to be a floating in sway config.
 
 - **Chrome says its out of date**  
 Open the app store, open preferences, go to third-party, Enable AUR support and enable check for updates
-
-## Changelog ##
-
-[Go to changelog](docs/CHANGELOG.md)
-
-## Contributing ##
-
-[Go to contribution](docs/CONTRIB.md)
-
-## Todo ##
-
-[Go to todo](docs/TODO.md)

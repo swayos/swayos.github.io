@@ -22,23 +22,90 @@ check(){
 }
 
 log "Refreshing package db"
-sudo pacman -Sy
+sudo pacman -Su
 check "$?" "pacman"
 
+log "Installing needed official packages"
+cat pacs/arch/swayos > pacs/online
+sudo pacman -S --noconfirm --needed \
+     sudo \
+     zsh \
+     zsh-autosuggestions \
+     iwd \
+     bluez \
+     bluez-utils \
+     blueman \
+     pipewire \
+     pipewire-alsa \
+     pipewire-pulse \
+     pipewire-jack \
+     wireplumber \
+     pamixer \
+     xdg-desktop-portal-wlr \
+     xorg-xwayland \
+     wayland-protocols \
+     sway \
+     swaybg \
+     swayidle \
+     swaylock \
+     grim \
+     slurp \
+     waybar \
+     wofi \
+     brightnessctl \
+     foot \
+     nautilus \
+     libreoffice-fresh \
+     gnome-system-monitor \
+     system-config-printer \
+     cups \
+     polkit-gnome \
+     wl-clipboard \
+     pavucontrol \
+     emacs \
+     adapta-gtk-theme
 
-log "Installing git"
-sudo pacman -S --noconfirm --needed git
+log "Installing aur dependencies"
 
+sudo pacman -S --noconfirm --needed \
+     git \
+     scdoc \
+     gtk4 \
+     itstool \
+     vala \
+     asciidoc \
+     gobject-introspection \
+     python-importlib-metadata \
+     python-mako \
+     python-markdown \
+     python-markupsafe \
+     python-zipp \
+     ttf-liberation \
+     archlinux-appstream-data \
+     appstream-glib \
+     qrencode \
+     libxss \
+     git \
+     perl-error \
+     perl-mailtools \
+     perl-timedate \
+     vte-common \
+     vte3 \
+     dbus-glib \
+     wayland \
+     freetype2 \
+     ffmpeg \
+     libpng \
+     libgl \
+     libegl \
+     glew \
+     openjpeg2 \
+     libmupdf \
+     gumbo-parser
 
 log "Cloning swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
 cd swayos.github.io
-
-
-log "Installing needed official packages"
-cat pacs/arch/swayos > pacs/online
-sudo pacman -S --noconfirm --needed - < pacs/online
-check "$?" "pacman"
 
 
 log "Copying terminus-ttf fonts to font directory"
@@ -57,12 +124,15 @@ sudo systemctl enable bluetooth --now
 sudo systemctl enable cups --now
 
 
+items=(sov mmfm vmp wcp wob wlogout wdisplays iwgtk libpamac-aur pamac-aur google-chrome)
+
 log "Installing aur packages"
-cat pacs/arch/aur | while read line 
+for i in "${items[@]}"
 do
     log "Installing $line"
-    git clone https://aur.archlinux.org/$line.git
-    cd $line
+    pkg=$i
+    git clone https://aur.archlinux.org/$pkg.git
+    cd $pkg
     makepkg -si --skippgpcheck --noconfirm
     check "$?" "makepkg"
     sudo pacman -U --noconfirm *.pkg.tar.zst
