@@ -4,7 +4,7 @@ SwayOS is a productivity-oriented minimalist and super elegant desktop layer for
 
 {% include youtube.html id="YRIKNGHb1Kw" %}
 
-[<img src="pics/swayos-apps.png" width="800">](pics/swayos-apps.png)
+[<img src="pics/swayos-apps.png" width="900">](pics/swayos-apps.png)
 [<img src="pics/swayos.png" width="300">](pics/swayos.png)
 [<img src="pics/swayos-busy.png" width="300">](pics/swayos-busy.png)
 [<img src="pics/swayos-help.jpg" width="300">](pics/swayos-help.jpg)
