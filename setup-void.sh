@@ -57,9 +57,10 @@ sudo xbps-install -Su
 log "Install base tools"
 
 sudo xbps-install \
- bc \
- zsh \
- zsh-autosuggestions
+     bc \
+     wget \
+     zsh \
+     zsh-autosuggestions
 
  
 log "Install Sway environment"
@@ -131,13 +132,6 @@ log "Changin shell to zsh"
 chsh -s /bin/zsh
 
 
-log "Installing Google Chrome"
-
-git clone git://github.com/void-linux/void-packages.git && cd void-packages/ && ./xbps-src binary-bootstrap && echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf && ./xbps-src pkg google-chrome
-
-sudo xbps-install google-chrome --repository=hostdir/binpkgs/nonfree
-
-
 log "Installing dev tools"
 
 sudo xbps-install \
@@ -147,9 +141,16 @@ sudo xbps-install \
  wayland-protocols
 
 
+log "Installing Google Chrome"
+
+git clone https://github.com/void-linux/void-packages.git && cd void-packages/ && ./xbps-src binary-bootstrap && echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf && ./xbps-src pkg google-chrome
+
+sudo xbps-install google-chrome --repository=hostdir/binpkgs/nonfree
+
+
 log "Installing latest FFMPEG"
 
-sudo xbps-install x264-devel x265-devel
+sudo xbps-install x264-devel x265-devel gcc
 # zlib-devel bzip2-devel freetype-devel alsa-lib-devel libXfixes-devel
 #  libXext-devel libXvMC-devel libxcb-devel lame-devel libtheora-devel
 # libvorbis-devel  xvidcore-devel jack-devel SDL2-devel
@@ -157,7 +158,7 @@ sudo xbps-install x264-devel x265-devel
 # speex-devel celt-devel harfbuzz-devel libass-devel opus-devel ocl-icd-devel
 # libbs2b-devel libvidstab-devel libva-devel libvdpau-devel  v4l-utils-devel fdk-aac-devel# libvpx-devel libaom-devel libdav1d-devel zimg-devel libwebp-devel libmysofa-devel libdrm-devel libsvt-av1-devel srt-devel librist-devel
 
-curl https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz --output ffmpeg-5.1.2.tar.gz
+wget https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz --output ffmpeg-5.1.2.tar.gz
 tar -xvzf ffmpeg-5.1.2.tar.xz
 cd ffmpeg-5.1.2
 ./configure \
