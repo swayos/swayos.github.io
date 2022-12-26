@@ -34,13 +34,14 @@ echo 'rmmod pcspkr' | sudo tee -a /etc/modprobe.d/blacklist.conf
 
 log "Disable grub menu"
 
+echo 'GRUB_TIMEOUT=0' | sudo tee -a /etc/default/grub
 echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub
 echo 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel=1 quiet splash"' | sudo tee -a /etc/default/grub
 
 
 log "Enable shutdown/reboot/suspend"
 
-echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub
+echo '$USER ALL=NOPASSWD:/sbin/reboot,/sbin/shutdown,/sbin/suspend' | sudo tee -a /etc/default/grub
 
 
 log "Update xbps"
@@ -58,7 +59,7 @@ log "Install base tools"
 sudo xbps-install \
  bc \
  zsh \
- zsh-autosuggestions \
+ zsh-autosuggestions
 
  
 log "Install Sway environment"
@@ -148,9 +149,17 @@ sudo xbps-install \
 
 log "Installing latest FFMPEG"
 
-curl https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz --output ffmpeg-5.1.2.tar.xz
-tar -xvf ffmpeg-5.1.2.tar.xz
-cd ffmpeg
+sudo xbps-install x264-devel x265-devel
+# zlib-devel bzip2-devel freetype-devel alsa-lib-devel libXfixes-devel
+#  libXext-devel libXvMC-devel libxcb-devel lame-devel libtheora-devel
+# libvorbis-devel  xvidcore-devel jack-devel SDL2-devel
+# libcdio-paranoia-devel librtmp-devel libmodplug-devel gnutls-devel
+# speex-devel celt-devel harfbuzz-devel libass-devel opus-devel ocl-icd-devel
+# libbs2b-devel libvidstab-devel libva-devel libvdpau-devel  v4l-utils-devel fdk-aac-devel# libvpx-devel libaom-devel libdav1d-devel zimg-devel libwebp-devel libmysofa-devel libdrm-devel libsvt-av1-devel srt-devel librist-devel
+
+curl https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz --output ffmpeg-5.1.2.tar.gz
+tar -xvzf ffmpeg-5.1.2.tar.xz
+cd ffmpeg-5.1.2
 ./configure \
   --prefix=/usr \
   --pkg-config-flags="--static" \
