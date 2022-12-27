@@ -74,7 +74,11 @@ sudo apt-get install -y \
      wayland-protocols \
      libwayland-dev \
      libfreetype-dev \
-     libgtk-3-dev
+     libgtk-3-dev \
+     libgtk-4-dev \
+     libglew-dev \
+     libqrencode-dev \
+     scdoc
 
 
 log "Cloning swayOS repo"
@@ -113,8 +117,9 @@ cd ..
 log "Installing iwgtk"
 git clone https://github.com/J-Lentz/iwgtk
 cd iwgtk
-make
-sudo make install
+meson setup build --buildtype=release
+ninja -C build
+sudo ninja -C build install
 cd ..
 
 log "Linking software store"
