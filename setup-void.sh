@@ -140,13 +140,13 @@ sudo xbps-install \
  meson \
  wayland-protocols
 
+if [ ! -d void-packages ]; then
 
-log "Installing Google Chrome"
+    log "Installing Google Chrome"
+    git clone https://github.com/void-linux/void-packages.git && cd void-packages/ && ./xbps-src binary-bootstrap && echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf && ./xbps-src pkg google-chrome
+    sudo xbps-install google-chrome --repository=hostdir/binpkgs/nonfree
 
-git clone https://github.com/void-linux/void-packages.git && cd void-packages/ && ./xbps-src binary-bootstrap && echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf && ./xbps-src pkg google-chrome
-
-sudo xbps-install google-chrome --repository=hostdir/binpkgs/nonfree
-
+fi
 
 log "Installing latest FFMPEG"
 
@@ -198,30 +198,32 @@ sudo xbps-install \
      srt-devel \
      librist-devel
 
-wget https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz
-tar -xvzf ffmpeg-5.1.2.tar.gz
-cd ffmpeg-5.1.2
-./configure \
-  --prefix=/usr \
-  --pkg-config-flags="--static" \
-  --extra-cflags="-I$HOME/ffmpeg_build/include" \
-  --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
-  --extra-libs=-lpthread \
-  --extra-libs=-lm \
-  --bindir="$HOME/bin" \
-  --enable-gpl \
-  --enable-libfdk_aac \
-  --enable-libfreetype \
-  --enable-libmp3lame \
-  --enable-libopus \
-  --enable-libvpx \
-  --enable-libx264 \
-  --enable-libx265 \
-  --enable-nonfree \
-  --enable-shared
-make
-sudo make install
-cd ..
+if [ ! -d ffmpeg-5.1.2 ]; then
+    wget https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz
+    tar -xvzf ffmpeg-5.1.2.tar.gz
+    cd ffmpeg-5.1.2
+    ./configure \
+	--prefix=/usr \
+	--pkg-config-flags="--static" \
+	--extra-cflags="-I$HOME/ffmpeg_build/include" \
+	--extra-ldflags="-L$HOME/ffmpeg_build/lib" \
+	--extra-libs=-lpthread \
+	--extra-libs=-lm \
+	--bindir="$HOME/bin" \
+	--enable-gpl \
+	--enable-libfdk_aac \
+	--enable-libfreetype \
+	--enable-libmp3lame \
+	--enable-libopus \
+	--enable-libvpx \
+	--enable-libx264 \
+	--enable-libx265 \
+	--enable-nonfree \
+	--enable-shared
+    make
+    sudo make install
+    cd ..
+fi
 
 
 log "Updating library cache"
