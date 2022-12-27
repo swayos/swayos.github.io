@@ -22,7 +22,7 @@ check(){
 }
 
 log "Refreshing package db"
-sudo pacman -Su
+sudo pacman -Syu
 check "$?" "pacman"
 
 log "Installing needed official packages"
