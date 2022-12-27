@@ -158,7 +158,7 @@ sudo xbps-install x264-devel x265-devel gcc
 # speex-devel celt-devel harfbuzz-devel libass-devel opus-devel ocl-icd-devel
 # libbs2b-devel libvidstab-devel libva-devel libvdpau-devel  v4l-utils-devel fdk-aac-devel# libvpx-devel libaom-devel libdav1d-devel zimg-devel libwebp-devel libmysofa-devel libdrm-devel libsvt-av1-devel srt-devel librist-devel
 
-wget https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz --output ffmpeg-5.1.2.tar.gz
+wget https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz
 tar -xvzf ffmpeg-5.1.2.tar.xz
 cd ffmpeg-5.1.2
 ./configure \
