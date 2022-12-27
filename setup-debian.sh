@@ -28,7 +28,7 @@ sudo apt-get upgrade -y
 check "$?" "apt-get upgrade"
 
 
-log "Installing git"
+log "Installing packages"
 sudo apt-get install -y \
      git \
      zsh \
@@ -80,11 +80,6 @@ sudo apt-get install -y \
 log "Cloning swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
 cd swayos.github.io
-
-
-log "Installing needed official packages"
-xargs sudo apt-get install -y < pacs/debian/swayos
-check "$?" "apt-get install pacs/debian/swayos"
 
 
 log "Copying ttf fonts to font directory"
