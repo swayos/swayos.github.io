@@ -29,7 +29,7 @@ log "xbps/system updated"
 
 
 log "Install base tools"
-sudo xbps-install \
+sudo xbps-install -y \
      bc \
      wget \
      zsh \
@@ -39,7 +39,7 @@ log "basae tools installed"
 
  
 log "Install Sway environment"
-sudo xbps-install \
+sudo xbps-install -y \
      Adapta \
      Waybar \
      blueman \
@@ -77,7 +77,7 @@ log "Sway environment installed"
 
 
 log "Install dev tools"
-sudo xbps-install \
+sudo xbps-install -y \
      git \
      gcc \
      meson \
@@ -89,7 +89,7 @@ log "Dev tools installed"
 
 
 log "Install deps for FFMPEG 5.1.2"
-sudo xbps-install \
+sudo xbps-install -y \
      x264-devel \
      x265-devel \
      gcc \
@@ -183,7 +183,7 @@ log "Library cache updated"
 log "Install sov"
 git clone https://github.com/milgra/sov
 check "$?" "GIT SOV"
-sudo xbps-install libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel
+sudo xbps-install -y libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel
 check "$?" "DEPS SOV"
 cd sov
 meson setup build --buildtype=release
@@ -215,7 +215,7 @@ check "$?" "BUILD WCP"
 log "Install vmp"
 git clone https://github.com/milgra/vmp
 check "$?" "GIT VMP"
-sudo xbps-install SDL2-devel jpeg-devel jbig2dec-devel libopenjpeg2-devel harfbuzz-devel
+sudo xbps-install -y SDL2-devel jpeg-devel jbig2dec-devel libopenjpeg2-devel harfbuzz-devel
 check "$?" "DEPS VMP"
 cd vmp
 meson setup build --buildtype=release
@@ -232,7 +232,7 @@ log "vmp installed"
 log "Install mmfm"
 git clone https://github.com/milgra/mmfm
 check "$?" "GIT MMFM"
-sudo xbps-install mupdf-devel gumbo-parser-devel mujs-devel
+sudo xbps-install -y mupdf-devel gumbo-parser-devel mujs-devel
 check "$?" "DEPS MMFM"
 cd mmfm
 meson setup build --buildtype=release
@@ -252,7 +252,7 @@ cd void-packages/
 ./xbps-src binary-bootstrap
 echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf
 ./xbps-src pkg google-chrome
-sudo xbps-install google-chrome --repository=hostdir/binpkgs/nonfree
+sudo xbps-install -y google-chrome --repository=hostdir/binpkgs/nonfree
 cd ..
 rm -rf void-packages
 check "$?" "Install Google Chrome"
