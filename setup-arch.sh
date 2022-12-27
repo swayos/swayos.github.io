@@ -26,7 +26,6 @@ sudo pacman -Syu
 check "$?" "pacman"
 
 log "Installing needed official packages"
-cat pacs/arch/swayos > pacs/online
 sudo pacman -S --noconfirm --needed \
      sudo \
      zsh \
