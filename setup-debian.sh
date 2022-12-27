@@ -78,7 +78,21 @@ sudo apt-get install -y \
      libgtk-4-dev \
      libglew-dev \
      libqrencode-dev \
-     scdoc
+     scdoc \
+     libsdl2-dev \
+     libswscale-dev \
+     libmupdf-dev \
+     libmujs-dev \
+     libopenjp2-7-dev \
+     libgumbo-dev \
+     libavutil-dev \
+     libavcodec-dev \
+     libavdevice-dev \
+     libavformat-dev \
+     libswscale-dev \
+     libswresample-dev \
+     libxkbcommon-dev \
+     libjbig2dec0-dev
 
 
 log "Cloning swayOS repo"
