@@ -127,7 +127,7 @@ sudo usermod -a $USER -G _seatd
 sudo usermod -a $USER -G bluetooth
 
 
-log "Changin shell to zsh"
+log "Changing shell to zsh"
 
 chsh -s /bin/zsh
 
@@ -193,7 +193,7 @@ log "Install sov"
 git clone https://github.com/milgra/sov
 sudo xbps-install meson ninja pkg-config clang libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel
 cd sov
-meson setup build --buildtype=releaase
+meson setup build --buildtype=release
 ninja -C build
 sudo ninja -C build install
 cd ..
@@ -203,7 +203,7 @@ log "Install wcp"
 
 git clone https://github.com/milgra/wcp
 cd wcp
-meson setup build --buildtype=releaase
+meson setup build --buildtype=release
 ninja -C build
 sudo ninja -C build install
 cd ..
@@ -214,7 +214,7 @@ log "Install vmp"
 git clone https://github.com/milgra/vmp
 sudo xbps-install SDL2-devel ffmpeg-devel jpeg-devel jbig2dec-devel openjp2-devel libopenjpeg2-devel harfbuzz-devel
 cd vmp
-meson setup build --buildtype=releaase
+meson setup build --buildtype=release
 ninja -C build
 sudo ninja -C build install
 cd ..
@@ -225,7 +225,7 @@ log "Install mmfm"
 git clone https://github.com/milgra/mmfm
 sudo xbps-install mupdf-devel gumbo-parser-devel mujs-devel
 cd mmfm
-meson setup build --buildtype=releaase
+meson setup build --buildtype=release
 ninja -C build
 sudo ninja -C build install
 cd ..
