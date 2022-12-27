@@ -252,7 +252,7 @@ cd ..
 log "Install vmp"
 
 git clone https://github.com/milgra/vmp
-sudo xbps-install SDL2-devel jpeg-devel jbig2dec-devel openjp2-devel libopenjpeg2-devel harfbuzz-devel
+sudo xbps-install SDL2-devel jpeg-devel jbig2dec-devel libopenjpeg2-devel harfbuzz-devel
 cd vmp
 meson setup build --buildtype=release
 ninja -C build

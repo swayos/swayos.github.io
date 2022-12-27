@@ -27,9 +27,8 @@ function preexec {
 # startup sway on login on terminal 1
 if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
     if [ -z "$XDG_RUNTIME_DIR" ]; then
-	# for FreeBSD and Void Linux
-	export XDG_RUNTIME_DIR="/tmp/$UID"
-	[[ ! -d $XDG_RUNTIME_DIR ]] && mkdir -p $XDG_RUNTIME_DIR && chmod 0700 $XDG_RUNTIME_DIR
+	export XDG_RUNTIME_DIR="~/.config/xdg"
+	[[ ! -d $XDG_RUNTIME_DIR ]] && mkdir -p $XDG_RUNTIME_DIR && chmod 0777 $XDG_RUNTIME_DIR
     fi
     export QT_QPA_PLATFORMTHEME=gtk2
     export QT_QPA_PLATFORM=wayland
