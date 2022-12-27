@@ -100,7 +100,8 @@ sudo pacman -S --noconfirm --needed \
      glew \
      openjpeg2 \
      libmupdf \
-     gumbo-parser
+     gumbo-parser \
+     mujs
 
 log "Cloning swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
