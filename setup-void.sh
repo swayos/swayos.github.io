@@ -150,13 +150,53 @@ sudo xbps-install google-chrome --repository=hostdir/binpkgs/nonfree
 
 log "Installing latest FFMPEG"
 
-sudo xbps-install x264-devel x265-devel gcc
-# zlib-devel bzip2-devel freetype-devel alsa-lib-devel libXfixes-devel
-#  libXext-devel libXvMC-devel libxcb-devel lame-devel libtheora-devel
-# libvorbis-devel  xvidcore-devel jack-devel SDL2-devel
-# libcdio-paranoia-devel librtmp-devel libmodplug-devel gnutls-devel
-# speex-devel celt-devel harfbuzz-devel libass-devel opus-devel ocl-icd-devel
-# libbs2b-devel libvidstab-devel libva-devel libvdpau-devel  v4l-utils-devel fdk-aac-devel# libvpx-devel libaom-devel libdav1d-devel zimg-devel libwebp-devel libmysofa-devel libdrm-devel libsvt-av1-devel srt-devel librist-devel
+sudo xbps-install \
+     x264-devel \
+     x265-devel \
+     gcc \
+     make \
+     nasm \
+     yasm \
+     zlib-devel \
+     bzip2-devel \
+     freetype-devel \
+     alsa-lib-devel \
+     libXfixes-devel \
+     libXext-devel \
+     libXvMC-devel \
+     libxcb-devel \
+     lame-devel \
+     libtheora-devel \
+     libvorbis-devel \
+     xvidcore-devel \
+     jack-devel \
+     SDL2-devel \
+     libcdio-paranoia-devel \
+     librtmp-devel \
+     libmodplug-devel \
+     gnutls-devel \
+     speex-devel \
+     celt-devel \
+     harfbuzz-devel \
+     libass-devel \
+     opus-devel \
+     ocl-icd-devel \
+     libbs2b-devel \
+     libvidstab-devel \
+     libva-devel \
+     libvdpau-devel \
+     v4l-utils-devel \
+     fdk-aac-devel \
+     libvpx-devel \
+     libaom-devel \
+     libdav1d-devel \
+     zimg-devel \
+     libwebp-devel \
+     libmysofa-devel \
+     libdrm-devel \
+     libsvt-av1-devel \
+     srt-devel \
+     librist-devel
 
 wget https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz
 tar -xvzf ffmpeg-5.1.2.tar.gz
