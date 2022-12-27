@@ -161,7 +161,7 @@ sudo ninja -C build install
 cd ..
 
 log "Linking software store"
-sudo ln /usr/bin/gnome-software /usr/bin/pamac-manager
+sudo ln /usr/bin/gnome-software /usr/bin/appstore
 
 log "Linking zsh-autosuggestions"
 sudo mkdir -p /usr/share/zsh/plugins/zsh-autosuggestions

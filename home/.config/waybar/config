@@ -63,7 +63,7 @@
     "custom/software": {
         "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
         "interval": "once",
-        "on-click": "swaymsg exec pamac-manager",
+        "on-click": "swaymsg exec QT_QPA_PLATFORM=xcb appstore",
     },
     "custom/settings": {
     	"tooltip": true,

@@ -90,7 +90,8 @@ sudo pkg install -y \
      sway \
      swaybg \
      swayidle \
-     swaylock
+     swaylock \
+     octopkg
 
 log "Cloning swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
@@ -112,6 +113,10 @@ log "Starting services"
 
 sudo sysrc seatd_enable=YES
 service seatd start
+
+
+log "Linking software store"
+sudo ln /usr/local/bin/octopkg /usr/local/bin/appstore
 
 
 log "Installing sov"

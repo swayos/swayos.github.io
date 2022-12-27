@@ -118,6 +118,10 @@ cp -f -R home/. ~/
 check "$?" "cp"
 
 
+log "Linking software store"
+sudo ln /usr/bin/pamac-manager /usr/bin/appstore
+
+
 log "Starting services"
 sudo systemctl enable iwd --now
 sudo systemctl enable bluetooth --now

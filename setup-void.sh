@@ -321,6 +321,10 @@ check "$?" "Disabel iwd udevd collosion"
 log "iwd udevd collosion disabled"
 
 
+log "Linking software store"
+sudo ln /usr/bin/octoxbps /usr/bin/appstore
+
+
 log "Enable services"
 sudo ln -s /etc/sv/dbus /var/service
 sudo ln -s /etc/sv/iwd /var/service
