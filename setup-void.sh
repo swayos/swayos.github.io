@@ -321,6 +321,12 @@ check "$?" "Disabel iwd udevd collosion"
 log "iwd udevd collosion disabled"
 
 
+log "Adding start xdg-desktop portal for screen sharing"
+echo '# startup pipewire and xdg-desktop-portal for audio and screen sharing' | sudo tee -a $HOME/.config/sway/config
+echo 'exec ~/.pipewire.sh' | sudo tee -a $HOME/.config/sway/config
+check "$?" "Adding start xdg-desktop portal for screen sharing"
+log "start added"
+
 log "Linking software store"
 sudo ln /usr/bin/octoxbps /usr/bin/appstore
 
