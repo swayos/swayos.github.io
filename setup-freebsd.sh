@@ -128,6 +128,33 @@ sudo ninja -C build install
 cd ..
 
 
+log "Installing wcp"
+git clone https://github.com/milgra/wcp
+cd wcp
+meson build
+ninja -C build
+sudo ninja -C build install
+cd ..
+
+
+log "Installing vmp"
+git clone https://github.com/milgra/vmp
+cd vmp
+meson build
+ninja -C build
+sudo ninja -C build install
+cd ..
+
+
+log "Installing mmfm"
+git clone https://github.com/milgra/mmfm
+cd mmfm
+meson build
+ninja -C build
+sudo ninja -C build install
+cd ..
+
+
 log "Cleaning up"
 cd ..
 rm -f -R swayos.github.io

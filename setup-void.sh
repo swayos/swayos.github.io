@@ -303,7 +303,7 @@ log "Grub menu disabled"
 
 
 log "Enable shutdown/reboot/suspend"
-echo '$USER ALL=NOPASSWD:/sbin/reboot,/sbin/shutdown,/sbin/suspend' | sudo tee -a /etc/default/grub
+echo '$USER ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/zzz' | sudo tee -a /etc/sudoers
 check "$?" "Enable shutdown/reboot/suspend"
 log "Shutdown/reboot/suspend enabled"
 
@@ -323,7 +323,6 @@ log "iwd udevd collosion disabled"
 
 log "Linking software store"
 sudo ln /usr/bin/octoxbps /usr/bin/appstore
-
 
 log "Enable services"
 sudo ln -s /etc/sv/dbus /var/service
