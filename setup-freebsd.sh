@@ -98,7 +98,7 @@ sudo pkg install -y \
 
 log "Install ffmpeg 5"
 
-sudo pkg-install -y \
+sudo pkg install -y \
      devel/nasm \
      textproc/texi2html \
      graphics/frei0r \
