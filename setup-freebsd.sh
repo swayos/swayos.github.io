@@ -122,7 +122,7 @@ sudo ln /usr/local/bin/octopkg /usr/local/bin/appstore
 log "Installing sov"
 git clone https://github.com/milgra/sov
 cd sov
-meson build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
 ninja -C build
 sudo ninja -C build install
 cd ..
@@ -131,7 +131,7 @@ cd ..
 log "Installing wcp"
 git clone https://github.com/milgra/wcp
 cd wcp
-meson build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
 ninja -C build
 sudo ninja -C build install
 cd ..
@@ -140,7 +140,7 @@ cd ..
 log "Installing vmp"
 git clone https://github.com/milgra/vmp
 cd vmp
-meson build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
 ninja -C build
 sudo ninja -C build install
 cd ..
@@ -149,7 +149,7 @@ cd ..
 log "Installing mmfm"
 git clone https://github.com/milgra/mmfm
 cd mmfm
-meson build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
 ninja -C build
 sudo ninja -C build install
 cd ..

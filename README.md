@@ -100,6 +100,7 @@ I recommend Void Linux because it's minimalism, speed and elegance fits the phil
 - remove swayos_setup_* log files from your home directory
 - don't forget to check for updates regularly!
 - to open root GTK apps from wayland use sudo -EH appname
+- on void linux install vaapi drivers for you gpu ( intel-video-accel, mesa-intel-dri ) for video acceleration
 
 ## UI Structure of SwayOS
 
