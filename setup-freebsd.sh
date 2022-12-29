@@ -123,7 +123,7 @@ log "Installing sov"
 git clone https://github.com/milgra/sov
 cd sov
 LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
-ninja -C build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib ninja -C build
 sudo ninja -C build install
 cd ..
 
@@ -132,7 +132,7 @@ log "Installing wcp"
 git clone https://github.com/milgra/wcp
 cd wcp
 LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
-ninja -C build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib ninja -C build
 sudo ninja -C build install
 cd ..
 
@@ -141,7 +141,7 @@ log "Installing vmp"
 git clone https://github.com/milgra/vmp
 cd vmp
 LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
-ninja -C build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib ninja -C build
 sudo ninja -C build install
 cd ..
 
@@ -150,7 +150,7 @@ log "Installing mmfm"
 git clone https://github.com/milgra/mmfm
 cd mmfm
 LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
-ninja -C build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib ninja -C build
 sudo ninja -C build install
 cd ..
 
