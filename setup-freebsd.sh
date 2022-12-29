@@ -102,11 +102,11 @@ sudo pkg install -y \
      devel/nasm \
      textproc/texi2html \
      graphics/frei0r \
-     multimedia/ffnvcodec-headers \
      multimedia/v4l_compat \
      devel/gmake \
      devel/pkgconf \
      lang/perl5.32 \
+     fdk-aac \
      multimedia/aom \
      multimedia/libass \
      multimedia/dav1d \
@@ -154,9 +154,9 @@ cd ffmpeg-5.1.2
     --enable-nonfree \
     --enable-shared
 check "$?" "CONF FFMPEG"
-make
+gmake
 check "$?" "MAKE FFMPEG"
-sudo make install
+sudo gmake install
 check "$?" "ISNTALL FFMPEG"
 cd ..
 rm -rf ffmpeg-5.1.2
