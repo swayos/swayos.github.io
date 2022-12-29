@@ -91,7 +91,78 @@ sudo pkg install -y \
      swaybg \
      swayidle \
      swaylock \
-     octopkg
+     octopkg \
+     sdl2 \
+     jbig2dec
+
+
+log "Install ffmpeg 5"
+
+sudo pkg-install -y \
+     devel/nasm \
+     textproc/texi2html \
+     graphics/frei0r \
+     multimedia/ffnvcodec-headers \
+     multimedia/v4l_compat \
+     devel/gmake \
+     devel/pkgconf \
+     lang/perl5.32 \
+     multimedia/aom \
+     multimedia/libass \
+     multimedia/dav1d \
+     graphics/libdrm \
+     x11-fonts/fontconfig \
+     print/freetype2 \
+     math/gmp \
+     security/gnutls \
+     audio/lame \
+     textproc/libxml2 \
+     audio/opus \
+     multimedia/svt-av1 \
+     multimedia/libv4l \
+     multimedia/libva \
+     multimedia/libvdpau \
+     multimedia/vmaf \
+     audio/libvorbis \
+     multimedia/libvpx \
+     graphics/webp \
+     multimedia/libx264 \
+     multimedia/x265
+
+log "Building FFMPEG 5.1.2"
+wget https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz
+check "$?" "WGET FFMPEG"
+tar -xvzf ffmpeg-5.1.2.tar.gz
+check "$?" "TAR FFMPEG"
+cd ffmpeg-5.1.2
+./configure \
+    --prefix=/usr \
+    --pkg-config-flags="--static" \
+    --extra-cflags="-I$HOME/ffmpeg_build/include" \
+    --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
+    --extra-libs=-lpthread \
+    --extra-libs=-lm \
+    --bindir="$HOME/bin" \
+    --enable-gpl \
+    --enable-libfdk_aac \
+    --enable-libfreetype \
+    --enable-libmp3lame \
+    --enable-libopus \
+    --enable-libvpx \
+    --enable-libx264 \
+    --enable-libx265 \
+    --enable-nonfree \
+    --enable-shared
+check "$?" "CONF FFMPEG"
+make
+check "$?" "MAKE FFMPEG"
+sudo make install
+check "$?" "ISNTALL FFMPEG"
+cd ..
+rm -rf ffmpeg-5.1.2
+log "FFMPEG 5.1.2 installed"
+
+
 
 log "Cloning swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
