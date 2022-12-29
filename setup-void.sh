@@ -71,7 +71,9 @@ sudo xbps-install -y \
      wofi \
      xdg-desktop-portal-wlr \
      wob \
-     iwgtk
+     iwgtk \
+     octoxbps
+
 check "$?" "Install Sway environment"
 log "Sway environment installed"
 
@@ -303,7 +305,7 @@ log "Grub menu disabled"
 
 
 log "Enable shutdown/reboot/suspend"
-echo '$USER ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/zzz' | sudo tee -a /etc/sudoers
+echo "$USER ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/zzz" | sudo tee -a /etc/sudoers
 check "$?" "Enable shutdown/reboot/suspend"
 log "Shutdown/reboot/suspend enabled"
 

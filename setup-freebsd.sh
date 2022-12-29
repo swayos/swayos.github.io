@@ -52,7 +52,7 @@ sudo pkg upgrade
 check "$?" "pkg upgrade"
 
 
-log "Installing git"
+log "Installing env"
 sudo pkg install -y \
      git \
      zsh \
@@ -94,6 +94,10 @@ sudo pkg install -y \
      octopkg \
      sdl2 \
      jbig2dec
+
+log "Adding user to seatd group"
+sudo pw usermod $USER -G _seatd
+sudo pw groupmod video -m $USER
 
 
 log "Install ffmpeg 5"

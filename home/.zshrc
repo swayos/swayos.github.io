@@ -28,10 +28,9 @@ function preexec {
 if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
     if [ -z "$XDG_RUNTIME_DIR" ]; then
 	export XDG_RUNTIME_DIR="$HOME/.config/xdg"
-	if [ ! -d $XDG_RUNTIME_DIR ]; then
-	    mkdir -p $XDG_RUNTIME_DIR
-	    chmod 0777 $XDG_RUNTIME_DIR
-	fi
+	rm -rf $XDG_RUNTIME_DIR
+	mkdir -p $XDG_RUNTIME_DIR
+	#chmod 0777 $XDG_RUNTIME_DIR
     fi
     export QT_QPA_PLATFORMTHEME=gtk2
     export QT_QPA_PLATFORM=wayland
@@ -39,5 +38,6 @@ if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
     export WLR_NO_HARDWARE_CURSORS=1
-    exec sway
+    XDG_CURRENT_DESKTOP=sway dbus-run-session sway
+    #exec sway
 fi
