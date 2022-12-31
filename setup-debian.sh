@@ -37,6 +37,7 @@ sudo apt-get install -y \
      bluez \
      blueman \
      pipewire \
+     pipewire-pulse \
      pipewire-audio-client-libraries \
      pipewire-bin \
      xdg-desktop-portal-wlr \

@@ -93,16 +93,20 @@ sudo pkg install -y \
      swaylock \
      octopkg \
      sdl2 \
-     jbig2dec
+     jbig2dec \
+     drm-kmod \
+     mupdf \
+     mujs \
+     gumbo
 
 log "Adding user to seatd and video group"
-sudo pw usermod $USER -G _seatd
 sudo pw usermod $USER -G video
 sudo sysrc seatd_enable=YES
 
 log "Install ffmpeg 5"
 
 sudo pkg install -y \
+     gcc \
      devel/nasm \
      textproc/texi2html \
      graphics/frei0r \
@@ -185,9 +189,7 @@ check "$?" "cp"
 
 
 log "Starting services"
-
 sudo sysrc seatd_enable=YES
-service seatd start
 
 
 log "Linking software store"

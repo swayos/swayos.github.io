@@ -239,3 +239,7 @@ SwayOS is based on Sway Window Manager, which is a window manager and compositor
 
 In SwayOS if you log in the default console ( tty0 or ttyv0 ) then it starts up automatically. If you check the contents of your .zshrc ( ~/.zshrc ) you will see "exec sway" in the end.
 It needs an environment variable called XDG_RUNTIME_DIR to be set. This points to the folder where sway and other programs put their temporary files during the session. On systemd systems it is usually /run/user/$UID, in SwayOS it's ~/.config/xdg. It is also set in .zshrc before executing sway.
+
+## TODO ##
+
+update.sh that re-compiles 3rd party stuff
