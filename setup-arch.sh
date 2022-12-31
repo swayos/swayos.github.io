@@ -67,6 +67,7 @@ sudo pacman -S --noconfirm --needed \
 log "Installing aur dependencies"
 
 sudo pacman -S --noconfirm --needed \
+     base-devel \
      git \
      scdoc \
      gtk4 \
@@ -118,10 +119,6 @@ cp -f -R home/. ~/
 check "$?" "cp"
 
 
-log "Linking software store"
-sudo ln /usr/bin/pamac-manager /usr/bin/appstore
-
-
 log "Starting services"
 sudo systemctl enable iwd --now
 sudo systemctl enable bluetooth --now
@@ -143,6 +140,9 @@ do
     check "$?" "pacman -U"
     cd ..
 done
+
+log "Linking software store"
+sudo ln /usr/bin/pamac-manager /usr/bin/appstore
 
 
 log "Cleaning up"

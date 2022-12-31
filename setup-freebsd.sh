@@ -95,10 +95,10 @@ sudo pkg install -y \
      sdl2 \
      jbig2dec
 
-log "Adding user to seatd group"
+log "Adding user to seatd and video group"
 sudo pw usermod $USER -G _seatd
-sudo pw groupmod video -m $USER
-
+sudo pw usermod $USER -G video
+sudo sysrc seatd_enable=YES
 
 log "Install ffmpeg 5"
 
@@ -229,6 +229,7 @@ LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib ninja -C build
 sudo ninja -C build install
 cd ..
 
+sudo service seatd start
 
 log "Cleaning up"
 cd ..
