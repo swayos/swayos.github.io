@@ -233,9 +233,9 @@ Enable the program to be a floating in sway config.
 - **Chrome says its out of date**  
 Open the app store, open preferences, go to third-party, Enable AUR support and enable check for updates
 
-## How it works ##
+## How does it work ##
 
-SwayOS is based on Sway Window Manager, which is a window manager and compositor in one, it gives pixel buffers to programs where they can draw their content and the it flattens these buffers onto the screen. It is a standalone program that can be started manually or automatically.
+SwayOS is based on Sway Window Manager, which is a window manager and compositor, it gives pixel buffers to programs where they can draw their content and the it flattens these buffers onto the screen. It is a standalone program that can be started manually or automatically.
 
 In SwayOS if you log in the default console ( tty0 or ttyv0 ) then it starts up automatically. If you check the contents of your .zshrc ( ~/.zshrc ) you will see "exec sway" in the end.
 It needs an environment variable called XDG_RUNTIME_DIR to be set. This points to the folder where sway and other programs put their temporary files during the session. On systemd systems it is usually /run/user/$UID, in SwayOS it's ~/.config/xdg. It is also set in .zshrc before executing sway.

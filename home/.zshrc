@@ -30,7 +30,6 @@ if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
 	export XDG_RUNTIME_DIR="$HOME/.config/xdg"
 	rm -rf $XDG_RUNTIME_DIR
 	mkdir -p $XDG_RUNTIME_DIR
-	#chmod 0777 $XDG_RUNTIME_DIR
     fi
     export QT_QPA_PLATFORMTHEME=gtk2
     export QT_QPA_PLATFORM=wayland

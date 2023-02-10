@@ -3,6 +3,10 @@
 # This script installs SwayOS on a pre-installed void linux
 # A user with sudo permissions and a live network connection is needed
 
+# for nvidia drivers and steam :
+# sudo xbps-install void-repo-nonfree void-repo-multilib
+# sudo xbps-install nvidia steam libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit
+
 exec 1> >(tee "swayos_setup_out")
 exec 2> >(tee "swayos_setup_err")
 
@@ -46,6 +50,7 @@ sudo xbps-install -y \
      bluez \
      brightnessctl \
      cups \
+     cups-filters \
      emacs \
      foot \
      grim \
@@ -72,7 +77,8 @@ sudo xbps-install -y \
      xdg-desktop-portal-wlr \
      wob \
      iwgtk \
-     octoxbps
+     octoxbps \
+     wdisplays
 
 check "$?" "Install Sway environment"
 log "Sway environment installed"
@@ -277,7 +283,6 @@ rm -rf swayos.github.io
 
 
 # setup environment
-
 
 #log "Force unblock"
 #echo 'rfkill unblock all' | sudo tee -a /etc/rc.local
