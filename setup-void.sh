@@ -80,7 +80,8 @@ sudo xbps-install -y \
      wob \
      iwgtk \
      octoxbps \
-     wdisplays
+     wdisplays \
+     void-repo-nonfree
 
 check "$?" "Install Sway environment"
 log "Sway environment installed"
