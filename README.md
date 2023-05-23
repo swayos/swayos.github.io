@@ -242,4 +242,6 @@ It needs an environment variable called XDG_RUNTIME_DIR to be set. This points t
 
 ## TODO ##
 
-update.sh that re-compiles 3rd party stuff
+don't checkout void packages, use firefox or chromium
+remove font awesome, check new waybar icons on all os'es
+wcp wifi es bluetooth selector

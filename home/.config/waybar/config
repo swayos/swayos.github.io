@@ -1,6 +1,6 @@
 {
     "layer": "bottom",
-    "height": 10,
+    "height": 16,
     "modules-left": [
     "sway/workspaces",
     "sway/mode"
@@ -10,9 +10,9 @@
     "cpu",
     "memory",
     "disk",
-    "battery",
     "backlight",
     "pulseaudio",
+    "battery",
     "custom/lang"
     ],
 
@@ -25,6 +25,7 @@
     "custom/mmfm",
     "custom/vmp",
     "custom/printer",
+    "custom/gap",
     "custom/software",
     "custom/overview",
     "custom/settings",
@@ -46,7 +47,7 @@
     "all-outputs": true
     },
     "custom/overview": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec 'echo 2 > /tmp/sov'",
     },
@@ -61,26 +62,25 @@
         "on-click": "swaymsg exec feh ~/.config/sway/help.png",
     },
     "custom/software": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec QT_QPA_PLATFORM=xcb appstore",
     },
     "custom/settings": {
-    	"tooltip": true,
         "tooltip-format": "shutdown/logout",
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec 'echo 2 > /tmp/wcp'",
     },
     "custom/vmp": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "format": "   ",
         "interval": "once",
-        "on-click": "swaymsg exec vmp",
+        "on-click": "swaymsg exec 'vmp -r ~/.config/vmp'",
     },
     "custom/mmfm": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "format": "   ",
         "interval": "once",
-        "on-click": "swaymsg exec mmfm",
+        "on-click": "swaymsg exec 'mmfm -r ~/.config/mmfm'",
     },
     "custom/bluetooth": {
         "format": "<span font_family='Font Awesome 6' size='medium'></span> ",
@@ -88,22 +88,22 @@
         "on-click": "swaymsg exec blueman-manager",
     },
     "custom/filemanager": {
-        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
+        "format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec 'nautilus --new-window'",
     },
     "custom/libre": {
-        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
+        "format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec libreoffice",
     },
     "custom/terminal": {
-        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
+        "format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec foot",
     },
     "custom/browser": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec 'google-chrome-stable --ozone-platform-hint=auto'",
     },
@@ -114,7 +114,7 @@
     },
     "custom/apps": {
         "tooltip-format": "desktop",
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
+        "format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec 'wofi --show run'",
     },
@@ -124,7 +124,7 @@
         "on-click": "swaymsg exec pamac-manager",
     },
     "custom/printer": {
-"format": "<span font_family='Font Awesome 6' size='xx-large'> </span> ",
+"format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec system-config-printer",
     },
@@ -258,6 +258,10 @@
     },
    "custom/lang-icon": {
         "format": "<span font_family='Font Awesome 6' size='xx-large'></span> |",
+        "interval": "once",
+    },
+   "custom/gap": {
+        "format": " ",
         "interval": "once",
     },
     "custom/lang": {

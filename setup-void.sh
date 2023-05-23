@@ -44,13 +44,14 @@ log "basae tools installed"
  
 log "Install Sway environment"
 sudo xbps-install -y \
-     Adapta \
      Waybar \
      blueman \
      bluez \
      brightnessctl \
      cups \
      cups-filters \
+     chromium \
+     chromium-widevine \
      emacs \
      foot \
      grim \
@@ -71,6 +72,7 @@ sudo xbps-install -y \
      swaylock \
      system-config-printer \
      terminus-font \
+     ttf-ubuntu-font-family \
      wireplumber \
      wl-clipboard \
      wofi \
@@ -83,7 +85,6 @@ sudo xbps-install -y \
 check "$?" "Install Sway environment"
 log "Sway environment installed"
 
-
 log "Install dev tools"
 sudo xbps-install -y \
      git \
@@ -95,58 +96,87 @@ sudo xbps-install -y \
 check "$?" "Install dev tools"
 log "Dev tools installed"
 
-
 log "Install deps for FFMPEG 5.1.2"
 sudo xbps-install -y \
+     perl \
+     yasm \
+     alsa-lib-devel \
+     bzip2-devel \
+     libxcb-devel \
+     liblzma-devel \
+     SDL2-devel \
+     sndio-devel \
+     zlib-devel \
+     frei0r-plugins \
+     libcdio-paranoia-devel \
+     rubberband-devel \
+     libvidstab-devel \
      x264-devel \
      x265-devel \
-     gcc \
-     make \
-     nasm \
-     yasm \
-     zlib-devel \
-     bzip2-devel \
-     freetype-devel \
-     alsa-lib-devel \
-     libXfixes-devel \
-     libXext-devel \
-     libXvMC-devel \
-     libxcb-devel \
-     lame-devel \
-     libtheora-devel \
-     libvorbis-devel \
      xvidcore-devel \
-     jack-devel \
-     SDL2-devel \
-     libcdio-paranoia-devel \
-     librtmp-devel \
-     libmodplug-devel \
-     gnutls-devel \
-     speex-devel \
-     celt-devel \
-     harfbuzz-devel \
+     fdk-aac-devel \
+     libtls-devel \
+     gmp-devel \
+     chromaprint-devel \
+     libgcrypt-devel \
+     ladspa-sdk \
+     lcms2-devel \
+     libaom-devel \
      libass-devel \
+     libbluray-devel \
+     libcaca-devel \
+     celt-devel \
+     codec2-devel \
+     libdav1d-devel \
+     libdrm-devel \
+     fontconfig-devel \
+     freetype-devel \
+     fribidi-devel \
+     glslang-devel \
+     SPIRV-Tools-devel \
+     libgme-devel \
+     libgsm-devel \
+     jack-devel \
+     libmodplug-devel \
+     lame-devel \
+     libopencv4-devel \
+     libopenjpeg2-devel \
+     libopenmpt-devel \
      opus-devel \
+     libplacebo-devel \
+     libpulseaudio \
+     rabbitmq-c-devel \
+     librist-devel \
+     librsvg-devel \
+     librtmp-devel \
+     snappy-devel \
+     libsoxr-devel \
+     speex-devel \
+     srt-devel \
+     libssh-devel \
+     libtheora-devel \
+     twolame-devel \
+     libvorbis-devel \
+     libvpx6-devel \
+     libwebp-devel \
+     libxml2-devel \
+     zimg-devel \
+     lilv-devel \
+     lv2 \
+     libopenal-devel \
+     mesa \
+     openssl-devel \
+     vapoursynth-devel \
      ocl-icd-devel \
-     libbs2b-devel \
-     libvidstab-devel \
+     libmysofa-devel \
+     vulkan-loader \
      libva-devel \
      libvdpau-devel \
-     v4l-utils-devel \
-     fdk-aac-devel \
-     libvpx-devel \
-     libaom-devel \
-     libdav1d-devel \
-     zimg-devel \
-     libwebp-devel \
-     libmysofa-devel \
-     libdrm-devel \
-     libsvt-av1-devel \
-     srt-devel \
-     librist-devel
+     nv-codec-headers \
+     libsvt-av1-devel
+		
 check "$?" "Install deps for FFMPEG 5.1.2"
 log "Deps for FFMPEG 5.1.2 installed"
-
 
 log "Building FFMPEG 5.1.2"
 wget https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.gz
@@ -155,23 +185,81 @@ tar -xvzf ffmpeg-5.1.2.tar.gz
 check "$?" "TAR FFMPEG"
 cd ffmpeg-5.1.2
 ./configure \
-    --prefix=/usr \
-    --pkg-config-flags="--static" \
-    --extra-cflags="-I$HOME/ffmpeg_build/include" \
-    --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
-    --extra-libs=-lpthread \
-    --extra-libs=-lm \
-    --bindir="$HOME/bin" \
+    --prefix='/usr' \
+    --extra-cflags='-I/opt/cuda/include' \
+    --extra-ldflags='-L/opt/cuda/lib64' \
+    --disable-stripping \
+    --enable-shared \
+    --enable-static \
+    --enable-nonfree \
     --enable-gpl \
-    --enable-libfdk_aac \
-    --enable-libfreetype \
-    --enable-libmp3lame \
-    --enable-libopus \
-    --enable-libvpx \
+    --enable-version3 \
+    --enable-libxcb \
+    --enable-frei0r \
+    --enable-libcdio \
+    --enable-librubberband \
+    --enable-libvidstab \
     --enable-libx264 \
     --enable-libx265 \
-    --enable-nonfree \
-    --enable-shared
+    --enable-libxvid \
+    --enable-libfdk-aac \
+    --enable-libtls \
+    --enable-gmp \
+    --enable-chromaprint \
+    --enable-gcrypt \
+    --enable-ladspa \
+    --enable-lcms2 \
+    --enable-libaom \
+    --enable-libass \
+    --enable-libbluray \
+    --enable-libcaca \
+    --enable-libcelt \
+    --enable-libcodec2 \
+    --enable-libdav1d \
+    --enable-libdrm \
+    --enable-libfontconfig \
+    --enable-libfreetype \
+    --enable-libfribidi \
+    --enable-libglslang \
+    --enable-libgme \
+    --enable-libgsm \
+    --enable-vapoursynth \
+    --enable-openssl \
+    --enable-opengl \
+    --enable-openal \
+    --enable-lv2 \
+    --enable-libzimg \
+    --enable-libxml2 \
+    --enable-libwebp \
+    --enable-libvorbis \
+    --enable-libtwolame \
+    --enable-libtheora \
+    --enable-libssh \
+    --enable-libsrt \
+    --enable-libspeex \
+    --enable-libsoxr \
+    --enable-librtmp \
+    --enable-librsvg \
+    --enable-librist \
+    --enable-librabbitmq \
+    --enable-libpulse \
+    --enable-libplacebo \
+    --enable-libopus \
+    --enable-libopenmpt \
+    --enable-libopenjpeg \
+    --enable-libmp3lame \
+    --enable-libmodplug \
+    --enable-libjack \
+    --enable-opencl \
+    --enable-libvpx \
+    --enable-libmysofa \
+    --enable-vaapi \
+    --enable-vdpau \
+    --enable-nvenc \
+    --enable-nvdec \
+    --enable-libsvtav1q
+
+
 check "$?" "CONF FFMPEG"
 make
 check "$?" "MAKE FFMPEG"
@@ -253,34 +341,16 @@ cd ..
 rm -rf mmfm
 log "mmfm installed"
 
-
-log "Install Google Chrome"
-git clone https://github.com/void-linux/void-packages.git
-cd void-packages/
-./xbps-src binary-bootstrap
-echo XBPS_ALLOW_RESTRICTED=yes >> etc/conf
-./xbps-src pkg google-chrome
-sudo xbps-install -y google-chrome --repository=hostdir/binpkgs/nonfree
-cd ..
-rm -rf void-packages
-check "$?" "Install Google Chrome"
-log "Google Chrome installed"
-
-
 log "Clone swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
 check "$?" "GIT SWAYOS"
 cd swayos.github.io
-log "Copy fonts to font directory"
-sudo cp -f font/*.* /usr/share/fonts/
-check "$?" "Copy fonts to font directory"
-log "Fonts copied"
+
 log "Copy settings to home folder"
 cp -f -R home/. ~/
 check "$?" "Copy settings to home folder"
 log "Settings copied"
 rm -rf swayos.github.io
-
 
 # setup environment
 

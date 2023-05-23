@@ -4,10 +4,10 @@
     /* `otf-font-awesome` is required to be installed for icons */
     /*font-family: Roboto, Helvetica, Arial, sans-serif;*/
     /*font-family: Ubuntu;*/
-    font-family: "Terminus (TTF)";
+    font-family: "Terminus";
     font-size: 16px;
     font-weight: bold;
-    min-height: 10px;
+    /* min-height: 16px; */
     padding: 0;
     margin: 0;
 }
@@ -165,6 +165,94 @@ label:focus {
 }
 
 #pulseaudio {
+}
+
+#custom-apps {
+    background-image: url('/home/milgra/.config/waybar/apps.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 50%;
+    margin-top: 5px;
+}
+
+#custom-terminal {
+    background-image: url('/home/milgra/.config/waybar/terminal.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 60%;
+    margin-top: 4px;
+}
+
+#custom-filemanager {
+    background-image: url('/home/milgra/.config/waybar/filemanager.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 60%;
+    margin-top: 6px;
+}
+
+#custom-browser {
+    background-image: url('/home/milgra/.config/waybar/browser.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 60%;
+    margin-top: 4px;
+}
+
+#custom-libre {
+    background-image: url('/home/milgra/.config/waybar/word.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 60%;
+    margin-top: 4px;
+}
+
+#custom-mmfm {
+    background-image: url('/home/milgra/.config/waybar/mmfm.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 60%;
+    margin-top: 6px;
+}
+
+#custom-vmp {
+    background-image: url('/home/milgra/.config/waybar/vmp.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 55%;
+    margin-top: 5px;
+}
+
+#custom-printer {
+    background-image: url('/home/milgra/.config/waybar/printer.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 60%;
+    margin-top: 4px;
+}
+
+#custom-software {
+    background-image: url('/home/milgra/.config/waybar/software.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 55%;
+    margin-top: 5px;
+}
+
+#custom-overview {
+    background-image: url('/home/milgra/.config/waybar/overview.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 55%;
+    margin-top: 5px;
+}
+
+#custom-settings {
+    background-image: url('/home/milgra/.config/waybar/settings.svg');
+    background-repeat: no-repeat;
+    /* background-position: center; */
+    background-size: 55%;
+    margin-top: 5px;
 }
 
 #pulseaudio.muted {

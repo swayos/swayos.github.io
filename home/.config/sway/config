@@ -16,7 +16,7 @@ input * {
 # constants
 
 set $menu wofi --show run | xargs swaymsg exec --
-set $browser google-chrome-stable --ozone-platform-hint=auto
+set $browser chromium
 set $terminal foot
 set $screenshot grim ~/Downloads/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 set $screenclip slurp | grim -g - ~/Downloads/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
@@ -169,17 +169,18 @@ for_window [app_id="pamac-manager"] floating enable
 # auto launch applications
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec blueman-applet
 exec mako
 exec waybar
 exec swayidle -w \
-         timeout 300 'swaylock -f' \
-         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 1200 'swaylock -f' \
+         timeout 2400 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f'
 
 exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
 exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -t 200
-exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -f 300x190 -m 20 -a rt
+exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -f 300x190 -m 2 -a rt
 
-# xorg setup
+# startup pipewire and xdg-desktop-portal for audio and screen sharing
 
-include /etc/sway/config.d/*
+exec brightnessctl set 50%v
