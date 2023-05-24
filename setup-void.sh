@@ -49,7 +49,10 @@ sudo xbps-install -y \
 check "$?" "Install base tools"
 log "basae tools installed"
 
- 
+log "Install nonfree repo"
+sudo xbps-install -y \
+     void-repo-nonfree
+
 log "Install Sway environment"
 sudo xbps-install -y \
      Waybar \
@@ -88,8 +91,7 @@ sudo xbps-install -y \
      wob \
      iwgtk \
      octoxbps \
-     wdisplays \
-     void-repo-nonfree
+     wdisplays
 
 check "$?" "Install Sway environment"
 log "Sway environment installed"
