@@ -1,6 +1,6 @@
 {
     "layer": "bottom",
-    "height": 16,
+    "height": 20,
     "modules-left": [
     "sway/workspaces",
     "sway/mode"
@@ -17,7 +17,6 @@
     ],
 
     "modules-right": [
-    "custom/apps",
     "custom/terminal",
     "custom/filemanager",
     "custom/browser",
@@ -26,7 +25,9 @@
     "custom/vmp",
     "custom/printer",
     "custom/gap",
+
     "custom/software",
+    "custom/apps",
     "custom/overview",
     "custom/settings",
     "clock"
@@ -46,87 +47,62 @@
     },
     "all-outputs": true
     },
-    "custom/overview": {
+    "custom/terminal": {
+        "format": "  ",
+        "interval": "once",
+        "on-click": "swaymsg exec foot",
+    },
+    "custom/filemanager": {
+        "format": "  ",
+        "interval": "once",
+        "on-click": "swaymsg exec 'nautilus --new-window'",
+    },
+    "custom/browser": {
+        "format": "  ",
+        "interval": "once",
+        "on-click": "swaymsg exec 'google-chrome-stable --ozone-platform-hint=auto'",
+    },
+    "custom/libre": {
+        "format": "  ",
+        "interval": "once",
+        "on-click": "swaymsg exec libreoffice",
+    },
+    "custom/mmfm": {
+        "format": "  ",
+        "interval": "once",
+        "on-click": "swaymsg exec 'mmfm -r ~/.config/mmfm'",
+    },
+    "custom/vmp": {
+        "format": "  ",
+        "interval": "once",
+        "on-click": "swaymsg exec 'vmp -r ~/.config/vmp'",
+    },
+    "custom/printer": {
         "format": "   ",
         "interval": "once",
-        "on-click": "swaymsg exec 'echo 2 > /tmp/sov'",
-    },
-    "custom/activity": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
-        "interval": "once",
-        "on-click": "swaymsg exec gnome-system-monitor",
-    },
-    "custom/help": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span> ",
-        "interval": "once",
-        "on-click": "swaymsg exec feh ~/.config/sway/help.png",
+        "on-click": "swaymsg exec system-config-printer",
     },
     "custom/software": {
-        "format": "   ",
+        "format": "  ",
         "interval": "once",
         "on-click": "swaymsg exec QT_QPA_PLATFORM=xcb appstore",
+    },
+    "custom/apps": {
+        "tooltip-format": "desktop",
+        "format": "  ",
+        "interval": "once",
+        "on-click": "swaymsg exec 'wofi --show run'",
+    },
+    "custom/overview": {
+        "format": "  ",
+        "interval": "once",
+        "on-click": "swaymsg exec 'echo 2 > /tmp/sov'",
     },
     "custom/settings": {
         "tooltip-format": "shutdown/logout",
         "format": "   ",
         "interval": "once",
         "on-click": "swaymsg exec 'echo 2 > /tmp/wcp'",
-    },
-    "custom/vmp": {
-        "format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'vmp -r ~/.config/vmp'",
-    },
-    "custom/mmfm": {
-        "format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'mmfm -r ~/.config/mmfm'",
-    },
-    "custom/bluetooth": {
-        "format": "<span font_family='Font Awesome 6' size='medium'></span> ",
-        "interval": "once",
-        "on-click": "swaymsg exec blueman-manager",
-    },
-    "custom/filemanager": {
-        "format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'nautilus --new-window'",
-    },
-    "custom/libre": {
-        "format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec libreoffice",
-    },
-    "custom/terminal": {
-        "format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec foot",
-    },
-    "custom/browser": {
-        "format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'google-chrome-stable --ozone-platform-hint=auto'",
-    },
-    "custom/displays": {
-        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
-        "interval": "once",
-        "on-click": "swaymsg exec wdisplays",
-    },
-    "custom/apps": {
-        "tooltip-format": "desktop",
-        "format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'wofi --show run'",
-    },
-    "custom/pamac": {
-        "format": " P",
-        "interval": "once",
-        "on-click": "swaymsg exec pamac-manager",
-    },
-    "custom/printer": {
-"format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec system-config-printer",
     },
     "sway/language": {
     	"format": "{short} {variant}",
@@ -261,7 +237,7 @@
         "interval": "once",
     },
    "custom/gap": {
-        "format": " ",
+        "format": "  ",
         "interval": "once",
     },
     "custom/lang": {

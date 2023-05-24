@@ -27,10 +27,18 @@ check(){
 
 log "Update xbps/system"
 sudo xbps-install -u xbps
-sudo xbps-install -Su
+sudo xbps-install -Syu
 check "$?" "Update xbps/system"
 log "xbps/system updated"
 
+# clean package cache
+sudo xbps-remove -yO
+
+# remove orphaned packages
+sudo xbps-remove -yo
+
+# purge old kernels...
+sudo vkpurge rm all
 
 log "Install base tools"
 sudo xbps-install -y \
