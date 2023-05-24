@@ -41,7 +41,7 @@ sudo xbps-remove -yo
 sudo vkpurge rm all
 
 log "Install base tools"
-sudo xbps-install -y \
+sudo xbps-install -Sy \
      bc \
      wget \
      zsh \
@@ -50,11 +50,11 @@ check "$?" "Install base tools"
 log "basae tools installed"
 
 log "Install nonfree repo"
-sudo xbps-install -y \
+sudo xbps-install -Sy \
      void-repo-nonfree
 
 log "Install Sway environment"
-sudo xbps-install -y \
+sudo xbps-install -Sy \
      Waybar \
      blueman \
      bluez \
@@ -97,7 +97,7 @@ check "$?" "Install Sway environment"
 log "Sway environment installed"
 
 log "Install dev tools"
-sudo xbps-install -y \
+sudo xbps-install -Sy \
      git \
      gcc \
      meson \
@@ -108,7 +108,7 @@ check "$?" "Install dev tools"
 log "Dev tools installed"
 
 log "Install deps for FFMPEG 5.1.2"
-sudo xbps-install -y \
+sudo xbps-install -Sy \
      perl \
      yasm \
      alsa-lib-devel \
