@@ -60,7 +60,7 @@
     "custom/browser": {
         "format": "  ",
         "interval": "once",
-        "on-click": "swaymsg exec 'google-chrome-stable --ozone-platform-hint=auto'",
+        "on-click": "swaymsg exec 'chromium --ozone-platform-hint=auto'",
     },
     "custom/libre": {
         "format": "  ",
