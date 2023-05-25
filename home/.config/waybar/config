@@ -70,12 +70,12 @@
     "custom/mmfm": {
         "format": "  ",
         "interval": "once",
-        "on-click": "swaymsg exec 'mmfm -r ~/.config/mmfm'",
+        "on-click": "swaymsg exec mmfm",
     },
     "custom/vmp": {
         "format": "  ",
         "interval": "once",
-        "on-click": "swaymsg exec 'vmp -r ~/.config/vmp'",
+        "on-click": "swaymsg exec vmp",
     },
     "custom/printer": {
         "format": "   ",
