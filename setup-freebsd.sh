@@ -160,7 +160,9 @@ cd ffmpeg-5.1.2
     --enable-libx264 \
     --enable-libx265 \
     --enable-nonfree \
-    --enable-shared
+    --enable-shared \
+    --disable-vulkan
+
 check "$?" "CONF FFMPEG"
 gmake
 check "$?" "MAKE FFMPEG"
