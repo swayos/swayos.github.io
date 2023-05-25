@@ -171,16 +171,9 @@ rm -rf ffmpeg-5.1.2
 log "FFMPEG 5.1.2 installed"
 
 
-
 log "Cloning swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
 cd swayos.github.io
-
-
-log "Copying ttf fonts to font directory"
-sudo mkdir -p /usr/local/share/fonts/
-sudo cp -f font/*.* /usr/local/share/fonts/
-check "$?" "cp"
 
 
 log "Copying settings to home folder"
