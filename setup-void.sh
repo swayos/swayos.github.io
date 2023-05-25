@@ -100,6 +100,7 @@ log "Install dev tools"
 sudo xbps-install -Sy \
      git \
      gcc \
+     make \
      meson \
      ninja \
      pkg-config \
@@ -267,9 +268,7 @@ cd ffmpeg-5.1.2
     --enable-vaapi \
     --enable-vdpau \
     --enable-nvenc \
-    --enable-nvdec \
-    --enable-libsvtav1q
-
+    --enable-nvdec
 
 check "$?" "CONF FFMPEG"
 make
