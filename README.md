@@ -68,11 +68,11 @@ The workspaces icon opens the workspace overview. Another way to open it is to l
 The settings icon opens the system settings menu where you can set volume, display brightness, open audio settings, open display settings, select wifi channel, select bluetooth device and you can exit you session in different ways.
 If you have a lot of workspaces open with a lot of windows, use the workspace overview app, by long pressing WIN + workspace numbers or the workspace overview icon in the status bar.
 System information is always visible in the center of the status bar, from left to right : the cpu usage, available memory, available free space, battery percentage, display brightness, volume. You can adjust brightness and volume by just scrolling over their icon, it's a nice shortcut if you don't want to open up the system menu.
-You can install SwayOS on any kind of unix-like OS. The installer image downloadable from swayos.github.io is arch linux based, for further help, documentation and troubleshooting please use arch linux site/forums.
+You can install SwayOS on any kind of unix-like OS.
 
 ## Installation ##
 
-SwayOS install scripts are available for Void Linux, Arch Linux, Debian ( >=12 ) and FreeBSD.
+SwayOS install scripts are available for Void Linux, Debian ( >=12 ) and FreeBSD.
 Start with a clean minimal install of any of these systems, with network connection. Then
 
 ```
