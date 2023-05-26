@@ -68,7 +68,6 @@ sudo apt-get install -y \
      wl-clipboard \
      pavucontrol \
      emacs-nox \
-     adapta-gtk-theme \
      meson \
      gnome-software \
      unzip \
