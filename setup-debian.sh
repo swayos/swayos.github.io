@@ -57,6 +57,7 @@ sudo apt-get install -y \
      wofi \
      brightnessctl \
      foot \
+     chromium \
      nautilus \
      libreoffice \
      gnome-system-monitor \
@@ -101,11 +102,6 @@ git clone https://github.com/swayos/swayos.github.io.git
 cd swayos.github.io
 
 
-log "Copying ttf fonts to font directory"
-sudo cp -f font/*.* /usr/share/fonts/
-check "$?" "cp"
-
-
 log "Copying settings to home folder"
 cp -f -R home/. ~/
 check "$?" "cp"
@@ -116,10 +112,6 @@ sudo systemctl enable iwd --now
 sudo systemctl enable bluetooth --now
 sudo systemctl enable cups --now
 
-
-log "Installing google chrome"
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install -y ./google-chrome-stable_current_amd64.deb
 
 log "Installing sov"
 git clone https://github.com/milgra/sov
