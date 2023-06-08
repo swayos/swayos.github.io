@@ -45,11 +45,11 @@ check(){
     fi
 }
 
-log "Refreshing package db"
-sudo pkg update
-check "$?" "pkg update"
-sudo pkg upgrade
-check "$?" "pkg upgrade"
+#log "Refreshing package db"
+#sudo pkg update
+#check "$?" "pkg update"
+#sudo pkg upgrade
+#check "$?" "pkg upgrade"
 
 
 log "Installing env"
