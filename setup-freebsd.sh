@@ -144,7 +144,7 @@ tar -xvzf ffmpeg-5.1.2.tar.gz
 check "$?" "TAR FFMPEG"
 cd ffmpeg-5.1.2
 ./configure \
-    --prefix=/usr \
+    --prefix=/usr/local/ \
     --pkg-config-flags="--static" \
     --extra-cflags="-I$HOME/ffmpeg_build/include" \
     --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
@@ -169,7 +169,7 @@ check "$?" "MAKE FFMPEG"
 sudo gmake install
 check "$?" "ISNTALL FFMPEG"
 cd ..
-rm -rf ffmpeg-5.1.2
+# rm -rf ffmpeg-5.1.2
 log "FFMPEG 5.1.2 installed"
 
 
@@ -194,8 +194,8 @@ sudo ln /usr/local/bin/octopkg /usr/local/bin/appstore
 log "Installing sov"
 git clone https://github.com/milgra/sov
 cd sov
-LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
-LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib ninja -C build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/ meson setup build --buildtype=release
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/ ninja -C build
 sudo ninja -C build install
 cd ..
 
@@ -203,8 +203,8 @@ cd ..
 log "Installing wcp"
 git clone https://github.com/milgra/wcp
 cd wcp
-LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
-LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib ninja -C build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/ meson setup build --buildtype=release
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/ ninja -C build
 sudo ninja -C build install
 cd ..
 
@@ -212,8 +212,8 @@ cd ..
 log "Installing vmp"
 git clone https://github.com/milgra/vmp
 cd vmp
-LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
-LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib ninja -C build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/ meson setup build --buildtype=release
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/ ninja -C build
 sudo ninja -C build install
 cd ..
 
@@ -221,8 +221,8 @@ cd ..
 log "Installing mmfm"
 git clone https://github.com/milgra/mmfm
 cd mmfm
-LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib meson setup build --buildtype=release
-LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib ninja -C build
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/ meson setup build --buildtype=release
+LIBRARY_PATH=$LIBRARY_PATH:/usr/local/lib/ ninja -C build
 sudo ninja -C build install
 cd ..
 
@@ -230,7 +230,7 @@ sudo service seatd start
 
 log "Cleaning up"
 cd ..
-rm -f -R swayos.github.io
+# rm -f -R swayos.github.io
 check "$?" "rm"
 
 log "Changing shell to zsh"
