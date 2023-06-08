@@ -145,12 +145,13 @@ check "$?" "TAR FFMPEG"
 cd ffmpeg-5.1.2
 ./configure \
     --prefix=/usr/local/ \
+    --libdir=/usr/local/lib/ \
+    --bindir=/usr/local/bin/ \
     --pkg-config-flags="--static" \
     --extra-cflags="-I$HOME/ffmpeg_build/include" \
     --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
     --extra-libs=-lpthread \
     --extra-libs=-lm \
-    --bindir="$HOME/bin" \
     --enable-gpl \
     --enable-libfdk_aac \
     --enable-libfreetype \
