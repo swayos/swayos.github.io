@@ -18,6 +18,14 @@ bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du
 **Source**  
 [https://github.com/swayos/swayos.github.io](https://github.com/swayos/swayos.github.io)
 
+**What's new in the latest release?**
+
+- Using Chromium instead of Google Chrome
+- Using svg icons instead of font awesome fonts in waybar for unified look across os'es
+- Updated sway overview, wayland control panel, multimedia file manager and visual music player aps, UI, config
+- Removed terminus-ttf and font awesome fonts and packages
+- Removed arch linux installer, I can concentrate on void, debian and freebsd only
+
 ## How does it help productivity?
 
 The more time you can spend working on your task the more productivity you can achieve. The more time you have to spend using the OS, dealing with windows, looking for things, clicking in submenus the less productivity you can achieve.
@@ -243,5 +251,4 @@ It needs an environment variable called XDG_RUNTIME_DIR to be set. This points t
 ## TODO ##
 
 don't checkout void packages, use firefox or chromium
-remove font awesome, check new waybar icons on all os'es
 wcp wifi es bluetooth selector
