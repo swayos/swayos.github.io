@@ -1,252 +1,130 @@
 {
     "layer": "bottom",
     "height": 20,
+
     "modules-left": [
-    "sway/workspaces",
-    "sway/mode"
-    ],
+     "custom/search",
+     "custom/favorites",
+     "sway/mode",
+     "sway/workspaces",
+     ],
 
     "modules-center": [
-    "cpu",
-    "memory",
-    "disk",
-    "backlight",
-    "pulseaudio",
-    "battery",
-    "custom/lang"
-    ],
+     "cpu",
+     "memory",
+     "disk",
+     "backlight",
+     "pulseaudio",
+     "battery"
+     ],
 
     "modules-right": [
-    "custom/terminal",
-    "custom/filemanager",
-    "custom/browser",
-    "custom/libre",
-    "custom/mmfm",
-    "custom/vmp",
-    "custom/printer",
-    "custom/gap",
+     "clock",
+     "custom/overview",
+     "custom/settings",
+     ],
 
-    "custom/software",
-    "custom/apps",
-    "custom/overview",
-    "custom/settings",
-    "clock"
-    ],
-    
     "sway/workspaces": {
-    "persistent_workspaces": {
-        "1": [],
-        "2": [],
-        "3": [],
-        "4": [],
-        "5": [],
-        "6": [],
-        "7": [],
-        "8": [],
-        "9": []
-    },
-    "all-outputs": true
-    },
-    "custom/terminal": {
-        "format": "  ",
-        "interval": "once",
-        "on-click": "swaymsg exec foot",
-    },
-    "custom/filemanager": {
-        "format": "  ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'nautilus --new-window'",
-    },
-    "custom/browser": {
-        "format": "  ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'chromium --ozone-platform-hint=auto'",
-    },
-    "custom/libre": {
-        "format": "  ",
-        "interval": "once",
-        "on-click": "swaymsg exec libreoffice",
-    },
-    "custom/mmfm": {
-        "format": "  ",
-        "interval": "once",
-        "on-click": "swaymsg exec mmfm",
-    },
-    "custom/vmp": {
-        "format": "  ",
-        "interval": "once",
-        "on-click": "swaymsg exec vmp",
-    },
-    "custom/printer": {
-        "format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec system-config-printer",
-    },
-    "custom/software": {
-        "format": "  ",
-        "interval": "once",
-        "on-click": "swaymsg exec QT_QPA_PLATFORM=xcb appstore",
-    },
-    "custom/apps": {
-        "tooltip-format": "desktop",
-        "format": "  ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'wofi --show run'",
-    },
-    "custom/overview": {
-        "format": "  ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'echo 2 > /tmp/sov'",
-    },
-    "custom/settings": {
-        "tooltip-format": "shutdown/logout",
-        "format": "   ",
-        "interval": "once",
-        "on-click": "swaymsg exec 'echo 2 > /tmp/wcp'",
-    },
-    "sway/language": {
-    	"format": "{short} {variant}",
-    },
+     "persistent_workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": []
+      },
+     "all-outputs": true
+     },
+
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
-    },
-    "sway/window":{
-	"max-length":50
-    },
-    "idle_inhibitor": {
-        "format": "idle | ",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        "icon-size": 8,
-        "spacing": 20
-    },
-   "custom/clock-icon": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span>",
-        "interval": "once",
-    },
+     "format": "<span style=\"italic\">{}</span>"
+     },
+
     "clock": {
-        "timezone": "Europe/Budapest",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": " {:%Y-%m-%d} ",
-	"format": " {:%H:%M} "
+     "format": "{:%Y-%m-%d %H:%M}"
     },
-   "custom/cpu-icon": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span>",
-        "interval": "once",
-    },
+
     "cpu": {
-        "format": " cpu:{usage:02}% ",
-        "tooltip": false
+     "format": " CPU {usage:02} /",
+     "tooltip": false
     },
-   "custom/mem-icon": {
-        "format": "<span font_family='Font Awesome 6' size='x-large'></span>",
-        "interval": "once",
-    },
+
     "memory": {
-        "interval": 20,
-	"format": " mem:{avail:0.1f}G "
+     "interval": 20,
+     "format": " MEM {} /"
     },
-   "custom/disc-icon": {
-        "format": "<span font_family='Font Awesome 6' size='xx-large'></span>",
-        "interval": "once",
-    },
+
     "disk":{
-	"interval": 60,
-	"format":" ssd:{free} "
+     "interval": 60,
+     "format":" SSD {percentage_used:02} /"
     },
-   "custom/light-icon": {
-        "format": "<span font_family='Font Awesome 6' size='medium'></span>",
-        "interval": "once",
-    },
+
     "backlight": {
-        "format": " lcd:{percent}% ",
-        "format-icons": ["", ""],
-	"on-scroll-up" : "brightnessctl s 5%+",
-	"on-scroll-down" : "brightnessctl s 5%-"    
-    },
-   "custom/batt-icon": {
-        "format": "<span font_family='Font Awesome 6' size='xx-large'></span>",
-        "interval": "once",
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": " bat:{capacity}% ",
-        "format-charging": " bat:{capacity}% ",
-        "format-plugged": " bat:{capacity}% ",
-        "format-alt": " bat:{time} ",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
-   "custom/net-icon": {
-        "format": "  <span font_family='Font Awesome 6' size='xx-large'></span> ",
-        "interval": "once",
-        "on-click": "iwgtk"
-    },
-    "network": {
-        "format-wifi": " WiFi ",
-        "format-ethernet": " Eth ",
-        "format-linked": " {ifname} (No IP) ",
-        "format-disconnected": " Dead ",
-        "on-click": "iwgtk"
-    },
-   "custom/vol-icon": {
-        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
-        "interval": "once",
-        "on-click": "pavucontrol"
-    },
-   "custom/energy-icon": {
-        "format": " <span font_family='Font Awesome 6' size='small'></span> ",
-        "interval": "once",
-        "on-click": "tlpui"
-    },
-   "custom/hardware-icon": {
-        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> ",
-        "interval": "once",
-        "on-click": "GDK_BACKEND=x11 hardinfo"
-    },
+     "format": " LCD {percent} /",
+     "format-icons": ["", ""],
+     "on-scroll-up" : "brightnessctl s 5%+",
+     "on-scroll-down" : "brightnessctl s 5%-"
+     },
+
     "pulseaudio": {
-        "format": " vol:{volume}% ",
-        "format-bluetooth": " vol:{volume}% ",
-        "format-bluetooth-muted": " {icon}  ",
-        "format-muted": " {format_source}  ",
-        "format-source": "{volume}%   ",
-        "format-source-muted": "  ",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+     "format": " VOL {volume} /",
+     "format-bluetooth": " VOL {volume} /",
+     "format-bluetooth-muted": " {icon}  ",
+     "format-muted": " {format_source}  ",
+     "format-source": "{volume}%   ",
+     "format-source-muted": "  ",
+     "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]},
+      "on-click": "pavucontrol"
     },
-   "custom/lang-icon": {
-        "format": "<span font_family='Font Awesome 6' size='xx-large'></span> |",
-        "interval": "once",
-    },
-   "custom/gap": {
-        "format": "  ",
-        "interval": "once",
-    },
-    "custom/lang": {
-        "format": " kbd:{} ",
-	"exec" : "swaymsg -t get_inputs | jq -r '.[] | select(.identifier == \"1165:49408:ITE_Tech._Inc._ITE_Device(8910)_Keyboard\") | .xkb_active_layout_name' | tail -1 | cut -c1,2",
-	"interval": 60
-    },
-    "tray": {
-        "icon-size": 14,
-    	"spacing": 10
-    }
+
+    "battery": {
+     "states": {
+     // "good": 95,
+     "warning": 30,
+     "critical": 15
+     },
+     "format": " BAT {capacity}",
+     "format-charging": " BAT {capacity}",
+     "format-plugged": " BAT {capacity}",
+     "format-alt": " BAT {time} ",
+     "format-icons": ["", "", "", "", ""]
+     },
+
+    "custom/favorites": {
+     "tooltip-format": "favorites",
+     "format": "  ",
+     "interval": "once",
+     "on-click": "swaymsg exec 'echo \"toggle visibility\" > /tmp/wfl'"
+     },
+
+    "custom/search": {
+     "tooltip-format": "desktop",
+     "format": "  ",
+     "interval": "once",
+     "on-click": "swaymsg exec 'wofi --show run'"
+     },
+
+    "custom/overview": {
+     "format": "  ",
+     "interval": "once",
+     "on-click": "swaymsg exec 'echo 2 > /tmp/sov'"
+     },
+
+    "custom/settings": {
+     "tooltip-format": "settings",
+     "format": "  ",
+     "interval": "once",
+     "on-click": "swaymsg exec 'echo \"toggle visibility\" > /tmp/wcp'"
+     },
+
 }

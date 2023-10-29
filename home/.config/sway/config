@@ -57,28 +57,6 @@ bindsym --no-repeat $mod+Ctrl+8 workspace number 18; exec "echo 1 > /tmp/sov"
 bindsym --no-repeat $mod+Ctrl+9 workspace number 19; exec "echo 1 > /tmp/sov"
 bindsym --no-repeat $mod+Ctrl+0 workspace number 20; exec "echo 1 > /tmp/sov"
 
-bindsym --release $mod+1 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+2 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+3 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+4 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+5 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+6 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+7 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+8 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+9 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+0 exec "echo 0 > /tmp/sov"
-
-bindsym --release $mod+Ctrl+1 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+Ctrl+2 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+Ctrl+3 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+Ctrl+4 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+Ctrl+5 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+Ctrl+6 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+Ctrl+7 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+Ctrl+8 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+Ctrl+9 exec "echo 0 > /tmp/sov"
-bindsym --release $mod+Ctrl+0 exec "echo 0 > /tmp/sov"
-
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -150,7 +128,6 @@ default_floating_border normal
 
 gaps inner 5
 gaps outer 0
-gaps top -5
 
 for_window [app_id="foot"] border pixel 1
 for_window [app_id="iwgtk"] floating enable
