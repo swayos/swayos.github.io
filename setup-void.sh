@@ -385,19 +385,33 @@ rm -rf sov
 log "sov installed"
 
 
+log "Install kuid"
+git clone https://github.com/milgra/kuid
+check "$?" "GIT KUID"
+sudo xbps-install -y libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel
+check "$?" "DEPS KUID"
+cd kuid
+meson setup build --buildtype=release
+check "$?" "BUILD KUID"
+ninja -C build
+check "$?" "BUILD KUID"
+sudo ninja -C build install
+check "$?" "INSTALL KUID"
+cd ..
+rm -rf kuid
+log "sov installed"
+
+
 log "Install wcp"
 git clone https://github.com/milgra/wcp
 check "$?" "GIT WCP"
-cd wcp
-meson setup build --buildtype=release
-check "$?" "BUILD WCP"
-ninja -C build
-check "$?" "BUILD WCP"
-sudo ninja -C build install
-check "$?" "INSTALL WCP"
-cd ..
-rm -rf wcp
-check "$?" "BUILD WCP"
+mv wcp ~/.config/
+
+
+log "Install wfl"
+git clone https://github.com/milgra/wfl
+check "$?" "GIT WFL"
+mv wfl ~/.config/
 
 
 log "Install vmp"
