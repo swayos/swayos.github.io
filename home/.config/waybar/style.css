@@ -91,7 +91,7 @@ label:focus {
 }
 
 #custom-favorites {
-    background-image: url('/home/etotmil/.config/waybar/favorites.svg');
+    background-image: url('favorites.svg');
     background-repeat: no-repeat;
     margin-left: 9px;
     margin-right: 2px;
@@ -99,21 +99,21 @@ label:focus {
 }
 
 #custom-search {
-    background-image: url('/home/etotmil/.config/waybar/search.svg');
+    background-image: url('search.svg');
     background-repeat: no-repeat;
     margin-left: 9px;
     margin-top: 6px;
 }
 
 #custom-overview {
-    background-image: url('/home/etotmil/.config/waybar/overview.svg');
+    background-image: url('overview.svg');
     background-repeat: no-repeat;
     margin-left: 12px;
     margin-top: 7px; 
 }
 
 #custom-settings {
-    background-image: url('/home/etotmil/.config/waybar/gear.svg');
+    background-image: url('gear.svg');
     background-repeat: no-repeat;
     margin-left: 6px;
     margin-top: 7px;
