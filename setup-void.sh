@@ -405,13 +405,22 @@ log "sov installed"
 log "Install wcp"
 git clone https://github.com/milgra/wcp
 check "$?" "GIT WCP"
-mv wcp ~/.config/
-
+cd wcp
+git switch dev
+mkdir ~/.config/wcp
+cp wcp.sh ~/.config/wcp/
+cp -R res ~/.config/wcp/
+cd ..
 
 log "Install wfl"
 git clone https://github.com/milgra/wfl
 check "$?" "GIT WFL"
-mv wfl ~/.config/
+cd wfl
+git switch dev
+mkdir ~/.config/wfl
+cp wfl.sh ~/.config/wfl/
+cp -R res ~/.config/wfl/
+cd ..
 
 
 log "Install vmp"
