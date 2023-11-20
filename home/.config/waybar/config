@@ -3,8 +3,7 @@
     "height": 20,
 
     "modules-left": [
-     "custom/search",
-     "custom/favorites",
+     "custom/overview",
      "sway/mode",
      "sway/workspaces",
      ],
@@ -20,7 +19,8 @@
 
     "modules-right": [
      "clock",
-     "custom/overview",
+     "custom/search",
+     "custom/favorites",
      "custom/settings",
      ],
 
