@@ -77,6 +77,7 @@ sudo xbps-install -Sy \
      nautilus \
      pamixer \
      pavucontrol \
+     pulsemixer \
      pipewire \
      seatd \
      slurp \
@@ -408,7 +409,7 @@ check "$?" "GIT WCP"
 cd wcp
 git switch dev
 mkdir ~/.config/wcp
-cp wcp.sh ~/.config/wcp/
+cp wcp-void.sh ~/.config/wcp/wcp.sh
 cp -R res ~/.config/wcp/
 cd ..
 

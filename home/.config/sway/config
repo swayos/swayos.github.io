@@ -182,3 +182,5 @@ exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -f 300x190 -m 2
 # startup pipewire and xdg-desktop-portal for audio and screen sharing
 
 exec brightnessctl set 50%v
+exec ~/.config/wcp/wcp.sh
+exec ~/.config/wfl/wfl.sh
