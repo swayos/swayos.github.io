@@ -112,6 +112,29 @@ sudo systemctl enable bluetooth --now
 sudo systemctl enable cups --now
 
 
+log "Installing iwgtk"
+git clone https://github.com/J-Lentz/iwgtk
+cd iwgtk
+meson setup build --buildtype=release
+ninja -C build
+sudo ninja -C build install
+cd ..
+
+
+log "Linking software store"
+sudo ln /usr/bin/gnome-software /usr/bin/appstore
+
+
+log "Linking zsh-autosuggestions"
+sudo mkdir -p /usr/share/zsh/plugins/zsh-autosuggestions
+sudo ln /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+log "Linking polkit"
+sudo mkdir -p /usr/lib/polkit-gnome
+sudo ln /usr/bin/lxpolkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+
 log "Installing sov"
 git clone https://github.com/milgra/sov
 cd sov
@@ -120,13 +143,28 @@ ninja -C build
 sudo ninja -C build install
 cd ..
 
-log "Installing wcp"
+
+log "Install wcp"
 git clone https://github.com/milgra/wcp
+check "$?" "GIT WCP"
 cd wcp
-meson build
-ninja -C build
-sudo ninja -C build install
+git switch dev
+mkdir ~/.config/wcp
+cp wcp-void.sh ~/.config/wcp/wcp.sh
+cp -R res ~/.config/wcp/
 cd ..
+
+
+log "Install wfl"
+git clone https://github.com/milgra/wfl
+check "$?" "GIT WFL"
+cd wfl
+git switch dev
+mkdir ~/.config/wfl
+cp wfl.sh ~/.config/wfl/
+cp -R res ~/.config/wfl/
+cd ..
+
 
 log "Installing vmp"
 git clone https://github.com/milgra/vmp
@@ -136,6 +174,7 @@ ninja -C build
 sudo ninja -C build install
 cd ..
 
+
 log "Installing mmfm"
 git clone https://github.com/milgra/mmfm
 cd mmfm
@@ -144,29 +183,12 @@ ninja -C build
 sudo ninja -C build install
 cd ..
 
-log "Installing iwgtk"
-git clone https://github.com/J-Lentz/iwgtk
-cd iwgtk
-meson setup build --buildtype=release
-ninja -C build
-sudo ninja -C build install
-cd ..
-
-log "Linking software store"
-sudo ln /usr/bin/gnome-software /usr/bin/appstore
-
-log "Linking zsh-autosuggestions"
-sudo mkdir -p /usr/share/zsh/plugins/zsh-autosuggestions
-sudo ln /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-log "Linking polkit"
-sudo mkdir -p /usr/lib/polkit-gnome
-sudo ln /usr/bin/lxpolkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 log "Cleaning up"
 cd ..
 rm -f -R swayos.github.io
 check "$?" "rm"
+
 
 log "Changing shell to zsh"
 chsh -s /bin/zsh
