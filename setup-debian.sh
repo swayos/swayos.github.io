@@ -99,7 +99,7 @@ sudo apt-get install -y \
 log "Cloning swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
 cd swayos.github.io
-
+git switch dev
 
 log "Copying settings to home folder"
 cp -f -R home/. ~/
