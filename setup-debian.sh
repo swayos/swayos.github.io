@@ -144,6 +144,21 @@ sudo ninja -C build install
 cd ..
 
 
+log "Install kuid"
+git clone https://github.com/milgra/kuid
+check "$?" "GIT KUID"
+cd kuid
+meson setup build --buildtype=release
+check "$?" "BUILD KUID"
+ninja -C build
+check "$?" "BUILD KUID"
+sudo ninja -C build install
+check "$?" "INSTALL KUID"
+cd ..
+rm -rf kuid
+log "sov installed"
+
+
 log "Install wcp"
 git clone https://github.com/milgra/wcp
 check "$?" "GIT WCP"
