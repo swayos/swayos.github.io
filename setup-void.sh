@@ -351,7 +351,8 @@ cd ffmpeg-5.1.2
     --enable-vaapi \
     --enable-vdpau \
     --enable-nvenc \
-    --enable-nvdec
+    --enable-nvdec \
+    --disable-vulkan
 
 check "$?" "CONF FFMPEG"
 make
