@@ -117,7 +117,6 @@ log "Clone swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
 check "$?" "GIT SWAYOS"
 cd swayos.github.io
-git switch dev
 
 
 log "Copy settings to home folder"
@@ -408,7 +407,6 @@ log "Install wcp"
 git clone https://github.com/milgra/wcp
 check "$?" "GIT WCP"
 cd wcp
-git switch dev
 mkdir ~/.config/wcp
 cp wcp-void.sh ~/.config/wcp/wcp.sh
 cp -R res ~/.config/wcp/
@@ -418,7 +416,6 @@ log "Install wfl"
 git clone https://github.com/milgra/wfl
 check "$?" "GIT WFL"
 cd wfl
-git switch dev
 mkdir ~/.config/wfl
 cp wfl.sh ~/.config/wfl/
 cp -R res ~/.config/wfl/
