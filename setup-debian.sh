@@ -100,7 +100,6 @@ log "Cloning swayOS repo"
 git clone https://github.com/swayos/swayos.github.io.git
 cd swayos.github.io
 
-
 log "Copying settings to home folder"
 cp -f -R home/. ~/
 check "$?" "cp"
@@ -112,6 +111,29 @@ sudo systemctl enable bluetooth --now
 sudo systemctl enable cups --now
 
 
+log "Installing iwgtk"
+git clone https://github.com/J-Lentz/iwgtk
+cd iwgtk
+meson setup build --buildtype=release
+ninja -C build
+sudo ninja -C build install
+cd ..
+
+
+log "Linking software store"
+sudo ln /usr/bin/gnome-software /usr/bin/appstore
+
+
+log "Linking zsh-autosuggestions"
+sudo mkdir -p /usr/share/zsh/plugins/zsh-autosuggestions
+sudo ln /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+log "Linking polkit"
+sudo mkdir -p /usr/lib/polkit-gnome
+sudo ln /usr/bin/lxpolkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+
 log "Installing sov"
 git clone https://github.com/milgra/sov
 cd sov
@@ -120,13 +142,41 @@ ninja -C build
 sudo ninja -C build install
 cd ..
 
-log "Installing wcp"
-git clone https://github.com/milgra/wcp
-cd wcp
-meson build
+
+log "Install kuid"
+git clone https://github.com/milgra/kuid
+check "$?" "GIT KUID"
+cd kuid
+meson setup build --buildtype=release
+check "$?" "BUILD KUID"
 ninja -C build
+check "$?" "BUILD KUID"
 sudo ninja -C build install
+check "$?" "INSTALL KUID"
 cd ..
+rm -rf kuid
+log "sov installed"
+
+
+log "Install wcp"
+git clone https://github.com/milgra/wcp
+check "$?" "GIT WCP"
+cd wcp
+mkdir ~/.config/wcp
+cp wcp-debian.sh ~/.config/wcp/wcp.sh
+cp -R res ~/.config/wcp/
+cd ..
+
+
+log "Install wfl"
+git clone https://github.com/milgra/wfl
+check "$?" "GIT WFL"
+cd wfl
+mkdir ~/.config/wfl
+cp wfl.sh ~/.config/wfl/
+cp -R res ~/.config/wfl/
+cd ..
+
 
 log "Installing vmp"
 git clone https://github.com/milgra/vmp
@@ -136,6 +186,7 @@ ninja -C build
 sudo ninja -C build install
 cd ..
 
+
 log "Installing mmfm"
 git clone https://github.com/milgra/mmfm
 cd mmfm
@@ -144,29 +195,12 @@ ninja -C build
 sudo ninja -C build install
 cd ..
 
-log "Installing iwgtk"
-git clone https://github.com/J-Lentz/iwgtk
-cd iwgtk
-meson setup build --buildtype=release
-ninja -C build
-sudo ninja -C build install
-cd ..
-
-log "Linking software store"
-sudo ln /usr/bin/gnome-software /usr/bin/appstore
-
-log "Linking zsh-autosuggestions"
-sudo mkdir -p /usr/share/zsh/plugins/zsh-autosuggestions
-sudo ln /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-log "Linking polkit"
-sudo mkdir -p /usr/lib/polkit-gnome
-sudo ln /usr/bin/lxpolkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 log "Cleaning up"
 cd ..
 rm -f -R swayos.github.io
 check "$?" "rm"
+
 
 log "Changing shell to zsh"
 chsh -s /bin/zsh

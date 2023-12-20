@@ -1,17 +1,17 @@
 window {
-    background-color: #33333355; 
+    background-color: #333333;
     font-family: "Terminus";
     font-weight: bold;
 }
 
 #input {
     border: none;
-    background-color: #55555555; 
+    background-color: #555555;
 }
 
 #outer-box {
     margin: 10px;
-    background-color: #33333355;
+    background-color: #333333;
 }
 
 #scroll {

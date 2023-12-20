@@ -7,6 +7,9 @@
 # sudo xbps-install void-repo-nonfree void-repo-multilib
 # sudo xbps-install nvidia steam libgcc-32bit libstdc++-32bit libdrm-32bit libglvnd-32bit mesa-dri-32bit
 
+# In case of wifi not starting
+# echo 'rfkill unblock all' | sudo tee -a /etc/rc.local
+
 exec 1> >(tee "swayos_setup_out")
 exec 2> >(tee "swayos_setup_err")
 
@@ -74,6 +77,7 @@ sudo xbps-install -Sy \
      nautilus \
      pamixer \
      pavucontrol \
+     pulsemixer \
      pipewire \
      seatd \
      slurp \
@@ -107,6 +111,84 @@ sudo xbps-install -Sy \
      wayland-protocols
 check "$?" "Install dev tools"
 log "Dev tools installed"
+
+
+log "Clone swayOS repo"
+git clone https://github.com/swayos/swayos.github.io.git
+check "$?" "GIT SWAYOS"
+cd swayos.github.io
+
+
+log "Copy settings to home folder"
+cp -f -R home/. ~/
+check "$?" "Copy settings to home folder"
+log "Settings copied"
+rm -rf swayos.github.io
+
+
+log "Add user to needed groups"
+sudo usermod -a $USER -G _seatd
+sudo usermod -a $USER -G bluetooth
+check "$?" "Add user to needed groups"
+log "User added to needed groups"
+
+
+log "Disable beeping"
+echo 'rmmod pcspkr' | sudo tee -a /etc/modprobe.d/blacklist.conf
+check "$?" "Disable beeping"
+log "Beeping disabled"
+
+
+log "Disable grub menu"
+echo 'GRUB_TIMEOUT=0' | sudo tee -a /etc/default/grub
+echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub
+echo 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel=1 quiet splash"' | sudo tee -a /etc/default/grub
+check "$?" "Disable grub menu"
+log "Grub menu disabled"
+
+
+log "Enable shutdown/reboot/suspend"
+echo "$USER ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/zzz" | sudo tee -a /etc/sudoers
+check "$?" "Enable shutdown/reboot/suspend"
+log "Shutdown/reboot/suspend enabled"
+
+
+log "Disable wpa_supplicant"
+sudo rm /var/service/wpa_supplicant
+check "$?" "Disable wpa_supplicant"
+log "wpa_supplicant disabled"
+
+
+log "Disable iwd udevd collosion"
+echo '[General]' | sudo tee -a /etc/iwd/main.conf
+echo 'UseDefaultInterface=true' | sudo tee -a /etc/iwd/main.conf
+check "$?" "Disabel iwd udevd collosion"
+log "iwd udevd collosion disabled"
+
+
+log "Adding start xdg-desktop portal for screen sharing"
+echo '# startup pipewire and xdg-desktop-portal for audio and screen sharing' | sudo tee -a $HOME/.config/sway/config
+echo 'exec ~/.pipewire.sh' | sudo tee -a $HOME/.config/sway/config
+check "$?" "Adding start xdg-desktop portal for screen sharing"
+log "start added"
+
+
+log "Enable services"
+sudo ln -s /etc/sv/dbus /var/service
+sudo ln -s /etc/sv/iwd /var/service
+sudo ln -s /etc/sv/seatd /var/service
+sudo ln -s /etc/sv/bluetoothd /var/service
+sudo ln -s /etc/sv/pipewire /var/service
+sudo ln -s /etc/sv/pipewire-pulse /var/service
+check "$?" "Enable services"
+log "Services enabled"
+
+
+log "Changing shell to zsh"
+chsh -s /bin/zsh
+check "$?" "Changing shell to zsh"
+log "Shell changed to zsh"
+
 
 log "Install deps for FFMPEG 5.1.2"
 sudo xbps-install -Sy \
@@ -268,7 +350,8 @@ cd ffmpeg-5.1.2
     --enable-vaapi \
     --enable-vdpau \
     --enable-nvenc \
-    --enable-nvdec
+    --enable-nvdec \
+    --disable-vulkan
 
 check "$?" "CONF FFMPEG"
 make
@@ -303,19 +386,40 @@ rm -rf sov
 log "sov installed"
 
 
+log "Install kuid"
+git clone https://github.com/milgra/kuid
+check "$?" "GIT KUID"
+sudo xbps-install -y libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel
+check "$?" "DEPS KUID"
+cd kuid
+meson setup build --buildtype=release
+check "$?" "BUILD KUID"
+ninja -C build
+check "$?" "BUILD KUID"
+sudo ninja -C build install
+check "$?" "INSTALL KUID"
+cd ..
+rm -rf kuid
+log "sov installed"
+
+
 log "Install wcp"
 git clone https://github.com/milgra/wcp
 check "$?" "GIT WCP"
 cd wcp
-meson setup build --buildtype=release
-check "$?" "BUILD WCP"
-ninja -C build
-check "$?" "BUILD WCP"
-sudo ninja -C build install
-check "$?" "INSTALL WCP"
+mkdir ~/.config/wcp
+cp wcp-void.sh ~/.config/wcp/wcp.sh
+cp -R res ~/.config/wcp/
 cd ..
-rm -rf wcp
-check "$?" "BUILD WCP"
+
+log "Install wfl"
+git clone https://github.com/milgra/wfl
+check "$?" "GIT WFL"
+cd wfl
+mkdir ~/.config/wfl
+cp wfl.sh ~/.config/wfl/
+cp -R res ~/.config/wfl/
+cd ..
 
 
 log "Install vmp"
@@ -350,88 +454,6 @@ check "$?" "INSTALL MMFM"
 cd ..
 rm -rf mmfm
 log "mmfm installed"
-
-log "Clone swayOS repo"
-git clone https://github.com/swayos/swayos.github.io.git
-check "$?" "GIT SWAYOS"
-cd swayos.github.io
-
-log "Copy settings to home folder"
-cp -f -R home/. ~/
-check "$?" "Copy settings to home folder"
-log "Settings copied"
-rm -rf swayos.github.io
-
-# setup environment
-
-#log "Force unblock"
-#echo 'rfkill unblock all' | sudo tee -a /etc/rc.local
-
-
-log "Add user to needed groups"
-sudo usermod -a $USER -G _seatd
-sudo usermod -a $USER -G bluetooth
-check "$?" "Add user to needed groups"
-log "User added to needed groups"
-
-
-log "Disable beeping"
-echo 'rmmod pcspkr' | sudo tee -a /etc/modprobe.d/blacklist.conf
-check "$?" "Disable beeping"
-log "Beeping disabled"
-
-
-log "Disable grub menu"
-echo 'GRUB_TIMEOUT=0' | sudo tee -a /etc/default/grub
-echo 'GRUB_TIMEOUT_STYLE=hidden' | sudo tee -a /etc/default/grub
-echo 'GRUB_CMDLINE_LINUX_DEFAULT="loglevel=1 quiet splash"' | sudo tee -a /etc/default/grub
-check "$?" "Disable grub menu"
-log "Grub menu disabled"
-
-
-log "Enable shutdown/reboot/suspend"
-echo "$USER ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/zzz" | sudo tee -a /etc/sudoers
-check "$?" "Enable shutdown/reboot/suspend"
-log "Shutdown/reboot/suspend enabled"
-
-
-log "Disable wpa_supplicant"
-sudo rm /var/service/wpa_supplicant
-check "$?" "Disable wpa_supplicant"
-log "wpa_supplicant disabled"
-
-
-log "Disable iwd udevd collosion"
-echo '[General]' | sudo tee -a /etc/iwd/main.conf
-echo 'UseDefaultInterface=true' | sudo tee -a /etc/iwd/main.conf
-check "$?" "Disabel iwd udevd collosion"
-log "iwd udevd collosion disabled"
-
-
-log "Adding start xdg-desktop portal for screen sharing"
-echo '# startup pipewire and xdg-desktop-portal for audio and screen sharing' | sudo tee -a $HOME/.config/sway/config
-echo 'exec ~/.pipewire.sh' | sudo tee -a $HOME/.config/sway/config
-check "$?" "Adding start xdg-desktop portal for screen sharing"
-log "start added"
-
-log "Linking software store"
-sudo ln /usr/bin/octoxbps /usr/bin/appstore
-
-log "Enable services"
-sudo ln -s /etc/sv/dbus /var/service
-sudo ln -s /etc/sv/iwd /var/service
-sudo ln -s /etc/sv/seatd /var/service
-sudo ln -s /etc/sv/bluetoothd /var/service
-sudo ln -s /etc/sv/pipewire /var/service
-sudo ln -s /etc/sv/pipewire-pulse /var/service
-check "$?" "Enable services"
-log "Services enabled"
-
-
-log "Changing shell to zsh"
-chsh -s /bin/zsh
-check "$?" "Changing shell to zsh"
-log "Shell changed to zsh"
 
 
 log "Setup is done, please log out and log in back again ( type exit )"

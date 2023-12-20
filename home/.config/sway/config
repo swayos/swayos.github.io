@@ -150,7 +150,6 @@ default_floating_border normal
 
 gaps inner 5
 gaps outer 0
-gaps top -5
 
 for_window [app_id="foot"] border pixel 1
 for_window [app_id="iwgtk"] floating enable
@@ -178,9 +177,8 @@ exec swayidle -w \
          before-sleep 'swaylock -f'
 
 exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
-exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -t 200
-exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -f 300x190 -m 2 -a rt
-
-# startup pipewire and xdg-desktop-portal for audio and screen sharing
+exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -v -t 200 -k 65555
 
 exec brightnessctl set 50%v
+exec ~/.config/wcp/wcp.sh
+exec ~/.config/wfl/wfl.sh
