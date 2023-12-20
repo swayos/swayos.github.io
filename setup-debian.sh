@@ -165,7 +165,7 @@ check "$?" "GIT WCP"
 cd wcp
 git switch dev
 mkdir ~/.config/wcp
-cp wcp-void.sh ~/.config/wcp/wcp.sh
+cp wcp-debian.sh ~/.config/wcp/wcp.sh
 cp -R res ~/.config/wcp/
 cd ..
 
