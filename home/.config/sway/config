@@ -178,7 +178,6 @@ exec swayidle -w \
 
 exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
 exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -v -t 200 -k 65555
-exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -f 300x190 -m 2 -a rt
 
 exec brightnessctl set 50%v
 exec ~/.config/wcp/wcp.sh
