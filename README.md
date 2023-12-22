@@ -33,7 +33,7 @@ SwayOS is a productivity-oriented, resource efficient and elegant desktop layer 
 ## Installation ##
 
 SwayOS install scripts are available for Void Linux and Debian Linux ( >=12 ).
-On other OS'es and distributions you have to install the needed programs yourself and copy everythin to your home folder from home/.config, check out the void/debian installer script.
+On other OS'es and distributions you have to install the needed programs yourself and copy everything to your home folder from home/.config, check out the void/debian installer script.
 
 Installation on Void or Debian :
 
