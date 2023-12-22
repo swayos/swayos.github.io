@@ -76,7 +76,7 @@ You open apps by pressing WIN key + SPACE or by selecting them from the favorite
 
 Recommended multimedia applications :
 
-Photopea for Photoshop replacement ( www.photopea.com )
+Photopea for Photoshop replacement ( www.photopea.com )  
 Inkscape for vector graphics ( Illustrator replacement )  
 Natron for video post processing ( After Effects replacement )  
 Davinci Resolve for video editing ( Premiere Pro replacement )  
