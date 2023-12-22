@@ -147,3 +147,16 @@ bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du
 
 - sov should handle outputs pluggin in/out during session
 - vmp and mmfm should use kuid like wcp and wfl for faster one person development
+
+## Changelog
+
+23.12.2023.:
+
+- Version jump to 2.0
+- WCP and WFL are simple bash scripts now using KUID for UI generation
+- SOV update
+- Removed quick launch icons, moved quick launch items under favorites panel
+- Workspaces icon is moved to the top left corner next to workspace numbers
+- Settings icon is moved to top right corner
+- Status bar got transparent background
+- All system status values are percentages now
