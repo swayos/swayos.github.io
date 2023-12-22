@@ -48,7 +48,6 @@ sudo apt-get install -y \
      swayidle \
      swaylock \
      pamixer \
-     wlogout \
      wdisplays \
      wob \
      grim \

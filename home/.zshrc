@@ -36,7 +36,6 @@ if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
     export GDK_BACKEND=wayland
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
-    export WLR_NO_HARDWARE_CURSORS=1
     XDG_CURRENT_DESKTOP=sway dbus-run-session sway
     #exec sway
 fi
