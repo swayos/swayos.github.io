@@ -60,7 +60,6 @@ sudo pkg install -y \
      pipewire \
      xdg-desktop-portal-wlr \
      xwayland \
-     wlogout \
      wdisplays \
      wob \
      grim \
