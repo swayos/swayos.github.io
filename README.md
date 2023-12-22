@@ -61,7 +61,7 @@ The status bar has the following sections from left to right : workspace block (
 
 By default you have these applications :
 
-- Google Chrome for internet
+- Chromium for internet
 - LibreOffice for office work
 - Nautilus as file manager
 - Foot for terminal
@@ -145,7 +145,7 @@ bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du
 
 ## Known bugs
 
-- sov should handle outputs pluggin in/out during session
+- sov should handle outputs plugged in/out during session
 - vmp and mmfm should use kuid like wcp and wfl for faster one person development
 
 ## Changelog
