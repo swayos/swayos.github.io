@@ -9,6 +9,9 @@ SwayOS is a productivity-oriented minimalist and super elegant desktop layer for
 
 SwayOS is a productivity-oriented, resource efficient and elegant desktop layer for unix-like operating systems. It uses a tiling window manager so you don't have to deal with minimizing/maximizing/moving windows any more. Windows are placed automatically and always open. To avoid crowdedness you place your windows onto workspaces.
 
+**Discussions/Issues/Feature requests** : [https://github.com/swayos/swayos.github.io/discussions](https://github.com/swayos/swayos.github.io/discussions)  
+**Source** : [https://github.com/swayos/swayos.github.io](https://github.com/swayos/swayos.github.io)
+
 ## Shortcuts ##
 
 **WIN + numbers** : switch to workspace / open overview ( long press )  
@@ -139,10 +142,6 @@ Enable the program to be a floating in sway config.
 paypal : [https://paypal.me/milgra](https://paypal.me/milgra)  
 patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra)  
 bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du      
-**Discussions/Issues/Feature requests**  
-[https://github.com/swayos/swayos.github.io/discussions](https://github.com/swayos/swayos.github.io/discussions)  
-**Source**  
-[https://github.com/swayos/swayos.github.io](https://github.com/swayos/swayos.github.io)
 
 ## Known bugs
 
