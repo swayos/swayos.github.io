@@ -95,7 +95,7 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
 
 
 log "Cloning swayOS repo"
-git clone https://github.com/rik1599/swayos.github.io
+git clone https://github.com/rik1599/swayos.github.io.git
 cd swayos.github.io
 
 log "Copying settings to home folder"
