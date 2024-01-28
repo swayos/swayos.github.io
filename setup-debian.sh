@@ -59,6 +59,7 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
      system-config-printer \
      cups \
      xfonts-terminus \
+     fonts-terminus-otb \
      lxsession \
      wl-clipboard \
      pavucontrol \
