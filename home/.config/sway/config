@@ -15,8 +15,8 @@ input * {
 
 # constants
 
-set $menu wofi --show run | xargs swaymsg exec --
-set $browser chromium
+set $menu tofi-drun | xargs swaymsg exec --
+set $browser flatpak run org.chromium.Chromium
 set $terminal foot
 set $screenshot grim ~/Downloads/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 set $screenclip slurp | grim -g - ~/Downloads/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
@@ -114,13 +114,14 @@ bindsym $mod+Space exec $menu
 bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 bindsym $mod+Shift+Return exec $browser
+bindsym $mod+l exec swaylock
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > /tmp/wob
 bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > /tmp/wob
 
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pamixer --get-volume > /tmp/wob
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pamixer --get-volume > /tmp/wob
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ && pamixer --get-volume > /tmp/wob
+bindsym XF86AudioLowerVolume exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ && pamixer --get-volume > /tmp/wob
 
 bindsym $mod+XF86AudioPlay exec "echo 1 > /tmp/vmp"
 bindsym $mod+XF86AudioNext exec "echo 2 > /tmp/vmp"

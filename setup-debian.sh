@@ -65,7 +65,9 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
      nano \
      jq \
      meson \
+     flatpak \
      gnome-software \
+     gnome-software-plugin-flatpak \
      unzip \
      pkg-config \
      wayland-protocols \
@@ -129,6 +131,8 @@ log "Linking polkit"
 sudo mkdir -p /usr/lib/polkit-gnome
 sudo ln /usr/bin/lxpolkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
+log "Setup Flathub"
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 log "Installing sov"
 git clone https://github.com/milgra/sov
@@ -203,4 +207,4 @@ chsh -s /bin/zsh
 check "$?" "chsh"
 
 
-log "Setup is done, please log out and log in back again ( type exit )"
+log "Setup is done, please reboot the computer (type sudo reboot)"
