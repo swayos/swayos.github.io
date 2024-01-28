@@ -37,6 +37,8 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
      bluez \
      blueman \
      wireplumber \
+     pipewire-pulse \
+     pamixer \
      xdg-desktop-portal-wlr \
      xwayland \
      wayland-protocols \
@@ -49,7 +51,7 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
      grim \
      slurp \
      waybar \
-     wofi \
+     tofi \
      brightnessctl \
      foot \
      nautilus \
