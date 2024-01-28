@@ -29,17 +29,14 @@ check "$?" "apt-get upgrade"
 
 
 log "Installing packages"
-sudo apt-get install -y \
+sudo apt-get install -y --no-install-recommends --no-install-suggests \
      git \
      zsh \
      zsh-autosuggestions \
      iwd \
      bluez \
      blueman \
-     pipewire \
-     pipewire-pulse \
-     pipewire-audio-client-libraries \
-     pipewire-bin \
+     wireplumber \
      xdg-desktop-portal-wlr \
      xwayland \
      wayland-protocols \
@@ -47,7 +44,6 @@ sudo apt-get install -y \
      swaybg \
      swayidle \
      swaylock \
-     pamixer \
      wdisplays \
      wob \
      grim \
@@ -56,9 +52,7 @@ sudo apt-get install -y \
      wofi \
      brightnessctl \
      foot \
-     chromium \
      nautilus \
-     libreoffice \
      gnome-system-monitor \
      system-config-printer \
      cups \
@@ -66,7 +60,8 @@ sudo apt-get install -y \
      lxsession \
      wl-clipboard \
      pavucontrol \
-     emacs-nox \
+     nano \
+     jq \
      meson \
      gnome-software \
      unzip \
@@ -96,7 +91,7 @@ sudo apt-get install -y \
 
 
 log "Cloning swayOS repo"
-git clone https://github.com/swayos/swayos.github.io.git
+git clone https://github.com/rik1599/swayos.github.io
 cd swayos.github.io
 
 log "Copying settings to home folder"
