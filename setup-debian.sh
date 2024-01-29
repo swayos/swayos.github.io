@@ -33,6 +33,7 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
      git \
      zsh \
      zsh-autosuggestions \
+     xdg-utils \
      iwd \
      bluez \
      blueman \
