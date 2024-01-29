@@ -41,6 +41,7 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
      pipewire-pulse \
      pamixer \
      xdg-desktop-portal-wlr \
+     xdg-desktop-portal-gtk \
      xwayland \
      wayland-protocols \
      sway \
