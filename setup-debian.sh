@@ -61,17 +61,16 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
      gnome-system-monitor \
      system-config-printer \
      cups \
-     xfonts-terminus \
+     chromium \
      fonts-terminus-otb \
-     lxsession \
+     lxpolkit \
+     libreoffice \
      wl-clipboard \
      pavucontrol \
      nano \
      jq \
      meson \
-     flatpak \
      gnome-software \
-     gnome-software-plugin-flatpak \
      unzip \
      pkg-config \
      wayland-protocols \
@@ -135,8 +134,6 @@ log "Linking polkit"
 sudo mkdir -p /usr/lib/polkit-gnome
 sudo ln /usr/bin/lxpolkit /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-log "Setup Flathub"
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 log "Installing sov"
 git clone https://github.com/milgra/sov
