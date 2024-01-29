@@ -66,6 +66,7 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
      fonts-terminus-otb \
      lxpolkit \
      libreoffice \
+     libreoffice-gtk3 \
      wl-clipboard \
      pavucontrol \
      nano \
@@ -209,4 +210,4 @@ chsh -s /bin/zsh
 check "$?" "chsh"
 
 
-log "Setup is done, please reboot the computer (type sudo reboot)"
+log "Setup is done, please log out and log in back again ( type exit )"
