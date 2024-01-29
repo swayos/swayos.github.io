@@ -47,12 +47,14 @@ sudo apt-get install -y --no-install-recommends --no-install-suggests \
      swayidle \
      swaylock \
      wdisplays \
+     mako-notifier \
      wob \
      grim \
      slurp \
      waybar \
      tofi \
      brightnessctl \
+     brightness-udev \
      foot \
      nautilus \
      gnome-system-monitor \
