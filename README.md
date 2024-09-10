@@ -25,8 +25,6 @@ The status bar has the following sections from left to right : workspace block (
 |**WIN + arrows**|set focus to neighbouring windows|
 |**WIN + SHIFT + arrows**|move window to a new position inside the workspace|
 |**WIN + R**|resize mode, press ESC to quit|
-|**ALT + SPACE**|switch keyboard layout if there are more|
-|**WIN + PrtScr**|take screenshot|
 |**WIN + SHIFT + SPACE**|toggle/untoggle floating over a window|
 
 ## Donations
