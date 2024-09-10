@@ -39,7 +39,7 @@ bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du
 
 ## Setup ##
 
-1. Install sway and the basic utilities first :
+1. Install sway and the basic utilities first with your package manager
 
 ```
 sway
