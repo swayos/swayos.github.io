@@ -5,9 +5,6 @@ SwayOS is a productivity-oriented minimalist and super elegant desktop layer for
 
 [<img src="pics/swayos.png" width="1000">](pics/swayos.png)
 
-**Discussions/Issues/Feature requests** : [https://github.com/swayos/swayos.github.io/discussions](https://github.com/swayos/swayos.github.io/discussions)  
-**Source** : [https://github.com/swayos/swayos.github.io](https://github.com/swayos/swayos.github.io)
-
 ## UI Structure of SwayOS
 
 SwayOS's UI has two parts : the status bar ( on top by default ) and the window area under the status bar.
@@ -15,7 +12,7 @@ The status bar has the following sections from left to right : workspace block (
 
 ## Usage of SwayOS ##
 
-**Left click on status bar**   : open/close control panel
+**Left click on status bar**   : open/close control panel  
 **Right click on status bar**  : open/close overview
 
 **WIN key + SPACE** : open application
