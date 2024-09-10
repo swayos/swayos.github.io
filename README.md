@@ -46,14 +46,17 @@ wofi
 ubuntu-font
 ```
 
-Check out the swayos github repo and copy the default config files to ~/.config
+Then clone the swayos github repo and copy the default config files to ~/.config
 
 ```
 git clone https://github.com/swayos/swayos.github.io
 cp -R swayos.github.io/home/.config ~/
 ```
 
-*note : on non-systemd distributions ( void linux ) you will need seatd and to set XDG_RUNTIME_DIR also for running sway*
+Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+ENTER
+
+*note : on non-systemd distributions ( e.g. void linux ) you will need seatd and to set XDG_RUNTIME_DIR also for running sway*
+*note : if WIN+ENTER is not working set a different modifier key for sway in ~/.config/sway/config*
 
 <details>
   <summary>See how to do it on Void Linux</summary>
@@ -70,9 +73,6 @@ cp -R swayos.github.io/home/.config ~/
   ```
 
 </details>
-
-
-Now you can start sway by typing ```sway``` and open a terminal by pressing CMD+ENTER
 
 3. Installing Sway Overview
 
