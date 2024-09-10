@@ -83,6 +83,8 @@ Install the dev tools to build
 clang
 meson
 ninja
+cmake
+pkg-config
 ```
 
 Install the needed dependencies
@@ -93,6 +95,7 @@ freetype
 libglvnd
 glew
 wayland
+wayland-protocols
 libxkbcommon
 ```
 
