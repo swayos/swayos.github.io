@@ -1,4 +1,4 @@
-font=Terminus (TTF)
+font=Ubuntu
 image=~/.config/sway/sunset.jpg
 color=dcdccc55
 indicator-radius=100
@@ -18,7 +18,7 @@ separator-color=00000000
 layout-bg-color=00000000
 layout-border-color=00000000
 inside-ver-color=ffffff22
-font-size=16
+font-size=32
 text-color=FFFFFFFF
 text-clear-color=FFFFFFFF
 text-caps-lock-color=FFFFFFFF

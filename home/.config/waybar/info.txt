@@ -1,1 +1,0 @@
-waybar status bar configuration
