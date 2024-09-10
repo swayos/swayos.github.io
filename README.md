@@ -14,24 +14,24 @@ The status bar has the following sections from left to right : workspace block (
 
 | Binding | Action | 
 | --------| -------| 
-|**Left click on status bar** | open/close control panel |
-|**Right click on status bar** | open/close overview |
-
-**WIN key + SPACE** : open application
-
-**WIN + numbers** : switch to workspace / open overview ( long press )  
-**WIN + SPACE** : open application launcher  
-**WIN + SHIFT + Q** : close focused window  
-**WIN + SHIFT + numbers** : move focused window to workspace with given number  
-
-**WIN + arrows** : set focus to neighbouring windows  
-**WIN + SHIFT + arrows** : move window to a new position inside the workspace  
-**WIN + R** : resize mode, if there are more windows in a workspace you can press WIN + R, resize window with arrows, then press ESC  
-**WIN + ENTER** : open a terminal  
-**WIN + SHIFT + ENTER** : open browser  
-**ALT + SPACE** : switch keyboard layout if there are more  
-**WIN + PrtScr** : take screenshot  
-**WIN + SHIFT + SPACE** : toggle/untoggle floating over a window
+|**Left click on status bar**|open/close control panel|
+|**Right click on status bar**|open/close overview|
+|||
+|**WIN key + SPACE**|open application|
+|||
+|**WIN + numbers**|switch to workspace / open overview ( long press )|
+|**WIN + SPACE**|open application launcher|
+|**WIN + SHIFT + Q**|close focused window|
+|**WIN + SHIFT + numbers**|move focused window to workspace with given number|
+|||
+|**WIN + arrows**|set focus to neighbouring windows|
+|**WIN + SHIFT + arrows**|move window to a new position inside the workspace|
+|**WIN + R**|resize mode, if there are more windows in a workspace you can press WIN + R, resize window with arrows, then press ESC|
+|**WIN + ENTER**|open a terminal|
+|**WIN + SHIFT + ENTER**|open browser|
+|**ALT + SPACE**|switch keyboard layout if there are more|
+|**WIN + PrtScr**|take screenshot|
+|**WIN + SHIFT + SPACE**|toggle/untoggle floating over a window|
 
 ## Donations
 
