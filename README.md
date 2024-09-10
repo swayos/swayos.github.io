@@ -35,7 +35,7 @@ bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du
 
 ## Setup ##
 
-1. Install sway and the basic utilities first with your package manager
+Install sway and the basic utilities first with your package manager
 
 ```
 sway
@@ -46,7 +46,14 @@ wofi
 ubuntu-font
 ```
 
-*note : on non-systemd distributions ( void linux ) you will need seatd and to set XDG_RUNTIME_DIR also*
+Check out the swayos github repo and copy the default config fiels to ~/.config
+
+```
+git clone https://github.com/swayos/swayos.github.io
+cp -R swayos.github.io/home/.config ~/
+```
+
+*note : on non-systemd distributions ( void linux ) you will need seatd and to set XDG_RUNTIME_DIR also for running sway*
 
 <details>
   <summary>See how to do it on Void Linux</summary>
@@ -56,19 +63,14 @@ ubuntu-font
   sudo xbps-install -Sy seatd
   sudo ln -s /etc/sv/seatd /var/service
   sudo usermod -a $USER -G _seatd
+  git clone https://github.com/swayos/swayos.github.io
+  cp -R swayos.github.io/home/.config ~/
   export XDG_RUNTIME_DIR=/tmp
   sway
   ```
 
 </details>
 
-
-Check out and the github repo and copy the default config fiels to ~/.config
-
-```
-git clone https://github.com/swayos/swayos.github.io
-cp -R swayos.github.io/home/* ~/
-```
 
 Now you can start sway by typing ```sway``` and open a terminal by pressing CMD+ENTER
 
