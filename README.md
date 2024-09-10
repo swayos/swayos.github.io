@@ -19,9 +19,8 @@ The status bar has the following sections from left to right : workspace block (
 |**WIN + SPACE**|open application|
 |**WIN + ENTER**|open terminal|
 |**WIN + SHIFT + ENTER**|open browser|
-|**WIN + numbers**|switch to workspace / open overview ( long press )|
-|**WIN + SPACE**|open application launcher|
 |**WIN + SHIFT + Q**|close focused window|
+|**WIN + numbers**|switch to workspace / open overview ( long press )|
 |**WIN + SHIFT + numbers**|move focused window to workspace with given number|
 |**WIN + arrows**|set focus to neighbouring windows|
 |**WIN + SHIFT + arrows**|move window to a new position inside the workspace|
