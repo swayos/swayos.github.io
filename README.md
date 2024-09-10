@@ -56,6 +56,7 @@ cp -R swayos.github.io/home/.config ~/
 Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+ENTER
 
 *note : on non-systemd distributions ( e.g. void linux ) you will need seatd and to set XDG_RUNTIME_DIR also for running sway*
+
 *note : if WIN+ENTER is not working set a different modifier key for sway in ~/.config/sway/config*
 
 <details>
