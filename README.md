@@ -77,7 +77,50 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
 
 3. Installing Sway Overview
 
-Clone and build
+Install the dev tools to build
+
+```
+clang
+meson
+ninja
+```
+
+Install the needed dependencies
+
+```
+libpng
+freetype
+libglvnd
+glew
+wayland
+libxkbcommon
+```
+
+Clone the repo, build and install
+
+```
+git clone https://github.com/milgra/sov
+cd sov
+meson setup build --buildtype=release
+ninja -C build
+sudo ninja -C build install
+```
+
+<details>
+  <summary>See how to do it on Void Linux</summary>
+  
+  ```
+  sudo xbps-install -y clang meson ninja
+  sudo xbps-install -Sy libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel
+  git clone https://github.com/milgra/sov
+  cd sov
+  meson setup build --buildtype=release
+  ninja -C build
+  sudo ninja -C build install
+  ```
+
+</details>
+
 Press CMD+C to reload sway config and now you can summon sway overview by long pressing CMD+1 or right clicking on the status bar
 If font is too small or want an other font change it under ~/.conifg/sov/config
 
