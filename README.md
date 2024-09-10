@@ -12,8 +12,10 @@ The status bar has the following sections from left to right : workspace block (
 
 ## Usage of SwayOS ##
 
-**Left click on status bar**   : open/close control panel  
-**Right click on status bar**  : open/close overview
+| Binding | Action | 
+| --------| -------| 
+|**Left click on status bar** | open/close control panel |
+|**Right click on status bar** | open/close overview |
 
 **WIN key + SPACE** : open application
 
