@@ -46,24 +46,20 @@ wofi
 ubuntu-font
 ```
 
-<details>
-  <summary>Click me</summary>
-  
-  ### Heading
-  1. Foo
-  2. Bar
-     * Baz
-     * Qux
+*note : on non-systemd distributions ( void linux ) you will need seatd and to set XDG_RUNTIME_DIR also*
 
-  ### Some Javascript
-  ```js
-  function logSomething(something) {
-    console.log('Something', something);
-  }
+<details>
+  <summary>On Void Linux</summary>
+  ```
+  sudo xpbs-install -Sy sway swayidle swaylock foot wofi ttf-ubuntu-font-family
+  sudo xbps-install -Sy seatd
+  sudo ln -s /etc/sv/seatd /var/service
+  sudo usermod -a $USER -G _seatd
+  export XDG_RUNTIME_DIR=/tmp
+  sway
   ```
 </details>
 
-*note : on non-systemd distributions ( void linux ) you will need seatd and xdg_runtime_dirs also*
 
 Check out and the github repo and copy the default config fiels to ~/.config
 
