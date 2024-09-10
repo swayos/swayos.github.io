@@ -46,17 +46,22 @@ wofi
 ubuntu-font
 ```
 
-## Results {.tabset}
+<details>
+  <summary>Click me</summary>
+  
+  ### Heading
+  1. Foo
+  2. Bar
+     * Baz
+     * Qux
 
-### Tab One
-
-dd
-
-### Tab Two
-
-dd
-
-## {-}
+  ### Some Javascript
+  ```js
+  function logSomething(something) {
+    console.log('Something', something);
+  }
+  ```
+</details>
 
 *note : on non-systemd distributions ( void linux ) you will need seatd and xdg_runtime_dirs also*
 
