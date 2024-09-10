@@ -46,7 +46,7 @@ wofi
 ubuntu-font
 ```
 
-Check out the swayos github repo and copy the default config fiels to ~/.config
+Check out the swayos github repo and copy the default config files to ~/.config
 
 ```
 git clone https://github.com/swayos/swayos.github.io
