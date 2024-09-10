@@ -8,85 +8,6 @@ SwayOS is a productivity-oriented minimalist and super elegant desktop layer for
 **Discussions/Issues/Feature requests** : [https://github.com/swayos/swayos.github.io/discussions](https://github.com/swayos/swayos.github.io/discussions)  
 **Source** : [https://github.com/swayos/swayos.github.io](https://github.com/swayos/swayos.github.io)
 
-## Setup ##
-
-1. Install sway and the basic utilities first :
-
-'''
-sway
-swayidle
-swaylock
-foot
-wofi
-ubuntu-font
-'''
-
-*note : on non-systemd distributions ( void linux ) you will need seatd and xdg_runtime_dirs also*
-
-Check out and the github repo and copy the default config fiels to ~/.config
-
-'''
-git clone https://github.com/swayos/swayos.github.io
-cp -R swayos.github.io/home/* ~/
-'''
-
-Now you can start sway by typing ```sway``` and open a terminal by pressing CMD+ENTER
-
-3. Installing Sway Overview
-
-Clone and build
-Press CMD+C to reload sway config and now you can summon sway overview by long pressing CMD+1 or right clicking on the status bar
-If font is too small or want an other font change it under ~/.conifg/sov/config
-
-3. Installing Wayland Control Panel
-
-Clone and build
-Press CMD+C to reload sway config and now you can summon the control panel by left clicking on the status bar
-If font is too small or want an other font change it under ~/.conifg/wcp/config
-
-4. Installing zsh
-
-Install zsh and zsh-autosuggestions
-Change shell to zsh :
-
-'''
-chsh -S zsh
-'''
-
-2. More utilities
-
-'''
-grim
-slurp
-wob
-brightnessctl
-pavuctl
-wdisplays
-system-config-printer
-'''
-
-5. Install iwd and iwgtk for smooth wifi experience.
-Open iwgtk by CMD+SPACE and typing iwgtk
-or open Control Panel and click on wifi
-
-5. Install blueman for bluetooth
-Open
-
-5. Install browser, update MOD+SHIFT+RETURN shortcut in ~/.config/sway/config to open it ( by default it is google chrome )
-
-4. Edit ~/.config/sway/status.sh to modify your status bar
-
-5. Download gnome tweaks, set default font to UBuntu, set default font size, set default cursor
-
-gsettings set cursor
-gsettings set font size
-[Settings]
-gtk-application-prefer-dark-theme=1
-
-5. Set font sizes according to your display size and resolution for foot, sway and waybar
-
-6. Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable )
-
 ## UI Structure of SwayOS
 
 SwayOS's UI has two parts : the status bar ( on top by default ) and the window area under the status bar.
@@ -118,3 +39,82 @@ The status bar has the following sections from left to right : workspace block (
 paypal : [https://paypal.me/milgra](https://paypal.me/milgra)  
 patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra)  
 bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du      
+
+## Setup ##
+
+1. Install sway and the basic utilities first :
+
+```
+sway
+swayidle
+swaylock
+foot
+wofi
+ubuntu-font
+```
+
+*note : on non-systemd distributions ( void linux ) you will need seatd and xdg_runtime_dirs also*
+
+Check out and the github repo and copy the default config fiels to ~/.config
+
+```
+git clone https://github.com/swayos/swayos.github.io
+cp -R swayos.github.io/home/* ~/
+```
+
+Now you can start sway by typing ```sway``` and open a terminal by pressing CMD+ENTER
+
+3. Installing Sway Overview
+
+Clone and build
+Press CMD+C to reload sway config and now you can summon sway overview by long pressing CMD+1 or right clicking on the status bar
+If font is too small or want an other font change it under ~/.conifg/sov/config
+
+3. Installing Wayland Control Panel
+
+Clone and build
+Press CMD+C to reload sway config and now you can summon the control panel by left clicking on the status bar
+If font is too small or want an other font change it under ~/.conifg/wcp/config
+
+4. Installing zsh
+
+Install zsh and zsh-autosuggestions
+Change shell to zsh :
+
+```
+chsh -S zsh
+```
+
+2. More utilities
+
+```
+grim
+slurp
+wob
+brightnessctl
+pavuctl
+wdisplays
+system-config-printer
+```
+
+5. Install iwd and iwgtk for smooth wifi experience.
+Open iwgtk by CMD+SPACE and typing iwgtk
+or open Control Panel and click on wifi
+
+5. Install blueman for bluetooth
+Open
+
+5. Install browser, update MOD+SHIFT+RETURN shortcut in ~/.config/sway/config to open it ( by default it is google chrome )
+
+4. Edit ~/.config/sway/status.sh to modify your status bar
+
+5. Download gnome tweaks, set default font to UBuntu, set default font size, set default cursor
+
+gsettings set cursor
+gsettings set font size
+[Settings]
+gtk-application-prefer-dark-theme=1
+
+5. Set font sizes according to your display size and resolution for foot, sway and waybar
+
+6. Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable )
