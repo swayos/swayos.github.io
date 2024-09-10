@@ -49,7 +49,8 @@ ubuntu-font
 *note : on non-systemd distributions ( void linux ) you will need seatd and to set XDG_RUNTIME_DIR also*
 
 <details>
-  <summary>On Void Linux</summary>
+  <summary>See how to do it on Void Linux</summary>
+  
   ```
   sudo xpbs-install -Sy sway swayidle swaylock foot wofi ttf-ubuntu-font-family
   sudo xbps-install -Sy seatd
@@ -58,6 +59,7 @@ ubuntu-font
   export XDG_RUNTIME_DIR=/tmp
   sway
   ```
+
 </details>
 
 
