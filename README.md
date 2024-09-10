@@ -16,7 +16,9 @@ The status bar has the following sections from left to right : workspace block (
 | -----------| -------| 
 |**Left click on status bar**|open/close control panel|
 |**Right click on status bar**|open/close overview|
-|**WIN key + SPACE**|open application|
+|**WIN + SPACE**|open application|
+|**WIN + ENTER**|open terminal|
+|**WIN + SHIFT + ENTER**|open browser|
 |**WIN + numbers**|switch to workspace / open overview ( long press )|
 |**WIN + SPACE**|open application launcher|
 |**WIN + SHIFT + Q**|close focused window|
@@ -24,8 +26,6 @@ The status bar has the following sections from left to right : workspace block (
 |**WIN + arrows**|set focus to neighbouring windows|
 |**WIN + SHIFT + arrows**|move window to a new position inside the workspace|
 |**WIN + R**|resize mode, press ESC to quit|
-|**WIN + ENTER**|open a terminal|
-|**WIN + SHIFT + ENTER**|open browser|
 |**ALT + SPACE**|switch keyboard layout if there are more|
 |**WIN + PrtScr**|take screenshot|
 |**WIN + SHIFT + SPACE**|toggle/untoggle floating over a window|
