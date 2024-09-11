@@ -184,11 +184,44 @@ Update ~/.config/wcp/wcp.sh to suit your needs, or use wcp-void.sh or wcp-debian
 
 </details>
 
-Press WIN+SHIFT+E to exit sway and start it again. Now you can summon wayland control panel by left clicking on the status bar. 
+Press WIN+SHIFT+E to exit sway and start it again. Now you can summon wayland control panel by pressing WIN+P or by left clicking on the status bar. 
 If fonts are too small or you want an other font change it under ~/.conifg/wcp/res/main.css
 
-Press CMD+C to reload sway config and now you can summon the control panel by left clicking on the status bar
-If font is too small or want an other font change it under ~/.conifg/wcp/config
+<br/>
+
+**Part 4 : More utilities to make SwayOS comfortable**
+
+<br/>
+
+Install these programs
+
+```
+grim for making screenshots
+slurp for making region shots
+wob for volume/brightness indication
+brightnessctl for brightness control
+pavucontrol for volume control
+wdisplays for display configuration
+system-config-printer for printer configuration
+```
+
+<details>
+  <summary>See how to do it on Void Linux</summary>
+  
+  ```
+  sudo xbps-install -y grim slurp wob brightnessctl pavucontrol wdisplays system-config-printer
+  ```
+
+</details>
+
+Now you can press WIN+PRTSRC to put a screenshot under ~/Downloads
+Press WIN+SHIFT+PRTSCR to select a region and save it under ~/Downloads
+Press the volume and brightness buttons to summon wob to show their current values
+Press the display icon on the control panel to open wdisplays
+Press the printer icon on the control panel to open system-config-printer
+Press the volume icon on the control panel to open pavucontrol
+Press the wifi icon on the control panel to open iwgtk ( if you have it )
+Press the bluetooth icon on the control panel to open blueman ( if you have it )
 
 4. Installing zsh
 
