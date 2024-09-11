@@ -285,7 +285,7 @@ Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scr
 
 **Void Linux**
 
-Install desktio portal wlr for screen sharing in chrome/firefox
+Install desktop portal wlr for screen sharing in chrome/firefox
 
 ```
 sudo xbps-instdall -y xdg-desktop-portal-wlr
@@ -294,7 +294,7 @@ sudo xbps-instdall -y xdg-desktop-portal-wlr
 Install pipewire with bluetooth support
 
 ```
-sudo xbps-install -y pipewire blueman
+sudo xbps-install -y pipewire blueman libspa-bluetooth
 sudo usermod -a $USER -G bluetooth
 sudo ln -s /etc/sv/bluetoothd /var/service
 ```
