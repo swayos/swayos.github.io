@@ -35,7 +35,7 @@ bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du
 
 ## Setup ##
 
-Part 1 : Install sway and the basic utilities first with your package manager
+**Part 1 : Install sway and the basic utilities first with your package manager**
 
 ```
 sway
@@ -75,7 +75,8 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
 
 </details>
 
-Part 2 : Installing Sway Overview
+
+**Part 2 : Installing Sway Overview**
 
 Install the dev tools to build
 
@@ -125,11 +126,55 @@ sudo ninja -C build install
 </details>
 
 Press WIN+SHIFT+E to exit sway and start it again. Now you can summon sway overview by long pressing and holding CMD+1 or right clicking on the status bar. 
-If fonts are too small or you want an other font change it under ~/.conifg/sov/config
+If fonts are too small or you want an other font change it under ~/.conifg/sov/html/main.css
 
-Part 3 : Installing Wayland Control Panel
 
-Clone and build
+**Part 3 : Installing Wayland Control Panel**
+
+Clone the Kinetic UI Dameon repo, build and install
+
+```
+git clone https://github.com/milgra/kuid
+cd kuid
+meson setup build --buildtype=release
+ninja -C build
+sudo ninja -C build install
+cd ..
+```
+
+Clone the Wayland Control Panel repo, install
+
+```
+git clone https://github.com/milgra/wcp
+cd wcp
+mkdir ~/.config/wcp
+cp wcp-template.sh ~/.config/wcp/wcp.sh
+cd ..
+```
+
+Update ~/.config/wcp/wcp.sh to suit your needs, or use wcp-void.sh or wcp-debian.sh from the repo.
+
+<details>
+  <summary>See how to do it on Void Linux</summary>
+  
+  ```
+  git clone https://github.com/milgra/kuid
+  cd kuid
+  meson setup build --buildtype=release
+  ninja -C build
+  sudo ninja -C build install
+  cd ..
+  git clone https://github.com/milgra/wcp
+  cd wcp
+  mkdir ~/.config/wcp
+  cp wcp-template.sh ~/.config/wcp/wcp.sh
+  ```
+
+</details>
+
+Press WIN+SHIFT+E to exit sway and start it again. Now you can summon wayland control panel by left clicking on the status bar. 
+If fonts are too small or you want an other font change it under ~/.conifg/wcp/res/main.css
+
 Press CMD+C to reload sway config and now you can summon the control panel by left clicking on the status bar
 If font is too small or want an other font change it under ~/.conifg/wcp/config
 
