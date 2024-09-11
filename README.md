@@ -224,6 +224,10 @@ Install ```blueman``` for visual bluetooth setup
 
 - Press the bluetooth icon on the control panel to open blueman ( if you have it ) or bind a key in ~/.config/sway/config
 
+Install ```google-chrome``` oe your favorite browser
+
+- Press WIN+SHIFT+ENTER to open it or edit ~/.config/sway/config to modify the browser or the bindings
+
 <details>
   <summary>See how to do it on Void Linux</summary>
   
@@ -271,10 +275,30 @@ Set font sizes according to your display size and resolution for foot, sway and 
 
 Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable )
 
+<br/>
+
 **Part Seven - Distro specific notes**
 
+<br/>
+
 **Void Linux**
+
+Install pipewire with bluetooth support
+
+```
+sudo xbps-install -y pipewire pipewire-pulse blueman bluetoothd
+sudo usermod -a $USER -G bluetooth
+sudo ln -s /etc/sv/bluetoothd /var/service
+```
 
 To enable shutdown/reboot/suspend present in wcp-void.sh 
 
 ```sudo echo "$USER ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/zzz" | sudo tee -a /etc/sudoers```
+
+Clean package cache and remove orphaned packages and kernels
+
+```
+sudo xbps-remove -yO
+sudo xbps-remove -yo
+sudo vkpurge rm all
+```
