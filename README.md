@@ -245,7 +245,7 @@ Install ```google-chrome``` oe your favorite browser
 
 <br/>
 
-Install ```zsh``` and ```zsh-autosuggestions```
+Install ```zsh``` and ```zsh-autosuggestions``` and ```dbus```
 
 Copy swayos's zshrc to your home :
 
@@ -259,7 +259,7 @@ Change shell to zsh :
 chsh -s /bin/zsh
 ```
 
-Now zsh will setup XDG_SESSION_DIR and start sway automatically on the default terminal. It will also remember every command you typed and offers command completion which is the best thing in terminals
+Now zsh will setup XDG_SESSION_DIR and start sway automatically as a dbus session on the default terminal ( sway as a dbus session is needed for pipewire and other programs ). It will also remember every command you typed and offers command completion which is the best thing in terminals
 
 <br/>
 
