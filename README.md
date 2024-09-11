@@ -257,7 +257,7 @@ Now zsh will setup XDG_SESSION_DIR and start sway automatically on the default t
 
 <br/>
 
-**Part 6 : Fine tune the looks of SwayOS**
+**Part Six - Fine tune the looks of SwayOS**
 
 <br/>
 
