@@ -34,8 +34,9 @@ patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra)
 bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du      
 
 ## Setup ##
-
+<br/>
 **Part 1 : Install sway and the basic utilities first with your package manager**
+<br/>
 
 ```
 sway
@@ -75,8 +76,9 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
 
 </details>
 
-
+<br/>
 **Part 2 : Installing Sway Overview**
+<br/>
 
 Install the dev tools to build
 
@@ -128,8 +130,9 @@ sudo ninja -C build install
 Press WIN+SHIFT+E to exit sway and start it again. Now you can summon sway overview by long pressing and holding CMD+1 or right clicking on the status bar. 
 If fonts are too small or you want an other font change it under ~/.conifg/sov/html/main.css
 
-  
+<br/>  
 **Part 3 : Installing Wayland Control Panel**
+<br/>
 
 Clone the Kinetic UI Dameon repo, build and install
 
