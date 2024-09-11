@@ -113,7 +113,7 @@ sudo ninja -C build install
   <summary>See how to do it on Void Linux</summary>
   
   ```
-  sudo xbps-install -y clang meson ninja
+  sudo xbps-install -y clang meson ninja cmake pkg-config
   sudo xbps-install -Sy libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel
   git clone https://github.com/milgra/sov
   cd sov
@@ -124,10 +124,10 @@ sudo ninja -C build install
 
 </details>
 
-Press CMD+SHIFT+E to exit sway and start it again. Now you can summon sway overview by long pressing and holding CMD+1 or right clicking on the status bar. 
+Press WIN+SHIFT+E to exit sway and start it again. Now you can summon sway overview by long pressing and holding CMD+1 or right clicking on the status bar. 
 If fonts are too small or you want an other font change it under ~/.conifg/sov/config
 
-3. Installing Wayland Control Panel
+Part 3 : Installing Wayland Control Panel
 
 Clone and build
 Press CMD+C to reload sway config and now you can summon the control panel by left clicking on the status bar
