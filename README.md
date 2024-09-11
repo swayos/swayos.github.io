@@ -128,7 +128,7 @@ sudo ninja -C build install
 Press WIN+SHIFT+E to exit sway and start it again. Now you can summon sway overview by long pressing and holding CMD+1 or right clicking on the status bar. 
 If fonts are too small or you want an other font change it under ~/.conifg/sov/html/main.css
 
-
+  
 **Part 3 : Installing Wayland Control Panel**
 
 Clone the Kinetic UI Dameon repo, build and install
@@ -149,6 +149,7 @@ git clone https://github.com/milgra/wcp
 cd wcp
 mkdir ~/.config/wcp
 cp wcp-template.sh ~/.config/wcp/wcp.sh
+cp -R res ~/.config/wcp/
 cd ..
 ```
 
@@ -168,6 +169,8 @@ Update ~/.config/wcp/wcp.sh to suit your needs, or use wcp-void.sh or wcp-debian
   cd wcp
   mkdir ~/.config/wcp
   cp wcp-template.sh ~/.config/wcp/wcp.sh
+  cp -R res ~/.config/wcp/
+  cd ..
   ```
 
 </details>
