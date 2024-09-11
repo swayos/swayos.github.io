@@ -35,7 +35,7 @@ bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du
 
 ## Setup ##
 
-Install sway and the basic utilities first with your package manager
+Part 1 : Install sway and the basic utilities first with your package manager
 
 ```
 sway
@@ -75,7 +75,7 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
 
 </details>
 
-3. Installing Sway Overview
+Part 2 : Installing Sway Overview
 
 Install the dev tools to build
 
@@ -124,8 +124,8 @@ sudo ninja -C build install
 
 </details>
 
-Press CMD+C to reload sway config and now you can summon sway overview by long pressing CMD+1 or right clicking on the status bar
-If font is too small or want an other font change it under ~/.conifg/sov/config
+Press CMD+SHIFT+E to exit sway and start it again. Now you can summon sway overview by long pressing and holding CMD+1 or right clicking on the status bar. 
+If fonts are too small or you want an other font change it under ~/.conifg/sov/config
 
 3. Installing Wayland Control Panel
 
