@@ -124,7 +124,7 @@ sudo ninja -C build install
   
   ```
   sudo xbps-install -y clang meson ninja cmake pkg-config
-  sudo xbps-install -Sy libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel
+  sudo xbps-install -Sy libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel wayland-protocols
   git clone https://github.com/milgra/sov
   cd sov
   meson setup build --buildtype=release
