@@ -66,10 +66,11 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
   <summary>See how to do it on Void Linux</summary>
   
   ```
-  sudo xpbs-install -Sy sway swayidle swaylock foot wofi ttf-ubuntu-font-family
-  sudo xbps-install -Sy seatd
+  sudo xpbs-install -y sway swayidle swaylock foot wofi ttf-ubuntu-font-family
+  sudo xbps-install -y seatd
   sudo ln -s /etc/sv/seatd /var/service
   sudo usermod -a $USER -G _seatd
+  sudo xbps-install -y git
   git clone https://github.com/swayos/swayos.github.io
   cp -R swayos.github.io/home/.config ~/
   export XDG_RUNTIME_DIR=/tmp
