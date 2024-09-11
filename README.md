@@ -84,7 +84,7 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
   <summary>See how to do it on Debian Bookworm</summary>
   
   ```
-  sudo apt-get install oftware-properties-common
+  sudo apt-get install software-properties-common
   sudo apt-add-repository --component non-free
   sudo apt-get update
   sudo apt-get upgrade
@@ -141,6 +141,21 @@ sudo ninja -C build install
   ```
   sudo xbps-install -y clang meson ninja cmake pkg-config
   sudo xbps-install -Sy libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel wayland-protocols
+  git clone https://github.com/milgra/sov
+  cd sov
+  meson setup build --buildtype=release
+  ninja -C build
+  sudo ninja -C build install
+  ```
+
+</details>
+
+<details>
+  <summary>See how to do it on Debian Bookworm</summary>
+  
+  ```
+  sudo apt-get install clang meson ninja-build cmake pkg-config
+  sudo apt-get install libpng-dev flibreetype-dev libglvnd-dev libglew-dev libwayland-dev libxkbcommon-dev wayland-protocols
   git clone https://github.com/milgra/sov
   cd sov
   meson setup build --buildtype=release
