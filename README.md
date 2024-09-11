@@ -270,3 +270,11 @@ Set default cursor theme in ~/.config/sway/config
 Set font sizes according to your display size and resolution for foot, sway and waybar, if your screen res is too high/low
 
 Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable )
+
+**Part Seven - Distro specific notes**
+
+**Void Linux**
+
+To enable shutdown/reboot/suspend present in wcp-void.sh 
+
+```sudo echo "$USER ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/zzz" | sudo tee -a /etc/sudoers```
