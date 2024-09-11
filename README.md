@@ -36,7 +36,7 @@ bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du
 ## Setup ##
 <br/>
 
-**Part 1 : Install sway and the basic utilities first with your package manager**
+**Part One - Install sway and the basic utilities first with your package manager**
 
 <br/>
 
@@ -80,7 +80,7 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
 
 <br/>
 
-**Part 2 : Installing Sway Overview**
+**Part Two - Installing Sway Overview**
 
 <br/>
 
@@ -136,7 +136,7 @@ If fonts are too small or you want an other font change it under ~/.conifg/sov/h
 
 <br/>
 
-**Part 3 : Installing Wayland Control Panel**
+**Part Three - Installing Wayland Control Panel**
 
 <br/>
 
@@ -189,7 +189,7 @@ If fonts are too small or you want an other font change it under ~/.conifg/wcp/r
 
 <br/>
 
-**Part 4 : Make SwayOS comfortable**
+**Part Four - Make SwayOS comfortable**
 
 <br/>
 
@@ -235,7 +235,7 @@ Install ```blueman``` for visual bluetooth setup
 
 <br/>
 
-**Part 5 : Install zsh with autosuggestions and autostart sway on login**
+**Part Five - Install zsh with autosuggestions and autostart sway on login**
 
 <br/>
 
