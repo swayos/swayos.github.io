@@ -198,26 +198,6 @@ cd ..
 
 Update ~/.config/wcp/wcp.sh to suit your needs, or use wcp-void.sh or wcp-debian.sh from the repo.
 
-<details>
-  <summary>See how to do it on Void Linux</summary>
-  
-  ```
-  git clone https://github.com/milgra/kuid
-  cd kuid
-  meson setup build --buildtype=release
-  ninja -C build
-  sudo ninja -C build install
-  cd ..
-  git clone https://github.com/milgra/wcp
-  cd wcp
-  mkdir ~/.config/wcp
-  cp wcp-template.sh ~/.config/wcp/wcp.sh
-  cp -R res ~/.config/wcp/
-  cd ..
-  ```
-
-</details>
-
 Press WIN+SHIFT+E to exit sway and start it again. Now you can summon wayland control panel by pressing WIN+P or by left clicking on the status bar ( The buttons/sliders won't work yet. )
 If fonts are too small or you want an other font change it under ~/.conifg/wcp/res/main.css
 
