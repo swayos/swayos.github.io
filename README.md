@@ -210,7 +210,7 @@ Install ```brightnessctl``` for controlling monitor brightness
 - Press brighntess keys on the keyboard to modify brightness
 Modify key bindings in ~/.config/sway/config
 
-Install ```pavuctl``` for detailed audio control
+Install ```pavuctl``` and ```pamixer``` for detailed audio control
 
 - Press the volume icon on the control panel to open pavucontrol or bind a key in ~/.config/sway/config
 
