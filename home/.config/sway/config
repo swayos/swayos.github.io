@@ -96,7 +96,6 @@ bindsym $mod+b splith
 bindsym $mod+v splitv
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
-#bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+r mode "resize"
 
@@ -144,8 +143,6 @@ client.unfocused        #0F0F0F00 #2F3D44 #1ABC9C #45494800 #00000000
 client.urgent           #CB4B1600 #FDF6E3 #1ABC9C #268BD200 #00000000
 client.placeholder      #00000000 #0c0c0c #ffffff #00000000 #00000000
 
-output eDP-1 scale 1.6
-output eDP-1 mode 2880x1800@60Hz
 output * bg ~/.config/sway/sunset.jpg stretch
 
 default_border none
@@ -157,33 +154,22 @@ gaps outer 0
 for_window [app_id="foot"] border pixel 1
 for_window [app_id="iwgtk"] floating enable
 for_window [app_id="blueman-manager"] floating enable
-for_window [app_id="blueman-manager"] resize set 1000 600
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="org.gnome.Nautilus"] floating enable
-for_window [app_id="gnome-system-monitor"] floating enable; resize shrink down 100px; resize shrink up 100px
 for_window [app_id="wdisplays"] floating enable
-for_window [app_id="wdisplays"] resize set 1000 600
 for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="pavucontrol"] resize set 1000 600
-for_window [app_id="imv"] floating enable
-for_window [app_id="pamac-manager"] floating enable
 
 bar {
     position top
-    # Keep in mind that the current directory of this config file is $HOME
     status_command while ~/.config/sway/status.sh; do sleep 5; done
     tray_output none
-
     bindcode 272 exec "echo 'toggle visibility' > /tmp/wcp"
     bindcode 273 exec "echo 2 > /tmp/sov"
 
     colors {
         height 24
-        # Text color of status bar
         statusline #AAAAAA
-        # Background of status bar
         background #00000033
-
 	focused_workspace #00000033 #00000033 #FFFFFF
 	active_workspace #00000033 #00000033 #AAAAAA
 	inactive_workspace #00000033 #00000033 #999999
@@ -195,22 +181,14 @@ bar {
 
 # auto launch applications
 
-#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#exec blueman-applet
-#exec mako
-#exec waybar
 exec swayidle -w \
          timeout 120 'swaylock -f' \
          timeout 240 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f'
-
 exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
 exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -v -t 200 -k 65515
-
 exec brightnessctl set 50%v
 exec ~/.config/wcp/wcp.sh
-exec ~/.config/wfl/wfl.sh
-
 exec pipewire
 exec /usr/libexec/xdg-desktop-portal-wlr -r
 exec sleep 1 && /usr/libexec/xdg-desktop-portal -r

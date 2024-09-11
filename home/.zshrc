@@ -9,8 +9,6 @@ else
     # for FreeBSD currently
     source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
-# make midnight commander colorful
-export TERM=xterm-256color
 # by default backspace deletes whole word
 bindkey "^H" backward-delete-char
 # up/down should search in history not step
@@ -23,7 +21,6 @@ PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%/ %{$reset_c
 function preexec {
     print -Pn "\e]0;${(q)1}\e\\"
 }
-
 # startup sway on login on terminal 1
 if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
     if [ -z "$XDG_RUNTIME_DIR" ]; then
@@ -31,11 +28,7 @@ if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
 	rm -rf $XDG_RUNTIME_DIR
 	mkdir -p $XDG_RUNTIME_DIR
     fi
-    export QT_QPA_PLATFORMTHEME=gtk2
-    export QT_QPA_PLATFORM=wayland
-    export GDK_BACKEND=wayland
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
-    XDG_CURRENT_DESKTOP=sway dbus-run-session sway
-    #exec sway
+    exec dbus-run-session sway
 fi
