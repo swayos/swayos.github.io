@@ -198,8 +198,7 @@ If fonts are too small or you want an other font change it under ~/.conifg/wcp/r
 
 Install ```grim``` and ```slurp``` for making screenshots
 
-- Press WIN+PRTSRC to put a screenshot or WIN+SHIFT+PRTSCR to put a region under ~/Downloads
-Modify key bindings in ~/.config/sway/config
+- Press WIN+PRTSRC to put a screenshot or WIN+SHIFT+PRTSCR to put a region under ~/Downloads. Create ~/Downloads directory if doesn't exist. Modify key bindings in ~/.config/sway/config
 
 Install ```wob``` for volume/brightness indication
 
