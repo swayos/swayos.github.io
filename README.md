@@ -294,7 +294,7 @@ sudo xbps-instdall -y xdg-desktop-portal-wlr
 Install pipewire with bluetooth support
 
 ```
-sudo xbps-install -y pipewire pipewire blueman
+sudo xbps-install -y pipewire blueman
 sudo usermod -a $USER -G bluetooth
 sudo ln -s /etc/sv/bluetoothd /var/service
 ```
