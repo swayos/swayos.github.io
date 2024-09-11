@@ -234,7 +234,7 @@ Install ```google-chrome``` oe your favorite browser
   <summary>See how to do it on Void Linux</summary>
   
   ```
-  sudo xbps-install -y grim slurp wob brightnessctl pavucontrol wdisplays system-config-printer blueman
+  sudo xbps-install -y grim slurp wob brightnessctl pipewire wdisplays iwd iwgtk blueman
   ```
 
 </details>
