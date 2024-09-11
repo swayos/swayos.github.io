@@ -189,79 +189,84 @@ If fonts are too small or you want an other font change it under ~/.conifg/wcp/r
 
 <br/>
 
-**Part 4 : More utilities to make SwayOS comfortable**
+**Part 4 : Make SwayOS comfortable**
 
 <br/>
 
-Install these programs
+Install ```grim``` and ```slurp``` for making screenshots
 
-```
-grim for making screenshots
-slurp for making region shots
-wob for volume/brightness indication
-brightnessctl for brightness control
-pavucontrol for volume control
-wdisplays for display configuration
-system-config-printer for printer configuration
-```
+- Press WIN+PRTSRC to put a screenshot or WIN+SHIFT+PRTSCR to put a region under ~/Downloads
+Modify key bindings in ~/.config/sway/config
+
+Install ```wob``` for volume/brightness indication
+
+- Press volume/brightness keys on the keyboard to make wob visible.
+Modify key bindings in ~/.config/sway/config
+
+Install ```brightnessctl``` for controlling monitor brightness
+
+- Press brighntess keys on the keyboard to modify brightness
+Modify key bindings in ~/.config/sway/config
+
+Install ```pavuctl``` for detailed audio control
+
+- Press the volume icon on the control panel to open pavucontrol or bind a key in ~/.config/sway/config
+
+Install ```wdisplays``` for display configuration
+
+- Press the display icon on the control panel to open wdisplays or bind a key in ~/.config/sway/config
+
+Install ```iwd``` and ```iwgtk``` for smooth wifi experience
+
+- Press the wifi icon on the control panel to open iwgtk ( if you have it ) or bind a key in ~/.config/sway/config
+
+Install ```blueman``` for visual bluetooth setup
+
+- Press the bluetooth icon on the control panel to open blueman ( if you have it ) or bind a key in ~/.config/sway/config
 
 <details>
   <summary>See how to do it on Void Linux</summary>
   
   ```
-  sudo xbps-install -y grim slurp wob brightnessctl pavucontrol wdisplays system-config-printer
+  sudo xbps-install -y grim slurp wob brightnessctl pavucontrol wdisplays system-config-printer blueman
   ```
 
 </details>
 
-Now you can press WIN+PRTSRC to put a screenshot under ~/Downloads
-Press WIN+SHIFT+PRTSCR to select a region and save it under ~/Downloads
-Press the volume and brightness buttons to summon wob to show their current values
-Press the display icon on the control panel to open wdisplays
-Press the printer icon on the control panel to open system-config-printer
-Press the volume icon on the control panel to open pavucontrol
-Press the wifi icon on the control panel to open iwgtk ( if you have it )
-Press the bluetooth icon on the control panel to open blueman ( if you have it )
+<br/>
 
-4. Installing zsh
+**Part 5 : Install zsh with autosuggestions and autostart sway on login**
 
-Install zsh and zsh-autosuggestions
+<br/>
+
+Install ```zsh``` and ```zsh-autosuggestions```
+
+Copy swayos's zshrc to your home :
+
+```
+cp ~/swayos.github.io/home/.zshr ~/
+```
+
 Change shell to zsh :
 
 ```
-chsh -S zsh
+chsh -s /bin/zsh
 ```
 
-2. More utilities
+Now zsh will setup XDG_SESSION_DIR and start sway automatically on the default terminal. It will also remember every command you typed and offers command completion which is the best thing in terminals
 
-```
-grim
-slurp
-wob
-brightnessctl
-pavuctl
-wdisplays
-system-config-printer
-```
+<br/>
 
-5. Install iwd and iwgtk for smooth wifi experience.
-Open iwgtk by CMD+SPACE and typing iwgtk
-or open Control Panel and click on wifi
+**Part 6 : Fine tune the looks of SwayOS**
 
-5. Install blueman for bluetooth
-Open
+<br/>
 
-5. Install browser, update MOD+SHIFT+RETURN shortcut in ~/.config/sway/config to open it ( by default it is google chrome )
+Set the default fonts and font sizes for GTK applications with ```gnome-tweaks```, use Ubuntu font since it is the default for SwayOS
 
-4. Edit ~/.config/sway/status.sh to modify your status bar
+Set dark mode by typing ```gsettings set org.gnome.desktop.interface color-scheme prefer-dark```
 
-5. Download gnome tweaks, set default font to UBuntu, set default font size, set default cursor
+Set default cursor theme in ~/.config/sway/config
 
-gsettings set cursor
-gsettings set font size
-[Settings]
-gtk-application-prefer-dark-theme=1
+Set font sizes according to your display size and resolution for foot, sway and waybar, if your screen res is too high/low
 
-5. Set font sizes according to your display size and resolution for foot, sway and waybar
-
-6. Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable )
+Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable )
