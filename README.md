@@ -275,7 +275,7 @@ Set default cursor theme in ~/.config/sway/config
 
 Set font sizes according to your display size and resolution for foot, sway and waybar, if your screen res is too high/low
 
-Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable )
+Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable ) and screen sharing.
 
 <br/>
 
