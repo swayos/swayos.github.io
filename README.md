@@ -66,6 +66,7 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
   <summary>See how to do it on Void Linux</summary>
   
   ```
+  sudo xbps-install -Syu
   sudo xpbs-install -y sway swayidle swaylock foot wofi ttf-ubuntu-font-family
   sudo xbps-install -y seatd
   sudo ln -s /etc/sv/seatd /var/service
