@@ -184,12 +184,12 @@ Update ~/.config/wcp/wcp.sh to suit your needs, or use wcp-void.sh or wcp-debian
 
 </details>
 
-Press WIN+SHIFT+E to exit sway and start it again. Now you can summon wayland control panel by pressing WIN+P or by left clicking on the status bar. 
+Press WIN+SHIFT+E to exit sway and start it again. Now you can summon wayland control panel by pressing WIN+P or by left clicking on the status bar ( The buttons/sliders won't work yet. )
 If fonts are too small or you want an other font change it under ~/.conifg/wcp/res/main.css
 
 <br/>
 
-**Part Four - Make SwayOS comfortable**
+**Part Four - Make SwayOS comfortable & Wayland Control Panel usable**
 
 <br/>
 
@@ -286,14 +286,16 @@ Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scr
 Install pipewire with bluetooth support
 
 ```
-sudo xbps-install -y pipewire pipewire-pulse blueman bluetoothd
+sudo xbps-install -y pipewire pipewire blueman
 sudo usermod -a $USER -G bluetooth
 sudo ln -s /etc/sv/bluetoothd /var/service
 ```
 
 To enable shutdown/reboot/suspend present in wcp-void.sh 
 
-```sudo echo "$USER ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/zzz" | sudo tee -a /etc/sudoers```
+```
+sudo echo "$USER ALL=NOPASSWD:/sbin/reboot,/sbin/poweroff,/sbin/zzz" | sudo tee -a /etc/sudoers
+```
 
 Clean package cache and remove orphaned packages and kernels
 
