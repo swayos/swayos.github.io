@@ -42,8 +42,6 @@ bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du
 
 ```
 sway
-swayidle
-swaylock
 foot
 wofi
 ubuntu-font
@@ -226,6 +224,10 @@ If fonts are too small or you want an other font change it under ~/.conifg/wcp/r
 Install ```grim``` and ```slurp``` for making screenshots
 
 - Press WIN+PRTSRC to put a screenshot or WIN+SHIFT+PRTSCR to put a region under ~/Downloads. Create ~/Downloads directory if doesn't exist. Modify key bindings in ~/.config/sway/config
+
+Install ```swayidle``` and ```swaylock``` 
+
+- Press WIN+SHIFT+E to exit sway and start it again. Screen will lock in 2 minutes, computer will sleep in 4 minutes. Change these values in ~/.config/sway/config
 
 Install ```wob``` for volume/brightness indication
 
