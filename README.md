@@ -65,7 +65,7 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
   
   ```
   sudo xbps-install -Syu
-  sudo xpbs-install -y sway swayidle swaylock foot wofi ttf-ubuntu-font-family
+  sudo xpbs-install -y sway foot wofi ttf-ubuntu-font-family
   sudo xbps-install -y seatd
   sudo ln -s /etc/sv/seatd /var/service
   sudo usermod -a $USER -G _seatd
