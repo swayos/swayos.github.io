@@ -253,7 +253,7 @@ Install ```blueman``` for visual bluetooth setup
 
 - Press the bluetooth icon on the control panel to open blueman ( if you have it ) or bind a key in ~/.config/sway/config
 
-Install ```google-chrome``` oe your favorite browser
+Install ```google-chrome``` or your favorite browser
 
 - Press WIN+SHIFT+ENTER to open it or edit ~/.config/sway/config to modify the browser or the bindings
 
@@ -261,7 +261,7 @@ Install ```google-chrome``` oe your favorite browser
   <summary>See how to do it on Void Linux</summary>
   
   ```
-  sudo xbps-install -y grim slurp wob brightnessctl pipewire wdisplays iwd iwgtk blueman
+  sudo xbps-install -y grim slurp wob brightnessctl wdisplays iwd iwgtk blueman
   ```
 
 </details>
@@ -290,7 +290,34 @@ Now zsh will setup XDG_SESSION_DIR and start sway automatically as a dbus sessio
 
 <br/>
 
-**Part Six - Fine tune the looks of SwayOS**
+**Part Six - Pipewire, Wireplumber and xdg-dekstop-portal-wlr**
+
+<br/>
+
+If you want screen sharing under sway/wayland you will need ```pipewire``` with ```wireplumber``` and ```xdg-desktop-portal-wlr```.
+You may also have to install ```pipewire-pulse``` and ```libspa-bluetooth``` packages for bluetooth audio.
+If you use a non-systemd distribution you have to start these manually, in this case uncomment the autostart part at the bottom of ~/.config/sway/config
+
+```
+exec pipewire
+exec /usr/libexec/xdg-desktop-portal-wlr -r
+exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
+```
+
+<details>
+  <summary>See how to do it on Void Linux</summary>
+  
+  ```
+  sudo xbps-install -y pipewire libspa-bluetooth xdg-desktop-portal-wlr
+  sudo usermod -a $USER -G bluetooth
+  sudo ln -s /etc/sv/bluetoothd /var/service
+  ```
+
+</details>
+
+<br/>
+
+**Part Seven - Fine tune the looks of SwayOS**
 
 <br/>
 
@@ -304,27 +331,15 @@ Set font sizes according to your display size and resolution for foot, sway and 
 
 Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable ) and screen sharing.
 
+If you want other input sources/keymaps for other languages, edit ~/.config/sway/config and uncomment/edit the input part at the top.
+
 <br/>
 
-**Part Seven - Distro specific notes**
+**Part Eight - Distro specific notes**
 
 <br/>
 
 **Void Linux**
-
-Install desktop portal wlr for screen sharing in chrome/firefox
-
-```
-sudo xbps-instdall -y xdg-desktop-portal-wlr
-```
-
-Install pipewire with bluetooth support
-
-```
-sudo xbps-install -y pipewire blueman libspa-bluetooth
-sudo usermod -a $USER -G bluetooth
-sudo ln -s /etc/sv/bluetoothd /var/service
-```
 
 To enable shutdown/reboot/suspend present in wcp-void.sh 
 
