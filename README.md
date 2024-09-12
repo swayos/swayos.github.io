@@ -257,15 +257,6 @@ Install ```google-chrome``` or your favorite browser
 
 - Press WIN+SHIFT+ENTER to open it or edit ~/.config/sway/config to modify the browser or the bindings
 
-<details>
-  <summary>See how to do it on Void Linux</summary>
-  
-  ```
-  sudo xbps-install -y grim slurp wob brightnessctl wdisplays iwd iwgtk blueman
-  ```
-
-</details>
-
 <br/>
 
 **Part Five - Install zsh with autosuggestions and autostart sway on login**
