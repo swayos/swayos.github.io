@@ -277,7 +277,7 @@ Change shell to zsh :
 chsh -s /bin/zsh
 ```
 
-Now zsh will setup XDG_SESSION_DIR and start sway automatically as a dbus session on the default terminal ( sway as a dbus session is needed for pipewire and other programs ). It will also remember every command you typed and offers command completion which is the best thing in terminals
+Now zsh will setup XDG_SESSION_DIR and start sway automatically as a dbus session on the default terminal ( sway as a dbus session is needed for pipewire and other programs ). It will also remember every command you typed and offers command completion which is the best thing in terminals. zsh-autosuggestions location may differ on different distros, edit ~/.zshrc with the correct location if error emerges.
 
 <br/>
 
