@@ -295,6 +295,8 @@ exec /usr/libexec/xdg-desktop-portal-wlr -r
 exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
 ```
 
+For screen sharing in chromium/google chrome set preferred ozone platform to wayland under chrome://flags.
+
 <details>
   <summary>See how to do it on Void Linux</summary>
   
@@ -316,11 +318,7 @@ Set the default fonts and font sizes for GTK applications with ```gnome-tweaks``
 
 Set dark mode by typing ```gsettings set org.gnome.desktop.interface color-scheme prefer-dark```
 
-Set default cursor theme in ~/.config/sway/config
-
 Set font sizes according to your display size and resolution for foot, sway and waybar, if your screen res is too high/low
-
-Set preferred ozone platform to Wayland in Google Chrome/Chromium for 120 Hz scrolling ( if display is capable ) and screen sharing.
 
 If you want other input sources/keymaps for other languages, edit ~/.config/sway/config and uncomment/edit the input part at the top.
 
