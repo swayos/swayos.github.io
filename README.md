@@ -268,7 +268,7 @@ Install ```zsh``` and ```zsh-autosuggestions``` and ```dbus```
 Copy swayos's zshrc to your home :
 
 ```
-cp ~/swayos.github.io/home/.zshr ~/
+cp ~/swayos.github.io/home/.zshrc ~/
 ```
 
 Change shell to zsh :
