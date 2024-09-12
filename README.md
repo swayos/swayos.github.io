@@ -329,3 +329,9 @@ sudo xbps-remove -yO
 sudo xbps-remove -yo
 sudo vkpurge rm all
 ```
+
+Disable beeping
+
+```
+echo 'blacklist pcspkr' | sudo tee -a /etc/modprobe.d/blacklist.conf
+```
