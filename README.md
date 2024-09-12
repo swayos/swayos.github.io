@@ -163,7 +163,7 @@ sudo ninja -C build install
 
 </details>
 
-Press WIN+SHIFT+E to exit sway and start it again. Now you can summon sway overview by long pressing and holding CMD+1 or right clicking on the status bar. 
+Press WIN+SHIFT+E to exit sway and start it again. Now you can summon sway overview by pressing and holding CMD+1 or right clicking on the status bar. 
 If fonts are too small or you want an other font change it under ~/.conifg/sov/html/main.css
 
 <br/>
