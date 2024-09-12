@@ -94,22 +94,6 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
   ```
 
 </details>
-<details>
-  <summary>See how to do it on FreeBSD</summary>
-  
-  ```
-  sudo apt-get install software-properties-common
-  sudo apt-add-repository --component non-free
-  sudo apt-get update
-  sudo apt-get upgrade
-  sudo apt-get install sway swayidle swaylock foot wofi fonts-ubuntu
-  sudo apt-get install git
-  git clone https://github.com/swayos/swayos.github.io
-  cp -R swayos.github.io/home/.config ~/
-  sway
-  ```
-
-</details>
 
 <br/>
 
