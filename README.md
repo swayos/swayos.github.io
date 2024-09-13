@@ -215,7 +215,7 @@ Install ```swayidle``` and ```swaylock```
 
 Install ```wob``` for volume/brightness indication
 
-- Press volume/brightness keys on the keyboard to make wob visible.
+- Restart sway, if you have pamixer and brightnessctl installed then press volume/brightness keys on the keyboard to make wob visible.
 Modify key bindings in ~/.config/sway/config
 
 Install ```brightnessctl``` for controlling monitor brightness
