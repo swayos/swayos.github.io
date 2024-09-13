@@ -71,7 +71,7 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
   sudo usermod -a $USER -G _seatd
   sudo xbps-install -y git
   git clone https://github.com/swayos/swayos.github.io
-  cp -R swayos.github.io/home/.config ~/
+  cp -R swayos.github.io/home/. ~/
   exit
   export XDG_RUNTIME_DIR=/tmp
   sway
@@ -250,12 +250,6 @@ Install ```google-chrome``` or your favorite browser
 <br/>
 
 Install ```zsh``` and ```zsh-autosuggestions``` and ```dbus```
-
-Copy swayos's zshrc to your home :
-
-```
-cp ~/swayos.github.io/home/.zshrc ~/
-```
 
 Change shell to zsh :
 
