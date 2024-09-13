@@ -288,6 +288,7 @@ For screen sharing in chromium/google chrome set preferred ozone platform to way
   sudo ln -s /etc/sv/bluetoothd /var/service
   mkdir -p /etc/pipewire/pipewire.conf.d
   ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
+  ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
   ```
 
 </details>
