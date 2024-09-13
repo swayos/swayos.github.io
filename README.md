@@ -251,6 +251,8 @@ Install ```google-chrome``` or your favorite browser
 
 Install ```zsh``` and ```zsh-autosuggestions``` and ```dbus```
 
+If your distro doesn't have ```dbus```, install it and enable it as a service.
+
 Change shell to zsh :
 
 ```
