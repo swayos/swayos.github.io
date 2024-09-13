@@ -86,10 +86,10 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
   sudo apt-add-repository --component non-free
   sudo apt-get update
   sudo apt-get upgrade
-  sudo apt-get install sway swayidle swaylock foot wofi fonts-ubuntu
+  sudo apt-get install sway foot wofi fonts-ubuntu
   sudo apt-get install git
   git clone https://github.com/swayos/swayos.github.io
-  cp -R swayos.github.io/home/.config ~/
+  cp -R swayos.github.io/home/. ~/
   sway
   ```
 
