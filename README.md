@@ -301,7 +301,7 @@ For screen sharing in chromium/google chrome set preferred ozone platform to way
 
 Set the default fonts and font sizes for GTK applications with ```gnome-tweaks```, use Ubuntu font since it is the default for SwayOS
 
-Set dark mode for GTK 4 apps by typing ```gsettings set org.gnome.desktop.interface color-scheme prefer-dark```
+Set dark mode for GTK 4 apps by typing ```gsettings set org.gnome.desktop.interface color-scheme prefer-dark```   
 Set dark mode for GTK 3 apps ( chromium ) by typing 
 ```
 mkdir ~/.config/gtk-3.0
