@@ -292,7 +292,7 @@ For screen sharing in chromium/google chrome set preferred ozone platform to way
 
 </details>
 <details>
-  <summary>See how to do it on Void Linux</summary>
+  <summary>See how to do it on Debian Bookworm</summary>
   
   ```
   sudo apt-get install pipewire-audio xdg-desktop-portal-wlr
