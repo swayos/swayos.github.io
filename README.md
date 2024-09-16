@@ -278,7 +278,7 @@ mkdir ~/.config/gtk-3.0
 echo '[Settings]\ngtk-application-prefer-dark-theme=1' > ~/.config/gtk-3.0/settings.ini
 ```  
 
-Set font sizes according to your display size and resolution for foot, sway and waybar, if your screen res is too high/low
+Set font sizes according to your display size and resolution for foot, sway and swaybar, if your screen res is too high/low
 
 If you want other input sources/keymaps for other languages, edit ~/.config/sway/config and uncomment/edit the input part at the top.
 
