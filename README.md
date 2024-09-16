@@ -60,38 +60,35 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
 
 *note : if WIN+ENTER is not working set a different modifier key for sway in ~/.config/sway/config*
 
-<details>
-  <summary>See how to do it on Void Linux</summary>
+See how to do it on Void Linux :
   
 ```
-  sudo xbps-install -Syu
-  sudo xpbs-install -y sway foot wofi ttf-ubuntu-font-family
-  sudo xbps-install -y seatd
-  sudo ln -s /etc/sv/seatd /var/service
-  sudo usermod -a $USER -G _seatd
-  sudo xbps-install -y git
-  git clone https://github.com/swayos/swayos.github.io
-  cp -R swayos.github.io/home/. ~/
-  exit
-  export XDG_RUNTIME_DIR=/tmp
-  sway
+sudo xbps-install -Syu
+sudo xpbs-install -y sway foot wofi ttf-ubuntu-font-family
+sudo xbps-install -y seatd
+sudo ln -s /etc/sv/seatd /var/service
+sudo usermod -a $USER -G _seatd
+sudo xbps-install -y git
+git clone https://github.com/swayos/swayos.github.io
+cp -R swayos.github.io/home/. ~/
+exit
+export XDG_RUNTIME_DIR=/tmp
+sway
 ```
 
-</details>
-<details>
-  <summary>See how to do it on Debian Bookworm</summary>
+See how to do it on Debian Bookworm :
   
-  ```
-  sudo apt-get install software-properties-common
-  sudo apt-add-repository --component non-free
-  sudo apt-get update
-  sudo apt-get upgrade
-  sudo apt-get install sway foot wofi fonts-ubuntu
-  sudo apt-get install git
-  git clone https://github.com/swayos/swayos.github.io
-  cp -R swayos.github.io/home/. ~/
-  sway
-  ```
+```
+sudo apt-get install software-properties-common
+sudo apt-add-repository --component non-free
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install sway foot wofi fonts-ubuntu
+sudo apt-get install git
+git clone https://github.com/swayos/swayos.github.io
+cp -R swayos.github.io/home/. ~/
+sway
+```
 
 </details>
 
@@ -133,35 +130,29 @@ ninja -C build
 sudo ninja -C build install
 ```
 
-<details>
-  <summary>See how to do it on Void Linux</summary>
+See how to do it on Void Linux :
   
-  ```
-  sudo xbps-install -y clang meson ninja cmake pkg-config
-  sudo xbps-install -y libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel wayland-protocols
-  git clone https://github.com/milgra/sov
-  cd sov
-  meson setup build --buildtype=release
-  ninja -C build
-  sudo ninja -C build install
-  ```
+```
+sudo xbps-install -y clang meson ninja cmake pkg-config
+sudo xbps-install -y libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel wayland-protocols
+git clone https://github.com/milgra/sov
+cd sov
+meson setup build --buildtype=release
+ninja -C build
+sudo ninja -C build install
+```
 
-</details>
-
-<details>
-  <summary>See how to do it on Debian Bookworm</summary>
+See how to do it on Debian Bookworm :
   
-  ```
-  sudo apt-get install clang meson ninja-build cmake pkg-config
-  sudo apt-get install libpng-dev libfreetype-dev libglvnd-dev libglew-dev libwayland-dev libxkbcommon-dev wayland-protocols
-  git clone https://github.com/milgra/sov
-  cd sov
-  meson setup build --buildtype=release
-  ninja -C build
-  sudo ninja -C build install
-  ```
-
-</details>
+```
+sudo apt-get install clang meson ninja-build cmake pkg-config
+sudo apt-get install libpng-dev libfreetype-dev libglvnd-dev libglew-dev libwayland-dev libxkbcommon-dev wayland-protocols
+git clone https://github.com/milgra/sov
+cd sov
+meson setup build --buildtype=release
+ninja -C build
+sudo ninja -C build install
+```
 
 Press WIN+SHIFT+E to exit sway and start it again. Now you can summon sway overview by pressing and holding CMD+1 or right clicking on the status bar. 
 If fonts are too small or you want an other font change it under ~/.conifg/sov/html/main.css
@@ -273,36 +264,31 @@ If you use a non-systemd distribution you have to start these manually, in this 
 
 For screen sharing in chromium/google chrome set preferred ozone platform to wayland under chrome://flags.
 
-<details>
-  <summary>See how to do it on Void Linux</summary>
+See how to do it on Void Linux :
   
 ```
-  sudo xbps-install -y pipewire libspa-bluetooth xdg-desktop-portal-wlr
-  sudo usermod -a $USER -G bluetooth
-  sudo ln -s /etc/sv/bluetoothd /var/service
-  mkdir -p /etc/pipewire/pipewire.conf.d
-  ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
-  ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+sudo xbps-install -y pipewire libspa-bluetooth xdg-desktop-portal-wlr
+sudo usermod -a $USER -G bluetooth
+sudo ln -s /etc/sv/bluetoothd /var/service
+mkdir -p /etc/pipewire/pipewire.conf.d
+ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
+ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
 
-  // uncomment these lines in ~/.config/sway/config
-  exec pipewire
-  exec /usr/libexec/xdg-desktop-portal-wlr -r
-  exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
+// uncomment these lines in ~/.config/sway/config
+exec pipewire
+exec /usr/libexec/xdg-desktop-portal-wlr -r
+exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
 ```
 
-</details>
-<details>
-  <summary>See how to do it on Debian Bookworm</summary>
+See how to do it on Debian Bookworm :
   
-  ```
-  sudo apt-get install pipewire-audio xdg-desktop-portal-wlr
+```
+sudo apt-get install pipewire-audio xdg-desktop-portal-wlr
 
-  // uncomment these lines in ~/.config/sway/config
-  exec /usr/libexec/xdg-desktop-portal-wlr -r
-  exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
-  ```
-
-</details>
+// uncomment these lines in ~/.config/sway/config
+exec /usr/libexec/xdg-desktop-portal-wlr -r
+exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
+```
 
 <br/>
 
