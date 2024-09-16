@@ -60,7 +60,7 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
 
 *note : if WIN+ENTER is not working set a different modifier key for sway in ~/.config/sway/config*
 
-See how to do it on Void Linux :
+How to do it on Void Linux :
   
 ```
 sudo xbps-install -Syu
@@ -76,7 +76,7 @@ export XDG_RUNTIME_DIR=/tmp
 sway
 ```
 
-See how to do it on Debian Bookworm :
+How to do it on Debian Bookworm :
   
 ```
 sudo apt-get install software-properties-common
@@ -130,7 +130,7 @@ ninja -C build
 sudo ninja -C build install
 ```
 
-See how to do it on Void Linux :
+How to do it on Void Linux :
   
 ```
 sudo xbps-install -y clang meson ninja cmake pkg-config
@@ -142,7 +142,7 @@ ninja -C build
 sudo ninja -C build install
 ```
 
-See how to do it on Debian Bookworm :
+How to do it on Debian Bookworm :
   
 ```
 sudo apt-get install clang meson ninja-build cmake pkg-config
@@ -264,7 +264,7 @@ If you use a non-systemd distribution you have to start these manually, in this 
 
 For screen sharing in chromium/google chrome set preferred ozone platform to wayland under chrome://flags.
 
-See how to do it on Void Linux :
+How to do it on Void Linux :
   
 ```
 sudo xbps-install -y pipewire libspa-bluetooth xdg-desktop-portal-wlr
@@ -280,7 +280,7 @@ exec /usr/libexec/xdg-desktop-portal-wlr -r
 exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
 ```
 
-See how to do it on Debian Bookworm :
+How to do it on Debian Bookworm :
   
 ```
 sudo apt-get install pipewire-audio xdg-desktop-portal-wlr
