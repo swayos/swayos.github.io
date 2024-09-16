@@ -30,5 +30,6 @@ if [ "$(tty)" = "/dev/tty1" ] || [ "$(tty)" = "/dev/ttyv0" ] ; then
     fi
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
+    #export WLR_RENDERER=vulkan
     exec dbus-run-session sway
 fi
