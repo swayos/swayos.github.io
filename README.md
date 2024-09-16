@@ -219,11 +219,7 @@ Install ```google-chrome``` or your favorite browser
 
 - Press WIN+SHIFT+ENTER to open it or edit ~/.config/sway/config to modify the browser or the bindings
 
-<br/>
-
 ## Part Five - Install zsh with autosuggestions and autostart sway on login ##
-
-<br/>
 
 Install ```zsh``` and ```zsh-autosuggestions``` and ```dbus```
 
