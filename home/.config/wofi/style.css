@@ -1,11 +1,12 @@
 window {
     background-color: #333333;
-    font-family: "Terminus";
-    font-weight: bold;
+    font-family: "Ubuntu Mono";
+    font-size: 14px;
 }
 
 #input {
     border: none;
+    color: #FFFFFF;
     background-color: #555555;
 }
 
@@ -16,7 +17,7 @@ window {
 
 #scroll {
     margin: 5px 0px;
-    font-size: 16px;
+    font-size: 14px;
     color: #ccc;
 }
 

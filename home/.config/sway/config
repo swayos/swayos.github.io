@@ -8,22 +8,21 @@ input * {
       repeat_rate 100
       repeat_delay 250
       # uncomment below to add other input sources
-      xkb_layout "us,hu"
-      xkb_variant ",101_qwerty_dot_nodead"
-      xkb_options "grp:alt_space_toggle"
+      # xkb_layout "us,hu"
+      # xkb_variant ",101_qwerty_dot_nodead"
+      # xkb_options "grp:alt_space_toggle"
 }
 
 # constants
 
+set $mod Mod4
 set $menu wofi --show run | xargs swaymsg exec --
-set $browser chromium
+set $browser google-chrome-stable
 set $terminal foot
 set $screenshot grim ~/Downloads/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 set $screenclip slurp | grim -g - ~/Downloads/scrn-$(date +"%Y-%m-%d-%H-%M-%S").png
 
 # shortcuts
-
-set $mod Mod4
 
 bindsym $mod+Up focus up
 bindsym $mod+Down focus down
@@ -94,7 +93,6 @@ bindsym $mod+b splith
 bindsym $mod+v splitv
 bindsym $mod+f fullscreen
 bindsym $mod+Shift+space floating toggle
-#bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 bindsym $mod+r mode "resize"
 
@@ -128,57 +126,76 @@ bindsym $mod+XF86AudioPrev exec "echo 3 > /tmp/vmp"
 
 bindsym --no-repeat $mod+Print exec $screenshot
 bindsym --no-repeat $mod+Shift+Print exec $screenclip
-bindsym --no-repeat $mod+p exec "echo 2 > /tmp/wcp"
+bindsym --no-repeat $mod+p exec "echo 'toggle visibility' > /tmp/wcp"
 
 floating_modifier $mod normal
 
 # design
 
+seat seat0 xcursor_theme capitaine-cursors 24
+
 font pango:Terminus (TTF) Bold 12
 
-client.focused          #2F2F2F #556064 #80FFF9 #1F1F1F
-client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-client.unfocused        #0F0F0F #2F3D44 #1ABC9C #454948
-client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-client.placeholder      #000000 #0c0c0c #ffffff #000000 
-client.background       #2B2C2B
+client.focused          #2F2F2F00 #556064 #80FFF9 #1F1F1F00 #00000000
+client.focused_inactive #2F3D4400 #2F3D44 #1ABC9C #45494800 #00000000 
+client.unfocused        #0F0F0F00 #2F3D44 #1ABC9C #45494800 #00000000
+client.urgent           #CB4B1600 #FDF6E3 #1ABC9C #268BD200 #00000000
+client.placeholder      #00000000 #0c0c0c #ffffff #00000000 #00000000
 
-output * bg ~/.config/sway/sunset_help.jpg stretch
+output * bg ~/.config/sway/sunset.jpg stretch
 
 default_border none
 default_floating_border normal
 
-gaps inner 5
+gaps inner 2
 gaps outer 0
 
 for_window [app_id="foot"] border pixel 1
 for_window [app_id="iwgtk"] floating enable
 for_window [app_id="blueman-manager"] floating enable
-for_window [app_id="blueman-manager"] resize set 1000 600
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="org.gnome.Nautilus"] floating enable
-for_window [app_id="gnome-system-monitor"] floating enable; resize shrink down 100px; resize shrink up 100px
 for_window [app_id="wdisplays"] floating enable
-for_window [app_id="wdisplays"] resize set 1000 600
 for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="pavucontrol"] resize set 1000 600
-for_window [app_id="imv"] floating enable
-for_window [app_id="pamac-manager"] floating enable
+
+bar {
+    position top
+    status_command while ~/.config/sway/status.sh; do sleep 5; done
+    tray_output none
+    bindcode 272 exec "echo 'toggle visibility' > /tmp/wcp"
+    bindcode 273 exec "echo 2 > /tmp/sov"
+
+    colors {
+        height 24
+        statusline #AAAAAA
+        background #00000033
+	focused_workspace #00000033 #00000033 #FFFFFF
+	active_workspace #00000033 #00000033 #AAAAAA
+	inactive_workspace #00000033 #00000033 #999999
+	urgent_workspace #00000033 #00000033 #FF0000
+    }
+    font "Ubuntu Mono" 11
+}
+
 
 # auto launch applications
 
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec blueman-applet
-exec mako
-exec waybar
 exec swayidle -w \
-         timeout 1200 'swaylock -f' \
-         timeout 2400 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         timeout 120 'swaylock -f' \
+         timeout 240 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f'
 
 exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
-exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -v -t 200 -k 65555
-
+exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -v -t 200 -k 65515
 exec brightnessctl set 50%v
 exec ~/.config/wcp/wcp.sh
-exec ~/.config/wfl/wfl.sh
+exec blueman-applet
+
+# uncomment this if you use pipewire on a non-systemd distro and want to launch it manually
+# exec pipewire
+# exec /usr/libexec/xdg-desktop-portal-wlr -r
+# exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
+
+# uncomment and edit this if you want to alter display scaling/resolution on startup
+# output eDP-1 scale 1.6
+# output eDP-1 mode 2880x1800@60Hz
