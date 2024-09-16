@@ -153,7 +153,7 @@ sudo ninja -C build install
   
   ```
   sudo apt-get install clang meson ninja-build cmake pkg-config
-  sudo apt-get install libpng-dev flibreetype-dev libglvnd-dev libglew-dev libwayland-dev libxkbcommon-dev wayland-protocols
+  sudo apt-get install libpng-dev libfreetype-dev libglvnd-dev libglew-dev libwayland-dev libxkbcommon-dev wayland-protocols
   git clone https://github.com/milgra/sov
   cd sov
   meson setup build --buildtype=release
