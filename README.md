@@ -269,26 +269,37 @@ Now zsh will setup XDG_SESSION_DIR and start sway automatically as a dbus sessio
 
 If you want screen sharing under sway/wayland you will need ```pipewire``` with ```wireplumber``` and ```xdg-desktop-portal-wlr```.
 You may also have to install ```pipewire-pulse``` and ```libspa-bluetooth``` packages for bluetooth audio.
-If you use a non-systemd distribution you have to start these manually, in this case uncomment the autostart part at the bottom of ~/.config/sway/config
-
-```
-exec pipewire
-exec /usr/libexec/xdg-desktop-portal-wlr -r
-exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
-```
+If you use a non-systemd distribution you have to start these manually, in this case uncomment the autostart parts at the bottom of ~/.config/sway/config
 
 For screen sharing in chromium/google chrome set preferred ozone platform to wayland under chrome://flags.
 
 <details>
   <summary>See how to do it on Void Linux</summary>
   
-  ```
+```
   sudo xbps-install -y pipewire libspa-bluetooth xdg-desktop-portal-wlr
   sudo usermod -a $USER -G bluetooth
   sudo ln -s /etc/sv/bluetoothd /var/service
   mkdir -p /etc/pipewire/pipewire.conf.d
   ln -s /usr/share/examples/wireplumber/10-wireplumber.conf /etc/pipewire/pipewire.conf.d/
   ln -s /usr/share/examples/pipewire/20-pipewire-pulse.conf /etc/pipewire/pipewire.conf.d/
+
+  // uncomment these lines in ~/.config/sway/config
+  exec pipewire
+  exec /usr/libexec/xdg-desktop-portal-wlr -r
+  exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
+```
+
+</details>
+<details>
+  <summary>See how to do it on Void Linux</summary>
+  
+  ```
+  sudo apt-get install pipewire-audio xdg-desktop-portal-wlr
+
+  // uncomment these lines in ~/.config/sway/config
+  exec /usr/libexec/xdg-desktop-portal-wlr -r
+  exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
   ```
 
 </details>
