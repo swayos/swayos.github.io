@@ -63,7 +63,7 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
 <details>
   <summary>See how to do it on Void Linux</summary>
   
-  ```
+```
   sudo xbps-install -Syu
   sudo xpbs-install -y sway foot wofi ttf-ubuntu-font-family
   sudo xbps-install -y seatd
@@ -75,7 +75,7 @@ Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+
   exit
   export XDG_RUNTIME_DIR=/tmp
   sway
-  ```
+```
 
 </details>
 <details>
