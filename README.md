@@ -34,11 +34,8 @@ patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra)
 bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du      
 
 ## Setup ##
-<br/>
 
-**Part One - Install sway and the basic utilities first with your package manager**
-
-<br/>
+## Part One - Install sway and the basic utilities first with your package manager ##
 
 ```
 sway
@@ -92,11 +89,7 @@ sway
 
 </details>
 
-<br/>
-
-**Part Two - Installing Sway Overview**
-
-<br/>
+## Part Two - Installing Sway Overview ##
 
 Install the dev tools to build
 
@@ -157,11 +150,7 @@ sudo ninja -C build install
 Press WIN+SHIFT+E to exit sway and start it again. Now you can summon sway overview by pressing and holding CMD+1 or right clicking on the status bar. 
 If fonts are too small or you want an other font change it under ~/.conifg/sov/html/main.css
 
-<br/>
-
-**Part Three - Installing Wayland Control Panel**
-
-<br/>
+## Part Three - Installing Wayland Control Panel ##
 
 Clone the Kinetic UI Dameon repo, build and install
 
@@ -190,11 +179,7 @@ Update ~/.config/wcp/wcp.sh to suit your needs, or use wcp-void.sh or wcp-debian
 Press WIN+SHIFT+E to exit sway and start it again. Now you can summon wayland control panel by pressing WIN+P or by left clicking on the status bar ( The buttons/sliders won't work yet. )
 If fonts are too small or you want an other font change it under ~/.conifg/wcp/res/main.css
 
-<br/>
-
-**Part Four - Make SwayOS comfortable & Wayland Control Panel usable**
-
-<br/>
+## Part Four - Make SwayOS comfortable & Wayland Control Panel usable ##
 
 Install ```grim``` and ```slurp``` for making screenshots
 
@@ -236,7 +221,7 @@ Install ```google-chrome``` or your favorite browser
 
 <br/>
 
-**Part Five - Install zsh with autosuggestions and autostart sway on login**
+## Part Five - Install zsh with autosuggestions and autostart sway on login ##
 
 <br/>
 
@@ -252,11 +237,7 @@ chsh -s /bin/zsh
 
 Now zsh will setup XDG_SESSION_DIR and start sway automatically as a dbus session on the default terminal ( sway as a dbus session is needed for pipewire and other programs ). It will also remember every command you typed and offers command completion which is the best thing in terminals. zsh-autosuggestions location may differ on different distros, edit ~/.zshrc with the correct location if error emerges.
 
-<br/>
-
-**Part Six - Pipewire, Wireplumber and xdg-dekstop-portal-wlr**
-
-<br/>
+## Part Six - Pipewire, Wireplumber and xdg-dekstop-portal-wlr ##
 
 If you want screen sharing under sway/wayland you will need ```pipewire``` with ```wireplumber``` and ```xdg-desktop-portal-wlr```.
 You may also have to install ```pipewire-pulse``` and ```libspa-bluetooth``` packages for bluetooth audio.
@@ -290,11 +271,7 @@ exec /usr/libexec/xdg-desktop-portal-wlr -r
 exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
 ```
 
-<br/>
-
-**Part Seven - Fine tune the looks of SwayOS**
-
-<br/>
+## Part Seven - Fine tune the looks of SwayOS ##
 
 Set the default fonts and font sizes for GTK applications with ```gnome-tweaks```, use Ubuntu font since it is the default for SwayOS
 
@@ -309,11 +286,7 @@ Set font sizes according to your display size and resolution for foot, sway and 
 
 If you want other input sources/keymaps for other languages, edit ~/.config/sway/config and uncomment/edit the input part at the top.
 
-<br/>
-
-**Part Eight - Distro specific notes**
-
-<br/>
+## Part Eight - Distro specific notes ##
 
 **Void Linux**
 
