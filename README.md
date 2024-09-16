@@ -233,6 +233,11 @@ chsh -s /bin/zsh
 
 Now zsh will setup XDG_SESSION_DIR and start sway automatically as a dbus session on the default terminal ( sway as a dbus session is needed for pipewire and other programs ). It will also remember every command you typed and offers command completion which is the best thing in terminals. zsh-autosuggestions location may differ on different distros, edit ~/.zshrc with the correct location if error emerges.
 
+If you want sway to run on vulkan backend, uncomment this line in .zshrc :
+```
+export WLR_RENDERER=vulkan
+```
+
 ## Part Six - Pipewire, Wireplumber and xdg-dekstop-portal-wlr ##
 
 If you want screen sharing under sway/wayland you will need ```pipewire``` with ```wireplumber``` and ```xdg-desktop-portal-wlr```.
