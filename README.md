@@ -308,8 +308,8 @@ echo 'blacklist pcspkr' | sudo tee -a /etc/modprobe.d/blacklist.conf
 
 ## Q&A ##
 
-- Why is it named SwayOS? This is just a config/program collection on other OS's
-- True, but SwayDesktop sounds lame and generic
+*Why is it named SwayOS? This is just a config/program collection on other OS's*   
+True, but SwayDesktop sounds lame and generic
 
-- Where are the installer scripts from 2.0 and 1.0?
-- No time & energy to maintain those. Also this helps understanding Desktop/OS internals
+*Where are the installer scripts from 2.0 and 1.0?*   
+No time & energy to maintain those. Also this helps understanding Desktop/OS internals
