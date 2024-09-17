@@ -108,6 +108,8 @@ mode "resize" {
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
+bindsym $mod+l exec swaylock
+bindsym $mod+i exec swaylidle
 bindsym $mod+Space exec $menu
 bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
@@ -180,16 +182,18 @@ bar {
 
 # auto launch applications
 
-exec swayidle -w \
-         timeout 120 'swaylock -f' \
-         timeout 240 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -f'
-
 exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
 exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -v -t 200 -k 65515
+
 exec brightnessctl set 50%v
 exec ~/.config/wcp/wcp.sh
 exec blueman-applet
+
+# uncomment this to automatic lock & idle
+# exec swayidle -w \
+#          timeout 120 'swaylock -f' \
+#          timeout 240 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f'
 
 # uncomment this if you use pipewire on a non-systemd distro and want to launch it manually
 # exec pipewire

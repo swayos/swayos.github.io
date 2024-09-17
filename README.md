@@ -187,7 +187,8 @@ Install ```grim``` and ```slurp``` for making screenshots
 
 Install ```swayidle``` and ```swaylock``` 
 
-- Press WIN+SHIFT+E to exit sway and start it again. Screen will lock in 2 minutes, computer will sleep in 4 minutes. Change these values in ~/.config/sway/config
+- Press WIN+L to lock, WIN+I to idle
+- Uncomment the swayidle & swayblock related exec part from the bottom of ~/.config/sway/config if you wany auto lock and auto idle ( and reload sway )
 
 Install ```wob``` for volume/brightness indication
 
