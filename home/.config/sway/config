@@ -108,8 +108,7 @@ mode "resize" {
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec $menu
-bindsym $mod+l exec swaylock
-bindsym $mod+i exec swaylidle
+bindsym $mod+l exec ~/.config/sway/lock.sh
 bindsym $mod+Space exec $menu
 bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
