@@ -116,7 +116,7 @@ Clone the repo, build and install
 ```
 git clone https://github.com/milgra/sov
 cd sov
-meson setup build --buildtype=release
+meson setup build
 ninja -C build
 sudo ninja -C build install
 ```
@@ -128,7 +128,7 @@ sudo xbps-install -y clang meson ninja cmake pkg-config
 sudo xbps-install -y libpng-devel freetype-devel libglvnd-devel glew-devel wayland-devel libxkbcommon-devel wayland-protocols
 git clone https://github.com/milgra/sov
 cd sov
-meson setup build --buildtype=release
+meson setup build
 ninja -C build
 sudo ninja -C build install
 ```
@@ -140,7 +140,7 @@ sudo apt-get install clang meson ninja-build cmake pkg-config
 sudo apt-get install libpng-dev libfreetype-dev libglvnd-dev libglew-dev libwayland-dev libxkbcommon-dev wayland-protocols
 git clone https://github.com/milgra/sov
 cd sov
-meson setup build --buildtype=release
+meson setup build
 ninja -C build
 sudo ninja -C build install
 ```
@@ -155,7 +155,7 @@ Clone the Kinetic UI Dameon repo, build and install
 ```
 git clone https://github.com/milgra/kuid
 cd kuid
-meson setup build --buildtype=release
+meson setup build
 ninja -C build
 sudo ninja -C build install
 cd ..
