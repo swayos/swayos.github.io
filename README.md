@@ -187,8 +187,8 @@ Install ```grim``` and ```slurp``` for making screenshots
 
 Install ```swayidle``` and ```swaylock``` 
 
-- Press WIN+L to lock, WIN+I to idle
-- Uncomment the swayidle & swayblock related exec part from the bottom of ~/.config/sway/config if you wany auto lock and auto idle ( and reload sway )
+- Press WIN+L to lock and switch off display
+- Uncomment the swayidle & swayblock related exec part from the bottom of ~/.config/sway/config if you need auto lock and auto idle ( and reload sway )
 
 Install ```wob``` for volume/brightness indication
 
