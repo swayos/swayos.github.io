@@ -87,8 +87,6 @@ cp -R swayos.github.io/home/. ~/
 sway
 ```
 
-</details>
-
 ## Part Two - Installing Sway Overview ##
 
 Install the dev tools to build
