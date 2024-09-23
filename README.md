@@ -27,11 +27,9 @@ The status bar has the following sections from left to right : workspace block (
 |**WIN + R**|resize mode, press ESC to quit|
 |**WIN + SHIFT + SPACE**|toggle/untoggle floating over a window|
 
-## Donations
+## Source ##
 
-paypal : [https://paypal.me/milgra](https://paypal.me/milgra)  
-patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra)  
-bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du      
+https://github.com/swayos/swayos.github.io
 
 ## Setup ##
 
@@ -317,3 +315,10 @@ True, but SwayDesktop sounds lame and generic
 
 *Where are the installer scripts from 2.0 and 1.0?*   
 No time & energy to maintain those. Also this helps understanding Desktop/OS internals
+
+## Donations ##
+
+paypal : [https://paypal.me/milgra](https://paypal.me/milgra)  
+patreon : [https://www.patreon.com/milgra](https://www.patreon.com/milgra)  
+bitcoin : 37cSZoyQckihNvy939AgwBNCiutUVN82du      
+
