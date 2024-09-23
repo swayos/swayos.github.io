@@ -29,7 +29,7 @@ The status bar has the following sections from left to right : workspace block (
 
 ## Source ##
 
-https://github.com/swayos/swayos.github.io
+[https://github.com/swayos/swayos.github.io](https://github.com/swayos/swayos.github.io)
 
 ## Setup ##
 
