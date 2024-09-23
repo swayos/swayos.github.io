@@ -46,7 +46,7 @@ Then clone the swayos github repo and copy the default config files to ~/.config
 
 ```
 git clone https://github.com/swayos/swayos.github.io
-cp -R swayos.github.io/home/.config ~/
+cp -R swayos.github.io/home/. ~/
 ```
 
 Now you can start sway by typing ```sway``` and open a terminal by pressing WIN+ENTER
