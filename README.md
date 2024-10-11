@@ -1,4 +1,4 @@
-SwayOS 3.0 is a productivity-oriented minimalist and super elegant desktop layer for unix-like operating systems. It is a collection of configuration files, open source applications and open source applications created exclusively for SwayOS.
+SwayOS is a productivity-oriented minimalist and super elegant desktop layer for unix-like operating systems. It is a collection of configuration files, open source applications and open source applications created exclusively for SwayOS.
 
 [<img src="pics/swayos.png" width="1000">](pics/swayos.png)
 
